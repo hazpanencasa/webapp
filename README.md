@@ -1,6 +1,6 @@
 # HouseBread
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2, moreover this is the new platform where a bakery and the power of angular to generate a super future bread 🍞
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2
 
 ## Development server
 
