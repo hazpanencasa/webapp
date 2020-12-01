@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "house-bread"
+    }
+  },
+  "defaultProject": "house-bread",
+  "cli": {
+    "analytics": "9a340c65-0fb5-402b-b894-33a25826dffd"
+  }
 }
