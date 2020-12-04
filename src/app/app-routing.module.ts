@@ -1,20 +1,19 @@
 import {NgModule} from "@angular/core";
 import {Routes, RouterModule} from "@angular/router";
 
-import {FormulasComponent} from "./formulas/formulas.component";
-import {IngredientsComponent} from "./ingredients/ingredients.component";
-import {ProductionsComponent} from "./productions/productions.component";
+import {FormulasComponent} from "./home/components/formulas/formulas.component";
+import {IngredientsComponent} from "./home/components/ingredients/ingredients.component";
+import {ProductionsComponent} from "./home/components/productions/productions.component";
 
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "login",
+    redirectTo: "auth/login",
     pathMatch: "full",
   },
   {
-    path: "login",
-    loadChildren: () =>
-      import("./auth/login/login.module").then((m) => m.LoginModule),
+    path: "auth",
+    loadChildren: () => import("./auth/auth.module").then((m) => m.AuthModule),
   },
   {
     path: "ingredients",
