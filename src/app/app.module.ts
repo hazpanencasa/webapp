@@ -1,43 +1,35 @@
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
-import {AngularFireModule} from "@angular/fire";
-import {HttpClientModule} from "@angular/common/http";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AppRoutingModule} from "./app-routing.module";
 import {AppComponent} from "./app.component";
 import {environment} from "../environments/environment";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+
+import {HttpClientModule} from "@angular/common/http";
+
+import {AngularFireModule} from "@angular/fire";
 import {AngularFireAuthModule} from "@angular/fire/auth";
 import {AngularFirestoreModule} from "@angular/fire/firestore";
 import {AngularFireStorageModule} from "@angular/fire/storage";
-import {FormulasComponent} from "./home/components/formulas/formulas.component";
-import {IngredientsComponent} from "./ingredients/ingredients.component";
-import {ProductionsComponent} from "./home/components/productions/productions.component";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 import {SharedModule} from "./shared/shared.module";
 import {CoreModule} from "./core/core.module";
-import {HomeComponent} from "./home/home.component";
+import { IonicModule } from '@ionic/angular';
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    FormulasComponent,
-    IngredientsComponent,
-    ProductionsComponent,
-    HomeComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    FormsModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    HttpClientModule,
     BrowserAnimationsModule,
     SharedModule,
     CoreModule,
-    ReactiveFormsModule,
+    IonicModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

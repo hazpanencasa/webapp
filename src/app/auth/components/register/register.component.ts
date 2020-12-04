@@ -1,8 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-
 import {AuthService} from "../../../core/service/auth/auth.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: "app-register",
@@ -10,7 +10,7 @@ import {AuthService} from "../../../core/service/auth/auth.service";
   styleUrls: ["./register.component.sass"],
 })
 export class RegisterComponent implements OnInit {
-  form: FormGroup;
+  registerForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -24,18 +24,47 @@ export class RegisterComponent implements OnInit {
 
   register(event: Event) {
     event.preventDefault();
-    if (this.form.valid) {
-      const value = this.form.value;
-      this.authService.createUser(value.email, value.password).then(() => {
-        this.router.navigate(["/auth/login"]);
-      });
+    if (this.registerForm.valid) {
+      const value = this.registerForm.value;
+      this.authService
+        .createUser(value.email, value.password)
+        .then(() => {
+          Swal.fire({
+            title: "Gracias por registrate",
+            width: 600,
+            padding: "3em",
+            imageUrl: "https://i.gifer.com/uI7.gif",
+            imageWidth: 400,
+            imageHeight: 200,
+            icon: "success",
+            background: "#fff",
+            backdrop: `
+          rgb(214, 96, 96, .4)
+          `,
+            confirmButtonText: "Haz Login Ahora",
+          }).then(() => {
+            this.router.navigate(["/auth/login"]);
+          });
+        })
+        .catch((error) => {
+          Swal.fire({
+            icon: "error",
+            title: `este correo no es valido ${error}`,
+            text: "Something went wrong!",
+            confirmButtonText: "Intenta otra vez",
+            confirmButtonColor: "#3085d6",
+          });
+        });
     }
   }
 
   private buildForm() {
-    this.form = this.formBuilder.group({
-      email: ["", [Validators.required]],
-      password: ["", [Validators.required]],
+    this.registerForm = this.formBuilder.group({
+      email: [
+        "",
+        Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"),
+      ],
+      password: ["", Validators.minLength(8)],
     });
   }
 }

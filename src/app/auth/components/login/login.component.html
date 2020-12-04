@@ -1,57 +1,77 @@
-<form [formGroup]="form" class="container" (ngSubmit)="login($event)">
-  <mat-card>
-    <div class="row">
-      <div class="col">
-        <mat-card-title>Login</mat-card-title>
-        <mat-card-content>
-          <mat-form-field class="example-full-width">
-            <mat-label>Email</mat-label>
-            <input
-              type="email"
-              matInput
-              formControlName="email"
-              placeholder="Ex. pat@example.com"
-            />
-            <mat-error
-              *ngIf="form.hasError('email') && !form.hasError('required')"
-            >
-              Please enter a valid email address
-            </mat-error>
-            <mat-error *ngIf="form.hasError('required')">
-              Email is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-        </mat-card-content>
+<div class="Login-container">
+  <form
+    [formGroup]="loginForm"
+    class="container Login-form"
+    (ngSubmit)="login($event)"
+  >
+    <mat-card class="Login-form__card container">
+      <div class="row">
+        <div class="col">
+          <mat-card-title>Login</mat-card-title>
+          <mat-card-content>
+            <mat-form-field class="example-full-width">
+              <mat-label>Email</mat-label>
+              <input
+                type="email"
+                matInput
+                formControlName="email"
+                placeholder="Ex. pat@example.com"
+              />
+              <mat-error
+                *ngIf="
+                  loginForm.hasError('email') && !loginForm.hasError('required')
+                "
+              >
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="loginForm.hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </mat-card-content>
+        </div>
       </div>
-    </div>
-
-    <div class="row">
-      <div class="col">
-        <mat-card-title>Password</mat-card-title>
-        <mat-card-content>
-          <mat-form-field appearance="fill">
-            <mat-label>Enter your password</mat-label>
-            <input
-              formControlName="password"
-              matInput
-              [type]="hide ? 'password' : 'text'"
-            />
-            <button
-              (click)="handleClick($event)"
-              mat-icon-button
-              matSuffix
-              [attr.aria-label]="'Hide password'"
-              [attr.aria-pressed]="hide"
-            >
-              <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-            </button>
-          </mat-form-field>
-        </mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-card-title>Password</mat-card-title>
+          <mat-card-content>
+            <mat-form-field appearance="fill">
+              <mat-label>Enter your password</mat-label>
+              <input
+                formControlName="password"
+                matInput
+                [type]="hide ? 'password' : 'text'"
+              />
+              <mat-error
+                *ngIf="
+                  loginForm.hasError('password') &&
+                  !loginForm.hasError('required')
+                "
+              >
+                Please enter a valid passwor con 8 caracteres minimos
+              </mat-error>
+              <mat-error *ngIf="loginForm.hasError('required')">
+                Password is <strong>required</strong>
+              </mat-error>
+              <button
+                (click)="handleClick($event)"
+                mat-icon-button
+                matSuffix
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide"
+              >
+                <mat-icon>{{
+                  hide ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+            </mat-form-field>
+          </mat-card-content>
+        </div>
       </div>
-    </div>
 
-    <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit">Submit</button>
-    </mat-card-actions>
-  </mat-card>
-</form>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

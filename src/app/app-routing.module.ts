@@ -1,10 +1,14 @@
 import {NgModule} from "@angular/core";
 import {Routes, RouterModule} from "@angular/router";
+import {
+  AngularFireAuthGuard,
+  redirectUnauthorizedTo,
+  redirectLoggedInTo,
+} from "@angular/fire/auth-guard";
 
-import {FormulasComponent} from "./home/components/formulas/formulas.component";
-import {IngredientsComponent} from "./home/components/ingredients/ingredients.component";
-import {ProductionsComponent} from "./home/components/productions/productions.component";
-
+const redirectUnauthorizedToLogin = () =>
+  redirectUnauthorizedTo(["auth/login"]);
+const redirectLoggedInToItems = () => redirectLoggedInTo(["home"]);
 const routes: Routes = [
   {
     path: "",
@@ -13,19 +17,15 @@ const routes: Routes = [
   },
   {
     path: "auth",
+    canActivate: [AngularFireAuthGuard],
+    data: {authGuardPipe: redirectLoggedInToItems},
     loadChildren: () => import("./auth/auth.module").then((m) => m.AuthModule),
   },
   {
-    path: "ingredients",
-    component: IngredientsComponent,
-  },
-  {
-    path: "productions",
-    component: ProductionsComponent,
-  },
-  {
-    path: "formulas",
-    component: FormulasComponent,
+    path: "home",
+    canActivate: [AngularFireAuthGuard],
+    data: {authGuardPipe: redirectUnauthorizedToLogin},
+    loadChildren: () => import("./home/home.module").then((m) => m.HomeModule),
   },
 ];
 
