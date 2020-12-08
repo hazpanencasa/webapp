@@ -6,12 +6,12 @@ import {HomeComponent} from "./components/home/home.component";
 import {FormulasComponent} from "./components/formulas/formulas.component";
 import {ProductionsComponent} from "./components/productions/productions.component";
 import {HomeRoutingModule} from "./home-routing.module";
-
+import {TranslateModule} from "@ngx-translate/core";
 import {SharedModule} from "../shared/shared.module";
 import {MaterialModule} from "../material/material.module";
 import {NavComponent} from "./components/nav/nav.component";
 import {LayoutModule} from "@angular/cdk/layout";
-import { BannerComponent } from './components/banner/banner.component';
+import {BannerComponent} from "./components/banner/banner.component";
 
 @NgModule({
   declarations: [
@@ -26,8 +26,9 @@ import { BannerComponent } from './components/banner/banner.component';
     CommonModule,
     HomeRoutingModule,
     SharedModule,
-    MaterialModule,
+    TranslateModule,
     LayoutModule,
+    MaterialModule,
   ],
 })
 export class HomeModule {}

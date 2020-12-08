@@ -1,4 +1,4 @@
-import {NgModule} from "@angular/core";
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {MaterialModule} from "../material/material.module";
 import {ReactiveFormsModule} from "@angular/forms";
@@ -16,5 +16,6 @@ import {AuthRoutingModule} from "./auth-routing.module";
     ReactiveFormsModule,
     SharedModule,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AuthModule {}

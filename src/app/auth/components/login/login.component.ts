@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {Validators, FormGroup, FormBuilder} from "@angular/forms";
 import {Router} from "@angular/router";
-import {AuthService} from "../../../core/service/auth/auth.service";
+import {AuthService} from "@core/service/auth/auth.service";
 
 import Swal from "sweetalert2";
 
@@ -13,6 +13,7 @@ import Swal from "sweetalert2";
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   hide = true;
+  toggleButton = true;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -22,6 +23,16 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  onChangeDisplay(event: Event) {
+    event.preventDefault();
+    this.toggleButton = !this.toggleButton;
+  }
+
+  navigateRegister(event: Event) {
+    event.preventDefault();
+    this.router.navigate(["auth/register"]);
+  }
 
   handleClick(event: Event) {
     event.preventDefault();
@@ -44,10 +55,10 @@ export class LoginComponent implements OnInit {
           });
           this.router.navigate(["/home"]);
         })
-        .catch(() => {
-          if (this.loginForm.valid) {
+        .catch((err) => {
+          if (value.invalid) {
             Swal.fire({
-              title: "Opss no estas registrado",
+              title: "Opss, no estas registrado",
               text: "Te gustaria hacer pan en desde tu casa?",
               icon: "warning",
               showCancelButton: true,
@@ -63,17 +74,31 @@ export class LoginComponent implements OnInit {
                 this.router.navigate(["auth/register"]);
               }
             });
+          } else {
+            console.log(err);
           }
         });
     }
   }
+
   private buildForm() {
     this.loginForm = this.formBuilder.group({
       email: [
         "",
-        Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"),
+        [
+          Validators.required,
+          Validators.email,
+          Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"),
+        ],
       ],
-      password: ["", Validators.minLength(8)],
+      password: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(10),
+        ],
+      ],
     });
   }
 }

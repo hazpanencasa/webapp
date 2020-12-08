@@ -1,11 +1,13 @@
-import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
+import {BrowserModule} from "@angular/platform-browser";
 import {AppRoutingModule} from "./app-routing.module";
 import {AppComponent} from "./app.component";
 import {environment} from "../environments/environment";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule, HttpClient} from "@angular/common/http";
+import {TranslateModule, TranslateLoader} from "@ngx-translate/core";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 
 import {AngularFireModule} from "@angular/fire";
 import {AngularFireAuthModule} from "@angular/fire/auth";
@@ -14,14 +16,17 @@ import {AngularFireStorageModule} from "@angular/fire/storage";
 
 import {SharedModule} from "./shared/shared.module";
 import {CoreModule} from "./core/core.module";
-import { IonicModule } from '@ionic/angular';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, "./assets/1l8n/", ".json");
+}
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
@@ -29,7 +34,13 @@ import { IonicModule } from '@ionic/angular';
     BrowserAnimationsModule,
     SharedModule,
     CoreModule,
-    IonicModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

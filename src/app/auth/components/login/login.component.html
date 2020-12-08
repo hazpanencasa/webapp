@@ -4,74 +4,134 @@
     class="container Login-form"
     (ngSubmit)="login($event)"
   >
-    <mat-card class="Login-form__card container">
-      <div class="row">
-        <div class="col">
-          <mat-card-title>Login</mat-card-title>
-          <mat-card-content>
-            <mat-form-field class="example-full-width">
-              <mat-label>Email</mat-label>
-              <input
-                type="email"
-                matInput
-                formControlName="email"
-                placeholder="Ex. pat@example.com"
-              />
-              <mat-error
-                *ngIf="
-                  loginForm.hasError('email') && !loginForm.hasError('required')
-                "
-              >
-                Please enter a valid email address
-              </mat-error>
-              <mat-error *ngIf="loginForm.hasError('required')">
-                Email is <strong>required</strong>
-              </mat-error>
-            </mat-form-field>
-          </mat-card-content>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <mat-card-title>Password</mat-card-title>
-          <mat-card-content>
-            <mat-form-field appearance="fill">
-              <mat-label>Enter your password</mat-label>
-              <input
-                formControlName="password"
-                matInput
-                [type]="hide ? 'password' : 'text'"
-              />
-              <mat-error
-                *ngIf="
-                  loginForm.hasError('password') &&
-                  !loginForm.hasError('required')
-                "
-              >
-                Please enter a valid passwor con 8 caracteres minimos
-              </mat-error>
-              <mat-error *ngIf="loginForm.hasError('required')">
-                Password is <strong>required</strong>
-              </mat-error>
-              <button
-                (click)="handleClick($event)"
-                mat-icon-button
-                matSuffix
-                [attr.aria-label]="'Hide password'"
-                [attr.aria-pressed]="hide"
-              >
-                <mat-icon>{{
-                  hide ? "visibility_off" : "visibility"
-                }}</mat-icon>
-              </button>
-            </mat-form-field>
-          </mat-card-content>
+    <mat-card
+      [className]="
+        toggleButton
+          ? 'Login-form__card2 container'
+          : 'Login-form__card1 container'
+      "
+    >
+      <div class="Login-form__logo container">
+        <div class="row">
+          <div class="col">
+            <img src="https://i.imgur.com/Znom0wL.png" alt="logo" />
+          </div>
         </div>
       </div>
 
-      <mat-card-actions>
-        <button mat-raised-button color="primary" type="submit">Submit</button>
-      </mat-card-actions>
+      <div
+        [className]="
+          toggleButton
+            ? 'hide  Login-form__content container'
+            : 'active Login-form__content container'
+        "
+      >
+        <div class="row">
+          <div class="col">
+            <mat-card-title>Email</mat-card-title>
+            <mat-card-content>
+              <mat-form-field class="Login-form__Email">
+                <mat-label>
+                  <ion-icon name="mail-outline"></ion-icon> Email</mat-label
+                >
+                <input
+                  type="email"
+                  matInput
+                  formControlName="email"
+                  placeholder="Ex. pat@example.com"
+                />
+                <mat-error
+                  *ngIf="
+                    loginForm.get('email').hasError('email') &&
+                    !loginForm.get('email').hasError('required')
+                  "
+                >
+                  Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="loginForm.get('email').hasError('required')">
+                  Email is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </mat-card-content>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-card-title>Password</mat-card-title>
+            <mat-card-content>
+              <mat-form-field appearance="fill">
+                <mat-label>
+                  <ion-icon name="lock-closed-outline"></ion-icon>
+                  Enter your password
+                </mat-label>
+                <input
+                  formControlName="password"
+                  matInput
+                  [type]="hide ? 'password' : 'text'"
+                />
+                <mat-error
+                  *ngIf="
+                    loginForm.get('password').hasError('password') &&
+                    (loginForm.get('password').hasError('required') ||
+                      loginForm.get('password').dirty)
+                  "
+                >
+                  Please enter a valid password
+                </mat-error>
+                <mat-error
+                  *ngIf="loginForm.get('password').hasError('required')"
+                >
+                  Password is <strong>required</strong>
+                </mat-error>
+                <button
+                  (click)="handleClick($event)"
+                  mat-icon-button
+                  matSuffix
+                  [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide"
+                >
+                  <mat-icon>{{
+                    hide ? "visibility_off" : "visibility"
+                  }}</mat-icon>
+                </button>
+              </mat-form-field>
+            </mat-card-content>
+          </div>
+        </div>
+
+        <mat-card-actions class="Login-form__button">
+          <button mat-raised-button color="primary" type="submit">Login</button>
+        </mat-card-actions>
+      </div>
+
+      <div
+        [className]="
+          toggleButton ? 'container login-form__toggleButtons' : 'hide'
+        "
+      >
+        <div class="row">
+          <div class="col">
+            <button
+              (click)="onChangeDisplay($event)"
+              mat-raised-button
+              color="primary"
+            >
+              Login
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="navigateRegister($event)"
+            >
+              Register
+            </button>
+          </div>
+        </div>
+      </div>
     </mat-card>
   </form>
 </div>
