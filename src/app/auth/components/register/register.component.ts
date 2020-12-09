@@ -47,13 +47,15 @@ export class RegisterComponent implements OnInit {
           });
         })
         .catch((error) => {
-          Swal.fire({
-            icon: "error",
-            title: `este correo no es valido ${error}`,
-            text: "Something went wrong!",
-            confirmButtonText: "Intenta otra vez",
-            confirmButtonColor: "#3085d6",
-          });
+          if (this.registerForm.invalid) {
+            Swal.fire({
+              icon: "error",
+              title: `${error}`,
+              text: "Something went wrong!",
+              confirmButtonText: "Intenta otra vez",
+              confirmButtonColor: "#3085d6",
+            });
+          }
         });
     }
   }
@@ -62,9 +64,26 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       email: [
         "",
-        Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"),
+        [
+          Validators.required,
+          Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"),
+        ],
       ],
-      password: ["", Validators.minLength(8)],
+      password: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(10),
+        ],
+      ],
     });
+  }
+
+  get registerFormEmail() {
+    return this.registerForm.get("email");
+  }
+  get registerFormPassword() {
+    return this.registerForm.get("password");
   }
 }

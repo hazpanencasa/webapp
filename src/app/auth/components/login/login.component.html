@@ -42,14 +42,13 @@
                 />
                 <mat-error
                   *ngIf="
-                    loginForm.get('email').hasError('email') &&
-                    !loginForm.get('email').hasError('required')
+                    loginFormEmail.dirty && loginFormEmail.hasError('required')
                   "
                 >
-                  Please enter a valid email address
-                </mat-error>
-                <mat-error *ngIf="loginForm.get('email').hasError('required')">
                   Email is <strong>required</strong>
+                </mat-error>
+                <mat-error *ngIf="loginFormEmail.hasError('pattern')">
+                  Please enter a valid email address
                 </mat-error>
               </mat-form-field>
             </mat-card-content>
@@ -71,18 +70,20 @@
                 />
                 <mat-error
                   *ngIf="
-                    loginForm.get('password').hasError('password') &&
-                    (loginForm.get('password').hasError('required') ||
-                      loginForm.get('password').dirty)
+                    loginFormPassword.dirty &&
+                    loginFormPassword.hasError('required')
                   "
-                >
-                  Please enter a valid password
-                </mat-error>
-                <mat-error
-                  *ngIf="loginForm.get('password').hasError('required')"
                 >
                   Password is <strong>required</strong>
                 </mat-error>
+                <mat-error *ngIf="loginFormPassword.hasError('minlength')"
+                  >password must contain at least
+                  <strong>6 characters</strong></mat-error
+                >
+                <mat-error *ngIf="loginFormPassword.hasError('maxlength')"
+                  >password must contain no more then
+                  <strong>10 characters</strong></mat-error
+                >
                 <button
                   (click)="handleClick($event)"
                   mat-icon-button

@@ -9,6 +9,7 @@ import {
 const redirectUnauthorizedToLogin = () =>
   redirectUnauthorizedTo(["auth/login"]);
 const redirectLoggedInToItems = () => redirectLoggedInTo(["home"]);
+
 const routes: Routes = [
   {
     path: "",

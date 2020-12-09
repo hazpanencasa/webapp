@@ -78,6 +78,8 @@ export class LoginComponent implements OnInit {
             console.log(err);
           }
         });
+    } else {
+      this.loginForm.markAsDirty();
     }
   }
 
@@ -100,5 +102,11 @@ export class LoginComponent implements OnInit {
         ],
       ],
     });
+  }
+  get loginFormEmail() {
+    return this.loginForm.get("email");
+  }
+  get loginFormPassword() {
+    return this.loginForm.get("password");
   }
 }

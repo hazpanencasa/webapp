@@ -1,0 +1,103 @@
+.parallax
+  background: #fff fixed no-repeat 50% 50%
+  background-size: cover
+#parallax
+  position: relative
+  background-image: url('https://fondosmil.com/fondo/73490.jpg')
+  animation: carousell 25s infinite alternate
+  animation-timing-function: linear
+  & .overlay
+    z-index: 1
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    background-color: rgba(0, 0, 0, 0.5)
+    color: white
+    padding-top: 76px
+.Banner
+  height: 100vh
+  &-section__main
+    height: calc(100vh - 58px * 2)
+    display: flex
+    align-items: center
+    & .container, 
+    & .row
+      height: 100%
+      .col
+        display: flex
+        flex-direction: column
+        height: 50%
+        align-items: center
+        justify-content: space-around
+        h2
+          font-family: Lato,sans-serif
+          font-size: .75rem
+          font-weight: 700
+          letter-spacing: .05em
+          text-transform: uppercase
+          span 
+            color: #f5a637
+    &-title
+      font-size: 5rem
+      font-weight: 700
+      color: #fff
+      max-width: 600px
+      margin-bottom: 2.5rem
+      margin-right: auto
+      margin-left: auto
+    &-info
+      margin-right: auto
+      margin-left: auto
+      margin-bottom: 3rem
+      max-width: 600px
+  &-section__footer
+    .row
+      height: 100%
+    &__social
+      list-style-type: none
+      margin: 0
+      padding: 0
+      display: flex
+      li
+        margin-right: 3rem
+        font-size: 20px
+      a
+        color: #b6adad
+      a:hover
+        color: #f5a637
+    &__address
+      color: #b6adad
+      display: flex
+      align-items: center
+      justify-content: flex-end
+      i
+        color: #f5a637
+        font-size: 25px
+      p
+        margin: 0
+
+@keyframes carousell
+  0%
+    background-image: url('https://fondosmil.com/fondo/73490.jpg')
+  10%
+   background-image: url('https://fondosmil.com/fondo/73490.jpg')
+  20%
+    background-image: url('https://cdn.hipwallpaper.com/i/40/77/Sno4vh.jpg')
+  30%
+    background-image: url('https://cdn.hipwallpaper.com/i/40/77/Sno4vh.jpg')
+  40%
+   background-image: url('https://images7.alphacoders.com/333/333583.jpg')
+  50%
+    background-image: url('https://images7.alphacoders.com/333/333583.jpg')
+  60%
+    background-image: url('https://images7.alphacoders.com/333/333583.jpg')
+  70%
+    background-image: url('https://fondosmil.com/fondo/73680.jpg')
+  80%
+    background-image: url('https://fondosmil.com/fondo/73680.jpg')
+  90%
+    background-image: url('https://fondosmil.com/fondo/73490.jpg')
+  100%
+    background-image: url('https://fondosmil.com/fondo/73490.jpg')

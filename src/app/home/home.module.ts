@@ -1,17 +1,22 @@
-import {NgModule} from "@angular/core";
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
 import {CommonModule} from "@angular/common";
+import {HomeRoutingModule} from "./home-routing.module";
+
+import {SharedModule} from "@shared/shared.module";
+import {LayoutComponent} from "./components/layout/layout.component";
+
+import {BannerComponent} from "./components/home/components/banner/banner.component";
+import {NavComponent} from "./components/nav/nav.component";
+import {GalleryComponent} from "./components/home/components/gallery/gallery.component";
 
 import {IngredientsComponent} from "./components/ingredients/ingredients.component";
 import {HomeComponent} from "./components/home/home.component";
 import {FormulasComponent} from "./components/formulas/formulas.component";
 import {ProductionsComponent} from "./components/productions/productions.component";
-import {HomeRoutingModule} from "./home-routing.module";
+
 import {TranslateModule} from "@ngx-translate/core";
-import {SharedModule} from "../shared/shared.module";
 import {MaterialModule} from "../material/material.module";
-import {NavComponent} from "./components/nav/nav.component";
 import {LayoutModule} from "@angular/cdk/layout";
-import {BannerComponent} from "./components/banner/banner.component";
 
 @NgModule({
   declarations: [
@@ -21,6 +26,8 @@ import {BannerComponent} from "./components/banner/banner.component";
     ProductionsComponent,
     NavComponent,
     BannerComponent,
+    LayoutComponent,
+    GalleryComponent,
   ],
   imports: [
     CommonModule,
@@ -30,5 +37,6 @@ import {BannerComponent} from "./components/banner/banner.component";
     LayoutModule,
     MaterialModule,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomeModule {}
