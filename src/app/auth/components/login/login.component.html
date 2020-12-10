@@ -14,6 +14,7 @@
       <div class="Login-form__logo container">
         <div class="row">
           <div class="col">
+            <h1 class="text-center primary-title">Welcome to</h1>
             <img src="https://i.imgur.com/Znom0wL.png" alt="logo" />
           </div>
         </div>
@@ -32,7 +33,7 @@
             <mat-card-content>
               <mat-form-field class="Login-form__Email">
                 <mat-label>
-                  <ion-icon name="mail-outline"></ion-icon> Email</mat-label
+                  <ion-icon name="mail-outline"></ion-icon>Email</mat-label
                 >
                 <input
                   type="email"
@@ -99,10 +100,18 @@
             </mat-card-content>
           </div>
         </div>
-
-        <mat-card-actions class="Login-form__button">
-          <button mat-raised-button color="primary" type="submit">Login</button>
-        </mat-card-actions>
+        <div class="row">
+          <div class="col">
+            <mat-card-actions class="Login-form__button">
+              <button class="btn-primary" mat-raised-button type="submit">
+                Login
+              </button>
+              <a class="anchor-link" routerLink="/auth/register"
+                >Don't you have an account yet?</a
+              >
+            </mat-card-actions>
+          </div>
+        </div>
       </div>
 
       <div
@@ -113,9 +122,9 @@
         <div class="row">
           <div class="col">
             <button
+              class="btn-primary"
               (click)="onChangeDisplay($event)"
               mat-raised-button
-              color="primary"
             >
               Login
             </button>
@@ -125,7 +134,7 @@
           <div class="col">
             <button
               mat-raised-button
-              color="primary"
+              class="btn-primary"
               (click)="navigateRegister($event)"
             >
               Register

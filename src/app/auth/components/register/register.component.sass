@@ -1,10 +1,12 @@
 .hide
   display: none
-
+.white 
+  color: white
+  margin: 0
 .Register-container
   background-color: rgb(244, 228, 202)
   background-image: url("https://cdn.hipwallpaper.com/i/51/63/V2NQjn.jpg") 
-  height: 100%
+  height: 100vh
   width: 100%
   background-size: cover
   display: flex
@@ -41,10 +43,17 @@
   display: flex
   align-items: center
 .Register-form__button
-  width: 100%
+  display: flex
+  flex-direction: column
+  align-items: center
+  width: 200px
+  height: 65px
   button 
-    width: 220px
-    background-color: #c28973
+    margin-bottom: 5px
+    width: 100%
+    height: 100%
+
+  //   background-color: #c28973
     //   .Login-form__logo
     //     display: flex
     //     justify-content: center

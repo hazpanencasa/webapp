@@ -14,10 +14,11 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">About us</a>
+          <a [class.scroll-list]="scroll" class="nav-link" href="#">About us</a>
         </li>
         <li class="nav-item dropdown">
           <a
+            [class.scroll-list]="scroll"
             class="nav-link dropdown-toggle"
             href="#"
             id="navbarDropdown"
@@ -36,23 +37,37 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Ingredients</a>
+          <a [class.scroll-list]="scroll" class="nav-link" href="#"
+            >Ingredients</a
+          >
         </li>
       </ul>
-      <a class="navbar-brand" href="#">
+      <a *ngIf="!scroll" class="navbar-brand" href="#">
         <img src="https://i.imgur.com/l4HlGs6.png" alt="logo" />
+      </a>
+      <a *ngIf="scroll" class="navbar-brand" href="#">
+        <img src="https://i.imgur.com/fEMTphd.png" alt="logo" />
       </a>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Productions </a>
+          <a [class.scroll-list]="scroll" class="nav-link" href="#"
+            >Productions
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"> Formulas </a>
+          <a [class.scroll-list]="scroll" class="nav-link" href="#">
+            Formulas
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Gallery</a>
+          <button class="btn-primary" (click)="logOut()" mat-raised-button>
+            <a [class.scroll-list]="scroll" class="nav-link" href="#"
+              >Log Out</a
+            >
+          </button>
         </li>
       </ul>
     </div>
   </nav>
+  <div [class.scroll]="scroll" class="scroll-hidden"></div>
 </header>

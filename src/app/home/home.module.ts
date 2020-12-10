@@ -6,7 +6,6 @@ import {SharedModule} from "@shared/shared.module";
 import {LayoutComponent} from "./components/layout/layout.component";
 
 import {BannerComponent} from "./components/home/components/banner/banner.component";
-import {NavComponent} from "./components/nav/nav.component";
 import {GalleryComponent} from "./components/home/components/gallery/gallery.component";
 
 import {IngredientsComponent} from "./components/ingredients/ingredients.component";
@@ -24,7 +23,6 @@ import {LayoutModule} from "@angular/cdk/layout";
     HomeComponent,
     IngredientsComponent,
     ProductionsComponent,
-    NavComponent,
     BannerComponent,
     LayoutComponent,
     GalleryComponent,

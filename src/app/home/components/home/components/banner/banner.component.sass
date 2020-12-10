@@ -1,9 +1,10 @@
+@import ../../../../../../utils/variables
 .parallax
   background: #fff fixed no-repeat 50% 50%
   background-size: cover
 #parallax
   position: relative
-  background-image: url('https://fondosmil.com/fondo/73490.jpg')
+  background-image: url($background-image1)
   animation: carousell 25s infinite alternate
   animation-timing-function: linear
   & .overlay
@@ -32,17 +33,17 @@
         align-items: center
         justify-content: space-around
         h2
-          font-family: Lato,sans-serif
+          font-family: $font-subtitle
           font-size: .75rem
           font-weight: 700
           letter-spacing: .05em
           text-transform: uppercase
           span 
-            color: #f5a637
+            color: $primary-color
     &-title
       font-size: 5rem
       font-weight: 700
-      color: #fff
+      color: $light-color
       max-width: 600px
       margin-bottom: 2.5rem
       margin-right: auto
@@ -52,6 +53,7 @@
       margin-left: auto
       margin-bottom: 3rem
       max-width: 600px
+      color: $secondary-color
   &-section__footer
     .row
       height: 100%
@@ -64,40 +66,40 @@
         margin-right: 3rem
         font-size: 20px
       a
-        color: #b6adad
+        color: $secondary-color
       a:hover
-        color: #f5a637
+        color: $primary-color
     &__address
-      color: #b6adad
+      color: $secondary-color
       display: flex
       align-items: center
       justify-content: flex-end
       i
-        color: #f5a637
+        color: $primary-color
         font-size: 25px
       p
         margin: 0
 
 @keyframes carousell
   0%
-    background-image: url('https://fondosmil.com/fondo/73490.jpg')
+    background-image: url($background-image1)
   10%
-   background-image: url('https://fondosmil.com/fondo/73490.jpg')
+   background-image: url($background-image2)
   20%
-    background-image: url('https://cdn.hipwallpaper.com/i/40/77/Sno4vh.jpg')
+    background-image: url($background-image2)
   30%
-    background-image: url('https://cdn.hipwallpaper.com/i/40/77/Sno4vh.jpg')
+    background-image: url($background-image3)
   40%
-   background-image: url('https://images7.alphacoders.com/333/333583.jpg')
+   background-image: url($background-image3)
   50%
-    background-image: url('https://images7.alphacoders.com/333/333583.jpg')
+    background-image: url($background-image4)
   60%
-    background-image: url('https://images7.alphacoders.com/333/333583.jpg')
+    background-image: url($background-image4)
   70%
-    background-image: url('https://fondosmil.com/fondo/73680.jpg')
+    background-image: url($background-image1)
   80%
-    background-image: url('https://fondosmil.com/fondo/73680.jpg')
+    background-image: url($background-image1)
   90%
-    background-image: url('https://fondosmil.com/fondo/73490.jpg')
+    background-image: url($background-image2)
   100%
-    background-image: url('https://fondosmil.com/fondo/73490.jpg')
+    background-image: url($background-image2)

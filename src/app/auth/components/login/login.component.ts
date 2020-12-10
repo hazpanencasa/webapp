@@ -56,26 +56,21 @@ export class LoginComponent implements OnInit {
           this.router.navigate(["/home"]);
         })
         .catch((err) => {
-          if (value.invalid) {
+          if (err) {
             Swal.fire({
               title: "Opss, no estas registrado",
               text: "Te gustaria hacer pan en desde tu casa?",
               icon: "warning",
               showCancelButton: true,
-              confirmButtonColor: "#3085d6",
+              confirmButtonColor: "#f5a637",
               cancelButtonColor: "#d33",
               confirmButtonText: "Registrate ahora 🙋",
-              backdrop: `
-                rgba(0,0,123,0.4)
-                url("https://i.gifer.com/uI7.gif")
-            `,
+              position: "center",
             }).then((result) => {
               if (result.isConfirmed) {
                 this.router.navigate(["auth/register"]);
               }
             });
-          } else {
-            console.log(err);
           }
         });
     } else {

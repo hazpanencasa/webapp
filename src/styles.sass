@@ -1,3 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+@import ./utils/variables
 body 
+  margin: 0
+  padding: 0
   position: relative
+
+.btn-primary
+  line-height: normal !important
+  background-color: $primary-color
+  color: $dark-color
+  transition: .5s
+  box-shadow: 3px 3px 1px -2px rgba(0, 0, 0, 0.2), 4px 4px 2px 2px rgba(0, 0, 0, 0.14), -1px 3px 0px 0px rgba(0, 0, 0, 0.12) !important
+  &:hover
+    color: $primary-color
+    background-color: $dark-color
+  &:focus
+    background-color: $primary-color
+    color: $dark-color
+    border: none
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active
+    background-color: $primary-color
+    color: $dark-color
+.anchor-link
+  color: $dark-color
+  text-decoration: none
+  &:hover
+    color: $primary-color
+    text-decoration: none
+.primary-title
+  font: 40px $font-title 

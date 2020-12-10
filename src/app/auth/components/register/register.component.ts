@@ -30,30 +30,26 @@ export class RegisterComponent implements OnInit {
         .createUser(value.email, value.password)
         .then(() => {
           Swal.fire({
-            title: "Gracias por registrate",
-            width: 600,
+            html:
+              '<h1 style="color: white; margin: 0;"> Thanks for Sign In </h1>',
+            width: 400,
             padding: "3em",
-            imageUrl: "https://i.gifer.com/uI7.gif",
-            imageWidth: 400,
-            imageHeight: 200,
+            confirmButtonColor: "#f5a637",
             icon: "success",
-            background: "#fff",
-            backdrop: `
-          rgb(214, 96, 96, .4)
-          `,
-            confirmButtonText: "Haz Login Ahora",
+            background: "url(https://i.gifer.com/uI7.gif) no-repeat 50% 50%",
+            confirmButtonText: "Please, log In",
           }).then(() => {
             this.router.navigate(["/auth/login"]);
           });
         })
         .catch((error) => {
-          if (this.registerForm.invalid) {
+          if (this.registerForm.valid) {
             Swal.fire({
               icon: "error",
               title: `${error}`,
               text: "Something went wrong!",
-              confirmButtonText: "Intenta otra vez",
-              confirmButtonColor: "#3085d6",
+              confirmButtonText: "Try Again with Another Email",
+              confirmButtonColor: "#f5a637",
             });
           }
         });

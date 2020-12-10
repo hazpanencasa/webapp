@@ -10,7 +10,7 @@
           >
             <mat-card>
               <mat-card-header>
-                <mat-card-title>Registrate Ahora</mat-card-title>
+                <mat-card-title>Register now</mat-card-title>
               </mat-card-header>
               <mat-card-content>
                 <div class="row">
@@ -29,18 +29,13 @@
                       <mat-error
                         *ngIf="
                           registerFormEmail.dirty &&
-                          registerFormEmail.hasError('pattern')
-                        "
-                      >
-                        Please enter a valid email address
-                      </mat-error>
-                      <mat-error
-                        *ngIf="
-                          registerFormEmail.dirty &&
                           registerFormEmail.hasError('required')
                         "
                       >
                         Email is <strong>required</strong>
+                      </mat-error>
+                      <mat-error *ngIf="registerFormEmail.hasError('pattern')">
+                        Please enter a valid email address
                       </mat-error>
                     </mat-form-field>
                   </div>
@@ -59,9 +54,12 @@
                         type="password"
                       />
                       <mat-error
-                        *ngIf="registerFormPassword.hasError('required')"
+                        *ngIf="
+                          registerFormPassword.dirty &&
+                          registerFormPassword.hasError('required')
+                        "
                       >
-                        Este Campo es <strong>required</strong>
+                        This field is <strong>required</strong>
                       </mat-error>
                       <mat-error
                         *ngIf="
@@ -76,14 +74,12 @@
                 </div>
               </mat-card-content>
               <mat-card-actions class="Register-form__button">
-                <button
-                  [disabled]="registerForm.invalid"
-                  mat-raised-button
-                  type="submit"
-                >
-                  Registro
+                <button class="btn-primary" mat-raised-button type="submit">
+                  Sign In
                 </button>
-                <!-- <p>{{ registerForm.valid }} {{ registerForm.invalid }}</p> -->
+                <a class="anchor-link" routerLink="/auth/login"
+                  >I alredy have an account</a
+                >
               </mat-card-actions>
             </mat-card>
           </form>

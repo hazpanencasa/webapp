@@ -1,7 +1,8 @@
+@import ../../../../utils/variables
 .navbar
-  background: transparent
+  background: rgba(0, 0, 0, 0) 
   & .navbar-nav .nav-link
-    font-family: Lato,sans-serif
+    font-family: $font-subtitle
     font-size: .75rem
     font-weight: 700
     transition: color .1s
@@ -10,8 +11,11 @@
     letter-spacing: .05em
     text-transform: uppercase
     color: white 
+    transition: .5s
+    &.scroll-list
+      color: black
   & .navbar-nav .nav-link:hover
-    color: #f5a637
+    color: $primary-color
   &-brand
     width: 200px
     height: 70px
@@ -19,3 +23,16 @@
       width: 100%
       height: 100%
       vertical-align: top
+.scroll-list
+  color: black
+.scroll-hidden
+  width: 100%
+  height: 83px
+  background: white
+  position: fixed
+  left: -10px
+  transform: translate3d(10px, -83px, 10px)
+  z-index: 100
+  transition: .5s
+  &.scroll
+    transform: translate3d(10px, -3px, 10px)
