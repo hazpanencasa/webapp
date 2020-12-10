@@ -16,6 +16,7 @@ import {ProductionsComponent} from "./components/productions/productions.compone
 import {TranslateModule} from "@ngx-translate/core";
 import {MaterialModule} from "../material/material.module";
 import {LayoutModule} from "@angular/cdk/layout";
+import { InfoComponent } from './components/home/components/info/info.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {LayoutModule} from "@angular/cdk/layout";
     BannerComponent,
     LayoutComponent,
     GalleryComponent,
+    InfoComponent,
   ],
   imports: [
     CommonModule,
