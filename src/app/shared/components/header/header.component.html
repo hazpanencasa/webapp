@@ -37,33 +37,41 @@
           </div>
         </li>
         <li class="nav-item">
-          <a [class.scroll-list]="scroll" class="nav-link" href="#"
+          <a
+            [class.scroll-list]="scroll"
+            class="nav-link"
+            routerLink="ingredients"
             >Ingredients</a
           >
         </li>
       </ul>
-      <a *ngIf="!scroll" class="navbar-brand" href="#">
+      <a *ngIf="!scroll" class="navbar-brand" routerLink="/home">
         <img src="assets/images/logoPanEnCasaWhite.png" alt="logo" />
       </a>
-      <a *ngIf="scroll" class="navbar-brand" href="#">
+      <a *ngIf="scroll" class="navbar-brand" routerLink="/home">
         <img src="assets/images/logoPanEnCasaBlack.png" alt="logo" />
       </a>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a [class.scroll-list]="scroll" class="nav-link" href="#"
+          <a
+            [class.scroll-list]="scroll"
+            class="nav-link"
+            routerLink="productions"
             >Productions
           </a>
         </li>
         <li class="nav-item">
-          <a [class.scroll-list]="scroll" class="nav-link" href="#">
+          <a
+            [class.scroll-list]="scroll"
+            class="nav-link"
+            routerLink="formulas"
+          >
             Formulas
           </a>
         </li>
         <li class="nav-item">
           <button class="btn-primary" (click)="logOut()" mat-raised-button>
-            <a [class.scroll-list]="scroll" class="nav-link" href="#"
-              >Log Out</a
-            >
+            <a [class.scroll-list]="scroll" class="nav-link">Log Out</a>
           </button>
         </li>
       </ul>

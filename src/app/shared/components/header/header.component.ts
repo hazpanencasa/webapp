@@ -1,7 +1,7 @@
 import {Component, OnInit, HostListener} from "@angular/core";
 import {Router} from "@angular/router";
 import {AuthService} from "@core/service/auth/auth.service";
-
+import Swal from "sweetalert2";
 @Component({
   selector: "app-header",
   templateUrl: "./header.component.html",
@@ -23,7 +23,19 @@ export class HeaderComponent implements OnInit {
 
   logOut() {
     this.authService.logout().then(() => {
-      this.router.navigate(["auth/login"]);
+      Swal.fire({
+        title: "Are you sure you want to log out?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#f5a637",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Log Out 🙋",
+        position: "center",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigate(["auth/login"]);
+        }
+      });
     });
   }
 }

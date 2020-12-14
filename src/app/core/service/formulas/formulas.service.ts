@@ -1,9 +1,25 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
-
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+  AngularFirestoreDocument,
+} from "@angular/fire/firestore";
+import {Formula} from "../../model/formulas.model";
+import {Observable} from "rxjs";
 @Injectable({
   providedIn: "root",
 })
 export class FormulasService {
-  constructor(private http: HttpClient) {}
+  formulasColletion: AngularFirestoreCollection<Formula>;
+  formulas: Observable<Formula[]>;
+  formulasDoc: AngularFirestoreDocument<Formula>;
+
+  constructor(public afs: AngularFirestore) {
+    this.formulasColletion = afs.collection("formulas");
+    this.formulas = this.formulasColletion.valueChanges();
+  }
+
+  getFormulas() {
+    return this.formulas;
+  }
 }

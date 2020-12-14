@@ -1,10 +1,6 @@
 import {NgModule} from "@angular/core";
 import {Routes, RouterModule} from "@angular/router";
-import {HomeComponent} from "./components/home/home.component";
 import {LayoutComponent} from "./components/layout/layout.component";
-import {FormulasComponent} from "./components/formulas/formulas.component";
-import {IngredientsComponent} from "./components/ingredients/ingredients.component";
-import {ProductionsComponent} from "./components/productions/productions.component";
 
 const routes: Routes = [
   {
@@ -13,20 +9,36 @@ const routes: Routes = [
     children: [
       {
         path: "",
+        redirectTo: "/home",
         pathMatch: "full",
-        component: HomeComponent,
       },
       {
-        path: "formula",
-        component: FormulasComponent,
+        path: "",
+        loadChildren: () =>
+          import("./components/main/main.module")
+            .then((m) => m.MainModule)
+            .catch((err) => console.log(err)),
       },
       {
-        path: "ingredient",
-        component: IngredientsComponent,
+        path: "formulas",
+        loadChildren: () =>
+          import("./components/formulas/formulas.module")
+            .then((m) => m.FormulasModule)
+            .catch((err) => console.log(err)),
       },
       {
-        path: "production",
-        component: ProductionsComponent,
+        path: "ingredients",
+        loadChildren: () =>
+          import("./components/ingredients/ingredients.module").then(
+            (m) => m.IngredientsModule
+          ),
+      },
+      {
+        path: "productions",
+        loadChildren: () =>
+          import("./components/productions/productions.module").then(
+            (m) => m.ProductionsModule
+          ),
       },
     ],
   },
