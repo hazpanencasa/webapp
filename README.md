@@ -1,6 +1,11 @@
 # HouseBread
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2
+This project was generated with:
+
+- [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2
+- [Ionicons](https://github.com/ionic-team/ionicons) version 5.2.3
+- [Angular Material](https://github.com/angular/components) version 11.0.3
+- [Bootstrap](https://github.com/angular/components) version 5.0
 
 ## Development server
 
