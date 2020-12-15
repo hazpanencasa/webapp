@@ -1,1 +1,8 @@
 <app-banner></app-banner>
+<section>
+  <ul>
+    <li *ngFor="let formula of formulas; index as i">
+      {{ formula.user.creator.name }} and {{ formula.user.creator.email }}
+    </li>
+  </ul>
+</section>

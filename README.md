@@ -9,7 +9,17 @@ This project was generated with:
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+You must to copy and paste in your terminal the following commands :
+
+```
+git clone git@github.com:hazpanencasa/webapp.git
+```
+
+```
+npm install
+```
+
+And then Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 

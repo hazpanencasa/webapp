@@ -14,45 +14,27 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a [class.scroll-list]="scroll" class="nav-link" href="#">About us</a>
-        </li>
-        <li class="nav-item dropdown">
           <a
             [class.scroll-list]="scroll"
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="navbarDropdown"
-            role="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
+            *ngIf="!scroll"
+            class="navbar-brand"
+            routerLink="/home"
           >
-            menu
+            <img src="assets/images/logoOriginal.png" alt="logo" />
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-        <li class="nav-item">
           <a
             [class.scroll-list]="scroll"
-            class="nav-link"
-            routerLink="ingredients"
-            >Ingredients</a
+            *ngIf="scroll"
+            class="navbar-brand"
+            routerLink="/home"
           >
+            <img src="assets/images/logoOriginal.png" alt="logo" />
+          </a>
         </li>
       </ul>
-      <a *ngIf="!scroll" class="navbar-brand" routerLink="/home">
-        <img src="assets/images/logoPanEnCasaWhite.png" alt="logo" />
-      </a>
-      <a *ngIf="scroll" class="navbar-brand" routerLink="/home">
-        <img src="assets/images/logoPanEnCasaBlack.png" alt="logo" />
-      </a>
+
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a
             [class.scroll-list]="scroll"
             class="nav-link"
@@ -68,7 +50,38 @@
           >
             Formulas
           </a>
+        </li> -->
+        <!-- <li class="nav-item">
+          <a
+            [class.scroll-list]="scroll"
+            class="nav-link"
+            routerLink="ingredients"
+            >Ingredients</a
+          >
+        </li> -->
+        <li class="nav-item dropdown">
+          <a
+            [class.scroll-list]="scroll"
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            menu
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="formulas">Formulas</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="ingredients">Ingredients</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="productions">Producciones</a>
+            <div class="dropdown-divider"></div>
+          </div>
         </li>
+
         <li class="nav-item">
           <button class="btn-primary" (click)="logOut()" mat-raised-button>
             <a [class.scroll-list]="scroll" class="nav-link">Log Out</a>
