@@ -29,4 +29,18 @@ body
     color: $primary-color
     text-decoration: none
 .primary-title
-  font: 40px $font-title 
+  font: 40px $font-title
+
+// Sidebar padding
+.mat-list-item-content.mat-list-item-content-reverse
+  padding: 0 !important
+.mat-list-base .mat-list-item .mat-list-item-content, .mat-list-base .mat-list-option .mat-list-item-content
+  padding: 0 !important
+.mat-list-base .mat-list-item.mat-list-item-with-avatar.mat-list-option .mat-list-item-content-reverse .mat-list-text, .mat-list-base .mat-list-item.mat-list-item-with-avatar.mat-list-option .mat-list-item-content .mat-list-text, .mat-list-base .mat-list-option.mat-list-item-with-avatar.mat-list-option .mat-list-item-content-reverse .mat-list-text, .mat-list-base .mat-list-option.mat-list-item-with-avatar.mat-list-option .mat-list-item-content .mat-list-text
+  padding-right: 16px !important
+  padding-left: 5px !important
+
+//:hover Sidebar
+  .mat-list-option:hover, .mat-list-option:focus, .mat-nav-list .mat-list-item:hover, .mat-nav-list .mat-list-item:focus, .mat-action-list .mat-list-item:hover, .mat-action-list .mat-list-item:focus 
+    background: rgb(105 8 8 / 47%)
+    color: $light-color
