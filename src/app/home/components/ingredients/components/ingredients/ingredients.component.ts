@@ -7,11 +7,20 @@ import {Ingredient} from "@core/model/ingredients.model";
   styleUrls: ["./ingredients.component.sass"],
 })
 export class IngredientsComponent implements OnInit {
+  ingredients: Ingredient[];
   constructor(private ingredientsService: IngredientsService) {}
 
   ngOnInit() {
-    this.ingredientsService.getIngredients().subscribe((ingredients) => {
-      console.log(ingredients);
-    });
+    this.fetchIngredients();
+  }
+
+  async fetchIngredients() {
+    try {
+      this.ingredientsService.getIngredients().subscribe((ingredients) => {
+        console.log(ingredients);
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

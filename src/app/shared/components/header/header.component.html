@@ -12,53 +12,12 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <ul class="navbar-nav mr-auto">
-        <!-- <li class="nav-item">
-          <a
-            [class.scroll-list]="scroll"
-            *ngIf="!scroll"
-            class="navbar-brand"
-            routerLink="/home"
-          >
-            <img src="assets/images/logoOriginal.png" alt="logo" />
-          </a>
-          <a
-            [class.scroll-list]="scroll"
-            *ngIf="scroll"
-            class="navbar-brand"
-            routerLink="/home"
-          >
-            <img src="assets/images/logoOriginal.png" alt="logo" />
-          </a>
-        </li> -->
-      </ul>
-
       <ul class="navbar-nav ml-auto">
-        <!-- <li class="nav-item">
-          <a
-            [class.scroll-list]="scroll"
-            class="nav-link"
-            routerLink="productions"
-            >Productions
+        <li *ngIf="user$ | async as user" class="nav-item">
+          <a>
+            {{ user.displayName }}
           </a>
         </li>
-        <li class="nav-item">
-          <a
-            [class.scroll-list]="scroll"
-            class="nav-link"
-            routerLink="formulas"
-          >
-            Formulas
-          </a>
-        </li> -->
-        <!-- <li class="nav-item">
-          <a
-            [class.scroll-list]="scroll"
-            class="nav-link"
-            routerLink="ingredients"
-            >Ingredients</a
-          >
-        </li> -->
         <li class="nav-item dropdown">
           <a
             [class.scroll-list]="scroll"
@@ -81,7 +40,6 @@
             <div class="dropdown-divider"></div>
           </div>
         </li>
-
         <li class="nav-item">
           <button class="btn-primary" (click)="logOut()" mat-raised-button>
             <a [class.scroll-list]="scroll" class="nav-link">Log Out</a>
@@ -90,5 +48,8 @@
       </ul>
     </div>
   </nav>
-  <div [class.scroll]="scroll" class="scroll-hidden"></div>
+  <div
+    [class.scroll]="scroll"
+    [class]="clickToggle ? 'scroll-hidden' : 'scroll-hidden2'"
+  ></div>
 </header>

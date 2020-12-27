@@ -7,7 +7,12 @@ import {Component, OnInit} from "@angular/core";
 })
 export class LayoutComponent implements OnInit {
   constructor() {}
-
-  ngOnInit(): void {}
+  sidebarToggle = false;
   showFiller = true;
+  ngOnInit(): void {}
+
+  clickToggle(event) {
+    this.sidebarToggle = event;
+    console.log(this.sidebarToggle);
+  }
 }

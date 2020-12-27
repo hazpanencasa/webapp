@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   hide = true;
   toggleButton = true;
+  public user: any;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -22,7 +23,12 @@ export class LoginComponent implements OnInit {
     this.buildForm();
   }
 
-  ngOnInit(): void {}
+  async ngOnInit() {
+    this.user = await this.authService.getCurrentUser();
+    if (this.user) {
+      console.log("hola", this.user);
+    }
+  }
 
   onChangeDisplay(event: Event) {
     event.preventDefault();
@@ -31,7 +37,7 @@ export class LoginComponent implements OnInit {
 
   navigateRegister(event: Event) {
     event.preventDefault();
-    this.router.navigate(["auth/register"]);
+    this.router.navigate(["/register"]);
   }
 
   handleClick(event: Event) {
@@ -53,24 +59,43 @@ export class LoginComponent implements OnInit {
             showConfirmButton: false,
             timer: 1500,
           });
-          this.router.navigate(["/home"]);
+          this.router.navigate(["home"]);
         })
-        .catch((err) => {
-          if (err) {
-            Swal.fire({
-              title: "Opss, no estas registrado",
-              text: "Te gustaria hacer pan en desde tu casa?",
-              icon: "warning",
-              showCancelButton: true,
-              confirmButtonColor: "#f5a637",
-              cancelButtonColor: "#d33",
-              confirmButtonText: "Registrate ahora 🙋",
-              position: "center",
-            }).then((result) => {
-              if (result.isConfirmed) {
-                this.router.navigate(["auth/register"]);
-              }
-            });
+        .catch((error) => {
+          let errorCode = error.code;
+          let errorMessage = error.message;
+          switch (errorCode) {
+            case "auth/wrong-password":
+              Swal.fire({
+                title: "Opss, wrong-password",
+                icon: "warning",
+              });
+              break;
+            case "auth/invalid-email":
+              Swal.fire({
+                title: "Opss, invalid-email",
+                icon: "warning",
+              });
+              break;
+            case "auth/user-not-found":
+              Swal.fire({
+                title: "Opss, wrong-password",
+                text: "Te gustaria hacer pan en desde tu casa?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#f5a637",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Registrate ahora 🙋",
+                position: "center",
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  this.router.navigate(["/register"]);
+                }
+              });
+              break;
+            default:
+              alert(errorMessage);
+              break;
           }
         });
     } else {

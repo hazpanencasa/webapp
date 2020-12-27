@@ -1,4 +1,4 @@
-@import ../../../../../../utils/variables
+@import ../../../../utils/variables
 .navbar
   background: rgba(0, 0, 0, 0) 
   & .navbar-nav .nav-link
@@ -31,6 +31,18 @@
   background-color: $primary-color
   position: fixed
   left: 180px
+  transform: translate3d(10px, -100px, 10px)
+  z-index: 100
+  transition: .5s
+  &.scroll
+    transform: translate3d(10px, -3px, 10px)
+
+.scroll-hidden2
+  width: 100%
+  height: 50px
+  background-color: $primary-color
+  position: fixed
+  left: 41px
   transform: translate3d(10px, -100px, 10px)
   z-index: 100
   transition: .5s

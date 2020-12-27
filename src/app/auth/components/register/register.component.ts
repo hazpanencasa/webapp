@@ -29,6 +29,7 @@ export class RegisterComponent implements OnInit {
       this.authService
         .createUser(value.email, value.password)
         .then(() => {
+          this.authService.logout();
           Swal.fire({
             html:
               '<h1 style="color: white; margin: 0;"> Thanks for Sign In </h1>',
@@ -39,7 +40,7 @@ export class RegisterComponent implements OnInit {
             background: "url(https://i.gifer.com/uI7.gif) no-repeat 50% 50%",
             confirmButtonText: "Please, log In",
           }).then(() => {
-            this.router.navigate(["/auth/login"]);
+            this.router.navigate(["/login"]);
           });
         })
         .catch((error) => {

@@ -8,17 +8,37 @@ import {first} from "rxjs/operators";
 export class AuthService {
   constructor(private af: AngularFireAuth) {}
 
-  createUser(email: string, password: string) {
-    return this.af.createUserWithEmailAndPassword(email, password);
+  async createUser(email: string, password: string) {
+    try {
+      const result = await this.af.createUserWithEmailAndPassword(
+        email,
+        password
+      );
+      return result;
+    } catch (error) {
+      console.log(error);
+    }
   }
-
-  login(email: string, password: string) {
-    return this.af.signInWithEmailAndPassword(email, password);
+  async login(email: string, password: string) {
+    try {
+      const result = await this.af.signInWithEmailAndPassword(email, password);
+      return result;
+    } catch (error) {
+      console.log(error);
+    }
   }
-  logout() {
-    return this.af.signOut();
+  async logout() {
+    try {
+      await this.af.signOut();
+    } catch (error) {
+      console.log(error);
+    }
   }
-  getCurrentUser() {
-    return this.af.authState.pipe(first()).toPromise();
+  async getCurrentUser() {
+    try {
+      this.af.authState.pipe(first()).toPromise();
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

@@ -1,6 +1,9 @@
-<div class="grid-container">
-  <app-header class="header"></app-header>
-  <app-sidebar class="sidebar"></app-sidebar>
+<div [class]="sidebarToggle ? 'grid-container' : 'grid-toggle'">
+  <app-header [clickToggle]="sidebarToggle" class="header"></app-header>
+  <app-sidebar
+    (toggleSidebar)="clickToggle($event)"
+    class="sidebar"
+  ></app-sidebar>
   <div class="main">
     <router-outlet></router-outlet>
   </div>
