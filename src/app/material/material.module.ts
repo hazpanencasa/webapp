@@ -6,6 +6,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import {MatBadgeModule} from "@angular/material/badge";
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatDividerModule} from "@angular/material/divider";
 import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
@@ -24,6 +25,7 @@ import {MatStepperModule} from "@angular/material/stepper";
   declarations: [],
   imports: [
     CommonModule,
+    MatDividerModule,
     MatSidenavModule,
     MatButtonModule,
     MatToolbarModule,
@@ -50,6 +52,7 @@ import {MatStepperModule} from "@angular/material/stepper";
     MatToolbarModule,
     MatCardModule,
     MatIconModule,
+    MatDividerModule,
     MatBadgeModule,
     MatSelectModule,
     MatRadioModule,

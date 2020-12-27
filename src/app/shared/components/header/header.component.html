@@ -12,9 +12,11 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a [class.scroll-list]="scroll" class="nav-link" href="#">About us</a>
+      <ul class="navbar-nav ml-auto">
+        <li *ngIf="user$ | async as user" class="nav-item">
+          <a>
+            {{ user.displayName }}
+          </a>
         </li>
         <li class="nav-item dropdown">
           <a
@@ -30,44 +32,13 @@
             menu
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" routerLink="formulas">Formulas</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" routerLink="ingredients">Ingredients</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="productions">Producciones</a>
+            <div class="dropdown-divider"></div>
           </div>
-        </li>
-        <li class="nav-item">
-          <a
-            [class.scroll-list]="scroll"
-            class="nav-link"
-            routerLink="ingredients"
-            >Ingredients</a
-          >
-        </li>
-      </ul>
-      <a *ngIf="!scroll" class="navbar-brand" routerLink="/home">
-        <img src="assets/images/logoPanEnCasaWhite.png" alt="logo" />
-      </a>
-      <a *ngIf="scroll" class="navbar-brand" routerLink="/home">
-        <img src="assets/images/logoPanEnCasaBlack.png" alt="logo" />
-      </a>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a
-            [class.scroll-list]="scroll"
-            class="nav-link"
-            routerLink="productions"
-            >Productions
-          </a>
-        </li>
-        <li class="nav-item">
-          <a
-            [class.scroll-list]="scroll"
-            class="nav-link"
-            routerLink="formulas"
-          >
-            Formulas
-          </a>
         </li>
         <li class="nav-item">
           <button class="btn-primary" (click)="logOut()" mat-raised-button>
@@ -77,5 +48,8 @@
       </ul>
     </div>
   </nav>
-  <div [class.scroll]="scroll" class="scroll-hidden"></div>
+  <div
+    [class.scroll]="scroll"
+    [class]="clickToggle ? 'scroll-hidden' : 'scroll-hidden2'"
+  ></div>
 </header>

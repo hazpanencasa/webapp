@@ -1,4 +1,7 @@
-<div class="Login-container">
+<div
+  style="background-image: url('assets/images/backgroundLogo.png')"
+  class="Login-container"
+>
   <form
     [formGroup]="loginForm"
     class="container Login-form"
@@ -15,7 +18,7 @@
         <div class="row">
           <div class="col">
             <h1 class="text-center primary-title">Welcome to</h1>
-            <img src="https://i.imgur.com/Znom0wL.png" alt="logo" />
+            <img src="assets/images/logoOriginal.png" alt="logo" />
           </div>
         </div>
       </div>
@@ -24,7 +27,7 @@
         [className]="
           toggleButton
             ? 'hide  Login-form__content container'
-            : 'active Login-form__content container'
+            : 'active Login-form__content mt-3 container'
         "
       >
         <div class="row">

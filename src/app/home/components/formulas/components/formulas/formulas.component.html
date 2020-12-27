@@ -1,1 +1,27 @@
 <app-banner></app-banner>
+<section class="Carousel">
+  <div class="Carousel-container">
+    <div *ngFor="let formula of formulas" class="Carousel-container__item">
+      <img
+        class="Carousel-item__img"
+        src="assets/images/backgroundLogo.png"
+        alt=""
+      />
+      <div class="Carousel-item__details">
+        <div class="Carousel-item__details-title">
+          <h1>{{ formula.name }}</h1>
+        </div>
+        <div class="Carousel-item__details-subtitle">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <button
+            [routerLink]="[formula.id]"
+            mat-raised-button
+            class="btn-primary"
+          >
+            ver detalles
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
