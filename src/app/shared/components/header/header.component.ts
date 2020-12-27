@@ -1,6 +1,9 @@
-import {Component, OnInit, HostListener} from "@angular/core";
+import {Component, OnInit, HostListener, Input} from "@angular/core";
 import {Router} from "@angular/router";
+import {AngularFireAuth} from "@angular/fire/auth";
 import {AuthService} from "@core/service/auth/auth.service";
+import {Observable} from "rxjs";
+
 import Swal from "sweetalert2";
 @Component({
   selector: "app-header",
@@ -8,10 +11,20 @@ import Swal from "sweetalert2";
   styleUrls: ["./header.component.sass"],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private authService: AuthService, private router: Router) {}
-
-  ngOnInit(): void {}
   scroll: boolean = false;
+  @Input() clickToggle: boolean;
+  user$: Observable<any> = this.af.user;
+  constructor(
+    private af: AngularFireAuth,
+    private authService: AuthService,
+    private router: Router
+  ) {}
+  async ngOnInit() {
+    // this.user = await this.authService.getCurrentUser();
+    // if (this.user) {
+    //   this.isLoggin = true;
+    // }
+  }
   @HostListener("document:scroll")
   scrollFunction() {
     if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
@@ -33,7 +46,7 @@ export class HeaderComponent implements OnInit {
         position: "center",
       }).then((result) => {
         if (result.isConfirmed) {
-          this.router.navigate(["auth/login"]);
+          this.router.navigate(["login"]);
         }
       });
     });

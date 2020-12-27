@@ -1,0 +1,61 @@
+<div
+  style="background-image: url('assets/images/Splash-hazpanencasa-24-24.png')"
+  [className]="showSidebar ? 'Sidebar-container' : 'Sidebar-hidden'"
+>
+  <div class="Sidebar-logo">
+    <a *ngIf="showSidebar" class="Sidebar-img" routerLink="/home">
+      <img src="assets/images/logoOriginal3.png" alt="logo" />
+    </a>
+    <a
+      *ngIf="!showSidebar"
+      [class]="!showSidebar ? 'logoSolo' : 'hidden'"
+      routerLink="/home"
+    >
+      <img src="assets/images/logoSolo.png" alt="logo" />
+    </a>
+  </div>
+  <mat-selection-list class="Sidebar-list mt-4" [multiple]="false">
+    <div *ngIf="showSidebar">
+      <mat-list-option class="Sidebar-item" routerLink="productions">
+        <ion-icon matListIcon name="flame-outline"></ion-icon>
+        Productions
+      </mat-list-option>
+      <mat-list-option class="Sidebar-item" routerLink="ingredients">
+        <ion-icon matListIcon name="book-outline"></ion-icon>
+        Ingredients
+      </mat-list-option>
+      <mat-list-option class="Sidebar-item" routerLink="formulas">
+        <ion-icon matListIcon name="reader-outline"></ion-icon>
+        Formulas
+      </mat-list-option>
+    </div>
+    <div *ngIf="!showSidebar">
+      <mat-list-option class="Sidebar-item" routerLink="productions">
+        <ion-icon matListIcon name="flame-outline"></ion-icon>
+      </mat-list-option>
+      <mat-list-option class="Sidebar-item" routerLink="ingredients">
+        <ion-icon matListIcon name="book-outline"></ion-icon>
+      </mat-list-option>
+      <mat-list-option class="Sidebar-item" routerLink="formulas">
+        <ion-icon matListIcon name="reader-outline"></ion-icon>
+      </mat-list-option>
+    </div>
+    <div *ngIf="showSidebar" class="confi-section">
+      <mat-list-option class="Sidebar-item">
+        <ion-icon matListIcon name="cog-outline"></ion-icon>
+        Configurations
+      </mat-list-option>
+      <button (click)="sidebarToggle($event)">
+        <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+      </button>
+    </div>
+    <div *ngIf="!showSidebar" class="confi-section">
+      <mat-list-option class="Sidebar-item">
+        <ion-icon matListIcon name="cog-outline"></ion-icon>
+      </mat-list-option>
+      <button (click)="sidebarToggle($event)">
+        <ion-icon name="arrow-back-circle-outline"></ion-icon>
+      </button>
+    </div>
+  </mat-selection-list>
+</div>

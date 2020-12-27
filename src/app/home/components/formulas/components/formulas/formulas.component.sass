@@ -1,0 +1,72 @@
+@import ../../../../../../utils/variables
+.Carousel 
+  width: 95.2vw
+  overflow: hidden
+  padding: 30px
+  position: relative
+  background-color: $primary-color
+  
+.Carousel-container
+  white-space: nowrap
+  margin: 40px 0px
+  padding-bottom: 10px
+  animation-name: slider
+  animation-timing-function: linear
+  animation-duration: 170s
+  animation-iteration-count: infinite
+  &:hover
+    animation-play-state: paused
+  
+.Carousel-item__details 
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%)
+  font-size: 10px
+  transition: .5s
+  padding: 10px
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  display: flex
+  flex-direction: column
+  justify-content: flex-end
+  align-items: center
+  padding-bottom: 20px
+  &:hover
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 0%)
+    transition: .5s
+.Carousel-item__img 
+  width: 200px
+  height: 250px
+  object-fit: cover
+.Carousel-item__details-title
+  font-size: 16px
+.Carousel-container__item
+  position: relative
+  width: 200px
+  height: 250px
+  border-radius: 20px
+  overflow: hidden
+  margin-right: 10px
+  display: inline-block
+  cursor: pointer
+  transition: 450ms all
+  transform-origin: center left
+  
+.Carousel-container__item:hover ~ .Carousel-container__item 
+  transform: translate3d(100px, 0, 0)
+
+.Carousel-container:hover .Carousel-container__item 
+  opacity: 0.3
+  animation-play-state: paused
+
+.Carousel-container:hover .Carousel-container__item:hover
+  animation-play-state: paused
+  transform: scale(1.5)
+  opacity: 1
+
+@keyframes slider
+  0%
+    transform: translate3d(0px,0px,0px)
+  100%
+    transform: translate3d(-7000px, 0px, 0px)

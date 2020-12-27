@@ -11,7 +11,7 @@ export class ProductionsComponent implements OnInit {
 
   ngOnInit() {
     this.productionsService.getProductions().subscribe((productions) => {
-      console.log(productions);
+      // console.log(productions);
     });
   }
 }

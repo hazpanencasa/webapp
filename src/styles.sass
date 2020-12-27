@@ -8,7 +8,7 @@ body
 .btn-primary
   line-height: normal !important
   background-color: $primary-color
-  color: $dark-color
+  color: $light-color
   transition: .5s
   box-shadow: 3px 3px 1px -2px rgba(0, 0, 0, 0.2), 4px 4px 2px 2px rgba(0, 0, 0, 0.14), -1px 3px 0px 0px rgba(0, 0, 0, 0.12) !important
   &:hover
@@ -29,4 +29,18 @@ body
     color: $primary-color
     text-decoration: none
 .primary-title
-  font: 40px $font-title 
+  font: 40px $font-title
+
+// Sidebar padding
+.mat-list-item-content.mat-list-item-content-reverse
+  padding: 0 !important
+.mat-list-base .mat-list-item .mat-list-item-content, .mat-list-base .mat-list-option .mat-list-item-content
+  padding: 0 !important
+.mat-list-base .mat-list-item.mat-list-item-with-avatar.mat-list-option .mat-list-item-content-reverse .mat-list-text, .mat-list-base .mat-list-item.mat-list-item-with-avatar.mat-list-option .mat-list-item-content .mat-list-text, .mat-list-base .mat-list-option.mat-list-item-with-avatar.mat-list-option .mat-list-item-content-reverse .mat-list-text, .mat-list-base .mat-list-option.mat-list-item-with-avatar.mat-list-option .mat-list-item-content .mat-list-text
+  padding-right: 16px !important
+  padding-left: 5px !important
+
+//:hover Sidebar
+  .mat-list-option:hover, .mat-list-option:focus, .mat-nav-list .mat-list-item:hover, .mat-nav-list .mat-list-item:focus, .mat-action-list .mat-list-item:hover, .mat-action-list .mat-list-item:focus 
+    background: rgb(105 8 8 / 47%)
+    color: $light-color
