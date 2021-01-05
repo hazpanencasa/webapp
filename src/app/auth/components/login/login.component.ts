@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
 
   navigateRegister(event: Event) {
     event.preventDefault();
-    this.router.navigate(["/register"]);
+    this.router.navigate(["login/register"]);
   }
 
   handleClick(event: Event) {
@@ -62,8 +62,8 @@ export class LoginComponent implements OnInit {
           this.router.navigate(["home"]);
         })
         .catch((error) => {
-          let errorCode = error.code;
-          let errorMessage = error.message;
+          const errorCode = error.code;
+          const errorMessage = error.message;
           switch (errorCode) {
             case "auth/wrong-password":
               Swal.fire({

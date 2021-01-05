@@ -7,11 +7,15 @@ import {Production} from "@core/model/productions.model";
   styleUrls: ["./productions.component.sass"],
 })
 export class ProductionsComponent implements OnInit {
+  productions: Production[];
   constructor(private productionsService: ProductionsService) {}
 
   ngOnInit() {
+    this.fetchProductions();
+  }
+  fetchProductions() {
     this.productionsService.getProductions().subscribe((productions) => {
-      // console.log(productions);
+      this.productions = productions;
     });
   }
 }

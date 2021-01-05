@@ -1,0 +1,32 @@
+<ng-container *ngIf="formula">
+  <div class="table2-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th colspan="2" scope="col">
+            <h4>Name</h4>
+          </th>
+          <th scope="col">%</th>
+          <th scope="col">gr</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let i of formula.ingredients">
+        <tr class="table-row__info">
+          <td colspan="2" scope="row">
+            {{ i.ingredient.name }}
+          </td>
+          <td>{{ i.percentage }}</td>
+          <td>gramos</td>
+        </tr>
+        <tr class="table-row__barprogress">
+          <td colspan="4">
+            <mat-progress-bar
+              mode="determinate"
+              value="{{ i.percentage }}"
+            ></mat-progress-bar>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-container>

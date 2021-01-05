@@ -1,0 +1,84 @@
+<div class="Info-section1__table">
+  <div class="container">
+    <div class="row">
+      <div class="col Formula-detail_hidratation">
+        <h2>Hydration</h2>
+        <section>
+          <div class="progress">
+            <div
+              class="progress-bar"
+              role="progressbar"
+              style="width: {{ formula.ingredients[1].percentage }}%"
+            >
+              {{ formula.ingredients[1].percentage }}%
+            </div>
+          </div>
+          <div class="progress-percent">
+            <span>0%</span>
+            <span>100%</span>
+          </div>
+        </section>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Unidades</th>
+              <th scope="col">Peso(unid.)</th>
+              <th scope="col">Peso total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">{{ formula.units }}</th>
+              <td>{{ formula.unit_weight }} gr</td>
+              <td>{{ formula.unit_weight | number }} gr</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Factor Panadero</th>
+              <th scope="col">Hidratacion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">
+                medida panadera
+                {{ bakeryMeasure }}
+                gr/%
+              </th>
+              <td>{{ formula.ingredients[1].percentage }} gr</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Descripcion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">
+                {{ formula.description }}
+              </th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

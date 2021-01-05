@@ -1,0 +1,84 @@
+<ng-container>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg">
+        <mat-horizontal-stepper>
+          <mat-step
+            *ngFor="let s of formula.mixing"
+            label="Step 1"
+            state="phone"
+          >
+            <div class="formula-stepper__accordion">
+              <mat-accordion multi>
+                <mat-expansion-panel
+                  (opened)="panelOpenState1 = true"
+                  (closed)="panelOpenState1 = false"
+                >
+                  <mat-expansion-panel-header>
+                    <mat-panel-title> <em>Ingredients</em></mat-panel-title>
+                    <mat-panel-description>
+                      {{
+                        panelOpenState1
+                          ? ""
+                          : "Ingredients to complete this step"
+                      }}
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <div>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th scope="col">Name</th>
+                          <th scope="col">Cost</th>
+                          <th scope="col">Hydration</th>
+                          <th scope="col">%</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let i of s.ingredients">
+                          <td>{{ i.ingredient.name }}</td>
+                          <td>{{ i.ingredient.cost }}</td>
+                          <td>{{ i.ingredient.hydration | number }}</td>
+                          <td>{{ i.percentage }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </mat-expansion-panel>
+                <mat-expansion-panel
+                  (opened)="panelOpenState2 = true"
+                  (closed)="panelOpenState2 = false"
+                >
+                  <mat-expansion-panel-header>
+                    <mat-panel-title> <em>Description</em></mat-panel-title>
+                    <mat-panel-description>
+                      {{
+                        panelOpenState2
+                          ? ""
+                          : "Description to complete this step"
+                      }}
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <div>
+                    <p>{{ s.description }}</p>
+                  </div>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
+            <div>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </mat-step>
+
+          <!-- Icon overrides. -->
+          <ng-template matStepperIcon="phone">
+            <mat-icon>call_end</mat-icon>
+          </ng-template>
+          <ng-template matStepperIcon="chat">
+            <mat-icon>forum</mat-icon>
+          </ng-template>
+        </mat-horizontal-stepper>
+      </div>
+    </div>
+  </div>
+</ng-container>

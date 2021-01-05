@@ -8,11 +8,9 @@ import {
 import {LoginComponent} from "./components/login/login.component";
 import {RegisterComponent} from "./components/register/register.component";
 
-const redirectLoggedInToItems = () => redirectLoggedInTo(["home"]);
 const routes: Routes = [
   {
     path: "",
-    // component: LoginComponent,
     children: [
       {
         path: "",
@@ -22,8 +20,6 @@ const routes: Routes = [
       {
         path: "",
         component: LoginComponent,
-        // canActivate: [AngularFireAuthGuard],
-        // data: {authGuardPipe: redirectLoggedInToItems},
       },
       {
         path: "register",

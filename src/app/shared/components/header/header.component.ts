@@ -11,20 +11,18 @@ import Swal from "sweetalert2";
   styleUrls: ["./header.component.sass"],
 })
 export class HeaderComponent implements OnInit {
-  scroll: boolean = false;
+  scroll = false;
+
   @Input() clickToggle: boolean;
+
   user$: Observable<any> = this.af.user;
   constructor(
     private af: AngularFireAuth,
     private authService: AuthService,
     private router: Router
   ) {}
-  async ngOnInit() {
-    // this.user = await this.authService.getCurrentUser();
-    // if (this.user) {
-    //   this.isLoggin = true;
-    // }
-  }
+  ngOnInit() {}
+
   @HostListener("document:scroll")
   scrollFunction() {
     if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {

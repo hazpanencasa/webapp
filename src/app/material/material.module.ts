@@ -12,14 +12,18 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatCardModule} from "@angular/material/card";
+
 import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatSortModule} from "@angular/material/sort";
+
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatGridListModule} from "@angular/material/grid-list";
-import {MatPaginatorModule} from "@angular/material/paginator";
-import {MatSortModule} from "@angular/material/sort";
 import {MatStepperModule} from "@angular/material/stepper";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
   declarations: [],
@@ -45,6 +49,8 @@ import {MatStepperModule} from "@angular/material/stepper";
     MatFormFieldModule,
     MatStepperModule,
     MatDialogModule,
+    MatProgressBarModule,
+    MatExpansionModule,
   ],
   exports: [
     MatButtonModule,
@@ -67,6 +73,8 @@ import {MatStepperModule} from "@angular/material/stepper";
     LayoutModule,
     MatFormFieldModule,
     MatStepperModule,
+    MatProgressBarModule,
+    MatExpansionModule,
   ],
 })
 export class MaterialModule {}

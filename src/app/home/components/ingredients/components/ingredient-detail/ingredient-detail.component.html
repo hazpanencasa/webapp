@@ -1,0 +1,12 @@
+<ng-container *ngIf="ingredient">
+  <ul>
+    <li>{{ ingredient.name }}</li>
+    <li>{{ ingredient.hydration }}</li>
+    <li>{{ ingredient.can_be_modified }} can_be_modified</li>
+    <li>{{ ingredient.cost }}</li>
+    <li>{{ ingredient.formula.compensation_percentage }}</li>
+  </ul>
+  <ul *ngFor="let subIngredient of ingredient.formula.ingredients">
+    <li>{{ subIngredient }}</li>
+  </ul>
+</ng-container>

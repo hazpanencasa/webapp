@@ -14,7 +14,6 @@ export class AppComponent {
     this.translate.addLangs(["es", "en"]);
     this.langs = this.translate.getLangs();
   }
-
   changeLang(lang: string) {
     this.translate.use(lang);
   }

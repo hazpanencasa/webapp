@@ -9,6 +9,7 @@ import {FormulasService} from "@core/service/formulas/formulas.service";
   styleUrls: ["./formula.component.sass"],
 })
 export class FormulaDetailComponent implements OnInit {
+  // factorBread: number;
   formula: Formula;
   constructor(
     private route: ActivatedRoute,

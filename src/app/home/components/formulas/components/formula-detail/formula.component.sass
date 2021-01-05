@@ -1,0 +1,65 @@
+@import ../../../../../../utils/variables
+.Formula-detail
+  background-color: $light-color
+  box-sizing: border-box
+  padding: 2rem 0
+.Info-section2__description
+  font-size: 1.25rem
+  line-height: 1.5
+  position: relative
+  color: $dark-color
+  z-index: 2
+  h2
+    font-family: $font-title
+    font-size: 1.75rem
+    line-height: 1.42857
+    margin-bottom: .5rem
+    color: $dark-color
+  p
+    font: $font-subtitle
+    font-size: 1rem
+    font-weight: 400
+    line-height: 1.7
+    margin: 0
+    text-align: left
+    color: darken($secondary-color, 30%)
+.Info-section2
+  margin-top: 100px
+  height: 600px
+.Info-section2__description:before
+  display: block
+  width: 30px
+  margin: 1rem 0
+  content: ""
+  border-top: 3px solid $primary-color
+.Info-section2__img
+  padding: 0 20% 0 0
+  position: relative
+  z-index: 1
+.Info-section2__img:before
+  top: 6%
+  left: 3%
+  border: 1px solid lighten($secondary-color, 20%)
+
+.Info-section2__img:after,
+.Info-section2__img:before
+  position: absolute
+  z-index: -1
+  width: 70%
+  height: 100%
+  content: ""
+.Info-section2__img.alt:after
+    display: block
+.Info-section2__img:after
+  top: -5%
+  left: -5%
+  background-color: lighten($secondary-color, 20%)
+
+.Info-section1__description:before
+  display: block
+  width: 30px
+  margin: 1rem 0
+  content: ""
+  border-top: 3px solid $primary-color
+
+
