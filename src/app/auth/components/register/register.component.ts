@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
       this.authService
         .createUser(value.email, value.password)
         .then(() => {
-          this.authService.logout();
+          this.authService.logOut();
           Swal.fire({
             html:
               '<h1 style="color: white; margin: 0;"> Thanks for Sign In </h1>',

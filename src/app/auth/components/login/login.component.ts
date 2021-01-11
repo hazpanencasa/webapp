@@ -3,9 +3,7 @@ import {Validators, FormGroup, FormBuilder} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthService} from "@core/service/auth/auth.service";
 import {fadeIn} from "@utils/animation";
-import {modalWelcome} from "@utils/modal";
-
-import Swal from "sweetalert2";
+import {modalWelcome, modalAuthErrors} from "@utils/modal";
 
 @Component({
   selector: "app-login",
@@ -43,15 +41,31 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       const value = this.loginForm.value;
       this.authService
-        .login(value.email, value.password)
-        .then(() => {
-          modalWelcome();
-          this.router.navigate(["home"]);
+        .logIn(value.email, value.password)
+        .then((result) => {
+          console.log(result);
+          modalWelcome(result.user.displayName);
+          this.router.navigate(["/home"]);
         })
         .catch((error) => {
-          const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorCode, errorMessage);
+          switch (error.code) {
+            case "auth/wrong-password":
+              modalAuthErrors(errorMessage);
+              break;
+            case "auth/invalid-email":
+              modalAuthErrors(errorMessage);
+              break;
+            case "auth/user-disabled":
+              modalAuthErrors(errorMessage);
+              break;
+            case "auth/user-not-found":
+              modalAuthErrors(errorMessage);
+              break;
+            default:
+              modalAuthErrors(errorMessage);
+              break;
+          }
         });
     }
   }

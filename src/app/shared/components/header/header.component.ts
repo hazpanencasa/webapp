@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
   logOut() {
     modalLogout().then((result) => {
       if (result.isConfirmed) {
-        this.authService.logout().then(() => {
+        this.authService.logOut().then(() => {
           this.router.navigate(["login"]);
         });
       }

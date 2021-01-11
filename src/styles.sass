@@ -24,16 +24,21 @@ body
   &:not(:disabled):not(.disabled).active
     background-color: $primary-color
     color: $dark-color
+
 .modalLogOutButton
   display: flex
   align-items: center
   justify-content: space-between
-  width: 90px
+  width: 100px
   & p 
     margin-bottom: 0
   & ion-icon
     font-size: 20px
+.modalHead
+  color: $light-color
+  margin: 0
 .swal2-actions
+  margin: 0 !important
   button
     transition: .5s
     margin-right: 20px 
