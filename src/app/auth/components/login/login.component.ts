@@ -2,6 +2,8 @@ import {Component, OnInit} from "@angular/core";
 import {Validators, FormGroup, FormBuilder} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthService} from "@core/service/auth/auth.service";
+import {fadeIn} from "@utils/animation";
+import {modalWelcome} from "@utils/modal";
 
 import Swal from "sweetalert2";
 
@@ -9,11 +11,12 @@ import Swal from "sweetalert2";
   selector: "app-login",
   templateUrl: "./login.component.html",
   styleUrls: ["./login.component.sass"],
+  animations: [fadeIn],
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  hide = true;
-  toggleButton = true;
+  hide = false;
+
   public user: any;
   constructor(
     private formBuilder: FormBuilder,
@@ -23,17 +26,7 @@ export class LoginComponent implements OnInit {
     this.buildForm();
   }
 
-  async ngOnInit() {
-    this.user = await this.authService.getCurrentUser();
-    if (this.user) {
-      console.log("hola", this.user);
-    }
-  }
-
-  onChangeDisplay(event: Event) {
-    event.preventDefault();
-    this.toggleButton = !this.toggleButton;
-  }
+  ngOnInit() {}
 
   navigateRegister(event: Event) {
     event.preventDefault();
@@ -52,54 +45,14 @@ export class LoginComponent implements OnInit {
       this.authService
         .login(value.email, value.password)
         .then(() => {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Bienvenido a Pan en Casa",
-            showConfirmButton: false,
-            timer: 1500,
-          });
+          modalWelcome();
           this.router.navigate(["home"]);
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          switch (errorCode) {
-            case "auth/wrong-password":
-              Swal.fire({
-                title: "Opss, wrong-password",
-                icon: "warning",
-              });
-              break;
-            case "auth/invalid-email":
-              Swal.fire({
-                title: "Opss, invalid-email",
-                icon: "warning",
-              });
-              break;
-            case "auth/user-not-found":
-              Swal.fire({
-                title: "Opss, wrong-password",
-                text: "Te gustaria hacer pan en desde tu casa?",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#f5a637",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Registrate ahora 🙋",
-                position: "center",
-              }).then((result) => {
-                if (result.isConfirmed) {
-                  this.router.navigate(["/register"]);
-                }
-              });
-              break;
-            default:
-              alert(errorMessage);
-              break;
-          }
+          console.log(errorCode, errorMessage);
         });
-    } else {
-      this.loginForm.markAsDirty();
     }
   }
 

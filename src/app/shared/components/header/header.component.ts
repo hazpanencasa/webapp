@@ -3,8 +3,8 @@ import {Router} from "@angular/router";
 import {AngularFireAuth} from "@angular/fire/auth";
 import {AuthService} from "@core/service/auth/auth.service";
 import {Observable} from "rxjs";
+import {modalLogout} from "@utils/modal";
 
-import Swal from "sweetalert2";
 @Component({
   selector: "app-header",
   templateUrl: "./header.component.html",
@@ -33,20 +33,12 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut() {
-    this.authService.logout().then(() => {
-      Swal.fire({
-        title: "Are you sure you want to log out?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#f5a637",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Log Out 🙋",
-        position: "center",
-      }).then((result) => {
-        if (result.isConfirmed) {
+    modalLogout().then((result) => {
+      if (result.isConfirmed) {
+        this.authService.logout().then(() => {
           this.router.navigate(["login"]);
-        }
-      });
+        });
+      }
     });
   }
 }

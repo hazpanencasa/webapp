@@ -6,9 +6,7 @@ import {
   redirectLoggedInTo,
 } from "@angular/fire/auth-guard";
 
-const redirectUnauthorizedToLogin = () => {
-  redirectUnauthorizedTo(["login"]);
-};
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(["login"]);
 const redirectLoggedInToItems = () => redirectLoggedInTo(["home"]);
 
 const routes: Routes = [
@@ -19,14 +17,14 @@ const routes: Routes = [
   },
   {
     path: "login",
-    // canActivate: [AngularFireAuthGuard],
-    // data: {authGuardPipe: redirectLoggedInToItems},
+    canActivate: [AngularFireAuthGuard],
+    data: {authGuardPipe: redirectLoggedInToItems},
     loadChildren: () => import("./auth/auth.module").then((m) => m.AuthModule),
   },
   {
     path: "home",
     canActivate: [AngularFireAuthGuard],
-    // data: {authGuardPipe: redirectUnauthorizedToLogin},
+    data: {authGuardPipe: redirectUnauthorizedToLogin},
     loadChildren: () => import("./home/home.module").then((m) => m.HomeModule),
   },
 ];

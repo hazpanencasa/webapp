@@ -1,8 +1,4 @@
 @import ../../../../utils/variables
-.hide
-  display: none
-  transition: .5s
-
 .Login-container
   height: 100vh
   width: 100%
@@ -19,12 +15,13 @@
     justify-content: center
     align-items: center
     .Login-form__card1
+      padding: 1em
       margin: 0
-      width: 300px
-      height: 600px
+      width: 600px
+      height: 300px
       background: rgb(255, 255, 255, 0.7)
       border-radius: 2em
-      border: 1px solid black
+      border: 1px solid #6c757d5e
       -webkit-box-shadow: 50px 27px 15px 0px rgba(50, 50, 50, 0.44)
       -moz-box-shadow: 50px 27px 15px 0px rgba(50, 50, 50, 0.44)
       box-shadow: 50px 27px 15px 0px rgba(50, 50, 50, 0.44)
@@ -32,23 +29,28 @@
       justify-content: center
       align-items: center
       flex-direction: column
-      backdrop-filter: blur(6px)
-      transition: .5s
-      .Login-form__logo
-        display: flex
-        justify-content: center
-        align-items: center
-        mat-card-title
-          text-align: center
+      backdrop-filter: blur(3px)
+      img
+        width: 300px
       .Login-form__content.active
-        transition: 1.5s
         display: flex
         flex-direction: column
-        justify-content: center
+        align-items: center
+        margin-top: 20px
+        mat-card-content
+          display: flex
+          & div
+            display: flex
+            width: 30px
+            background: $primary-color
+            height: 51px
+            justify-content: center
+            align-items: center
+            ion-icon
+              color: $light-color
+              font-size: 1.5em
         .Login-form__Email
-          width: 100%
-          ion-icon
-            font-size: 15px
+          width: 232px
         .Login-form__button
           display: flex
           flex-direction: column
@@ -57,34 +59,3 @@
             margin-bottom: 5px 
             width: 200px
             height: 40px
-    .Login-form__card2
-      width: 300px
-      height: 600px
-      background: rgb(255, 255, 255, 0.7)
-      border-radius: 2em
-      border: 1px solid black
-      -webkit-box-shadow: 50px 27px 15px 0px rgba(50, 50, 50, 0.44)
-      -moz-box-shadow: 50px 27px 15px 0px rgba(50, 50, 50, 0.44)
-      box-shadow: 50px 27px 15px 0px rgba(50, 50, 50, 0.44)
-      display: flex
-      justify-content: center
-      align-items: center
-      flex-direction: column
-      transition: .5s
-      .Login-form__logo
-        margin-top: 10px
-        display: flex
-        justify-content: center
-        align-items: center
-        mat-card-title
-          text-align: center
-      .login-form__toggleButtons
-        display: flex
-        flex-direction: column
-        align-items: center
-        margin-top: 100px
-        button
-          width: 200px
-          height: 40px
-          margin-bottom: 10px
-     

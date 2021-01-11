@@ -26,6 +26,7 @@
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
     "@popperjs/core": "^2.6.0",
+    "animate.css": "^4.1.1",
     "bootstrap": "^4.5.3",
     "firebase": "^8.2.1",
     "ionicons": "^4.6.3",

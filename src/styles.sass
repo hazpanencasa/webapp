@@ -15,7 +15,7 @@ body
   box-shadow: 3px 3px 1px -2px rgba(0, 0, 0, 0.2), 4px 4px 2px 2px rgba(0, 0, 0, 0.14), -1px 3px 0px 0px rgba(0, 0, 0, 0.12) !important
   &:hover
     color: $primary-color
-    background-color: $dark-color
+    background-color: $light-color
   &:focus
     background-color: $primary-color
     color: $dark-color
@@ -24,6 +24,21 @@ body
   &:not(:disabled):not(.disabled).active
     background-color: $primary-color
     color: $dark-color
+.modalLogOutButton
+  display: flex
+  align-items: center
+  justify-content: space-between
+  width: 90px
+  & p 
+    margin-bottom: 0
+  & ion-icon
+    font-size: 20px
+.swal2-actions
+  button
+    transition: .5s
+    margin-right: 20px 
+  button:hover
+    transform: scale(1.3)
 .anchor-link
   color: $dark-color
   text-decoration: none
@@ -32,6 +47,7 @@ body
     text-decoration: none
 .primary-title
   font: 40px $font-title
+
 
 // Sidebar padding
 .mat-list-item-content.mat-list-item-content-reverse
