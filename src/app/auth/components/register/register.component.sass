@@ -1,9 +1,4 @@
 @import ../../../../utils/variables
-.hide
-  display: none
-.white 
-  color: white
-  margin: 0
 .Register-container
   background-color: rgb(244, 228, 202) 
   height: 100vh
@@ -19,10 +14,10 @@
   .Register-card
     background-image: url('https://i.pinimg.com/736x/30/c1/86/30c186ac479ada24b401baee76187153.jpg')
     background-repeat: no-repeat
-    background-size: contain
+    background-size: cover
     margin: 0
-    width: 599px
-    height: 400px
+    width: 700px
+    height: 450px
     border-radius: 2em
     border: 1px solid black
     -webkit-box-shadow: 50px 27px 15px 0px rgba(50, 50, 50, 0.44)
@@ -37,8 +32,18 @@
       justify-content: center
       align-items: center
       flex-direction: column
-      height: 330px
+      height: 400px
       background: rgb(225, 225, 225, 0.8)
+.Register-form
+  mat-card-content
+    display: flex
+    & div
+      display: flex
+      align-items: center
+      margin-right: 5px
+      ion-icon
+        color: $primary-color
+        font-size: 2em
 .Register-form__logo
   display: flex
   align-items: center
@@ -54,3 +59,5 @@
     margin-bottom: 5px
     width: 100%
     height: 100%
+.input-fullName
+  width: 95px

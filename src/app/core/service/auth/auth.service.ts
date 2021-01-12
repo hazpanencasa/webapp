@@ -8,8 +8,14 @@ import {first} from "rxjs/operators";
 export class AuthService {
   constructor(private af: AngularFireAuth) {}
 
-  createUser(email: string, password: string) {
-    return this.af.createUserWithEmailAndPassword(email, password);
+  createUser(email: string, password: string, names: string) {
+    return this.af
+      .createUserWithEmailAndPassword(email, password)
+      .then((result) => {
+        result.user.updateProfile({
+          displayName: names,
+        });
+      });
   }
   logIn(email: string, password: string) {
     return this.af.signInWithEmailAndPassword(email, password);

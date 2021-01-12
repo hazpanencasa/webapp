@@ -1,9 +1,11 @@
 import {Component, OnInit} from "@angular/core";
-import {Validators, FormGroup, FormBuilder} from "@angular/forms";
 import {Router} from "@angular/router";
+
+import {Validators, FormGroup, FormBuilder} from "@angular/forms";
 import {AuthService} from "@core/service/auth/auth.service";
-import {fadeIn} from "@utils/animation";
+
 import {modalWelcome, modalAuthErrors} from "@utils/modal";
+import {fadeIn} from "@utils/animation";
 
 @Component({
   selector: "app-login",
@@ -49,7 +51,8 @@ export class LoginComponent implements OnInit {
         })
         .catch((error) => {
           const errorMessage = error.message;
-          switch (error.code) {
+          const errorCode = error.code;
+          switch (errorCode) {
             case "auth/wrong-password":
               modalAuthErrors(errorMessage);
               break;

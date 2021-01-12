@@ -1,78 +1,126 @@
 <div
+  @fadeIn
   style="background-image: url('assets/images/backgroundLogo.png')"
   class="Register-container"
 >
-  <mat-card class="Register-card">
+  <mat-card class="Register-card animate__animated animate__fadeInBottomLeft">
     <div class="container">
       <div class="row">
         <div class="col-6">
-          <form
-            class="Register-form"
-            [formGroup]="registerForm"
-            (ngSubmit)="register($event)"
-          >
+          <form [formGroup]="registerForm" (ngSubmit)="register($event)">
             <mat-card>
               <mat-card-header>
                 <mat-card-title>Register now</mat-card-title>
               </mat-card-header>
-              <mat-card-content>
+              <mat-card-content class="Register-form container">
                 <div class="row">
-                  <div class="col">
-                    <mat-form-field>
-                      <mat-label
-                        ><ion-icon name="mail-outline"></ion-icon
-                        >Email</mat-label
-                      >
-                      <input
-                        placeholder="Ex. pat@example.com"
-                        formControlName="email"
-                        matInput
-                        type="email"
-                      />
-                      <mat-error
-                        *ngIf="
-                          registerFormEmail.dirty &&
-                          registerFormEmail.hasError('required')
-                        "
-                      >
-                        Email is <strong>required</strong>
-                      </mat-error>
-                      <mat-error *ngIf="registerFormEmail.hasError('pattern')">
-                        Please enter a valid email address
-                      </mat-error>
-                    </mat-form-field>
+                  <div class="col-lg-6">
+                    <mat-card-content>
+                      <div>
+                        <ion-icon name="person-outline"></ion-icon>
+                      </div>
+                      <mat-form-field class="input-fullName">
+                        <mat-label>First Name</mat-label>
+                        <input
+                          formControlName="firstName"
+                          matInput
+                          type="text"
+                        />
+                        <mat-error
+                          *ngIf="
+                            registerFormEmail.dirty &&
+                            registerFormEmail.hasError('required')
+                          "
+                        >
+                          First Name is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </mat-card-content>
+                  </div>
+                  <div class="col-lg-6">
+                    <mat-card-content>
+                      <mat-form-field class="input-fullName">
+                        <mat-label>Last Name</mat-label>
+                        <input
+                          formControlName="lastName"
+                          matInput
+                          type="text"
+                        />
+                        <mat-error
+                          *ngIf="
+                            registerFormEmail.dirty &&
+                            registerFormEmail.hasError('required')
+                          "
+                        >
+                          Last Name is<strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </mat-card-content>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col">
-                    <mat-form-field>
-                      <mat-label
-                        ><ion-icon name="lock-closed-outline"></ion-icon
-                        >Password</mat-label
-                      >
-                      <input
-                        placeholder="password"
-                        formControlName="password"
-                        matInput
-                        type="password"
-                      />
-                      <mat-error
-                        *ngIf="
-                          registerFormPassword.dirty &&
-                          registerFormPassword.hasError('required')
-                        "
-                      >
-                        This field is <strong>required</strong>
-                      </mat-error>
-                      <mat-error
-                        *ngIf="
-                          registerFormPassword.hasError('maxlength') ||
-                          registerFormPassword.hasError('minlength')
-                        "
-                        >password must contain at least
-                        <strong>8 characters</strong></mat-error
-                      >
-                    </mat-form-field>
+                    <mat-card-content>
+                      <div>
+                        <ion-icon name="mail-outline"></ion-icon>
+                      </div>
+                      <mat-form-field>
+                        <mat-label>Email</mat-label>
+                        <input
+                          placeholder="Ex. pat@example.com"
+                          formControlName="email"
+                          matInput
+                          type="email"
+                        />
+                        <mat-error
+                          *ngIf="
+                            registerFormEmail.dirty &&
+                            registerFormEmail.hasError('required')
+                          "
+                        >
+                          Email is <strong>required</strong>
+                        </mat-error>
+                        <mat-error
+                          *ngIf="registerFormEmail.hasError('pattern')"
+                        >
+                          Please enter a valid email address
+                        </mat-error>
+                      </mat-form-field>
+                    </mat-card-content>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <mat-card-content>
+                      <div>
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                      </div>
+                      <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input
+                          placeholder="password"
+                          formControlName="password"
+                          matInput
+                          type="password"
+                        />
+                        <mat-error
+                          *ngIf="
+                            registerFormPassword.dirty &&
+                            registerFormPassword.hasError('required')
+                          "
+                        >
+                          This field is <strong>required</strong>
+                        </mat-error>
+                        <mat-error
+                          *ngIf="
+                            registerFormPassword.hasError('maxlength') ||
+                            registerFormPassword.hasError('minlength')
+                          "
+                          >password must contain at least
+                          <strong>8 characters</strong></mat-error
+                        >
+                      </mat-form-field>
+                    </mat-card-content>
                   </div>
                 </div>
               </mat-card-content>
@@ -81,14 +129,14 @@
                   Sign In
                 </button>
                 <a class="anchor-link" routerLink="/login"
-                  >I alredy have an account</a
+                  >I have already created an account</a
                 >
               </mat-card-actions>
             </mat-card>
           </form>
         </div>
         <div class="col-6 Register-form__logo">
-          <img src="assets/images/logoOriginal3.png" alt="logo" />
+          <img src="assets/images/logoOriginalSolo.png" alt="logo" />
         </div>
       </div>
     </div>
