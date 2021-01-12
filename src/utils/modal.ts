@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 
-export const modalWelcome = (user) =>
+export const modalWelcome = (user: string) =>
   Swal.fire({
     position: "top-end",
     background: "url(https://i.gifer.com/uI7.gif) no-repeat 50% 50%",
@@ -38,9 +38,31 @@ export const modalLogout = () =>
       popup: "animate__animated animate__bounceOut",
     },
   });
-export const modalAuthErrors = (message) => {
+export const modalSignedIn = (user: string) =>
   Swal.fire({
-    title: `<h4 style="color: white; margin: 0;">${message}</h4>`,
+    title: `<h1 class="modalHead"> Thanks For Signed In ${user} </h1>`,
+    padding: "2em",
+    icon: "info",
+    width: 500,
+    confirmButtonColor: "#881918",
+    showCancelButton: true,
+    background: "url(https://i.gifer.com/uI7.gif) no-repeat 50% 50%",
+    cancelButtonColor: "#d33",
+    confirmButtonText: `<div class='modalLogOutButton'>
+      <p>Log In</p>
+      <ion-icon name="log-in-outline"></ion-icon>
+      </div>`,
+    position: "center",
+    showClass: {
+      popup: "animate__animated animate__bounceInLeft",
+    },
+    hideClass: {
+      popup: "animate__animated animate__bounceOut",
+    },
+  });
+export const modalAuthErrors = (message: String) => {
+  Swal.fire({
+    title: `<h4 class="modalHead">${message}</h4>`,
     padding: "2em",
     icon: "error",
     width: 600,
