@@ -1,4 +1,6 @@
-<div [class]="sidebarToggle ? 'grid-container' : 'grid-toggle'">
+<div
+  [class]="sidebarToggle ? 'grid-container active' : 'grid-container hidden'"
+>
   <app-header [clickToggle]="sidebarToggle" class="header"></app-header>
   <app-sidebar
     (toggleSidebar)="clickToggle($event)"
