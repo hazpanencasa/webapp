@@ -12,10 +12,12 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatCardModule} from "@angular/material/card";
+import {MatSliderModule} from "@angular/material/slider";
 
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
@@ -28,6 +30,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
 @NgModule({
   declarations: [],
   imports: [
+    MatSliderModule,
     CommonModule,
     MatDividerModule,
     MatSidenavModule,
@@ -51,6 +54,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
     MatDialogModule,
     MatProgressBarModule,
     MatExpansionModule,
+    MatCheckboxModule,
   ],
   exports: [
     MatButtonModule,
@@ -75,6 +79,8 @@ import {MatExpansionModule} from "@angular/material/expansion";
     MatStepperModule,
     MatProgressBarModule,
     MatExpansionModule,
+    MatSliderModule,
+    MatCheckboxModule,
   ],
 })
 export class MaterialModule {}

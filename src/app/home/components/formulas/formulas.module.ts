@@ -14,6 +14,7 @@ import {SharedModule} from "@shared/shared.module";
 import {Table3Component} from "./components/formula-detail/components/table3-ingredient_complex/table3.component";
 import { FormulaStepperComponent } from './components/formula-detail/components/formula-stepper/formula-stepper.component';
 import { FormulaTableTimeComponent } from './components/formula-detail/components/formula-table-time/formula-table-time.component';
+import { RouletteStepsComponent } from './components/formula-detail/components/roulette-steps/roulette-steps.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FormulaTableTimeComponent } from './components/formula-detail/component
     Table3Component,
     FormulaStepperComponent,
     FormulaTableTimeComponent,
+    RouletteStepsComponent,
   ],
   imports: [CommonModule, FormulasRoutingModule, FormsModule, SharedModule],
   providers: [FormulasService],
