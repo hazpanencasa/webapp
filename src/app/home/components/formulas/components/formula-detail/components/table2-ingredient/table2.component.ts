@@ -18,6 +18,9 @@ export class Table2Component implements OnInit {
       this.arrayPercent.push(ingredient.percentage);
     });
     const result = this.arrayPercent.reduce((a, b) => a + b, 0);
-    this.resultPercent = result;
+    this.resultPercent = result.toFixed(1);
+  }
+  transformStringToNumber(s: string, r?: number) {
+    return parseInt(s, r);
   }
 }

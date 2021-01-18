@@ -11,7 +11,7 @@ import {
 
 export let fadeIn = trigger("fadeIn", [
   state("void", style({opacity: 0})),
-  transition(":enter, :leave", [animate(1000)]),
+  transition(":enter, :leave", [animate(1200)]),
 ]);
 
 export let fade = trigger("fadeIn", [

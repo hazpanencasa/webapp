@@ -19,6 +19,6 @@ export class Table1Component implements OnInit {
     this.unitWeight = parseInt(this.formula.unit_weight, 10);
     this.bakeryMeasure =
       this.unitWeight / this.formula.ingredients[1].percentage;
-    return this.bakeryMeasure.toFixed(2);
+    return this.bakeryMeasure;
   }
 }

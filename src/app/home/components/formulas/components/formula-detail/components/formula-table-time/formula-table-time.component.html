@@ -1,5 +1,5 @@
 <ng-container *ngIf="formula">
-  <div class="table2-container">
+  <div class="table2-container container">
     <table class="table">
       <thead>
         <tr>
@@ -16,15 +16,7 @@
             {{ i.ingredient.name }}
           </td>
           <td>{{ i.percentage }}</td>
-          <td>
-            {{
-              (
-                (i.percentage * transformStringToNumber(formula.unit_weight)) /
-                resultPercent
-              ).toFixed(1)
-            }}
-            gr
-          </td>
+          <td>dato gr</td>
         </tr>
         <tr class="table-row__barprogress">
           <td colspan="4">
@@ -37,7 +29,7 @@
       </tbody>
       <tr>
         <td colspan="2" scope="row">Total</td>
-        <td>{{ resultPercent }}%</td>
+        <td>dato %</td>
         <td>{{ formula.unit_weight }}gr</td>
       </tr>
     </table>

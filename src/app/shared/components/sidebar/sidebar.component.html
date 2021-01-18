@@ -1,4 +1,8 @@
-<div [className]="showSidebar ? 'Sidebar-container' : 'Sidebar-hidden'">
+<div
+  [className]="
+    showSidebar ? 'Sidebar-container active' : 'Sidebar-container hidden'
+  "
+>
   <header>
     <div class="Sidebar-logo">
       <a *ngIf="showSidebar" class="Sidebar-img" routerLink="/home">

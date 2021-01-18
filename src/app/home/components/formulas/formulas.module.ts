@@ -13,6 +13,7 @@ import {Table2Component} from "./components/formula-detail/components/table2-ing
 import {SharedModule} from "@shared/shared.module";
 import {Table3Component} from "./components/formula-detail/components/table3-ingredient_complex/table3.component";
 import { FormulaStepperComponent } from './components/formula-detail/components/formula-stepper/formula-stepper.component';
+import { FormulaTableTimeComponent } from './components/formula-detail/components/formula-table-time/formula-table-time.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FormulaStepperComponent } from './components/formula-detail/components/
     Table2Component,
     Table3Component,
     FormulaStepperComponent,
+    FormulaTableTimeComponent,
   ],
   imports: [CommonModule, FormulasRoutingModule, FormsModule, SharedModule],
   providers: [FormulasService],
