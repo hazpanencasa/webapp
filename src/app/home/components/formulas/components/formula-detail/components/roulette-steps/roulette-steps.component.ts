@@ -51,7 +51,7 @@ export class RouletteStepsComponent implements OnInit {
     }
   }
   loadImage(index) {
-    const canvas = document.getElementById("canvas");
+    const canvas = <HTMLCanvasElement>document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
     ctx.drawImage(this.images[index], 0, 0, canvas.width, canvas.height);
   }
