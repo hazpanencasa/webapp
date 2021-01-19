@@ -1,4 +1,5 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
+import {Formula} from "@core/model/formulas.model";
 
 @Component({
   selector: "app-roulette-steps",
@@ -6,15 +7,18 @@ import {Component, OnInit} from "@angular/core";
   styleUrls: ["./roulette-steps.component.sass"],
 })
 export class RouletteStepsComponent implements OnInit {
+  @Input() formula: Formula;
   autoTicks = false;
   max = 12;
   min = 1;
   showTicks = true;
   step = 1;
   thumbLabel = true;
-  value = 0;
+  value = 1;
   tickInterval = 1;
   images = [];
+  arraySteps = [];
+  Object: object = {};
 
   getSliderTickInterval(): number | "auto" {
     if (this.showTicks) {
@@ -26,14 +30,14 @@ export class RouletteStepsComponent implements OnInit {
 
   ngOnInit() {
     this.rouletteImage();
+    this.loopInfo();
   }
   handleInputSlider(event: Event) {
     this.loadImage(event);
+    this.loadInfo(event);
   }
   rouletteImage() {
-    // const canvas = document.getElementById("canvas");
-    // const ctx = canvas.getContext("2d");
-    for (let i = 1; i <= 12; i++) {
+    for (let i = 1; i <= this.formula.steps.length; i++) {
       const number = i.toString().padStart(2, "00");
       const roulette = `assets/images/Pasos/Pasos_PNG/Pasos_hazpanencasa-${number}.png`;
       const image = new Image();
@@ -50,5 +54,17 @@ export class RouletteStepsComponent implements OnInit {
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
     ctx.drawImage(this.images[index], 0, 0, canvas.width, canvas.height);
+  }
+  loopInfo() {
+    const stepsArray = this.formula.steps;
+    for (let i = 0; i < stepsArray.length; i++) {
+      this.arraySteps.push(stepsArray[i]);
+    }
+  }
+  loadInfo(index) {
+    this.arraySteps[index - 1];
+  }
+  celsiusToFahrenheit(celsius: number) {
+    return Math.ceil((celsius * 9) / 5 + 32);
   }
 }

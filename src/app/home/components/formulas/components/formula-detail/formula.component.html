@@ -82,13 +82,11 @@
   <section>
     <div class="container">
       <div class="row">
-        <div class="col-lg-5">
+        <div class="col">
           <app-formula-table-time [formula]="formula"></app-formula-table-time>
-        </div>
-        <div class="col-lg-7">
-          <app-roulette-steps></app-roulette-steps>
         </div>
       </div>
     </div>
   </section>
+  <app-roulette-steps [formula]="formula"></app-roulette-steps>
 </ng-container>

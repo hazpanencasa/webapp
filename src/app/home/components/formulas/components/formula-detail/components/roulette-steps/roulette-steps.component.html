@@ -1,21 +1,88 @@
-<mat-card class="example-result-card">
-  <canvas
-    class="d-block mx-auto"
-    width="500px"
-    height="500px"
-    id="canvas"
-  ></canvas>
-  <mat-card-content class="d-flex">
-    <mat-slider
-      class="mx-auto my-0"
-      [max]="max"
-      [min]="min"
-      [step]="step"
-      [thumbLabel]="thumbLabel"
-      [tickInterval]="getSliderTickInterval()"
-      [(ngModel)]="value"
-      (input)="handleInputSlider($event.value)"
-    >
-    </mat-slider>
-  </mat-card-content>
-</mat-card>
+<section class="mb-4" *ngIf="formula">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7">
+        <mat-card class="example-result-card">
+          <canvas
+            class="d-block mx-auto"
+            width="500px"
+            height="500px"
+            id="canvas"
+          ></canvas>
+          <mat-card-content class="d-flex">
+            <mat-slider
+              class="mx-auto my-0"
+              [max]="max"
+              [min]="min"
+              [step]="step"
+              [thumbLabel]="thumbLabel"
+              [tickInterval]="getSliderTickInterval()"
+              [(ngModel)]="value"
+              (input)="handleInputSlider($event.value)"
+            >
+            </mat-slider>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="col-lg-5 align-self-center">
+        <div>
+          <mat-card>
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <h1>Step {{ value }} {{ arraySteps[value - 1].name }}</h1>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-2">
+                  <ion-icon name="timer-outline"></ion-icon>
+                </div>
+                <div *ngIf="arraySteps[value - 1].time !== 0" class="col">
+                  {{ arraySteps[value - 1].time }} min
+                </div>
+                <div *ngIf="arraySteps[value - 1].time == 0" class="col">
+                  {{ arraySteps[value - 1].times * 10 }} min
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-2">
+                  <ion-icon name="thermometer-outline"></ion-icon>
+                </div>
+                <div *ngIf="arraySteps[value - 1].temperature" class="col">
+                  {{ arraySteps[value - 1].temperature.min }} °C /
+                  {{
+                    celsiusToFahrenheit(arraySteps[value - 1].temperature.min)
+                  }}
+                  °F
+                </div>
+                <div
+                  *ngIf="arraySteps[value - 1].temperature == null"
+                  class="col"
+                >
+                  temperatura ambiente
+                </div>
+              </div>
+            </div>
+          </mat-card>
+          <mat-card class="mt-4">
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <h1>Description</h1>
+                </div>
+              </div>
+              <div class="row">
+                <div *ngIf="arraySteps[value - 1].description" class="col">
+                  {{ arraySteps[value - 1].description }}
+                </div>
+                <div *ngIf="!arraySteps[value - 1].description">
+                  Dejar reposar
+                </div>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
