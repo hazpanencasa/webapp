@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,kBAAkB,CAAC;EACjB,MAAM,EAAE,IAAI;CAAG;;AAGjB,AAAA,QAAQ,CAAC;EACP,KAAK,EAAE,KAAK;CAAG;;AAGjB,AAAA,QAAQ,CAAC,YAAY,CAAC;EACpB,UAAU,EAAE,OAAO;CAAG;;AAGxB,AAAA,YAAY,AAAA,YAAY,CAAC;EACvB,QAAQ,EAAE,MAAM;EAChB,GAAG,EAAE,CAAC;EACN,OAAO,EAAE,CAAC;CAAG",
+    "sources": [
+        "sub-home.component.sass"
+    ],
+    "names": [],
+    "file": "sub-home.component.css"
+}

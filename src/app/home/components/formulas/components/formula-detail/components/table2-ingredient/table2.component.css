@@ -1,0 +1,30 @@
+.table2-container {
+  background-color: rgba(136, 25, 25, 0.4);
+  -webkit-box-shadow: 9px 11px 16px -4px #000000;
+  box-shadow: 9px 11px 16px -4px #000000;
+  -webkit-border-top-left-radius: 35px;
+  -webkit-border-bottom-right-radius: 35px;
+  -moz-border-radius-topleft: 35px;
+  -moz-border-radius-bottomright: 35px;
+  border-top-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+  padding: 10px;
+}
+
+.table2-container tbody, .table2-container th {
+  border-top: none;
+}
+
+.table-row {
+  border: none !important;
+}
+
+.table-row__barprogress {
+  border: none;
+}
+
+.table-row__barprogress td {
+  padding: 0;
+  border-bottom: none;
+}
+/*# sourceMappingURL=table2.component.css.map */

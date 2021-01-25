@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AACA,AAAA,sBAAsB,CAAC;EACrB,KAAK,EAAE,KAAK;CAAG;;AACjB,AAAA,cAAc,CAAC;EACb,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,KAAK;CAAG",
+    "sources": [
+        "roulette-steps.component.sass"
+    ],
+    "names": [],
+    "file": "roulette-steps.component.css"
+}

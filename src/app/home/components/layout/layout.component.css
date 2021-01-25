@@ -1,0 +1,42 @@
+.grid-container {
+  display: -ms-grid;
+  display: grid;
+  overflow: hidden;
+      grid-template-areas: "sidebar header" "sidebar main" "sidebar footer";
+  -webkit-transition: grid-template-columns 1s ease-in;
+  transition: grid-template-columns 1s ease-in;
+  transition: grid-template-columns 1s ease-in, -ms-grid-columns 1s ease-in;
+  -ms-grid-columns: 200px 1fr;
+      grid-template-columns: 200px 1fr;
+}
+
+.grid-container.hidden {
+  -ms-grid-columns: 56px 1fr;
+      grid-template-columns: 56px 1fr;
+}
+
+.header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: header;
+}
+
+.sidebar {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 1;
+  grid-area: sidebar;
+}
+
+.main {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: main;
+}
+
+.footer {
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
+  grid-area: footer;
+}
+/*# sourceMappingURL=layout.component.css.map */

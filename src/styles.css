@@ -1,0 +1,109 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+p {
+  margin-bottom: 0 !important;
+}
+
+.button-primary {
+  border: none;
+  height: 25px;
+  line-height: normal !important;
+  background-color: #881919;
+  color: #fff;
+  -webkit-transition: .5s;
+  transition: .5s;
+  -webkit-box-shadow: 3px 3px 1px -2px rgba(0, 0, 0, 0.2), 4px 4px 2px 2px rgba(0, 0, 0, 0.14), -1px 3px 0px 0px rgba(0, 0, 0, 0.12) !important;
+          box-shadow: 3px 3px 1px -2px rgba(0, 0, 0, 0.2), 4px 4px 2px 2px rgba(0, 0, 0, 0.14), -1px 3px 0px 0px rgba(0, 0, 0, 0.12) !important;
+}
+
+.button-primary:hover {
+  color: #881919;
+  background-color: #fff;
+}
+
+.button-primary:focus {
+  background-color: #881919;
+  color: black;
+  border: none;
+}
+
+.button-primary:not(:disabled):not(.disabled):active, .button-primary:not(:disabled):not(.disabled).active {
+  background-color: #881919;
+  color: black;
+}
+
+.modalLogOutButton {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100px;
+}
+
+.modalLogOutButton p {
+  margin-bottom: 0;
+}
+
+.modalLogOutButton ion-icon {
+  font-size: 20px;
+}
+
+.modalHead {
+  color: #fff;
+  margin: 0;
+}
+
+.swal2-actions {
+  margin: 0 !important;
+}
+
+.swal2-actions button {
+  -webkit-transition: .5s;
+  transition: .5s;
+  margin-right: 20px;
+}
+
+.swal2-actions button:hover {
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
+}
+
+.anchor-link {
+  width: 300px;
+  color: black;
+  text-decoration: none;
+  text-align: center;
+}
+
+.anchor-link:hover {
+  color: #881919;
+  text-decoration: none;
+}
+
+.primary-title {
+  font: 40px "Satisfy", cursive !important;
+}
+
+.mat-list-item-content.mat-list-item-content-reverse {
+  padding: 0 !important;
+}
+
+.mat-list-base .mat-list-item .mat-list-item-content, .mat-list-base .mat-list-option .mat-list-item-content {
+  padding: 0 !important;
+}
+
+.mat-list-base .mat-list-item.mat-list-item-with-avatar.mat-list-option .mat-list-item-content-reverse .mat-list-text, .mat-list-base .mat-list-item.mat-list-item-with-avatar.mat-list-option .mat-list-item-content .mat-list-text, .mat-list-base .mat-list-option.mat-list-item-with-avatar.mat-list-option .mat-list-item-content-reverse .mat-list-text, .mat-list-base .mat-list-option.mat-list-item-with-avatar.mat-list-option .mat-list-item-content .mat-list-text {
+  padding-right: 16px !important;
+  padding-left: 5px !important;
+}
+/*# sourceMappingURL=styles.css.map */
