@@ -21,18 +21,11 @@ const routes: Routes = [
     data: { authGuardPipe: redirectLoggedInToItems },
     loadChildren: () => import("./auth/auth.module").then((m) => m.AuthModule),
   },
-  // {
-  //   path: "home",
-  //   canActivate: [AngularFireAuthGuard],
-  //   data: { authGuardPipe: redirectUnauthorizedToLogin },
-  //   loadChildren: () => import("./home/home.module").then((m) => m.HomeModule),
-  // },
   {
     path: "home",
     canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin },
-    loadChildren: () =>
-      import("./sub-home/sub-home.module").then((m) => m.SubHomeModule),
+    loadChildren: () => import("./home/home.module").then((m) => m.HomeModule),
   },
 ];
 

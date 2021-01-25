@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AACA,AAAA,WAAW,CAAC;EACV,gBAAgB,ECFF,sBAAO;EDGrB,kBAAkB,EAAE,0BAA0B;EAC9C,UAAU,EAAE,0BAA0B;EACtC,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,KAAK;CAEO;;AAPzB,AAME,WANS,CAMP,KAAK,EANT,WAAW,CAMA,EAAE,CAAC;EACV,UAAU,EAAE,IAAI;CAAG;;AACvB,AAAA,UAAU,CAAC;EACT,MAAM,EAAE,eAAe;CAAG;;AAC5B,AAAA,uBAAuB,CAAC;EACtB,MAAM,EAAE,IAAI;CAGc;;AAJ5B,AAEE,uBAFqB,CAEnB,EAAE,CAAC;EACH,OAAO,EAAE,CAAC;EACV,aAAa,EAAE,IAAI;CAAG",
+    "sources": [
+        "formula-table-time.component.sass",
+        "../../../../../../../../utils/variables.sass"
+    ],
+    "names": [],
+    "file": "formula-table-time.component.css"
+}
