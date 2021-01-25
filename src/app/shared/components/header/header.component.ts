@@ -23,15 +23,7 @@ export class HeaderComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit() {
-    console.log(this.route.snapshot.children);
-    console.log(this.route.snapshot.component);
-    console.log(this.route.snapshot.data);
-    console.log(this.route.snapshot.parent);
-    console.log(this.route.snapshot.pathFromRoot);
-    console.log(this.route.snapshot.root);
-    console.log(this.route.snapshot.url);
-  }
+  ngOnInit() {}
 
   @HostListener("document:scroll")
   scrollFunction() {

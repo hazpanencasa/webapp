@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { PageEvent } from "@angular/material/paginator";
 import { Formula } from "@core/model/formulas.model";
 import { FormulasService } from "@core/service/formulas/formulas.service";
 
@@ -10,13 +11,20 @@ import { FormulasService } from "@core/service/formulas/formulas.service";
 })
 export class FormulasComponent implements OnInit {
   constructor(private formulasService: FormulasService) {}
+  formulas: Formula[];
+  pageSizeOptions: number[] = [4, 8, 12, 16, 24, 35];
+  pageEvent: PageEvent;
   filterFormula = "";
   counter = 0;
-  formulas: Formula[];
+  pageSize = 4;
+  pageNumber = 1;
   ngOnInit() {
     this.fetchFormulas();
   }
-
+  onPageChange(event: PageEvent) {
+    this.pageSize = event.pageSize;
+    this.pageNumber = event.pageIndex + 1;
+  }
   async fetchFormulas() {
     try {
       const result = this.formulasService
@@ -27,33 +35,6 @@ export class FormulasComponent implements OnInit {
       return result;
     } catch (error) {
       console.log(error);
-    }
-  }
-
-  backwardControl() {
-    const $carousel = document.getElementById("carousel");
-    if (this.counter === 0) {
-    } else if (this.counter === -7650) {
-      this.counter += 650;
-      $carousel.style.transform = `translateX(${this.counter}px)`;
-      $carousel.style.transition = ".5s";
-    } else {
-      this.counter += 500;
-      $carousel.style.transform = `translateX(${this.counter}px)`;
-      $carousel.style.transition = ".5s";
-    }
-  }
-  forwardControl() {
-    const $carousel = document.getElementById("carousel");
-    if (this.counter === -7500) {
-      this.counter -= 150;
-      $carousel.style.transform = `translateX(${this.counter}px)`;
-      $carousel.style.transition = ".5s";
-    } else if (this.counter === -7650) {
-    } else {
-      this.counter -= 500;
-      $carousel.style.transform = `translateX(${this.counter}px)`;
-      $carousel.style.transition = ".5s";
     }
   }
 }

@@ -1,34 +1,39 @@
 <ng-container *ngIf="formulas">
-  <div class="Banner parallax" id="parallax">
+  <div
+    style="background-image: url('assets/images/hazPanEnCasa2.jpg')"
+    class="Banner parallax"
+    id="parallax"
+  >
     <div class="overlay">
-      <div class="Banner-section__main">
+      <h1>Formulas</h1>
+      <p>Mira toda nuestra variedad de Formulas</p>
+    </div>
+  </div>
+  <div class="Banner-section__main container mt-3">
+    <div class="row">
+      <div class="col-10">
         <div class="container">
           <div class="row">
-            <div class="col h-auto">
-              <h1 class="text-center primary-title Banner-section__main-title">
-                Formulas
-              </h1>
-              <div class="form-group w-75">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Search ..."
-                  name="filterFormula"
-                  [(ngModel)]="filterFormula"
-                />
-              </div>
-
+            <div class="col">
+              <mat-paginator
+                [length]="formulas.length"
+                [pageSize]="pageSize"
+                [pageSizeOptions]="pageSizeOptions"
+                (page)="onPageChange($event)"
+              >
+              </mat-paginator>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
               <section class="Carousel">
                 <div class="Carousel-container" id="carousel">
                   <div
-                    *ngFor="let formula of formulas | filter: filterFormula"
+                    *ngFor="
+                      let formula of formulas | paginate: pageSize:pageNumber
+                    "
                     class="Carousel-container__item"
                   >
-                    <img
-                      class="Carousel-item__img"
-                      src="assets/images/backgroundLogo.png"
-                      alt=""
-                    />
                     <div class="Carousel-item__details">
                       <div class="Carousel-item__details-title">
                         <h1>{{ formula.name }}</h1>
@@ -54,22 +59,13 @@
               </section>
             </div>
           </div>
-
-          <div class="row h-25">
-            <div class="col">
-              <div class="Carousel-controls">
-                <ion-icon
-                  (click)="backwardControl()"
-                  name="chevron-back-outline"
-                ></ion-icon>
-                <ion-icon
-                  (click)="forwardControl()"
-                  name="chevron-forward-outline"
-                ></ion-icon>
-              </div>
-            </div>
-          </div>
         </div>
+      </div>
+      <div class="col-2">
+        <input type="text" />
+        <ul>
+          <li>categoria</li>
+        </ul>
       </div>
     </div>
   </div>

@@ -1,10 +1,10 @@
 @import ../../../../../../utils/variables
 .parallax
   background: #fff fixed no-repeat 50% 50%
-  background-size: cover
 #parallax
   position: relative
-  background-image: url($background-image1)
+  background-size: cover
+  background-position: bottom
   & .overlay
     z-index: 1
     position: absolute
@@ -12,48 +12,29 @@
     bottom: 0
     left: 0
     right: 0
-    background-color: rgba(0, 0, 0, 0.5)
+    background-color: rgba(0, 0, 0, 0.3)
     color: white
     padding-top: 50px
-.Banner
-  height: 100vh
-  &-section__main
-    height:78vh
-    display: flex
+    display: inline-flex
+    flex-direction: column
+    justify-content: center
     align-items: center
-    & .container, 
-    & .row
-      height: 100%
-      .col
-        display: flex
-        flex-direction: column
-        height: 50%
-        align-items: center
-        justify-content: space-around
-
+    margin: 0 auto
+.Banner
+  height: 50vh
 .Carousel 
-  width: 95.2vw
-  overflow: hidden
-  padding: 30px
-  position: relative
-  display: flex
-  
+  display:flex
+  justify-content: center
 .Carousel-container
-  display: inline-flex
+  display: grid
+  grid-template-columns: repeat(4, 1fr)
+  grid-gap: 5px
   margin: 40px 0px
   padding-bottom: 10px
-  // animation-name: slider
-  animation-timing-function: linear
-  animation-duration: 170s
-  animation-iteration-count: infinite
-  &:hover
-    animation-play-state: paused
 .Carousel-container__item
   position: relative
   width: 200px
   height: 250px
-  border-radius: 20px
-  overflow: hidden
   margin-right: 10px
   display: inline-block
   cursor: pointer
@@ -64,7 +45,7 @@
   height: 250px
   object-fit: cover
 .Carousel-item__details 
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%)
+  border: 1px solid black
   font-size: 10px
   transition: .5s
   padding: 10px
@@ -115,9 +96,3 @@
   animation-play-state: paused
   transform: scale(1.5)
   opacity: 1
-
-@keyframes slider
-  0%
-    transform: translate3d(0px,0px,0px)
-  100%
-    transform: translate3d(-7650px, 0px, 0px)
