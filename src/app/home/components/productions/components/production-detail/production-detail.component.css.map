@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "production-detail.component.sass"
+    ],
+    "names": [],
+    "file": "production-detail.component.css"
+}

@@ -1,0 +1,214 @@
+.parallax {
+  background: #fff fixed no-repeat 50% 50%;
+  background-size: cover;
+}
+
+#parallax {
+  position: relative;
+  background-image: url("https://i.imgur.com/aJ5UkT3.png");
+  -webkit-animation: carousell 25s infinite alternate;
+          animation: carousell 25s infinite alternate;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+
+#parallax .overlay {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding-top: 76px;
+}
+
+.Banner {
+  height: 100vh;
+}
+
+.Banner-section__main {
+  height: calc(100vh - 58px * 2);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Banner-section__main .container,
+.Banner-section__main .row {
+  height: 100%;
+}
+
+.Banner-section__main .container .col,
+.Banner-section__main .row .col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 50%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.Banner-section__main .container .col h2,
+.Banner-section__main .row .col h2 {
+  font-family: Lato, sans-serif;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.Banner-section__main .container .col h2 span,
+.Banner-section__main .row .col h2 span {
+  color: #fff;
+}
+
+.Banner-section__main-title {
+  font-size: 5rem;
+  font-weight: 700;
+  color: #fff;
+  max-width: 600px;
+  margin-bottom: 2.5rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.Banner-section__main-info {
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  color: #b6adad;
+}
+
+.Banner-section__footer .row {
+  height: 100%;
+}
+
+.Banner-section__footer__social {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.Banner-section__footer__social li {
+  margin-right: 3rem;
+  font-size: 20px;
+}
+
+.Banner-section__footer__social a {
+  color: #b6adad;
+}
+
+.Banner-section__footer__social a:hover {
+  color: #881919;
+}
+
+.Banner-section__footer__address {
+  color: #b6adad;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.Banner-section__footer__address i {
+  color: #881919;
+  font-size: 25px;
+}
+
+.Banner-section__footer__address p {
+  margin: 0;
+}
+
+@-webkit-keyframes carousell {
+  0% {
+    background-image: url("https://i.imgur.com/aJ5UkT3.png");
+  }
+  10% {
+    background-image: url("https://i.imgur.com/XNOXHzw.png");
+  }
+  20% {
+    background-image: url("https://i.imgur.com/XNOXHzw.png");
+  }
+  30% {
+    background-image: url("https://i.imgur.com/FRR0u7D.png");
+  }
+  40% {
+    background-image: url("https://i.imgur.com/FRR0u7D.png");
+  }
+  50% {
+    background-image: url("https://i.imgur.com/knj5AXY.png");
+  }
+  60% {
+    background-image: url("https://i.imgur.com/knj5AXY.png");
+  }
+  70% {
+    background-image: url("https://i.imgur.com/aJ5UkT3.png");
+  }
+  80% {
+    background-image: url("https://i.imgur.com/aJ5UkT3.png");
+  }
+  90% {
+    background-image: url("https://i.imgur.com/XNOXHzw.png");
+  }
+  100% {
+    background-image: url("https://i.imgur.com/XNOXHzw.png");
+  }
+}
+
+@keyframes carousell {
+  0% {
+    background-image: url("https://i.imgur.com/aJ5UkT3.png");
+  }
+  10% {
+    background-image: url("https://i.imgur.com/XNOXHzw.png");
+  }
+  20% {
+    background-image: url("https://i.imgur.com/XNOXHzw.png");
+  }
+  30% {
+    background-image: url("https://i.imgur.com/FRR0u7D.png");
+  }
+  40% {
+    background-image: url("https://i.imgur.com/FRR0u7D.png");
+  }
+  50% {
+    background-image: url("https://i.imgur.com/knj5AXY.png");
+  }
+  60% {
+    background-image: url("https://i.imgur.com/knj5AXY.png");
+  }
+  70% {
+    background-image: url("https://i.imgur.com/aJ5UkT3.png");
+  }
+  80% {
+    background-image: url("https://i.imgur.com/aJ5UkT3.png");
+  }
+  90% {
+    background-image: url("https://i.imgur.com/XNOXHzw.png");
+  }
+  100% {
+    background-image: url("https://i.imgur.com/XNOXHzw.png");
+  }
+}
+/*# sourceMappingURL=banner.component.css.map */
