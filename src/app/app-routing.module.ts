@@ -1,5 +1,5 @@
-import {NgModule} from "@angular/core";
-import {Routes, RouterModule} from "@angular/router";
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 import {
   AngularFireAuthGuard,
   redirectUnauthorizedTo,
@@ -18,19 +18,26 @@ const routes: Routes = [
   {
     path: "login",
     canActivate: [AngularFireAuthGuard],
-    data: {authGuardPipe: redirectLoggedInToItems},
+    data: { authGuardPipe: redirectLoggedInToItems },
     loadChildren: () => import("./auth/auth.module").then((m) => m.AuthModule),
   },
+  // {
+  //   path: "home",
+  //   canActivate: [AngularFireAuthGuard],
+  //   data: { authGuardPipe: redirectUnauthorizedToLogin },
+  //   loadChildren: () => import("./home/home.module").then((m) => m.HomeModule),
+  // },
   {
     path: "home",
     canActivate: [AngularFireAuthGuard],
-    data: {authGuardPipe: redirectUnauthorizedToLogin},
-    loadChildren: () => import("./home/home.module").then((m) => m.HomeModule),
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
+    loadChildren: () =>
+      import("./sub-home/sub-home.module").then((m) => m.SubHomeModule),
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {relativeLinkResolution: "legacy"})],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: "legacy" })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

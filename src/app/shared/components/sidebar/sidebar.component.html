@@ -16,15 +16,35 @@
   <main>
     <mat-selection-list class="Sidebar-list" [multiple]="false">
       <div>
-        <mat-list-option class="Sidebar-item" routerLink="productions">
+        <mat-list-option
+          class="Sidebar-item"
+          routerLinkActive="router-link"
+          routerLink="/home"
+        >
+          <ion-icon matListIcon name="home-outline"></ion-icon>
+          <p *ngIf="showSidebar">Home</p>
+        </mat-list-option>
+        <mat-list-option
+          class="Sidebar-item"
+          routerLinkActive="router-link"
+          routerLink="productions"
+        >
           <ion-icon matListIcon name="flame-outline"></ion-icon>
           <p *ngIf="showSidebar">Productions</p>
         </mat-list-option>
-        <mat-list-option class="Sidebar-item" routerLink="ingredients">
+        <mat-list-option
+          class="Sidebar-item"
+          routerLinkActive="router-link"
+          routerLink="ingredients"
+        >
           <ion-icon matListIcon name="book-outline"></ion-icon>
           <p *ngIf="showSidebar">Ingredients</p>
         </mat-list-option>
-        <mat-list-option class="Sidebar-item" routerLink="formulas">
+        <mat-list-option
+          class="Sidebar-item"
+          routerLinkActive="router-link"
+          routerLink="formulas"
+        >
           <ion-icon matListIcon name="reader-outline"></ion-icon>
           <p *ngIf="showSidebar">Formulas</p>
         </mat-list-option>
