@@ -14,7 +14,7 @@
       <div class="col-10">
         <div class="container">
           <div class="row">
-            <div class="col">
+            <div class="col-6">
               <mat-paginator
                 [length]="formulas.length"
                 [pageSize]="pageSize"
@@ -26,34 +26,15 @@
           </div>
           <div class="row">
             <div class="col">
-              <section class="Carousel">
-                <div class="Carousel-container" id="carousel">
+              <section class="Cards">
+                <div class="Cards-container" id="carousel">
                   <div
                     *ngFor="
                       let formula of formulas | paginate: pageSize:pageNumber
                     "
-                    class="Carousel-container__item"
+                    class="Cards-container__item"
                   >
-                    <div class="Carousel-item__details">
-                      <div class="Carousel-item__details-title">
-                        <h1>{{ formula.name }}</h1>
-                      </div>
-                      <div class="Carousel-item__details-subtitle">
-                        <p>
-                          {{
-                            formula.description
-                              ? formula.description
-                              : "No contiene description"
-                          }}
-                        </p>
-                        <button
-                          class="btn-primary"
-                          routerLink="{{ formula.id }}"
-                        >
-                          See Formula
-                        </button>
-                      </div>
-                    </div>
+                    <app-card [formula]="formula"></app-card>
                   </div>
                 </div>
               </section>

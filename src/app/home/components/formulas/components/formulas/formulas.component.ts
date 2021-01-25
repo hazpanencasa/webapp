@@ -12,11 +12,11 @@ import { FormulasService } from "@core/service/formulas/formulas.service";
 export class FormulasComponent implements OnInit {
   constructor(private formulasService: FormulasService) {}
   formulas: Formula[];
-  pageSizeOptions: number[] = [4, 8, 12, 16, 24, 35];
+  pageSizeOptions: number[] = [3, 6, 9];
   pageEvent: PageEvent;
   filterFormula = "";
   counter = 0;
-  pageSize = 4;
+  pageSize = 3;
   pageNumber = 1;
   ngOnInit() {
     this.fetchFormulas();
@@ -25,16 +25,10 @@ export class FormulasComponent implements OnInit {
     this.pageSize = event.pageSize;
     this.pageNumber = event.pageIndex + 1;
   }
-  async fetchFormulas() {
-    try {
-      const result = this.formulasService
-        .getFormulas()
-        .subscribe((formulas) => {
-          this.formulas = formulas;
-        });
-      return result;
-    } catch (error) {
-      console.log(error);
-    }
+  fetchFormulas() {
+    const result = this.formulasService.getFormulas().subscribe((formulas) => {
+      this.formulas = formulas;
+    });
+    return result;
   }
 }

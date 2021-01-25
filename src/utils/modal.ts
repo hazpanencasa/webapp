@@ -60,7 +60,7 @@ export const modalSignedIn = (user: string) =>
       popup: "animate__animated animate__bounceOut",
     },
   });
-export const modalAuthErrors = (message: String) => {
+export const modalAuthErrors = (message: string) => {
   Swal.fire({
     title: `<h4 class="modalHead">${message}</h4>`,
     padding: "2em",
@@ -78,6 +78,21 @@ export const modalAuthErrors = (message: String) => {
     },
     hideClass: {
       popup: "animate__animated animate__rollOut",
+    },
+  });
+};
+export const modalFormula = (img: string) => {
+  Swal.fire({
+    showCloseButton: true,
+    showConfirmButton: false,
+    width: 600,
+    padding: "6em",
+    background: `url(${img}) no-repeat 50% 50%`,
+    showClass: {
+      popup: "animate__animated animate__fadeInDown",
+    },
+    hideClass: {
+      popup: "animate__animated animate__fadeOutDown",
     },
   });
 };
