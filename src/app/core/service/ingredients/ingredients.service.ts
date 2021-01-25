@@ -31,7 +31,7 @@ export class IngredientsService {
   getIngredients() {
     return this.ingredients;
   }
-  getFormula(id: string) {
+  getIngredient(id: string) {
     this.ingredientsDoc = this.afs.collection("ingredients").doc(`${id}`);
     return (this.ingredient = this.ingredientsDoc.valueChanges());
   }

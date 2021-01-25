@@ -7,28 +7,30 @@ import {MaterialModule} from "../material/material.module";
 import {HeaderComponent} from "./components/header/header.component";
 import {FooterComponent} from "./components/footer/footer.component";
 import {LayoutModule} from "@angular/cdk/layout";
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatButtonModule} from "@angular/material/button";
-import {MatSidenavModule} from "@angular/material/sidenav";
-import {MatIconModule} from "@angular/material/icon";
-import {MatListModule} from "@angular/material/list";
 import {SidebarComponent} from "./components/sidebar/sidebar.component";
+import {FilterPipe} from "./pipes/filter.pipe";
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, SidebarComponent],
+  declarations: [
+    HeaderComponent,
+    FooterComponent,
+    SidebarComponent,
+    FilterPipe,
+  ],
   imports: [
     CommonModule,
     MaterialModule,
     RouterModule,
     ReactiveFormsModule,
     LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
   ],
-  exports: [HeaderComponent, FooterComponent, SidebarComponent],
+  exports: [
+    HeaderComponent,
+    FooterComponent,
+    SidebarComponent,
+    FilterPipe,
+    MaterialModule,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class SharedModule {}

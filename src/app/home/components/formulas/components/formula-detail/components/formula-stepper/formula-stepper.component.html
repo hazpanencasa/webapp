@@ -1,0 +1,93 @@
+<ng-container *ngIf="formula">
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center">Mix Order</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg">
+        <mat-horizontal-stepper>
+          <mat-step
+            *ngFor="let s of formula.mixing[0].mixing_order; let i = index"
+            label="Step {{ i + 1 }}"
+            state="bread"
+          >
+            <div class="formula-stepper__accordion">
+              <mat-accordion multi>
+                <mat-expansion-panel
+                  (opened)="panelOpenState1 = true"
+                  (closed)="panelOpenState1 = false"
+                >
+                  <mat-expansion-panel-header>
+                    <mat-panel-title> <em>Ingredients</em></mat-panel-title>
+                    <mat-panel-description>
+                      {{
+                        panelOpenState1
+                          ? ""
+                          : "Ingredients to complete this step"
+                      }}
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <div>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th scope="col">Name</th>
+                          <th scope="col">Cost</th>
+                          <th scope="col">Hydration</th>
+                          <th scope="col">%</th>
+                        </tr>
+                      </thead>
+                      <tbody *ngFor="let i of s.ingredients">
+                        <tr>
+                          <td>{{ i.ingredient.name }}</td>
+                          <td>{{ i.ingredient.cost }}</td>
+                          <td>{{ i.ingredient.hydration }}</td>
+                          <td>{{ i.percentage }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </mat-expansion-panel>
+                <mat-expansion-panel
+                  (opened)="panelOpenState2 = true"
+                  (closed)="panelOpenState2 = false"
+                >
+                  <mat-expansion-panel-header>
+                    <mat-panel-title> <em>Description</em></mat-panel-title>
+                    <mat-panel-description>
+                      {{
+                        panelOpenState2
+                          ? ""
+                          : "Description to complete this step"
+                      }}
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <div>
+                    <p>{{ s.description }}</p>
+                  </div>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
+            <div *ngIf="i == 0">
+              <button mat-button matStepperNext>Next</button>
+            </div>
+            <div *ngIf="i > 0 && i < formula.mixing[0].mixing_order.length - 1">
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+            <div *ngIf="i == formula.mixing[0].mixing_order.length - 1">
+              <button mat-button matStepperPrevious>Back</button>
+            </div>
+          </mat-step>
+
+          <!-- Icon overrides. -->
+          <ng-template matStepperIcon="bread">
+            <mat-icon>keyboard_tab</mat-icon>
+          </ng-template>
+        </mat-horizontal-stepper>
+      </div>
+    </div>
+  </div>
+</ng-container>

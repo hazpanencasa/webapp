@@ -8,6 +8,7 @@ import {LayoutComponent} from "./components/layout/layout.component";
 import {TranslateModule} from "@ngx-translate/core";
 import {MaterialModule} from "../material/material.module";
 import {LayoutModule} from "@angular/cdk/layout";
+import {CdkTableModule} from "@angular/cdk/table";
 
 @NgModule({
   declarations: [LayoutComponent],
@@ -18,6 +19,7 @@ import {LayoutModule} from "@angular/cdk/layout";
     TranslateModule,
     LayoutModule,
     MaterialModule,
+    CdkTableModule,
   ],
 })
 export class HomeModule {}

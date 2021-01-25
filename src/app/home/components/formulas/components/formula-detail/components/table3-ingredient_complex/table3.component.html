@@ -1,0 +1,86 @@
+<ng-container *ngIf="formula">
+  <div class="table3-container mx-auto my-5 w-50">
+    <h4 class="m-0 p-2">{{ formula.steps[7].name }}</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th colspan="4" scope="col">name</th>
+          <th class="text-right" scope="col">%</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let i of formula.steps[7].ingredients">
+        <tr class="table-row__info">
+          <td colspan="4" scope="row">
+            {{ i.ingredient.name }}
+          </td>
+          <td class="text-right">{{ i.percentage }}</td>
+        </tr>
+        <tr class="table-row__barprogress">
+          <td>
+            <mat-progress-bar
+              mode="determinate"
+              value="{{ i.percentage }}"
+            ></mat-progress-bar>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4">total</td>
+          <td class="text-right">{{ i.percentage }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="table3-container">
+    <h4 class="m-0 p-2">
+      {{ formula.steps[7].ingredients[0].ingredient.name }}
+    </h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th colspan="4" scope="col">Name</th>
+          <th class="text-right" scope="col">%</th>
+          <th class="text-center" scope="col">gr</th>
+        </tr>
+      </thead>
+      <tbody
+        *ngFor="
+          let i of formula.steps[7].ingredients[0].ingredient.formula
+            .ingredients
+        "
+      >
+        <tr class="table-row__info">
+          <td colspan="4" scope="row">
+            {{ i.ingredient.name }}
+          </td>
+          <td class="text-right">{{ i.percentage }}</td>
+          <td class="text-center">
+            {{
+              getIngredientsGrams(
+                totalGrams,
+                totalPercentage,
+                i.percentage
+              ).toFixed(1)
+            }}
+          </td>
+        </tr>
+        <tr class="table-row__barprogress">
+          <td colspan="6">
+            <mat-progress-bar
+              mode="determinate"
+              value="{{ i.percentage }}"
+            ></mat-progress-bar>
+          </td>
+        </tr>
+      </tbody>
+      <tr>
+        <td colspan="4" scope="row">Total</td>
+        <td class="text-right">{{ totalPercentage.toFixed(1) }}</td>
+        <td class="text-center">
+          {{ totalGrams.toFixed(1) }}
+          gr
+        </td>
+      </tr>
+    </table>
+  </div>
+</ng-container>

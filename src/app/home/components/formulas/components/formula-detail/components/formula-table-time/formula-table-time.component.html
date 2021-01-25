@@ -1,0 +1,27 @@
+<ng-container *ngIf="formula">
+  <div class="table-time mb-3">
+    <h4 class="m-0 p-2 text-center">Times</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th colspan="10" scope="col">Step</th>
+          <th class="text-right" scope="col">Dur.(min)</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let i of formula.steps">
+        <tr class="table-row__info">
+          <td *ngIf="i.time > 0" colspan="10" scope="col">{{ i.name }}</td>
+          <td *ngIf="i.time > 0" class="text-right">
+            {{ transformMinutesToHours(i.time) }}
+          </td>
+          <td *ngIf="i.time > 0">({{ i.time }})</td>
+        </tr>
+      </tbody>
+      <tr>
+        <td colspan="10" scope="row">Total</td>
+        <td class="text-right">{{ transformMinutesToHours(timeTotal) }}</td>
+        <td class="text-right">({{ timeTotal }})</td>
+      </tr>
+    </table>
+  </div>
+</ng-container>

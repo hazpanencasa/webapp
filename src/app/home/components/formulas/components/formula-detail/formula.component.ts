@@ -10,6 +10,7 @@ import {FormulasService} from "@core/service/formulas/formulas.service";
 })
 export class FormulaDetailComponent implements OnInit {
   formula: Formula;
+  verificationFormula: boolean;
   constructor(
     private route: ActivatedRoute,
     private formulasService: FormulasService
@@ -24,7 +25,14 @@ export class FormulaDetailComponent implements OnInit {
   fetchFormula(id: string) {
     this.formulasService.getFormula(id).subscribe((formula) => {
       this.formula = formula;
-      console.log(formula);
+      this.validation();
     });
+  }
+  validation() {
+    if (this.formula.steps[7].ingredients[0].ingredient.formula) {
+      this.verificationFormula = true;
+    } else if (this.formula.steps[7].temperature === null) {
+      this.verificationFormula = false;
+    }
   }
 }

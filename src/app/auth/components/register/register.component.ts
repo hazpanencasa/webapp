@@ -1,13 +1,17 @@
 import {Component, OnInit} from "@angular/core";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "@core/service/auth/auth.service";
-import Swal from "sweetalert2";
+
+import {modalSignedIn, modalAuthErrors} from "@utils/modal";
+import {fadeIn} from "@utils/animation";
 
 @Component({
   selector: "app-register",
   templateUrl: "./register.component.html",
   styleUrls: ["./register.component.sass"],
+  animations: [fadeIn],
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
@@ -26,32 +30,34 @@ export class RegisterComponent implements OnInit {
     event.preventDefault();
     if (this.registerForm.valid) {
       const value = this.registerForm.value;
+      const fullName = value.firstName + " " + value.lastName;
       this.authService
-        .createUser(value.email, value.password)
+        .createUser(value.email, value.password, fullName)
         .then(() => {
-          this.authService.logout();
-          Swal.fire({
-            html:
-              '<h1 style="color: white; margin: 0;"> Thanks for Sign In </h1>',
-            width: 400,
-            padding: "3em",
-            confirmButtonColor: "#f5a637",
-            icon: "success",
-            background: "url(https://i.gifer.com/uI7.gif) no-repeat 50% 50%",
-            confirmButtonText: "Please, log In",
-          }).then(() => {
+          modalSignedIn(fullName).then(() => {
+            this.authService.logOut();
             this.router.navigate(["/login"]);
           });
         })
         .catch((error) => {
-          if (this.registerForm.valid) {
-            Swal.fire({
-              icon: "error",
-              title: `${error}`,
-              text: "Something went wrong!",
-              confirmButtonText: "Try Again with Another Email",
-              confirmButtonColor: "#f5a637",
-            });
+          const errorMessage = error.message;
+          const errorCode = error.code;
+          switch (errorCode) {
+            case "auth/email-already-in-use":
+              modalAuthErrors(errorMessage);
+              break;
+            case "auth/invalid-email":
+              modalAuthErrors(errorMessage);
+              break;
+            case "auth/operation-not-allowed":
+              modalAuthErrors(errorMessage);
+              break;
+            case "auth/weak-password":
+              modalAuthErrors(errorMessage);
+              break;
+            default:
+              modalAuthErrors(errorMessage);
+              break;
           }
         });
     }
@@ -74,6 +80,8 @@ export class RegisterComponent implements OnInit {
           Validators.maxLength(10),
         ],
       ],
+      firstName: ["", [Validators.required]],
+      lastName: ["", [Validators.required]],
     });
   }
 

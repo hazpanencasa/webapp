@@ -1,1 +1,6 @@
 <app-banner></app-banner>
+<div *ngFor="let production of productions">
+  <div>{{ production.owner.name }}</div>
+  <div>{{ production.name }}</div>
+  <button routerLink="{{ production.id }}">view Details</button>
+</div>
