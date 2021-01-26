@@ -6,7 +6,6 @@
   grid-template-columns: 200px 1fr
   &.hidden
     grid-template-columns: 56px 1fr
-
 .header
   grid-area: header
 .sidebar
@@ -15,3 +14,14 @@
   grid-area: main
 .footer
   grid-area: footer
+
+@media screen and ( max-width: 320px )
+  .grid-container
+    grid-template-areas: "main" "footer" "sidebar"
+    grid-template-columns: 1fr
+    &.hidden
+      grid-template-columns: 1fr
+  .header
+    display: none
+
+  

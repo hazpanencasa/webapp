@@ -38,3 +38,19 @@
   cursor: pointer
   transition: 450ms all
   transform-origin: center left
+.mat-paginator
+  font-size: 16px
+@media screen and ( max-width: 320px)
+  .Cards-container
+    grid-template-columns: 1fr
+    justify-self: center
+    margin: 0
+  .Cards
+    display: flex
+    justify-content: space-between
+    margin-left: 10px
+  .mat-paginator
+    font-size: 10px
+    width: 300px
+    & .mat-paginator-container, .mat-paginator-range-actions, .mat-paginator-range-label
+      margin-left: 0

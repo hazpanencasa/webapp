@@ -8,14 +8,18 @@
       <a *ngIf="showSidebar" class="Sidebar-img" routerLink="/home">
         <img src="assets/images/logoOriginal3.png" alt="logo" />
       </a>
-      <a *ngIf="!showSidebar" class="logoSolo" routerLink="/home">
+      <a
+        *ngIf="!showSidebar"
+        class="logoSolo d-none d-sm-block"
+        routerLink="/home"
+      >
         <img src="assets/images/logoSolo.png" alt="logo" />
       </a>
     </div>
   </header>
   <main>
     <mat-selection-list class="Sidebar-list" [multiple]="false">
-      <div>
+      <div class="d-flex d-md-block">
         <mat-list-option
           class="Sidebar-item"
           routerLinkActive="router-link"
@@ -52,7 +56,7 @@
     </mat-selection-list>
   </main>
   <footer>
-    <mat-selection-list [multiple]="false">
+    <mat-selection-list class="d-none d-md-block" [multiple]="false">
       <div *ngIf="showSidebar; then thenBlock; else elseBlock"></div>
       <ng-template #thenBlock>
         <div class="confi-section">
