@@ -6,18 +6,23 @@
     >
       <ul class="navbar-nav mr-4 p-0">
         <li class="nav-item text-white align-self-center">
-          <a routerLink="profile" class="nav-link" style="font-size: xx-large">
+          <a
+            routerLink="profile"
+            class="nav-link"
+            [class.scroll-list]="scroll"
+            style="font-size: xx-large"
+          >
             <ion-icon name="settings-outline"></ion-icon>
           </a>
         </li>
         <li
           *ngIf="user$ | async as user"
-          class="nav-item text-white align-self-center d-flex align-items-center"
+          class="nav-item align-self-center d-flex align-items-center"
         >
-          <a class="text-white pr-2">
+          <a [class.scroll-list]="scroll" class="nav-link pr-2">
             {{ user.displayName }}
           </a>
-          <img ngxGravatar size="50" [email]="userEmail" />
+          <img ngxGravatar size="35" [email]="userEmail" />
         </li>
         <li class="nav-item d-flex align-items-center">
           <a

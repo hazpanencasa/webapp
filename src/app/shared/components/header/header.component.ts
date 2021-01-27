@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener, Input } from "@angular/core";
-import { Router, ActivatedRoute, Params, ParamMap } from "@angular/router";
+import { Router } from "@angular/router";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AuthService } from "@core/service/auth/auth.service";
 import { Observable } from "rxjs";
