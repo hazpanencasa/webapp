@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-layout",
@@ -12,6 +12,5 @@ export class LayoutComponent implements OnInit {
 
   clickToggle(event) {
     this.sidebarToggle = event;
-    console.log(this.sidebarToggle);
   }
 }

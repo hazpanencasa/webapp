@@ -33,6 +33,7 @@
     "firebase": "^8.2.1",
     "ionicons": "^4.6.3",
     "jquery": "^3.5.1",
+    "ngx-gravatar": "^10.0.0",
     "rxjs": "~6.6.0",
     "sweetalert2": "^10.12.6",
     "tslib": "^2.0.0",

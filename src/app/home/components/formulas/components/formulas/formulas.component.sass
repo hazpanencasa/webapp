@@ -17,9 +17,17 @@
     padding-top: 50px
     display: inline-flex
     flex-direction: column
-    justify-content: center
-    align-items: center
+    justify-content: flex-end
+    align-items: flex-start
     margin: 0 auto
+    &__header-title
+      padding-bottom: 70px
+      padding-left: 70px
+      h1
+        font-family: $font-subtitle
+        font-weight: 700
+        letter-spacing: .05em
+        text-transform: uppercase
 .Banner
   height: 50vh
 .Cards 
@@ -40,7 +48,7 @@
   transform-origin: center left
 .mat-paginator
   font-size: 16px
-@media screen and ( max-width: 320px)
+@media screen and ( max-width: 325px)
   .Cards-container
     grid-template-columns: 1fr
     justify-self: center

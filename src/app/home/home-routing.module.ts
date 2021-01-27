@@ -1,6 +1,6 @@
-import {NgModule} from "@angular/core";
-import {Routes, RouterModule} from "@angular/router";
-import {LayoutComponent} from "./components/layout/layout.component";
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+import { LayoutComponent } from "./components/layout/layout.component";
 
 const routes: Routes = [
   {
@@ -38,6 +38,13 @@ const routes: Routes = [
         loadChildren: () =>
           import("./components/productions/productions.module").then(
             (m) => m.ProductionsModule
+          ),
+      },
+      {
+        path: "profile",
+        loadChildren: () =>
+          import("./components/profile/profile.module").then(
+            (m) => m.ProfileModule
           ),
       },
     ],

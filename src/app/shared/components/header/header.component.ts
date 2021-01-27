@@ -15,15 +15,21 @@ export class HeaderComponent implements OnInit {
   scroll = false;
   title = "";
   user$: Observable<any> = this.af.user;
+  userName: string;
+  userEmail: string;
 
   constructor(
     private af: AngularFireAuth,
     private authService: AuthService,
-    private route: ActivatedRoute,
     private router: Router
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.authService.getCurrentUser().then((Response) => {
+      this.userName = Response.displayName;
+      this.userEmail = Response.email;
+    });
+  }
 
   @HostListener("document:scroll")
   scrollFunction() {

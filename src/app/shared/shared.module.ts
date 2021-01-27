@@ -10,6 +10,12 @@ import { LayoutModule } from "@angular/cdk/layout";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { FilterPipe } from "./pipes/filter.pipe";
 import { PaginatePipe } from "./pipes/paginate.pipe";
+import { GravatarModule, GravatarConfig, FALLBACK, RATING } from "ngx-gravatar";
+const gravatarConfig: GravatarConfig = {
+  fallback: FALLBACK.robohash,
+  rating: RATING.x,
+  backgroundColor: "#881918",
+};
 
 @NgModule({
   declarations: [
@@ -25,6 +31,7 @@ import { PaginatePipe } from "./pipes/paginate.pipe";
     RouterModule,
     ReactiveFormsModule,
     LayoutModule,
+    GravatarModule.forRoot(gravatarConfig),
   ],
   exports: [
     HeaderComponent,
@@ -33,6 +40,7 @@ import { PaginatePipe } from "./pipes/paginate.pipe";
     FilterPipe,
     MaterialModule,
     PaginatePipe,
+    GravatarModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

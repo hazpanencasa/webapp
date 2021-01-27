@@ -1,24 +1,25 @@
 <header class="container">
   <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div
-      class="collapse navbar-collapse flex-row-reverse"
+      class="collapse navbar-collapse flex-row-reverse mt-2"
       id="navbarNavAltMarkup"
     >
-      <ul class="navbar-nav p-0">
+      <ul class="navbar-nav mr-4 p-0">
         <li class="nav-item text-white align-self-center">
-          <a class="nav-link" style="font-size: xx-large">
+          <a routerLink="profile" class="nav-link" style="font-size: xx-large">
             <ion-icon name="settings-outline"></ion-icon>
           </a>
         </li>
         <li
           *ngIf="user$ | async as user"
-          class="nav-item text-white align-self-center"
+          class="nav-item text-white align-self-center d-flex align-items-center"
         >
-          <a>
+          <a class="text-white pr-2">
             {{ user.displayName }}
           </a>
+          <img ngxGravatar size="50" [email]="userEmail" />
         </li>
-        <li class="nav-item">
+        <li class="nav-item d-flex align-items-center">
           <a
             (click)="logOut()"
             [class.scroll-list]="scroll"
