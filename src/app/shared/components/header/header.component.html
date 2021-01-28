@@ -19,7 +19,11 @@
           *ngIf="user$ | async as user"
           class="nav-item align-self-center d-flex align-items-center"
         >
-          <a [class.scroll-list]="scroll" class="nav-link pr-2">
+          <a
+            routerLink="profile"
+            [class.scroll-list]="scroll"
+            class="nav-link pr-2"
+          >
             {{ user.displayName }}
           </a>
           <img ngxGravatar size="35" [email]="userEmail" />

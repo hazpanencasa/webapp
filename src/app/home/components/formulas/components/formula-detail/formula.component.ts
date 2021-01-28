@@ -1,7 +1,7 @@
-import {Component, OnInit} from "@angular/core";
-import {ActivatedRoute, Params} from "@angular/router";
-import {Formula} from "@core/model/formulas.model";
-import {FormulasService} from "@core/service/formulas/formulas.service";
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Params } from "@angular/router";
+import { Formula } from "@core/model/formulas.model";
+import { FormulasService } from "@core/service/formulas/formulas.service";
 
 @Component({
   selector: "app-formula",
@@ -17,6 +17,9 @@ export class FormulaDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.idParams();
+  }
+  idParams() {
     this.route.params.subscribe((params: Params) => {
       const id = params.id;
       this.fetchFormula(id);

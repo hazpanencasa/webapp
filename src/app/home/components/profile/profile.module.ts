@@ -7,6 +7,7 @@ import { DescriptionImgComponent } from "./components/description-img/descriptio
 import { DescriptionHistoryComponent } from "./components/description-history/description-history.component";
 import { GravatarModule, GravatarConfig, FALLBACK, RATING } from "ngx-gravatar";
 import { ProfileInfoComponent } from './components/profile-info/profile-info.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 const gravatarConfig: GravatarConfig = {
   fallback: FALLBACK.robohash,
   rating: RATING.x,
@@ -19,6 +20,7 @@ const gravatarConfig: GravatarConfig = {
     DescriptionImgComponent,
     DescriptionHistoryComponent,
     ProfileInfoComponent,
+    EditProfileComponent,
   ],
   imports: [
     CommonModule,

@@ -25,10 +25,7 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.authService.getCurrentUser().then((Response) => {
-      this.userName = Response.displayName;
-      this.userEmail = Response.email;
-    });
+    this.getCurrentUser();
   }
 
   @HostListener("document:scroll")
@@ -39,7 +36,12 @@ export class HeaderComponent implements OnInit {
       this.scroll = false;
     }
   }
-
+  getCurrentUser() {
+    this.authService.getCurrentUser().then((Response) => {
+      this.userName = Response.displayName;
+      this.userEmail = Response.email;
+    });
+  }
   logOut() {
     modalLogout().then((result) => {
       if (result.isConfirmed) {
