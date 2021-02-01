@@ -3,7 +3,7 @@
   style="background-image: url('assets/images/backgroundLogo.png')"
   class="Register-container"
 >
-  <mat-card class="Register-card animate__animated animate__fadeInBottomLeft">
+  <mat-card class="Register-card animate__animated animate__fadeInRight">
     <div class="container">
       <div class="row">
         <div class="col-6">
@@ -28,8 +28,8 @@
                         />
                         <mat-error
                           *ngIf="
-                            registerFormEmail.dirty &&
-                            registerFormEmail.hasError('required')
+                            registerFormFirstName.dirty &&
+                            registerFormFirstName.hasError('required')
                           "
                         >
                           First Name is <strong>required</strong>
@@ -48,11 +48,11 @@
                         />
                         <mat-error
                           *ngIf="
-                            registerFormEmail.dirty &&
-                            registerFormEmail.hasError('required')
+                            registerFormLastName.dirty &&
+                            registerFormLastName.hasError('required')
                           "
                         >
-                          Last Name is<strong>required</strong>
+                          Last Name is <strong>required</strong>
                         </mat-error>
                       </mat-form-field>
                     </mat-card-content>

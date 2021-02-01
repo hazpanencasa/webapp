@@ -1,11 +1,11 @@
-import {Component, OnInit} from "@angular/core";
-import {Router} from "@angular/router";
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "@core/service/auth/auth.service";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { AuthService } from "@core/service/auth/auth.service";
 
-import {modalSignedIn, modalAuthErrors} from "@utils/modal";
-import {fadeIn} from "@utils/animation";
+import { modalSignedIn, modalAuthErrors } from "@utils/modal";
+import { fadeIn } from "@utils/animation";
 
 @Component({
   selector: "app-register",
@@ -83,6 +83,13 @@ export class RegisterComponent implements OnInit {
       firstName: ["", [Validators.required]],
       lastName: ["", [Validators.required]],
     });
+  }
+
+  get registerFormLastName() {
+    return this.registerForm.get("lastName");
+  }
+  get registerFormFirstName() {
+    return this.registerForm.get("firstName");
   }
 
   get registerFormEmail() {

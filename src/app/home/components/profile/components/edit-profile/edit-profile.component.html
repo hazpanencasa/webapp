@@ -1,1 +1,108 @@
-<p>edit-profile works!</p>
+<div
+  style="background-image: url('assets/images/backgroundLogo.png')"
+  class="Register-container"
+>
+  <mat-card class="Register-card animate__animated animate__fadeInLeft">
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <form [formGroup]="updateUser" (ngSubmit)="onSaveUser($event)">
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title class="py-3">Update Profile</mat-card-title>
+              </mat-card-header>
+              <mat-card-content class="Register-form container">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <mat-card-content>
+                      <div>
+                        <ion-icon name="person-outline"></ion-icon>
+                      </div>
+                      <mat-form-field class="input-fullName">
+                        <mat-label>First Name</mat-label>
+                        <input
+                          formControlName="firstName"
+                          matInput
+                          type="text"
+                        />
+                        <mat-error
+                          *ngIf="
+                            updateFormFirstName.dirty &&
+                            updateFormFirstName.hasError('required')
+                          "
+                        >
+                          First Name is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </mat-card-content>
+                  </div>
+                  <div class="col-lg-6">
+                    <mat-card-content>
+                      <mat-form-field class="input-fullName">
+                        <mat-label>Last Name</mat-label>
+                        <input
+                          formControlName="lastName"
+                          matInput
+                          type="text"
+                        />
+                        <mat-error
+                          *ngIf="
+                            updateFormLastName.dirty &&
+                            updateFormLastName.hasError('required')
+                          "
+                        >
+                          Last Name is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </mat-card-content>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <mat-card-content>
+                      <div>
+                        <ion-icon name="mail-outline"></ion-icon>
+                      </div>
+                      <mat-form-field>
+                        <mat-label>Email</mat-label>
+                        <input
+                          placeholder="Ex. pat@example.com"
+                          formControlName="email"
+                          matInput
+                          type="email"
+                        />
+                        <mat-error
+                          *ngIf="
+                            updateFormEmail.dirty &&
+                            updateFormEmail.hasError('required')
+                          "
+                        >
+                          Email is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="updateFormEmail.hasError('pattern')">
+                          Please enter a valid email address
+                        </mat-error>
+                      </mat-form-field>
+                    </mat-card-content>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <mat-card-actions>
+                      <button class="button-primary" type="submit">
+                        Update Profile
+                      </button>
+                    </mat-card-actions>
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </form>
+        </div>
+        <div class="col-6 Register-form__logo">
+          <img src="assets/images/logoOriginalSolo.png" alt="logo" />
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>

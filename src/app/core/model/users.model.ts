@@ -1,5 +1,6 @@
 export interface User {
   email: string;
-  name: string;
-  user_groups: Array<any>;
+  displayName: string;
+  password?: string;
+  uid?: string;
 }

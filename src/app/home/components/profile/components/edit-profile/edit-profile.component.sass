@@ -1,0 +1,65 @@
+@import ../../../../../../utils/variables
+.Register-container
+  background-color: rgb(244, 228, 202) 
+  height: 100vh
+  width: 100%
+  background-size: cover
+  display: flex
+  margin: 0
+  padding: 0
+  background-position: center
+  background-repeat: no-repeat
+  justify-content: center
+  align-items: center
+  .Register-card
+    background-image: url('https://i.pinimg.com/736x/30/c1/86/30c186ac479ada24b401baee76187153.jpg')
+    background-repeat: no-repeat
+    background-size: cover
+    margin: 0
+    width: 700px
+    height: 450px
+    border-radius: 2em
+    border: 1px solid black
+    -webkit-box-shadow: 50px 27px 15px 0px rgba(50, 50, 50, 0.44)
+    -moz-box-shadow: 50px 27px 15px 0px rgba(50, 50, 50, 0.44)
+    box-shadow: 50px 27px 15px 0px rgba(50, 50, 50, 0.44)
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    mat-card
+      display: flex
+      justify-content: center
+      align-items: center
+      flex-direction: column
+      height: 400px
+      background: rgb(225, 225, 225, 0.8)
+.Register-form
+  mat-card-content
+    display: flex
+    & div
+      display: flex
+      align-items: center
+      margin-right: 5px
+      ion-icon
+        color: $primary-color
+        font-size: 2em
+.Register-form__logo
+  display: flex
+  align-items: center
+  position: relative
+  right: 1em
+  img
+    width: 260px
+.Register-form__button
+  display: flex
+  flex-direction: column
+  align-items: center
+  width: 200px
+  height: 65px
+  button 
+    margin-bottom: 5px
+    width: 100%
+    height: 100%
+.input-fullName
+  width: 95px

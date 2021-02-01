@@ -96,3 +96,22 @@ export const modalFormula = (img: string) => {
     },
   });
 };
+export const modalResetPassword = () =>
+  Swal.fire({
+    title: `<h4 class="modalHead">Email has been sent to you, Please check and verefy</h4>`,
+    showConfirmButton: true,
+    width: 600,
+    padding: "6em",
+    background: `url('https://i.gifer.com/uI7.gif') no-repeat 50% 50%`,
+    confirmButtonColor: "#881918",
+    confirmButtonText: `<div class='modalLogOutButton'>
+      <p>Sign In</p>
+      <ion-icon name="log-in-outline"></ion-icon>
+      </div>`,
+    showClass: {
+      popup: "animate__animated animate__fadeInDown",
+    },
+    hideClass: {
+      popup: "animate__animated animate__fadeOutDown",
+    },
+  });
