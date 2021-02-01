@@ -8,5 +8,5 @@ export interface Formula {
   steps: Array<any>;
   unit_weight: string;
   units: string;
-  user: object;
+  user: any;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { AuthService } from "@core/service/auth/auth.service";
 import { modalLogout } from "@utils/modal";
@@ -20,7 +20,6 @@ export class DescriptionImgComponent implements OnInit {
   }
   getCurrentUser() {
     this.auth.getCurrentUser().then((Response) => {
-      console.log(Response);
       this.userName = Response.displayName;
       this.userEmail = Response.email;
       this.userUdi = Response.uid;

@@ -4,7 +4,11 @@
       <app-description-img></app-description-img>
     </div>
     <div class="profile_history col-12 col-md-9">
-      <app-description-history></app-description-history>
+      <app-description-history
+        [numberProductions]="reducedProductions"
+        [numberIngredients]="reducedIngredients"
+        [numberFormulas]="reducedFormulas"
+      ></app-description-history>
       <div class="profile_activity mt-5">
         <app-profile-info></app-profile-info>
       </div>

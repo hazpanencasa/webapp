@@ -1,11 +1,21 @@
-<div class="grid-container">
+<div *ngIf="currenteUser" class="grid-container">
   <div class="wrapper">
     <div class="card">
       <div class="front">
         <h1>Production</h1>
       </div>
-      <div class="right">
-        <h2>Production</h2>
+      <div class="right d-flex text-center">
+        <div
+          class="align-self-center"
+          *ngIf="numberProductions > 0; else elseBlock"
+        >
+          <p>Congratulation you have made</p>
+          <h1 class="my-0">{{ numberProductions }}</h1>
+          <h1>Productions</h1>
+        </div>
+        <ng-template #elseBlock
+          >This user has not any Productions created yet</ng-template
+        >
       </div>
     </div>
     <div class="img-wrapper">
@@ -17,8 +27,18 @@
       <div class="front">
         <h1>Ingredients</h1>
       </div>
-      <div class="right">
-        <h2>Ingredients</h2>
+      <div class="right text-center d-flex">
+        <div
+          class="align-self-center"
+          *ngIf="numberIngredients > 0; else elseBlock"
+        >
+          <p>Congratulation you have made</p>
+          <h1 class="my-0">{{ numberIngredients }}</h1>
+          <h1>Ingredients</h1>
+        </div>
+        <ng-template #elseBlock
+          >This user has not any ingredient created yet</ng-template
+        >
       </div>
     </div>
     <div class="img-wrapper">
@@ -30,8 +50,18 @@
       <div class="front">
         <h1>Formulas</h1>
       </div>
-      <div class="right">
-        <h2>Formulas</h2>
+      <div class="right d-flex text-center">
+        <div
+          class="align-self-center"
+          *ngIf="numberFormulas > 0; else elseBlock"
+        >
+          <p>Congratulation you have made</p>
+          <h1 class="my-0">{{ numberFormulas }}</h1>
+          <h1>Formulas</h1>
+        </div>
+        <ng-template #elseBlock
+          >This user has not any Formulas created yet</ng-template
+        >
       </div>
     </div>
     <div class="img-wrapper">
