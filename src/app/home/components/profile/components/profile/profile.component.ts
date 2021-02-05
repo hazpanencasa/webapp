@@ -50,8 +50,8 @@ export class ProfileComponent implements OnInit {
   fetchIngredients() {
     const ingredientArray = [];
     this.ingredients.getIngredients().subscribe((ingredient) => {
-      ingredient.forEach((ingre) => {
-        const userEmail = ingre.creator;
+      ingredient.forEach((ingres) => {
+        const userEmail = ingres.creator;
         ingredientArray.push(userEmail);
       });
       this.reducedIngredients = this.reduceArray(ingredientArray);
@@ -59,10 +59,13 @@ export class ProfileComponent implements OnInit {
   }
   reduceArray(array: Array<any>) {
     let userEmail = "";
-    this.authService.getCurrentUser().then((user) => (userEmail = user.email));
+    this.authService.getCurrentUser().then((user) => {
+      this.user = user;
+      userEmail = user.email;
+    });
     const otherArry = array.filter((email) => {
-      if (email === "timoto@gmail.com") {
-        // if (email === userEmail) {
+      // if (email === "timoto@gmail.com") {
+      if (email === userEmail) {
         return true;
       }
     });

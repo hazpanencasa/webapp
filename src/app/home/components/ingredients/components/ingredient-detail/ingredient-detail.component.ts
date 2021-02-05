@@ -1,7 +1,7 @@
-import {Component, OnInit} from "@angular/core";
-import {ActivatedRoute, Params} from "@angular/router";
-import {Ingredient} from "@core/model/ingredients.model";
-import {IngredientsService} from "@core/service/ingredients/ingredients.service";
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Params } from "@angular/router";
+import { Ingredient } from "@core/model/ingredients.model";
+import { IngredientsService } from "@core/service/ingredients/ingredients.service";
 @Component({
   selector: "app-ingredient-detail",
   templateUrl: "./ingredient-detail.component.html",

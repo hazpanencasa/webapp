@@ -1,4 +1,4 @@
-<div class="profile container-fluid">
+<div *ngIf="user" class="profile container-fluid">
   <div class="row px-2">
     <div class="profile_description col-12 col-md-3">
       <app-description-img></app-description-img>
@@ -10,6 +10,7 @@
         [numberFormulas]="reducedFormulas"
       ></app-description-history>
       <div class="profile_activity mt-5">
+        <h1 class="text-center">The Most Popular of {{ user.displayName }}</h1>
         <app-profile-info></app-profile-info>
       </div>
     </div>

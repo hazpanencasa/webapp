@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "",
-    "sources": [
-        "ingredient-detail.component.sass"
-    ],
-    "names": [],
-    "file": "ingredient-detail.component.css"
-}

@@ -9,7 +9,7 @@ import { AuthService } from "@core/service/auth/auth.service";
   styleUrls: ["./description-history.component.sass"],
 })
 export class DescriptionHistoryComponent implements OnInit {
-  currenteUser: User;
+  currentsUser: User;
   @Input() numberProductions: number;
   @Input() numberIngredients: number;
   @Input() numberFormulas: number;
@@ -18,7 +18,7 @@ export class DescriptionHistoryComponent implements OnInit {
 
   ngOnInit() {
     this.authService.getCurrentUser().then((user) => {
-      return (this.currenteUser = user);
+      return (this.currentsUser = user);
     });
   }
 }

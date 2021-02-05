@@ -1,12 +1,59 @@
 <ng-container *ngIf="ingredient">
-  <ul>
-    <li>{{ ingredient.name }}</li>
-    <li>{{ ingredient.hydration }}</li>
-    <li>{{ ingredient.can_be_modified }} can_be_modified</li>
-    <li>{{ ingredient.cost }}</li>
-    <li>{{ ingredient.formula.compensation_percentage }}</li>
-  </ul>
-  <ul *ngFor="let subIngredient of ingredient.formula.ingredients">
-    <li>{{ subIngredient }}</li>
-  </ul>
+  <div
+    class="parallax"
+    id="parallax"
+    style="background-image: url('assets/images/img-3.png')"
+  >
+    <div class="overlay">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="img-container">
+              <ul class="d-flex">
+                <li>
+                  <img src="assets/images/ingredient.png" alt="ingredient" />
+                </li>
+                <li>
+                  <img src="assets/images/ingredient.png" alt="ingredient" />
+                </li>
+                <li>
+                  <img src="assets/images/ingredient.png" alt="ingredient" />
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="container-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Cost</th>
+                    <th>Hydration %</th>
+                    <th>gr</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{ ingredient.name }}</td>
+                    <td>{{ ingredient.cost ? ingredient.cost : "0" }}</td>
+                    <td>{{ ingredient.hydration }}</td>
+                    <td>20gr</td>
+                  </tr>
+                  <tr>
+                    <td colspan="4">
+                      <mat-progress-bar
+                        mode="determinate"
+                        value="{{ ingredient.hydration }}"
+                      ></mat-progress-bar>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </ng-container>
