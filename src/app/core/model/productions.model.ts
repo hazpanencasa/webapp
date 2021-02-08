@@ -1,6 +1,6 @@
 export interface Production {
   id: string;
-  formulas: Array<any>;
+  formulas: any;
   name: string;
   owner: object;
   user: any;
