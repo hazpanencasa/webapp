@@ -1,4 +1,5 @@
 <div class="profile-info">
+  <h1 class="text-center">The Most Popular of {{ userName }}</h1>
   <div class="profile-info_container">
     <div *ngFor="let element of outputArrayFormulas" class="flip">
       <div
@@ -15,7 +16,12 @@
         <p *ngIf="element.description === null">
           This is an special Formula, take a look to see all the details
         </p>
-        <button>See Details here</button>
+        <button
+          class="button-primary mt-4"
+          routerLink="/home/formulas/{{ element.id }}"
+        >
+          See Details here
+        </button>
       </div>
     </div>
   </div>
@@ -33,7 +39,12 @@
           {{ element.description }}
         </p>
         <p>This is an special Formula, take a look to see all the details</p>
-        <button>See Details here</button>
+        <button
+          class="button-primary mt-4"
+          routerLink="/home/productions/{{ element.id }}"
+        >
+          See Details here
+        </button>
       </div>
     </div>
   </div>
@@ -50,8 +61,22 @@
         <p>
           {{ element.description }}
         </p>
-        <button>See Details here</button>
+        <button
+          class="button-primary mt-4"
+          routerLink="/home/ingredients/{{ element.id }}"
+        >
+          See Details here
+        </button>
       </div>
     </div>
+  </div>
+  <div class="text-center" *ngIf="outputArrayFormulas.length == 0">
+    This User has no any Formula created yet
+  </div>
+  <div class="text-center mt-4" *ngIf="outputArrayProductions.length == 0">
+    This User has no any Productions created yet
+  </div>
+  <div class="text-center mt-4" *ngIf="outputArrayIngredients.length == 0">
+    This User has no any ingredients created yet
   </div>
 </div>

@@ -1,1 +1,81 @@
-<p>production-detail works!</p>
+<ng-container *ngIf="production" class="Formula-detail">
+  <section class="Info-section1">
+    <div class="container">
+      <div class="row">
+        <div class="Info-section2__description col-md-6 align-self-start">
+          <h2>{{ production.formulas[0].formula.description }}</h2>
+        </div>
+        <div
+          class="Info-section2__description col-md-2 order-md-2 align-self-end"
+        >
+          <h2>
+            <em>Descripcion</em>
+          </h2>
+          <p>info</p>
+        </div>
+        <div class="col-md-4 order-md-3 align-self-center">
+          <div class="alt Info-section2__img">
+            <img
+              class="img-fluid"
+              src="assets/images/img-info1.png"
+              alt="description"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="Info-section2">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 order-md-3 align-self-start">info</div>
+        <div class="col-lg-4 order-md-2 align-self-center">
+          <div class="alt Info-section2__img">
+            <img
+              class="img-fluid"
+              src="assets/images/img-info2.png"
+              alt="description"
+            />
+          </div>
+        </div>
+        <div
+          class="Info-section2__description col-lg-2 order-md-1 align-self-start"
+        >
+          <h2>Ingredients</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="Info-section3">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">info</div>
+        <div class="col-lg-2 align-self-center">
+          <div
+            class="Info-section2__description col-lg-2 order-md-1 align-self-center"
+          >
+            <h2>Ingredients Compuestos</h2>
+          </div>
+        </div>
+        <div class="col-lg-4 align-self-center">
+          <div class="alt Info-section2__img">
+            <img
+              class="img-fluid"
+              src="assets/images/img-info2.png"
+              alt="description"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  info
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col">info</div>
+      </div>
+    </div>
+  </section>
+  info
+</ng-container>

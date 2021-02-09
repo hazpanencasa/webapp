@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { AuthService } from "@core/service/auth/auth.service";
 import { FormulasService } from "@core/service/formulas/formulas.service";
 import { IngredientsService } from "@core/service/ingredients/ingredients.service";
@@ -10,6 +10,7 @@ import { ProductionsService } from "@core/service/productions/productions.servic
   styleUrls: ["./profile-info.component.sass"],
 })
 export class ProfileInfoComponent implements OnInit {
+  @Input() userName: string;
   outputArray = [];
   outputArrayFormulas = [];
   outputArrayIngredients = [];
@@ -29,12 +30,11 @@ export class ProfileInfoComponent implements OnInit {
     this.formulasFilterEmail();
     this.ingredientsFilterEmail();
     this.productionFilterEmail();
-    console.log(this.outputArray);
   }
   formulasFilterEmail() {
     this.formulasService.getFormulas().subscribe((formulas) => {
       const newArray = formulas.filter((formula) => {
-        if (formula.user.creator.email === "timoto@gmail.com") {
+        if (formula.user.creator.email === this.currentUserEmail) {
           return formula;
         }
       });
@@ -47,7 +47,7 @@ export class ProfileInfoComponent implements OnInit {
   ingredientsFilterEmail() {
     this.ingredientsService.getIngredients().subscribe((ingredients) => {
       const newArray = ingredients.filter((ingredient) => {
-        if (ingredient.creator === "timoto@gmail.com") {
+        if (ingredient.creator === this.currentUserEmail) {
           return ingredient;
         }
       });
@@ -60,7 +60,7 @@ export class ProfileInfoComponent implements OnInit {
   productionFilterEmail() {
     this.productionsService.getProductions().subscribe((productions) => {
       const newArray = productions.filter((production) => {
-        if (production.user.creator.email === "timoto@gmail.com") {
+        if (production.user.creator.email === this.currentUserEmail) {
           return production;
         }
       });

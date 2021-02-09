@@ -2,23 +2,23 @@
 .parallax
   background: #fff fixed no-repeat 50% 50%
 #parallax
-  position: relative
+  // position: relative
   background-size: cover
   background-position: bottom
   & .overlay
-    z-index: 1
-    position: absolute
-    top: 0
-    bottom: 0
-    left: 0
-    right: 0
-    background-color: rgba(0, 0, 0, 0.3)
+    // z-index: 1
+    // position: absolute
+    // top: 0
+    // bottom: 0
+    // left: 0
+    // right: 0
+    // background-color: rgba(0, 0, 0, 0.3)
     color: white
     padding-top: 50px
-    display: inline-flex
-    flex-direction: column
-    justify-content: flex-end
-    align-items: flex-start
+    // display: inline-flex
+    // flex-direction: column
+    // justify-content: flex-end
+    // align-items: flex-start
     margin: 0 auto
     &__header-title
       padding-bottom: 70px
@@ -28,20 +28,19 @@
         font-weight: 700
         letter-spacing: .05em
         text-transform: uppercase
-.Banner
-  height: 50vh
+// .Banner
+//   // height: 50vh
 .Cards 
   display: flex
   justify-content: center
 .Cards-container
   display: grid
   grid-template-columns: repeat(3, 1fr)
-  grid-gap: 5px
+  grid-gap: 20px
   margin: 40px 0px
   padding-bottom: 10px
 .Cards-container__item
   position: relative
-  margin-right: 10px
   display: inline-block
   cursor: pointer
   transition: 450ms all
@@ -62,3 +61,6 @@
     width: 300px
     & .mat-paginator-container, .mat-paginator-range-actions, .mat-paginator-range-label
       margin-left: 0
+.card-input
+  background-color: white
+  color: black

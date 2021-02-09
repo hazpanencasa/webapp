@@ -1,6 +1,7 @@
-import {Component, OnInit} from "@angular/core";
-import {ActivatedRoute, Params} from "@angular/router";
-import {ProductionsService} from "@core/service/productions/productions.service";
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Params } from "@angular/router";
+import { Production } from "@core/model/productions.model";
+import { ProductionsService } from "@core/service/productions/productions.service";
 
 @Component({
   selector: "app-production-detail",
@@ -8,6 +9,7 @@ import {ProductionsService} from "@core/service/productions/productions.service"
   styleUrls: ["./production-detail.component.sass"],
 })
 export class ProductionDetailComponent implements OnInit {
+  production: Production;
   constructor(
     private productionsService: ProductionsService,
     private route: ActivatedRoute
@@ -21,7 +23,7 @@ export class ProductionDetailComponent implements OnInit {
   }
   fetchProduction(id: string) {
     this.productionsService.getProduction(id).subscribe((production) => {
-      console.log(production);
+      this.production = production;
     });
   }
 }

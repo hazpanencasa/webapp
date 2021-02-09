@@ -16,7 +16,7 @@ export class FormulasComponent implements OnInit {
   pageEvent: PageEvent;
   filterFormula = "";
   counter = 0;
-  pageSize = 3;
+  pageSize = 6;
   pageNumber = 1;
   ngOnInit() {
     this.fetchFormulas();

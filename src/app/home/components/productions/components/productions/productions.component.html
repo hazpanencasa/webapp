@@ -1,68 +1,70 @@
 <app-banner></app-banner>
-<div class="container pt-2">
-  <div class="row">
-    <div class="col-3">
-      <mat-form-field>
-        <mat-label>Search a production</mat-label>
-        <input
-          matInput
-          placeholder="Ex. Pan Campesino"
-          name="filterProduction"
-          [(ngModel)]="filterProduction"
-        />
-      </mat-form-field>
-    </div>
-    <div class="col-5 offset-md-3">
-      <mat-paginator
-        class="p-0"
-        [length]="productions.length"
-        [pageSize]="pageSize"
-        [pageSizeOptions]="pageSizeOptions"
-        (page)="onPageChange($event)"
-      >
-      </mat-paginator>
+<ng-container *ngIf="productions">
+  <div class="container pt-2">
+    <div class="row">
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>Search a production</mat-label>
+          <input
+            matInput
+            placeholder="Ex. Pan Campesino"
+            name="filterProduction"
+            [(ngModel)]="filterProduction"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-5 offset-md-3">
+        <mat-paginator
+          class="p-0"
+          [length]="productions.length"
+          [pageSize]="pageSize"
+          [pageSizeOptions]="pageSizeOptions"
+          (page)="onPageChange($event)"
+        >
+        </mat-paginator>
+      </div>
     </div>
   </div>
-</div>
-<div class="grid-container">
-  <div
-    *ngFor="
-      let production of productions
-        | paginate: pageSize:pageNumber
-        | filter: filterProduction
-    "
-    class="production-card production-card_active"
-    id="cardProduction"
-  >
-    <div class="production_photo">
-      <div class="production_img_back">
-        <img src="assets/images/img-info1.png" alt="" />
-      </div>
-      <div class="production_mins">
-        <div class="sub_mins">
-          <h3>{{ production.formulas[0].formula.unit_weight }}</h3>
-          <span>gr</span>
+  <div class="grid-container">
+    <div
+      *ngFor="
+        let production of productions
+          | paginate: pageSize:pageNumber
+          | filter: filterProduction
+      "
+      class="production-card production-card_active"
+      id="cardProduction"
+    >
+      <div class="production_photo">
+        <div class="production_img_back">
+          <img src="assets/images/img-info1.png" alt="" />
+        </div>
+        <div class="production_mins">
+          <div class="sub_mins">
+            <h3>{{ production.formulas[0].formula.unit_weight }}</h3>
+            <span>gr</span>
+          </div>
+        </div>
+        <div class="production_servings">
+          <h3>{{ production.formulas[0].formula.units }}</h3>
+          <span>Unit</span>
+        </div>
+        <div class="production-action">
+          <button routerLink="{{ production.id }}" class="button-primary">
+            See Details
+          </button>
+        </div>
+        <div class="production_detalles">
+          <h3>{{ production.name }}</h3>
+          <p>
+            {{
+              production.formulas[0].formula.description
+                ? production.formulas[0].formula.description
+                : "Learn more about this product by pressing click"
+            }}
+          </p>
         </div>
       </div>
-      <div class="production_servings">
-        <h3>{{ production.formulas[0].formula.units }}</h3>
-        <span>Unit</span>
-      </div>
-      <div class="production-action">
-        <button routerLink="{{ production.id }}" class="button-primary">
-          See Details
-        </button>
-      </div>
-      <div class="production_detalles">
-        <h3>{{ production.name }}</h3>
-        <p>
-          {{
-            production.formulas[0].formula.description
-              ? production.formulas[0].formula.description
-              : "Learn more about this product by pressing click"
-          }}
-        </p>
-      </div>
     </div>
   </div>
-</div>
+</ng-container>

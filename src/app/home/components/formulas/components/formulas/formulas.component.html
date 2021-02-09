@@ -1,55 +1,62 @@
 <ng-container *ngIf="formulas">
   <div
     style="background-image: url('assets/images/hazPanEnCasa2.jpg')"
-    class="Banner parallax"
+    class="parallax"
     id="parallax"
   >
     <div class="overlay">
       <div class="overlay__header-title">
         <h1>Formulas</h1>
         <p>Mira toda nuestra variedad de Formulas</p>
-      </div>
-    </div>
-  </div>
-  <div class="Banner-section__main container mt-3">
-    <div class="row">
-      <div class="col-10 p-0">
-        <div class="container">
+        <div class="Banner-section__main container mt-3">
           <div class="row">
-            <div class="col-md-7 px-0 col-12">
-              <mat-paginator
-                class="p-0"
-                [length]="formulas.length"
-                [pageSize]="pageSize"
-                [pageSizeOptions]="pageSizeOptions"
-                (page)="onPageChange($event)"
-              >
-              </mat-paginator>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col p-0">
-              <section class="Cards">
-                <div class="Cards-container" id="carousel">
-                  <div
-                    *ngFor="
-                      let formula of formulas | paginate: pageSize:pageNumber
-                    "
-                    class="Cards-container__item"
-                  >
-                    <app-card [formula]="formula"></app-card>
+            <div class="col-10 p-0">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-6 card-input">
+                    <mat-form-field>
+                      <mat-label>Search a Formula</mat-label>
+                      <input
+                        matInput
+                        placeholder="Ex. Pan Campesino"
+                        name="filterProduction"
+                        [(ngModel)]="filterFormula"
+                      />
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6 px-0 col-12">
+                    <mat-paginator
+                      class="p-0"
+                      [length]="formulas.length"
+                      [pageSize]="pageSize"
+                      [pageSizeOptions]="pageSizeOptions"
+                      (page)="onPageChange($event)"
+                    >
+                    </mat-paginator>
                   </div>
                 </div>
-              </section>
+                <div class="row">
+                  <div class="col p-0">
+                    <section class="Cards">
+                      <div class="Cards-container" id="carousel">
+                        <div
+                          *ngFor="
+                            let formula of formulas
+                              | paginate: pageSize:pageNumber
+                              | filter: filterFormula
+                          "
+                          class="Cards-container__item"
+                        >
+                          <app-card [formula]="formula"></app-card>
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-2 col-12">
-        <input type="text" />
-        <ul>
-          <li>categoria</li>
-        </ul>
       </div>
     </div>
   </div>
