@@ -1,119 +1,20 @@
-<div class="Gallery pt-md-4 pt-1" data-aos="fade-up">
+<div class="Gallery pt-md-4 pt-1">
   <div class="container">
     <div class="row">
       <div class="col">
         <h2 class="Gallery__heading text-center">Our Gallery</h2>
-        <p class="Gallery__sub-heading text-center">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit
-        </p>
+        <p class="Gallery__sub-heading text-center">the most popular breads</p>
       </div>
     </div>
     <div class="row Gallery-section__grid">
-      <div class="level-1 Gallery-section__grid__item">
-        <a href="">
-          <img
-            class="img-fluid"
-            src="assets/images/img-gallery1.png"
-            alt="..."
-          />
+      <div
+        *ngFor="let image of imagesBread"
+        class="Gallery-section__grid__item"
+      >
+        <a (click)="showModal(image.img)">
+          <img src="{{ image.img }}" alt="..." />
           <span class="over-lay">
-            <ion-icon name="add-outline"></ion-icon>
-          </span>
-        </a>
-      </div>
-      <div class="level-2 Gallery-section__grid__item">
-        <a href="">
-          <img
-            class="img-fluid"
-            src="assets/images/img-gallery2.png"
-            alt="..."
-          />
-          <span class="over-lay">
-            <ion-icon name="add-outline"></ion-icon>
-          </span>
-        </a>
-      </div>
-      <div class="level-3 Gallery-section__grid__item">
-        <a href="">
-          <img
-            class="img-fluid"
-            src="assets/images/img-gallery3.png"
-            alt="..."
-          />
-          <span class="over-lay">
-            <ion-icon name="add-outline"></ion-icon>
-          </span>
-        </a>
-      </div>
-      <div class="level-1 Gallery-section__grid__item">
-        <a href="">
-          <img
-            class="img-fluid"
-            src="assets/images/img-gallery1.png"
-            alt="..."
-          />
-          <span class="over-lay">
-            <ion-icon name="add-outline"></ion-icon>
-          </span>
-        </a>
-      </div>
-      <div class="level-2 Gallery-section__grid__item">
-        <a href="">
-          <img
-            class="img-fluid"
-            src="assets/images/img-gallery2.png"
-            alt="..."
-          />
-          <span class="over-lay">
-            <ion-icon name="add-outline"></ion-icon>
-          </span>
-        </a>
-      </div>
-      <div class="level-3 Gallery-section__grid__item">
-        <a href="">
-          <img
-            class="img-fluid"
-            src="assets/images/img-gallery3.png"
-            alt="..."
-          />
-          <span class="over-lay">
-            <ion-icon name="add-outline"></ion-icon>
-          </span>
-        </a>
-      </div>
-      <div class="level-3 Gallery-section__grid__item">
-        <a href="">
-          <img
-            class="img-fluid"
-            src="assets/images/img-gallery3.png"
-            alt="..."
-          />
-          <span class="over-lay">
-            <ion-icon name="add-outline"></ion-icon>
-          </span>
-        </a>
-      </div>
-      <div class="level-2 Gallery-section__grid__item">
-        <a href="">
-          <img
-            class="img-fluid"
-            src="assets/images/img-gallery2.png"
-            alt="..."
-          />
-          <span class="over-lay">
-            <ion-icon name="add-outline"></ion-icon>
-          </span>
-        </a>
-      </div>
-      <div class="level-1 Gallery-section__grid__item">
-        <a href="">
-          <img
-            class="img-fluid"
-            src="assets/images/img-gallery1.png"
-            alt="..."
-          />
-          <span class="over-lay">
-            <ion-icon name="add-outline"></ion-icon>
+            <ion-icon name="search-outline"></ion-icon>
           </span>
         </a>
       </div>

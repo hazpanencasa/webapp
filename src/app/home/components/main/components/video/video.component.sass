@@ -1,0 +1,45 @@
+@import ../../../../../../utils/variables
+.video
+  position: relative
+  height: 95vh
+  overflow: hidden
+  color: $light-color
+
+.video video
+  width: 100%
+  position: fixed
+  z-index: -999
+  top: 58px
+  left: 0px
+  bottom: 0
+  right: 0
+ 
+.header-content 
+  z-index: 2
+
+.header-content h1
+  font-size: 50px
+  margin-bottom: 10px
+  font-family: $font-title
+
+.header-content p
+  font-size: 1.5rem
+  display: block
+  padding-bottom: 2rem
+
+.overlay
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  background-color: rgba(0, 0, 0, 0.5)
+  color: white
+  padding-top: 76px
+  display: flex
+  justify-content: center
+  align-items: center
+
+@media (max-width: 960px)
+  .content 
+    padding: 0 3rem 0 3rem

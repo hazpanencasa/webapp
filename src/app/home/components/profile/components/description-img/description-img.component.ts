@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { AngularFireAuth } from "@angular/fire/auth";
 import { Router } from "@angular/router";
 import { AuthService } from "@core/service/auth/auth.service";
 import { modalLogout } from "@utils/modal";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-description-img",
@@ -9,6 +11,7 @@ import { modalLogout } from "@utils/modal";
   styleUrls: ["./description-img.component.sass"],
 })
 export class DescriptionImgComponent implements OnInit {
+  user$: Observable<any> = this.af.user;
   @Input() numberFormulas: number;
   @Input() numberIngredients: number;
   @Input() numberProduction: number;
@@ -39,7 +42,11 @@ export class DescriptionImgComponent implements OnInit {
     },
   ];
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+    private af: AngularFireAuth
+  ) {}
 
   ngOnInit() {
     this.getCurrentUser();
@@ -58,7 +65,6 @@ export class DescriptionImgComponent implements OnInit {
         }
       });
     }
-    console.log(this.outPutArray);
   }
   getCurrentUser() {
     this.auth.getCurrentUser().then((Response) => {

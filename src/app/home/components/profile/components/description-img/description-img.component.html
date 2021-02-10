@@ -1,11 +1,11 @@
-<div *ngIf="userEmail" class="container-fluid p-0">
+<div *ngIf="user$ | async as user" class="container-fluid p-0">
   <div class="row">
     <div class="col-12 img-container">
       <img ngxGravatar size="250" [email]="userEmail" />
     </div>
   </div>
   <div class="col">
-    <h1 class="pt-3">{{ userName }}</h1>
+    <h1 class="pt-3">{{ user.displayName }}</h1>
     <p style="font-size: medium">
       I am a passionate person for frontend technologies, I do not stop
       innovating and my daily goal is always to learn something new
@@ -18,7 +18,7 @@
     </button>
     <div class="profile_email mt-2">
       <ion-icon class="mr-2 pb-2" name="mail-outline"></ion-icon>
-      <p class="pb-2">{{ userEmail }}</p>
+      <p class="pb-2">{{ user.email }}</p>
     </div>
     <div class="mt-2">
       <h1>Highlights</h1>
@@ -26,14 +26,6 @@
         <img [src]="l.icon" alt="icon" />
         <p>{{ l.title }}</p>
       </div>
-      <!-- <div class="profile_highlight">
-        <img src="assets/images/Pasos/Pasos_PNG/icon-05.png" alt="icon" />
-        <p>Menor tiempo en cocina</p>
-      </div>
-      <div class="profile_highlight">
-        <img src="assets/images/Pasos/Pasos_PNG/icon-04.png" alt="icon" />
-        <p>Repostero Gedi</p>
-      </div> -->
     </div>
   </div>
   <div class="container">

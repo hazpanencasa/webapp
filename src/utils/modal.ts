@@ -96,6 +96,25 @@ export const modalFormula = (img: string) => {
     },
   });
 };
+export const modalGallery = (img: string) =>
+  Swal.fire({
+    html: `<div class="gallery-modal">
+            <img src=${img} />
+        </div>`,
+    showCloseButton: true,
+    confirmButtonColor: "#881918",
+    confirmButtonText: `<div class='modalLogOutButton'>
+      <p>See Details</p>
+      </div>`,
+    background: `transparent`,
+    showClass: {
+      popup: "animate__animated animate__fadeInDown",
+    },
+    hideClass: {
+      popup: "animate__animated animate__fadeOutDown",
+    },
+  });
+
 export const modalResetPassword = () =>
   Swal.fire({
     title: `<h4 class="modalHead">Email has been sent to you, Please check and verefy</h4>`,
