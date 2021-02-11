@@ -62,9 +62,38 @@
       </button>
     </div>
   </div>
-  <div style="height: 100vh" class="container">
+  <div class="container">
     <div class="row">
-      <div class="col">hola</div>
+      <div class="col-7">
+        <div class="mb-4 header-title">
+          <img src="assets/images/logoOriginal.png" alt="logo" />
+          <h1 class="ml-4">{{ formula.name }}</h1>
+        </div>
+        <p *ngIf="formula.description">
+          {{ formula.description }}
+        </p>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae cum
+          modi, eligendi, non, tempore itaque error impedit eveniet rerum minima
+          ex voluptates nobis quis quam blanditiis possimus vitae delectus
+          molestiae?
+        </p>
+        <div class="preparation-time mt-4">
+          <app-formula-table-time [formula]="formula"></app-formula-table-time>
+        </div>
+      </div>
+      <div class="col-5">
+        <div class="img-container">
+          <img src="assets/images/img-3.png" alt="item" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="content-container">
+          <app-table2 [formula]="formula"></app-table2>
+        </div>
+      </div>
     </div>
   </div>
 </ng-container>

@@ -1,16 +1,15 @@
 @import ../../../../../../../../utils/variables
-.table-time
-  background-color: rgba($primary-color, 0.4)
-  -webkit-box-shadow: 9px 11px 16px -4px #000000 
-  box-shadow: 9px 11px 16px -4px #000000
-  padding: 10px
-  max-width: 400px
-  & tbody, th
-    border-top: none
-.table-row
-  border: none !important 
-.table-row__barprogress
-  border: none 
-  & td
-    padding: 0
-    border-bottom: none
+.time-container
+  display: grid
+  grid-template-columns: 50px repeat(4, 120px)
+  grid-template-rows: 45px
+  justify-content: flex-start
+  img
+    width: 50px
+.time-item
+  display: flex
+  align-items: center
+  flex-direction: column
+  justify-content: center
+  h2
+    margin: 0

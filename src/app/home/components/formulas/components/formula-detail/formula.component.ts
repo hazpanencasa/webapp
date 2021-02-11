@@ -30,11 +30,12 @@ export class FormulaDetailComponent implements OnInit {
       this.formula = formula;
     });
   }
-  // validation() {
-  //   if (this.formula.steps[7].ingredients[0].ingredient.formula) {
-  //     this.verificationFormula = true;
-  //   } else if (this.formula.steps[7].temperature === null) {
-  //     this.verificationFormula = false;
-  //   }
-  // }
+  increaseFont() {
+    console.log("increase font");
+  }
+  decreaseFont() {
+    console.log("increase font");
+  }
+  changeGridColumnByTwo() {}
+  changeGridColumnByOne() {}
 }

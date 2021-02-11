@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+import { FormulaDetailComponent } from "./components/formulas/components/formula-detail/formula.component";
 import { LayoutComponent } from "./components/layout/layout.component";
 
 const routes: Routes = [
@@ -48,6 +49,10 @@ const routes: Routes = [
           ),
       },
     ],
+  },
+  {
+    path: "formulas/:id",
+    component: FormulaDetailComponent,
   },
 ];
 
