@@ -26,6 +26,12 @@ export class ProfileComponent implements OnInit {
     this.fetchFormulas();
     this.fetchIngredients();
     this.fetchProductions();
+    this.getCurrentUser();
+  }
+  getCurrentUser() {
+    this.authService.getCurrentUser().then((user) => {
+      this.user = user;
+    });
   }
   fetchProductions() {
     const productionArray = [];
@@ -34,7 +40,7 @@ export class ProfileComponent implements OnInit {
         const userEmail = prod.user.creator.email;
         productionArray.push(userEmail);
       });
-      this.reducedProductions = this.reduceArray(productionArray);
+      return (this.reducedProductions = this.reduceArray(productionArray));
     });
   }
   fetchFormulas() {
@@ -44,7 +50,7 @@ export class ProfileComponent implements OnInit {
         const userEmail = form.user.creator.email;
         formulaArray.push(userEmail);
       });
-      this.reducedFormulas = this.reduceArray(formulaArray);
+      return (this.reducedFormulas = this.reduceArray(formulaArray));
     });
   }
   fetchIngredients() {
@@ -54,18 +60,13 @@ export class ProfileComponent implements OnInit {
         const userEmail = ingres.creator;
         ingredientArray.push(userEmail);
       });
-      this.reducedIngredients = this.reduceArray(ingredientArray);
+      return (this.reducedIngredients = this.reduceArray(ingredientArray));
     });
   }
   reduceArray(array: Array<any>) {
-    let userEmail = "";
-    this.authService.getCurrentUser().then((user) => {
-      this.user = user;
-      userEmail = user.email;
-    });
     const otherArry = array.filter((email) => {
-      // if (email === "timoto@gmail.com") {
-      if (email === userEmail) {
+      if (email === this.user.email) {
+        // if (email === "timoto@gmail.com") {
         return true;
       }
     });

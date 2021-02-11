@@ -1,31 +1,76 @@
-<ng-container *ngIf="production" class="Formula-detail">
-  <section class="Info-section1">
+<ng-container *ngIf="production">
+  <section class="Info-section1 mt-4">
     <div class="container">
       <div class="row">
-        <div class="Info-section2__description col-md-6 align-self-start">
-          <h2>{{ production.formulas[0].formula.description }}</h2>
-        </div>
-        <div
-          class="Info-section2__description col-md-2 order-md-2 align-self-end"
-        >
-          <h2>
-            <em>Descripcion</em>
+        <div class="col-md-4">
+          <h2 class="text-center">
+            {{ production.formulas[0].formula.description }}
           </h2>
-          <p>info</p>
+          <div class="card" style="width: 20rem">
+            <div
+              class="card-img"
+              style="background-image: url(assets/images/backgroundLogo.png)"
+            >
+              <img
+                src="assets/images/panCanilla.png"
+                class="card-img-top"
+                alt="..."
+              />
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="col-md-4 order-md-3 align-self-center">
-          <div class="alt Info-section2__img">
-            <img
-              class="img-fluid"
-              src="assets/images/img-info1.png"
-              alt="description"
-            />
+        <div class="col-md-8">
+          <h2>
+            <em>Ingredients</em>
+          </h2>
+          <div class="container-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>%</th>
+                  <th>Hydration</th>
+                  <th>gr</th>
+                </tr>
+              </thead>
+              <tbody
+                class="table-content"
+                *ngFor="let i of production.formulas[0].formula.ingredients"
+              >
+                <tr>
+                  <td>{{ i.ingredient.name }}</td>
+                  <td>{{ i.percentage }}</td>
+                  <td colspan="1">{{ i.ingredient.hydration }}</td>
+                  <td>gramos</td>
+                </tr>
+                <tr class="table-row__barprogress">
+                  <td colspan="4">
+                    <mat-progress-bar
+                      mode="determinate"
+                      value="{{ i.percentage }}"
+                    ></mat-progress-bar>
+                  </td>
+                </tr>
+              </tbody>
+              <tr class="table-content">
+                <td>Total</td>
+                <td class="text-left">{{ resultPercent }} %</td>
+                <td>resultado hidratacion%</td>
+                <td>{{ production.formulas[0].unit_weight }}gr</td>
+              </tr>
+            </table>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <section class="Info-section2">
+  <!-- <section class="Info-section2">
     <div class="container">
       <div class="row">
         <div class="col-lg-6 order-md-3 align-self-start">info</div>
@@ -76,6 +121,5 @@
         <div class="col">info</div>
       </div>
     </div>
-  </section>
-  info
+  </section> -->
 </ng-container>

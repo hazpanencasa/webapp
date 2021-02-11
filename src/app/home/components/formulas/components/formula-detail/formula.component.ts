@@ -28,14 +28,13 @@ export class FormulaDetailComponent implements OnInit {
   fetchFormula(id: string) {
     this.formulasService.getFormula(id).subscribe((formula) => {
       this.formula = formula;
-      this.validation();
     });
   }
-  validation() {
-    if (this.formula.steps[7].ingredients[0].ingredient.formula) {
-      this.verificationFormula = true;
-    } else if (this.formula.steps[7].temperature === null) {
-      this.verificationFormula = false;
-    }
-  }
+  // validation() {
+  //   if (this.formula.steps[7].ingredients[0].ingredient.formula) {
+  //     this.verificationFormula = true;
+  //   } else if (this.formula.steps[7].temperature === null) {
+  //     this.verificationFormula = false;
+  //   }
+  // }
 }

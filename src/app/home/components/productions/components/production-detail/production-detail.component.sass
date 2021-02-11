@@ -1,0 +1,54 @@
+@import ../../../../../../utils/variables
+.card-img
+  background-size: contain
+  background-position: center
+
+.container-table 
+  padding: 1em 0 
+
+table 
+  -webkit-box-shadow: 16px 9px 20px 4px rgb(0 0 0 / 23%) 
+  box-shadow: 16px 9px 20px 4px rgb(0 0 0 / 23%)
+  width: 700px
+  border-collapse: collapse
+  overflow: hidden
+  box-shadow: 0 0 20px rgba(0,0,0,0.1)
+
+th,
+td 
+  padding: 15px
+  color: $dark-color
+
+th 
+  text-align: left
+  color: $light-color
+
+thead
+  color: $light-color
+  th 
+    background-color: $primary-color
+
+.table-content
+  background: #eddec8
+  padding-bottom: 10px
+
+.table-row__barprogress
+  border: none 
+  & td
+    padding: 0
+    border-bottom: none
+    & mat-progress-bar
+      width: 95%
+      margin: 0 auto
+  td 
+    position: relative
+    // &:hover 
+    //   &:before 
+    //     content: ""
+    //     position: absolute
+    //     left: 0
+    //     right: 0
+    //     top: -9999px
+    //     bottom: -9999px
+    //     background-color: #ed666629
+

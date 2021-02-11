@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { AfterViewInit, Component, Input, OnInit } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { Router } from "@angular/router";
 import { AuthService } from "@core/service/auth/auth.service";
@@ -50,17 +50,16 @@ export class DescriptionImgComponent implements OnInit {
 
   ngOnInit() {
     this.getCurrentUser();
-    let addAllIngredientAndFormulasAndProductions =
-      this.numberFormulas + this.numberIngredients + this.numberProduction;
+    const addAllIngredientAndFormulasAndProductions = 10;
     if (addAllIngredientAndFormulasAndProductions >= 2) {
       this.highLights.filter((highlight) => {
         if (highlight.number_formula > 1) {
           return this.outPutArray.push(highlight);
         }
       });
-    } else if (addAllIngredientAndFormulasAndProductions === 0) {
+    } else if (addAllIngredientAndFormulasAndProductions <= 0) {
       this.highLights.filter((highlight) => {
-        if (highlight.number_formula == 0) {
+        if (highlight.number_formula === 0) {
           return this.outPutArray.push(highlight);
         }
       });
