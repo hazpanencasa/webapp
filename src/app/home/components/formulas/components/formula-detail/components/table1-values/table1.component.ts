@@ -1,5 +1,5 @@
-import {Component, OnInit, Input} from "@angular/core";
-import {Formula} from "@core/model/formulas.model";
+import { Component, OnInit, Input } from "@angular/core";
+import { Formula } from "@core/model/formulas.model";
 @Component({
   selector: "app-table1",
   templateUrl: "./table1.component.html",
@@ -7,18 +7,30 @@ import {Formula} from "@core/model/formulas.model";
 })
 export class Table1Component implements OnInit {
   @Input() formula: Formula;
-  unitWeight: number;
-  bakeryMeasure: number;
-
+  timeTotal = 0;
   constructor() {}
 
   ngOnInit() {
-    this.bakeryFactor();
+    this.addAllTime();
   }
-  bakeryFactor() {
-    this.unitWeight = parseInt(this.formula.unit_weight, 10);
-    this.bakeryMeasure =
-      this.unitWeight / this.formula.ingredients[1].percentage;
-    return this.bakeryMeasure;
+  transformMinutesToHours(minutes: number) {
+    const hour = 60;
+    const minutesToHours: number = Math.floor((minutes * 1) / hour);
+    const justMinutes = Math.floor(
+      ((minutes * 1) / hour - minutesToHours) * hour
+    );
+    if (minutes > hour && justMinutes !== 0) {
+      return `${minutesToHours} h. ${justMinutes} min.`;
+    } else if (minutes >= hour && justMinutes === 0) {
+      return `${minutesToHours} h.`;
+    } else {
+      return `${minutes} min.`;
+    }
+  }
+  addAllTime() {
+    let total = 0;
+    const TimesArray = this.formula.steps;
+    TimesArray.forEach((element) => (total += element.time));
+    return (this.timeTotal = total);
   }
 }

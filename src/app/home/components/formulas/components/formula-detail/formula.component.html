@@ -89,10 +89,32 @@
       </div>
     </div>
     <div class="row">
-      <div class="col">
+      <div class="col my-4">
         <div class="content-container">
-          <app-table2 [formula]="formula"></app-table2>
+          <div class="content-item">
+            <div>
+              <h1 class="text-center">Ingredients</h1>
+              <app-table2 [formula]="formula"></app-table2>
+            </div>
+            <div *ngIf="formula.steps[7].ingredients" class="mt-4">
+              <h1>Complex Ingredients</h1>
+              <app-table3 [formula]="formula"></app-table3>
+            </div>
+            <div class="mt-2">
+              <h1>Times</h1>
+              <app-table1 [formula]="formula"></app-table1>
+            </div>
+          </div>
+          <div class="content-item">
+            <app-formula-stepper [formula]="formula"></app-formula-stepper>
+          </div>
         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center">Steps</h1>
+        <app-roulette-steps [formula]="formula"></app-roulette-steps>
       </div>
     </div>
   </div>

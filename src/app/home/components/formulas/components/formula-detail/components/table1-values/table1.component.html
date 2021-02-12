@@ -1,84 +1,26 @@
-<div class="Info-section1__table">
-  <div class="container">
-    <div class="row">
-      <div class="col Formula-detail_hidratation">
-        <h2>Hydration</h2>
-        <section>
-          <div class="progress">
-            <div
-              class="progress-bar"
-              role="progressbar"
-              [style.width.%]="formula.ingredients[1].percentage"
-            >
-              {{ formula.ingredients[1].percentage }}%
-            </div>
-          </div>
-          <div class="progress-percent">
-            <span>0%</span>
-            <span>100%</span>
-          </div>
-        </section>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Unidades</th>
-              <th scope="col">Peso(unid.)</th>
-              <th scope="col">Peso total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">{{ formula.units }}</th>
-              <td>{{ formula.unit_weight }} gr</td>
-              <td>{{ formula.unit_weight | number }} gr</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Factor Panadero</th>
-              <th scope="col">Hidratacion</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">
-                medida panadera
-                {{ bakeryMeasure.toFixed(2) }}
-                gr/%
-              </th>
-              <td>{{ formula.ingredients[1].percentage }} gr</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Descripcion</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">
-                {{ formula.description }}
-              </th>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+<ng-container *ngIf="formula">
+  <div class="table2-container mb-3">
+    <table class="table">
+      <thead>
+        <tr>
+          <th colspan="10" scope="col">Step</th>
+          <th colspan="2" class="text-right" scope="col">Dur.(min)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let i of formula.steps" class="table-row__info">
+          <td *ngIf="i.time > 0" colspan="10" scope="col">{{ i.name }}</td>
+          <td *ngIf="i.time > 0" class="text-right">
+            {{ transformMinutesToHours(i.time) }}
+          </td>
+          <td class="text-right" *ngIf="i.time > 0">({{ i.time }})</td>
+        </tr>
+      </tbody>
+      <tr>
+        <td colspan="10" scope="row">Total</td>
+        <td class="text-right">{{ transformMinutesToHours(timeTotal) }}</td>
+        <td class="text-right">({{ timeTotal }})</td>
+      </tr>
+    </table>
   </div>
-</div>
+</ng-container>

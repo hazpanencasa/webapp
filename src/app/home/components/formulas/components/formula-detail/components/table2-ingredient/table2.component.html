@@ -3,11 +3,9 @@
     <table class="table">
       <thead>
         <tr>
-          <th colspan="2" scope="col">
-            <h4>Name</h4>
-          </th>
-          <th scope="col">%</th>
-          <th scope="col">gr</th>
+          <th colspan="2" scope="col">Name</th>
+          <th class="text-center" scope="col">%</th>
+          <th class="text-center" scope="col">gr</th>
         </tr>
       </thead>
       <tbody *ngFor="let i of formula.ingredients">
@@ -23,7 +21,6 @@
                 resultPercent
               ).toFixed(1)
             }}
-            gr
           </td>
         </tr>
         <tr class="table-row__barprogress">
@@ -38,7 +35,7 @@
       <tr>
         <td colspan="2" scope="row">Total</td>
         <td>{{ resultPercent }}%</td>
-        <td>{{ formula.unit_weight }}gr</td>
+        <td>{{ formula.unit_weight }}</td>
       </tr>
     </table>
   </div>

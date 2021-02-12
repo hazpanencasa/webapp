@@ -12,10 +12,13 @@ export class FormulaTableTimeComponent implements OnInit {
   timeTotal = 0;
   preTime: number;
   bakeTime: any;
+  unitWeight: number;
+  bakeryMeasure: number;
   constructor() {}
 
   ngOnInit() {
     this.addAllTime();
+    this.bakeryFactor();
   }
   transformMinutesToHours(minutes: number) {
     const hour = 60;
@@ -38,8 +41,13 @@ export class FormulaTableTimeComponent implements OnInit {
     const bake = this.formula.steps[10].time;
     this.preTime = preparation;
     this.bakeTime = bake;
-    // console.log(preparation);
     TimesArray.forEach((element) => (total += element.time));
     this.timeTotal = total;
+  }
+  bakeryFactor() {
+    this.unitWeight = parseInt(this.formula.unit_weight, 10);
+    this.bakeryMeasure =
+      this.unitWeight / this.formula.ingredients[1].percentage;
+    return this.bakeryMeasure;
   }
 }
