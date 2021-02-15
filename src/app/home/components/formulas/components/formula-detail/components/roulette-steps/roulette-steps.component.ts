@@ -7,6 +7,7 @@ import { Formula } from "@core/model/formulas.model";
   styleUrls: ["./roulette-steps.component.sass"],
 })
 export class RouletteStepsComponent implements OnInit {
+  @Input() fontSize: number;
   @Input() formula: Formula;
   numberIterator = [];
   autoTicks = false;
@@ -26,5 +27,19 @@ export class RouletteStepsComponent implements OnInit {
   ngOnInit() {}
   celsiusToFahrenheit(celsius: number) {
     return Math.ceil((celsius * 9) / 5 + 32);
+  }
+  transformMinutesToHours(minutes: number) {
+    const hour = 60;
+    const minutesToHours: number = Math.floor((minutes * 1) / hour);
+    const justMinutes = Math.floor(
+      ((minutes * 1) / hour - minutesToHours) * hour
+    );
+    if (minutes > hour && justMinutes !== 0) {
+      return `${minutesToHours} h. ${justMinutes} min`;
+    } else if (minutes >= hour && justMinutes === 0) {
+      return `${minutesToHours} h`;
+    } else {
+      return `${minutes} min`;
+    }
   }
 }

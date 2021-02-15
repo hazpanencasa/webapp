@@ -16,7 +16,8 @@ import { FormulaStepperComponent } from "./components/formula-detail/components/
 import { FormulaTableTimeComponent } from "./components/formula-detail/components/formula-table-time/formula-table-time.component";
 import { RouletteStepsComponent } from "./components/formula-detail/components/roulette-steps/roulette-steps.component";
 import { CardComponent } from "./components/formulas/components/card/card.component";
-
+import { AdditionalInfoComponent } from "./components/formula-detail/components/additional-info/additional-info.component";
+import { NgxPrintModule } from "ngx-print";
 @NgModule({
   declarations: [
     BannerComponent,
@@ -29,8 +30,15 @@ import { CardComponent } from "./components/formulas/components/card/card.compon
     FormulaTableTimeComponent,
     RouletteStepsComponent,
     CardComponent,
+    AdditionalInfoComponent,
   ],
-  imports: [CommonModule, FormulasRoutingModule, FormsModule, SharedModule],
+  imports: [
+    CommonModule,
+    FormulasRoutingModule,
+    FormsModule,
+    SharedModule,
+    NgxPrintModule,
+  ],
   providers: [FormulasService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

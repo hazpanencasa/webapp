@@ -6,6 +6,7 @@ import { Formula } from "@core/model/formulas.model";
   styleUrls: ["./table1.component.sass"],
 })
 export class Table1Component implements OnInit {
+  @Input() fontSize: number;
   @Input() formula: Formula;
   timeTotal = 0;
   constructor() {}

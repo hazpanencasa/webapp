@@ -3,23 +3,51 @@
     <table class="table">
       <thead>
         <tr>
-          <th colspan="10" scope="col">Step</th>
-          <th colspan="2" class="text-right" scope="col">Dur.(min)</th>
+          <th [style.fontSize.%]="fontSize" colspan="10" scope="col">Step</th>
+          <th
+            [style.fontSize.%]="fontSize"
+            colspan="2"
+            class="text-right"
+            scope="col"
+          >
+            Dur.(min)
+          </th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let i of formula.steps" class="table-row__info">
-          <td *ngIf="i.time > 0" colspan="10" scope="col">{{ i.name }}</td>
-          <td *ngIf="i.time > 0" class="text-right">
+          <td
+            [style.fontSize.%]="fontSize"
+            *ngIf="i.time > 0"
+            colspan="10"
+            scope="col"
+          >
+            {{ i.name }}
+          </td>
+          <td
+            [style.fontSize.%]="fontSize"
+            *ngIf="i.time > 0"
+            class="text-right"
+          >
             {{ transformMinutesToHours(i.time) }}
           </td>
-          <td class="text-right" *ngIf="i.time > 0">({{ i.time }})</td>
+          <td
+            [style.fontSize.%]="fontSize"
+            class="text-right"
+            *ngIf="i.time > 0"
+          >
+            ({{ i.time }})
+          </td>
         </tr>
       </tbody>
       <tr>
-        <td colspan="10" scope="row">Total</td>
-        <td class="text-right">{{ transformMinutesToHours(timeTotal) }}</td>
-        <td class="text-right">({{ timeTotal }})</td>
+        <td [style.fontSize.%]="fontSize" colspan="10" scope="row">Total</td>
+        <td [style.fontSize.%]="fontSize" class="text-right">
+          {{ transformMinutesToHours(timeTotal) }}
+        </td>
+        <td [style.fontSize.%]="fontSize" class="text-right">
+          ({{ timeTotal }})
+        </td>
       </tr>
     </table>
   </div>

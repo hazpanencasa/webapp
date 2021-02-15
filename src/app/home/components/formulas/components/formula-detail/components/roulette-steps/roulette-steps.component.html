@@ -1,7 +1,7 @@
-<section class="mb-4" *ngIf="formula">
+<section class="mb-5" *ngIf="formula">
   <div class="container">
     <div *ngFor="let step of formula.steps; let i = index" class="row mb-4">
-      <div class="col-6 m-auto">
+      <div *ngIf="step.description && step.temperature" class="col-4">
         <div class="img-container">
           <img
             src="assets/images/Pasos/Pasos_PNG/icon-{{ i + 1 }}.png"
@@ -10,15 +10,22 @@
           <div class="info-step">
             <h2 class="m-0">Step {{ i + 1 }} {{ step.name }}</h2>
             <div *ngIf="step.time > 0" class="info-icons mb-2">
-              <ion-icon name="timer-outline"></ion-icon>
-              <p>{{ step.time }} min</p>
+              <ion-icon
+                [style.fontSize.%]="fontSize"
+                class="mr-1"
+                name="timer-outline"
+              ></ion-icon>
+              <p [style.fontSize.%]="fontSize">
+                {{ transformMinutesToHours(step.time) }}
+              </p>
             </div>
             <div class="info-icons" *ngIf="step.temperature">
               <ion-icon
+                [style.fontSize.%]="fontSize"
                 style="color: #881918"
                 name="thermometer-outline"
               ></ion-icon>
-              <p>
+              <p [style.fontSize.%]="fontSize">
                 {{ step.temperature.min }} ˚C /
                 {{ celsiusToFahrenheit(step.temperature.min) }} ˚F
               </p>
@@ -26,8 +33,8 @@
           </div>
         </div>
       </div>
-      <div *ngIf="step.description" class="col-6">
-        <p>{{ step.description }}</p>
+      <div *ngIf="step.description" class="description-step col-5">
+        <p [style.fontSize.%]="fontSize">{{ step.description }}</p>
       </div>
     </div>
   </div>

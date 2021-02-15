@@ -9,6 +9,7 @@ import { Formula } from "@core/model/formulas.model";
 })
 export class FormulaTableTimeComponent implements OnInit {
   @Input() formula: Formula;
+  @Input() fontSize: number;
   timeTotal = 0;
   preTime: number;
   bakeTime: any;
@@ -19,6 +20,7 @@ export class FormulaTableTimeComponent implements OnInit {
   ngOnInit() {
     this.addAllTime();
     this.bakeryFactor();
+    // console.log(this.timeTotal);
   }
   transformMinutesToHours(minutes: number) {
     const hour = 60;
@@ -45,9 +47,13 @@ export class FormulaTableTimeComponent implements OnInit {
     this.timeTotal = total;
   }
   bakeryFactor() {
+    let percentageArray = [];
+    this.formula.ingredients.forEach((element) =>
+      percentageArray.push(element.percentage)
+    );
+    const result = percentageArray.reduce((a, b) => a + b, 0);
+    console.log(result);
     this.unitWeight = parseInt(this.formula.unit_weight, 10);
-    this.bakeryMeasure =
-      this.unitWeight / this.formula.ingredients[1].percentage;
-    return this.bakeryMeasure;
+    this.bakeryMeasure = this.unitWeight / result;
   }
 }

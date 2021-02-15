@@ -1,5 +1,5 @@
-import {Component, OnInit, Input} from "@angular/core";
-import {Formula} from "@core/model/formulas.model";
+import { Component, OnInit, Input } from "@angular/core";
+import { Formula } from "@core/model/formulas.model";
 
 @Component({
   selector: "app-table3",
@@ -7,6 +7,7 @@ import {Formula} from "@core/model/formulas.model";
   styleUrls: ["./table3.component.sass"],
 })
 export class Table3Component implements OnInit {
+  @Input() fontSize: number;
   totalPercentage: number = 0;
   totalGrams: number = 0;
   @Input() formula: Formula;

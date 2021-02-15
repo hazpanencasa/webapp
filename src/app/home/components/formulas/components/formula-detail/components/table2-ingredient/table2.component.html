@@ -3,18 +3,24 @@
     <table class="table">
       <thead>
         <tr>
-          <th colspan="2" scope="col">Name</th>
-          <th class="text-center" scope="col">%</th>
-          <th class="text-center" scope="col">gr</th>
+          <th [style.fontSize.%]="fontSize" colspan="2" scope="col">Name</th>
+          <th class="text-right" [style.fontSize.%]="fontSize" scope="col">
+            %
+          </th>
+          <th class="text-right" [style.fontSize.%]="fontSize" scope="col">
+            gr
+          </th>
         </tr>
       </thead>
       <tbody *ngFor="let i of formula.ingredients">
         <tr class="table-row__info">
-          <td colspan="2" scope="row">
+          <td [style.fontSize.%]="fontSize" colspan="2" scope="row">
             {{ i.ingredient.name }}
           </td>
-          <td>{{ i.percentage }}</td>
-          <td>
+          <td class="text-right" [style.fontSize.%]="fontSize">
+            {{ i.percentage }}
+          </td>
+          <td class="text-right" [style.fontSize.%]="fontSize">
             {{
               (
                 (i.percentage * transformStringToNumber(formula.unit_weight)) /
@@ -33,9 +39,13 @@
         </tr>
       </tbody>
       <tr>
-        <td colspan="2" scope="row">Total</td>
-        <td>{{ resultPercent }}%</td>
-        <td>{{ formula.unit_weight }}</td>
+        <td [style.fontSize.%]="fontSize" colspan="2" scope="row">Total</td>
+        <td class="text-right" [style.fontSize.%]="fontSize">
+          {{ resultPercent }}
+        </td>
+        <td class="text-right" [style.fontSize.%]="fontSize">
+          {{ formula.unit_weight }}
+        </td>
       </tr>
     </table>
   </div>

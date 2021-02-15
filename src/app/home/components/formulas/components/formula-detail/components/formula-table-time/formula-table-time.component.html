@@ -1,29 +1,28 @@
 <ng-container *ngIf="formula">
   <div class="time-container">
-    <!-- <img src="assets/images/Pasos/Pasos_PNG/icon-05.png" alt="" /> -->
-    <div class="time-item">
-      <h2>Baker Factor</h2>
-      <p>{{ bakeryMeasure.toFixed(2) }} gr/%</p>
-    </div>
     <div class="time-item">
       <h2>Hydration</h2>
-      <p>{{ formula.ingredients[1].percentage }}%</p>
-    </div>
-    <div class="time-item">
-      <h2>Preparation</h2>
-      <p>{{ transformMinutesToHours(preTime) }}</p>
-    </div>
-    <div class="time-item">
-      <h2>Bake</h2>
-      <p>{{ transformMinutesToHours(bakeTime) }}</p>
-    </div>
-    <div class="time-item">
-      <h2>Weight Total</h2>
-      <p>{{ unitWeight }} gr</p>
+      <p [style.fontSize.%]="fontSize">
+        {{ formula.ingredients[1].percentage }}%
+      </p>
     </div>
     <div class="time-item">
       <h2>Units</h2>
-      <p>{{ formula.units }}</p>
+      <p [style.fontSize.%]="fontSize">{{ formula.units }}</p>
+    </div>
+    <div class="time-item">
+      <h2>Baker Factor</h2>
+      <p [style.fontSize.%]="fontSize">{{ bakeryMeasure.toFixed(2) }} gr/%</p>
+    </div>
+    <div class="time-item">
+      <h2>Total time</h2>
+      <p [style.fontSize.%]="fontSize">
+        {{ transformMinutesToHours(timeTotal) }}
+      </p>
+    </div>
+    <div class="time-item">
+      <h2>Weight Total</h2>
+      <p [style.fontSize.%]="fontSize">{{ unitWeight }} gr</p>
     </div>
   </div>
 </ng-container>
