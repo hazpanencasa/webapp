@@ -1,7 +1,7 @@
 <section class="mb-5" *ngIf="formula">
   <div class="container">
-    <div *ngFor="let step of formula.steps; let i = index" class="row mb-4">
-      <div *ngIf="step.description && step.temperature" class="col-4">
+    <div *ngFor="let step of formula.steps; let i = index" class="row mb-3">
+      <div *ngIf="step.description || step.temperature" class="col-4">
         <div class="img-container">
           <img
             src="assets/images/Pasos/Pasos_PNG/icon-{{ i + 1 }}.png"

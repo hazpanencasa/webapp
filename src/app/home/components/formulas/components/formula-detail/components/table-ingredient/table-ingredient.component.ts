@@ -2,11 +2,11 @@ import { Component, OnInit, Input } from "@angular/core";
 import { Formula } from "@core/model/formulas.model";
 
 @Component({
-  selector: "app-table2",
-  templateUrl: "./table2.component.html",
-  styleUrls: ["./table2.component.sass"],
+  selector: "app-table-ingredient",
+  templateUrl: "./table-ingredient.component.html",
+  styleUrls: ["./table-ingredient.component.sass"],
 })
-export class Table2Component implements OnInit {
+export class TableIngredientComponent implements OnInit {
   @Input() fontSize: number;
   arrayPercent = [];
   resultPercent = 0;

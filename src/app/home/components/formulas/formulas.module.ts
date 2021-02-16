@@ -8,29 +8,31 @@ import { FormsModule } from "@angular/forms";
 import { BannerComponent } from "./components/banner/banner.component";
 import { FormulasComponent } from "./components/formulas/formulas.component";
 import { FormulaDetailComponent } from "./components/formula-detail/formula.component";
-import { Table1Component } from "./components/formula-detail/components/table1-values/table1.component";
-import { Table2Component } from "./components/formula-detail/components/table2-ingredient/table2.component";
+import { TableTimeComponent } from "./components/formula-detail/components/table-time/table-time.component";
+import { TableIngredientComponent } from "./components/formula-detail/components/table-ingredient/table-ingredient.component";
 import { SharedModule } from "@shared/shared.module";
-import { Table3Component } from "./components/formula-detail/components/table3-ingredient_complex/table3.component";
+import { TableCompoundIngredientComponent } from "./components/formula-detail/components/table-compound-ingredient/table-compound-ingredient.component";
 import { FormulaStepperComponent } from "./components/formula-detail/components/formula-stepper/formula-stepper.component";
-import { FormulaTableTimeComponent } from "./components/formula-detail/components/formula-table-time/formula-table-time.component";
-import { RouletteStepsComponent } from "./components/formula-detail/components/roulette-steps/roulette-steps.component";
+import { TableIntroComponent } from "./components/formula-detail/components/table-intro/table-intro.component";
+import { PreparationStepsComponent } from "./components/formula-detail/components/preparation-steps/preparation-steps.component";
 import { CardComponent } from "./components/formulas/components/card/card.component";
 import { AdditionalInfoComponent } from "./components/formula-detail/components/additional-info/additional-info.component";
 import { NgxPrintModule } from "ngx-print";
+import { TableCompoundIngredient2Component } from './components/formula-detail/components/table-compound-ingredient2/table-compound-ingredient2.component';
 @NgModule({
   declarations: [
     BannerComponent,
     FormulasComponent,
     FormulaDetailComponent,
-    Table1Component,
-    Table2Component,
-    Table3Component,
+    TableTimeComponent,
+    TableIngredientComponent,
+    TableCompoundIngredientComponent,
     FormulaStepperComponent,
-    FormulaTableTimeComponent,
-    RouletteStepsComponent,
+    TableIntroComponent,
+    PreparationStepsComponent,
     CardComponent,
     AdditionalInfoComponent,
+    TableCompoundIngredient2Component,
   ],
   imports: [
     CommonModule,

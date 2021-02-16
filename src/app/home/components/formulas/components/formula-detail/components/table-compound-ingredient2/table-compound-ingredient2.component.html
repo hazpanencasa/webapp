@@ -1,0 +1,62 @@
+<ng-container *ngIf="formula">
+  <div class="table3-container">
+    <h4 class="m-0 p-2">
+      <strong [style.fontSize.%]="fontSize">
+        {{ formula.ingredients[7].ingredient.name }}
+      </strong>
+    </h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th [style.fontSize.%]="fontSize" colspan="4" scope="col">Name</th>
+          <th [style.fontSize.%]="fontSize" class="text-right" scope="col">
+            %
+          </th>
+          <th [style.fontSize.%]="fontSize" class="text-right" scope="col">
+            gr
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        *ngFor="
+          let element of formula.ingredients[7].ingredient.formula.ingredients
+        "
+      >
+        <tr class="table-row__info">
+          <td [style.fontSize.%]="fontSize" colspan="4" scope="row">
+            {{ element.ingredient.name }}
+          </td>
+          <td [style.fontSize.%]="fontSize" class="text-right">
+            {{ element.percentage }}
+          </td>
+          <td [style.fontSize.%]="fontSize" class="text-right">
+            {{
+              getIngredientsGrams(
+                totalGrams,
+                totalPercentage,
+                element.percentage
+              )
+            }}
+          </td>
+        </tr>
+        <tr class="table-row__barprogress">
+          <td colspan="6">
+            <mat-progress-bar
+              mode="determinate"
+              value="{{ element.percentage }}"
+            ></mat-progress-bar>
+          </td>
+        </tr>
+      </tbody>
+      <tr>
+        <td [style.fontSize.%]="fontSize" colspan="4" scope="row">Total</td>
+        <td [style.fontSize.%]="fontSize" class="text-right">
+          {{ totalPercentage }}
+        </td>
+        <td [style.fontSize.%]="fontSize" class="text-right">
+          {{ getTotalGrams(totalPercentage) }}
+        </td>
+      </tr>
+    </table>
+  </div>
+</ng-container>

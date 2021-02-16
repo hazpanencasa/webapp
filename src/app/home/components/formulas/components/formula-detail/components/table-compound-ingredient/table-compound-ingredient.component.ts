@@ -2,15 +2,15 @@ import { Component, OnInit, Input } from "@angular/core";
 import { Formula } from "@core/model/formulas.model";
 
 @Component({
-  selector: "app-table3",
-  templateUrl: "./table3.component.html",
-  styleUrls: ["./table3.component.sass"],
+  selector: "app-table-compound-ingredient",
+  templateUrl: "./table-compound-ingredient.component.html",
+  styleUrls: ["./table-compound-ingredient.component.sass"],
 })
-export class Table3Component implements OnInit {
-  @Input() fontSize: number;
-  totalPercentage: number = 0;
-  totalGrams: number = 0;
+export class TableCompoundIngredientComponent implements OnInit {
   @Input() formula: Formula;
+  @Input() fontSize: number;
+  totalPercentage = 0;
+  totalGrams = 0;
   constructor() {}
 
   ngOnInit() {
@@ -30,7 +30,8 @@ export class Table3Component implements OnInit {
     return this.totalPercentage;
   }
   getTotalGrams(totalGrams: string, totalPercentage: number) {
-    return (this.totalGrams = (parseInt(totalGrams) * totalPercentage) / 100);
+    return (this.totalGrams =
+      (parseInt(totalGrams, 0) * totalPercentage) / 100);
   }
   getIngredientsGrams(
     totalGrams: number,

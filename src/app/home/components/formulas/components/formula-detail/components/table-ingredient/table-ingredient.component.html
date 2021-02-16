@@ -23,7 +23,9 @@
           <td class="text-right" [style.fontSize.%]="fontSize">
             {{
               (
-                (i.percentage * transformStringToNumber(formula.unit_weight)) /
+                (i.percentage *
+                  (transformStringToNumber(formula.unit_weight) *
+                    formula.units)) /
                 resultPercent
               ).toFixed(1)
             }}
@@ -44,7 +46,7 @@
           {{ resultPercent }}
         </td>
         <td class="text-right" [style.fontSize.%]="fontSize">
-          {{ formula.unit_weight }}
+          {{ formula.unit_weight * formula.units }}
         </td>
       </tr>
     </table>

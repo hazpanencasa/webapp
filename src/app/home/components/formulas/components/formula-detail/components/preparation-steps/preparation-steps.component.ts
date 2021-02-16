@@ -2,11 +2,11 @@ import { Component, Input, OnInit } from "@angular/core";
 import { Formula } from "@core/model/formulas.model";
 
 @Component({
-  selector: "app-roulette-steps",
-  templateUrl: "./roulette-steps.component.html",
-  styleUrls: ["./roulette-steps.component.sass"],
+  selector: "app-preparation-steps",
+  templateUrl: "./preparation-steps.component.html",
+  styleUrls: ["./preparation-steps.component.sass"],
 })
-export class RouletteStepsComponent implements OnInit {
+export class PreparationStepsComponent implements OnInit {
   @Input() fontSize: number;
   @Input() formula: Formula;
   numberIterator = [];

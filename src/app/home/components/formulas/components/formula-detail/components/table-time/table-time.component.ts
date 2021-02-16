@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Formula } from "@core/model/formulas.model";
 @Component({
-  selector: "app-table1",
-  templateUrl: "./table1.component.html",
-  styleUrls: ["./table1.component.sass"],
+  selector: "app-table-time",
+  templateUrl: "./table-time.component.html",
+  styleUrls: ["./table-time.component.sass"],
 })
-export class Table1Component implements OnInit {
+export class TableTimeComponent implements OnInit {
   @Input() fontSize: number;
   @Input() formula: Formula;
   timeTotal = 0;
