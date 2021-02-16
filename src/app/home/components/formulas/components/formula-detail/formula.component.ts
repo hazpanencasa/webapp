@@ -2,10 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
 import { Formula } from "@core/model/formulas.model";
 import { FormulasService } from "@core/service/formulas/formulas.service";
-import html2canvas from "html2canvas";
 import { Html2canvasService } from "@core/service/html2canvas.service";
-import * as printJS from "print-js";
-import domtoimage from "dom-to-image";
 @Component({
   selector: "app-formula",
   templateUrl: "./formula.component.html",
@@ -21,15 +18,20 @@ export class FormulaDetailComponent implements OnInit {
   formula: Formula;
   verificationFormula: boolean;
   img: any;
+  timeTotal: number;
   constructor(
     private route: ActivatedRoute,
-    private formulasService: FormulasService,
-    // tslint:disable-next-line: no-shadowed-variable
-    private html2canvas: Html2canvasService
+    private formulasService: FormulasService
   ) {}
 
   ngOnInit() {
     this.idParams();
+  }
+  addAllTime() {
+    let total = 0;
+    const timesArray = this.formula.steps;
+    timesArray.forEach((element) => (total += element.time));
+    console.log(timesArray);
   }
   idParams() {
     this.route.params.subscribe((params: Params) => {

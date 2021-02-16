@@ -19,6 +19,7 @@ import { CardComponent } from "./components/formulas/components/card/card.compon
 import { AdditionalInfoComponent } from "./components/formula-detail/components/additional-info/additional-info.component";
 import { NgxPrintModule } from "ngx-print";
 import { TableCompoundIngredient2Component } from './components/formula-detail/components/table-compound-ingredient2/table-compound-ingredient2.component';
+import { MixingIngredientCompoundComponent } from './components/formula-detail/components/table-compound-ingredient2/components/mixing-ingredient-compound/mixing-ingredient-compound.component';
 @NgModule({
   declarations: [
     BannerComponent,
@@ -33,6 +34,7 @@ import { TableCompoundIngredient2Component } from './components/formula-detail/c
     CardComponent,
     AdditionalInfoComponent,
     TableCompoundIngredient2Component,
+    MixingIngredientCompoundComponent,
   ],
   imports: [
     CommonModule,

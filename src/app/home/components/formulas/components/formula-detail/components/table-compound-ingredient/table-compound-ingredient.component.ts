@@ -22,12 +22,15 @@ export class TableCompoundIngredientComponent implements OnInit {
   }
 
   getTotalPercentage() {
-    const arrayIterator = this.formula.steps[7].ingredients[0].ingredient
-      .formula.ingredients;
-    for (let i = 0; i < arrayIterator.length; i++) {
-      this.totalPercentage += arrayIterator[i].percentage;
+    if (this.formula.steps[7].ingredients[0].ingredient.formula) {
+      const arrayIterator = this.formula.steps[7].ingredients[0].ingredient
+        .formula.ingredients;
+      // tslint:disable-next-line: prefer-for-of
+      for (let i = 0; i < arrayIterator.length; i++) {
+        this.totalPercentage += arrayIterator[i].percentage;
+      }
+      return this.totalPercentage;
     }
-    return this.totalPercentage;
   }
   getTotalGrams(totalGrams: string, totalPercentage: number) {
     return (this.totalGrams =

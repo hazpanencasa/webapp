@@ -151,7 +151,11 @@
                 ></app-table-compound-ingredient>
               </div>
               <div
-                *ngIf="formula.ingredients[7].ingredient.formula"
+                *ngIf="
+                  formula.ingredients[7] &&
+                  formula.ingredients[7].ingredient &&
+                  formula.ingredients[7].ingredient.formula
+                "
                 class="mt-4"
               >
                 <app-table-compound-ingredient2
@@ -164,7 +168,6 @@
               [ngClass]="toggleButtonGridContainer ? 'mt-2' : 'mt-2 br'"
               class="mt-2"
             >
-              <h1>Times</h1>
               <app-table-time
                 [fontSize]="fontSize"
                 [formula]="formula"
@@ -187,6 +190,10 @@
               [fontSize]="fontSize"
               [formula]="formula"
             ></app-formula-stepper>
+            <div *ngIf="formula.steps[7] && formula.steps[7].ingredients">
+              <app-mixing-ingredient-compound [formula]="formula">
+              </app-mixing-ingredient-compound>
+            </div>
             <div
               [ngClass]="toggleButtonGridContainer ? 'mt-2 br' : 'mt-2 verso'"
             >

@@ -1,4 +1,10 @@
-<ng-container *ngIf="formula">
+<ng-container
+  *ngIf="
+    formula.ingredients[7] &&
+    formula.ingredients[7].ingredient &&
+    formula.ingredients[7].ingredient.formula
+  "
+>
   <div class="table3-container">
     <h4 class="m-0 p-2">
       <strong [style.fontSize.%]="fontSize">
