@@ -1,4 +1,11 @@
-<div *ngIf="formula.ingredients[7]" class="container">
+<div
+  *ngIf="
+    formula.ingredients[7] &&
+    formula.ingredients[7].ingredient.formula &&
+    formula.ingredients[7].ingredient.formula.mixing
+  "
+  class="container"
+>
   <h2 class="text-center">
     Steps Mixing of {{ formula.ingredients[7].ingredient.name }}
   </h2>
