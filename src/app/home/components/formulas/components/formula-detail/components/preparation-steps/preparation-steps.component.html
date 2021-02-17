@@ -8,7 +8,7 @@
             alt="icon"
           />
           <div class="info-step">
-            <h2 class="m-0">Step {{ i + 1 }} {{ step.name }}</h2>
+            <h2 class="m-0">{{ step.name }}</h2>
             <div *ngIf="step.time > 0" class="info-icons mb-2">
               <ion-icon
                 [style.fontSize.%]="fontSize"

@@ -43,7 +43,7 @@
                 {{ i.ingredient.name }}
               </td>
               <td class="text-right" [style.fontSize.%]="fontSize">
-                {{ i.ingredient.cost }}
+                {{ i.ingredient.cost ? i.ingredient.cost : "N/A" }}
               </td>
               <td class="text-right" [style.fontSize.%]="fontSize">
                 {{ i.ingredient.hydration }}
