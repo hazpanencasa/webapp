@@ -9,10 +9,6 @@ const routes: Routes = [
     path: "",
     component: FormulasComponent,
   },
-  // {
-  //   path: ":id",
-  //   component: FormulaDetailComponent,
-  // },
 ];
 
 @NgModule({
