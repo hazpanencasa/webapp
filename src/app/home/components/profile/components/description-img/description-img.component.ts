@@ -22,22 +22,22 @@ export class DescriptionImgComponent implements OnInit {
   highLights: Array<any> = [
     {
       title: "Lord Panadero",
-      icon: "assets/images/Pasos/Pasos_PNG/icon-01.png",
+      icon: "assets/images/Pasos/Pasos_PNG/icon-1.png",
       number_formula: 3,
     },
     {
       title: "Menor tiempo en cocina",
-      icon: "assets/images/Pasos/Pasos_PNG/icon-05.png",
+      icon: "assets/images/Pasos/Pasos_PNG/icon-5.png",
       number_formula: 2,
     },
     {
       title: "Jedi Baker",
-      icon: "assets/images/Pasos/Pasos_PNG/icon-04.png",
+      icon: "assets/images/Pasos/Pasos_PNG/icon-4.png",
       number_formula: 4,
     },
     {
       title: "Keep Learning",
-      icon: "assets/images/Pasos/Pasos_PNG/icon-02.png",
+      icon: "assets/images/Pasos/Pasos_PNG/icon-2.png",
       number_formula: 0,
     },
   ];

@@ -2,8 +2,9 @@
 .time-container
   display: grid
   grid-template-columns: minmax(114px, 1fr) repeat(4, minmax(114px, 1fr))
-  grid-template-rows: 45px
+  grid-template-rows: repeat(2, 45px)
   justify-content: flex-start
+  grid-gap: 20px
   img
     width: 50px
 .time-item
@@ -13,3 +14,8 @@
   justify-content: center
   h2
     margin: 0
+.last-child
+  grid-column: 6 span
+.progress-percent
+  display: flex
+  justify-content: space-between
