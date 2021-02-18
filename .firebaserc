@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "formulapanadera": {
+      "hosting": {
+        "house-bread": [
+          "formulapanadera"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "formulapanadera"
+  }
+}

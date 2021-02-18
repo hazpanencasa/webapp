@@ -1,11 +1,11 @@
-import {Component, OnInit} from "@angular/core";
-import {Router} from "@angular/router";
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
-import {Validators, FormGroup, FormBuilder} from "@angular/forms";
-import {AuthService} from "@core/service/auth/auth.service";
+import { Validators, FormGroup, FormBuilder } from "@angular/forms";
+import { AuthService } from "@core/service/auth/auth.service";
 
-import {modalWelcome, modalAuthErrors} from "@utils/modal";
-import {fadeIn} from "@utils/animation";
+import { modalWelcome, modalAuthErrors } from "@utils/modal";
+import { fadeIn } from "@utils/animation";
 
 @Component({
   selector: "app-login",
@@ -15,7 +15,7 @@ import {fadeIn} from "@utils/animation";
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  hide = false;
+  hide = true;
 
   public user: any;
   constructor(

@@ -31,8 +31,6 @@
       align-items: center
       flex-direction: column
       backdrop-filter: blur(3px)
-      img
-        width: 300px
       .Login-form__content.active
         display: flex
         flex-direction: column
@@ -60,3 +58,16 @@
             margin-bottom: 5px 
             width: 200px
             height: 40px
+.logo-login
+  width: 300px
+@media screen and ( max-width: 768px )
+  .Login-container
+    .Login-form
+      .Login-form__card1
+        width: 280px
+        height: 500px
+  .logo-login
+    width: 175px
+    margin-left: 70px
+
+  
