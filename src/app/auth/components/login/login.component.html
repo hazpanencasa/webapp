@@ -6,7 +6,7 @@
   <div class="animate__animated animate__fadeInLeft">
     <form
       [formGroup]="loginForm"
-      class="container Login-form"
+      class="container Login-form pt-2"
       (ngSubmit)="login($event)"
     >
       <mat-card class="Login-form__card1 container">
@@ -48,7 +48,10 @@
                     <div>
                       <ion-icon name="lock-closed-outline"></ion-icon>
                     </div>
-                    <mat-form-field appearance="fill">
+                    <mat-form-field
+                      class="Login-form__password"
+                      appearance="fill"
+                    >
                       <mat-label> Enter your password </mat-label>
                       <input
                         formControlName="password"
