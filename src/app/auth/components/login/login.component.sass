@@ -60,6 +60,7 @@
             height: 40px
 .logo-login
   width: 300px
+
 @media screen and ( max-width: 768px )
   .Login-container
     .Login-form
@@ -68,30 +69,27 @@
         height: 500px
   .logo-login
     width: 175px
-    margin-left: 70px
-@media screen and ( max-width: 425px )
+
+@media screen and (min-width: 320px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)
   .Login-container
-    .Login-form
-      .Login-form__card1
-        width: 230px
-        height: 500px
-        .Login-form__content.active
-          mat-card-content
-            & div
-              height: 44px
-          .Login-form__Email
-            width: 180px
-            font-size: 12px
-          .Login-form__password
-            width: 190px
-            font-size: 12px
-          .Login-form__button
-            button 
-              width: 180px
-              margin-bottom: 0
-              margin-top: 10px
+   .Login-form
+     .Login-form__card1
+       width: 230px
+       height: 500px
+       .Login-form__content.active
+         mat-card-content
+           & div
+             height: 44px
+         .Login-form__Email
+           width: 180px
+           font-size: 12px
+         .Login-form__password
+           width: 180px
+           font-size: 12px
+         .Login-form__button
+           button 
+             width: 180px
+             margin-bottom: 0
+             margin-top: 10px
   .logo-login
     width: 175px
-    margin-left: 70px
-
-  
