@@ -32,7 +32,6 @@
   transition: all 0.5s
   box-shadow: 1px 1px 20px -5px rgba(0,0,0,0.5)
 
-
 .production_img_back 
   position: absolute
   width: 100%
@@ -85,7 +84,6 @@
   font-size: 1em
   font-weight: 700
   color: $light-color
-
 
 .production_servings
   display: flex
@@ -169,3 +167,8 @@
 
 .production-card_active > .production_photo  > .production_detalles
   bottom: 0px
+
+@media screen and ( max-width: 550px )
+  .grid-container
+    grid-template-columns: 1fr
+    justify-items: center
