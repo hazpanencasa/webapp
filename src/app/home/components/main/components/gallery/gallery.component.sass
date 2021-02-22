@@ -50,7 +50,14 @@
   font-size: 64px !important
 .Gallery-section__grid__item:hover .over-lay
     display: flex
-  
-
-
-
+@media screen and ( max-width: 375px )
+  .Gallery-section__grid
+    grid-template-columns: 1fr
+    & :nth-child(1)
+    grid-row: span 1
+    & :nth-child(2)
+      grid-column: span 1
+    & :nth-child(5)
+      grid-row: span 1
+    & :nth-child(7)
+      grid-column: span 1
