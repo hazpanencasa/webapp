@@ -25,7 +25,12 @@
                 <thead>
                   <tr>
                     <th [style.fontSize.%]="fontSize">Name</th>
-                    <th class="text-center" [style.fontSize.%]="fontSize">
+                    <th
+                      [ngClass]="
+                        costColumn ? 'text-right' : 'text-right d-none'
+                      "
+                      [style.fontSize.%]="fontSize"
+                    >
                       Cost
                     </th>
                     <th class="text-center" [style.fontSize.%]="fontSize">
@@ -39,11 +44,20 @@
                     <td class="text-left" [style.fontSize.%]="fontSize">
                       {{ i.ingredient.name }}
                     </td>
-                    <td class="text-right" [style.fontSize.%]="fontSize">
-                      {{ i.ingredient.cost ? i.ingredient.cost : "n/a" }}
+                    <td
+                      [ngClass]="
+                        costColumn ? 'text-right' : 'text-right d-none'
+                      "
+                      [style.fontSize.%]="fontSize"
+                    >
+                      {{ i.ingredient.cost ? i.ingredient.cost : "N/A" }}
                     </td>
                     <td class="text-right" [style.fontSize.%]="fontSize">
-                      {{ i.ingredient.hydration }}
+                      {{
+                        i.ingredient.hydration > 0
+                          ? i.ingredient.hydration
+                          : "This's a dry ingredient "
+                      }}
                     </td>
                     <td class="text-right" [style.fontSize.%]="fontSize">
                       {{ i.percentage }}

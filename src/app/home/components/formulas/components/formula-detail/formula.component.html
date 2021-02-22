@@ -1,16 +1,16 @@
 <ng-container *ngIf="formula">
-  <div class="formula-container noPrint">
+  <div class="buttons-container noPrint">
     <div class="d-flex justify-content-center">
       <button
         (click)="decreaseFont()"
-        style="width: 40px; font-size: 20px"
+        style="width: 30px; font-size: 20px"
         class="button-active mr-3"
       >
         A-
       </button>
       <button
         (click)="increaseFont()"
-        style="width: 40px; font-size: 20px"
+        style="width: 30px; font-size: 20px"
         class="button-active"
       >
         A+
@@ -19,7 +19,7 @@
     <div class="d-flex justify-content-center">
       <button
         (click)="changeGridColumnByTwo()"
-        style="width: 40px; font-size: 20px"
+        style="width: 30px; font-size: 20px"
         [ngClass]="
           toggleButtonGridContainer ? 'button-active mr-3' : 'button mr-3'
         "
@@ -29,7 +29,7 @@
       <button
         [ngClass]="toggleButtonGridContainer ? 'button' : 'button-active'"
         (click)="changeGridColumnByOne()"
-        style="width: 40px; font-size: 20px"
+        style="width: 30px; font-size: 20px"
       >
         <ion-icon name="square-outline"></ion-icon>
       </button>
@@ -91,7 +91,7 @@
             {{ formula.name }}
           </h1>
         </div>
-        <div [ngClass]="toggleButtonIntro ? 'display' : 'no-display'">
+        <div [ngClass]="toggleButtonIntro ? 'd-block' : 'd-none'">
           <p [style.fontSize.%]="fontSize" *ngIf="formula.description">
             {{ formula.description }}
           </p>
@@ -118,7 +118,7 @@
           ></app-table-intro>
         </div>
       </div>
-      <div [ngClass]="toggleButtonImg ? 'col-5' : 'no-display'">
+      <div [ngClass]="toggleButtonImg ? 'col-5' : 'd-none'">
         <div class="img-container">
           <img src="assets/images/img-3.png" alt="item" />
         </div>
@@ -156,7 +156,6 @@
                   formula.ingredients[7].ingredient &&
                   formula.ingredients[7].ingredient.formula
                 "
-                class="mt-4"
               >
                 <app-table-compound-ingredient2
                   [fontSize]="fontSize"
@@ -165,8 +164,10 @@
               </div>
             </div>
             <div
-              [ngClass]="toggleButtonGridContainer ? 'mt-2' : 'mt-2 br'"
-              class="mt-2"
+              [ngClass]="toggleButtonGridContainer ? 'mt-2 ' : 'mt-2 verso'"
+              [ngClass]="{
+                br: formula.steps[7] && formula.steps[7].ingredients
+              }"
             >
               <app-table-time
                 [fontSize]="fontSize"
@@ -174,10 +175,7 @@
               ></app-table-time>
             </div>
 
-            <div
-              [ngClass]="toggleButtonAddInfo ? 'mt-2 verso' : 'no-display'"
-              [ngClass]="toggleButtonGridContainer ? 'mt-2 br' : 'mt-2'"
-            >
+            <div [ngClass]="toggleButtonAddInfo ? 'mt-2 verso' : 'd-none'">
               <h1>Additional Information</h1>
               <app-additional-info
                 [fontSize]="fontSize"
@@ -185,17 +183,24 @@
               ></app-additional-info>
             </div>
           </div>
-          <div class="content-item br">
+
+          <div class="content-item">
             <app-formula-stepper
               [fontSize]="fontSize"
               [formula]="formula"
             ></app-formula-stepper>
             <div *ngIf="formula.steps[7] && formula.steps[7].ingredients">
-              <app-mixing-ingredient-compound [formula]="formula">
+              <app-mixing-ingredient-compound
+                [ngClass]="toggleButtonAddInfo ? 'mt-2 verso' : 'mt-2 br'"
+                [formula]="formula"
+              >
               </app-mixing-ingredient-compound>
             </div>
             <div
-              [ngClass]="toggleButtonGridContainer ? 'mt-2 br' : 'mt-2 verso'"
+              [ngClass]="toggleButtonGridContainer ? 'mt-2 ' : 'mt-2 verso'"
+              [ngClass]="{
+                br: formula.steps[7] && formula.steps[7].ingredients
+              }"
             >
               <h1>Preparation Order</h1>
               <app-preparation-steps
