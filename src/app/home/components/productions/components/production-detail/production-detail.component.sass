@@ -51,4 +51,78 @@ thead
     //     top: -9999px
     //     bottom: -9999px
     //     background-color: #ed666629
-
+.buttons-container
+  height: 10vh
+  width: 82vw
+  padding: 18px 0
+  display: grid
+  grid-template-columns: repeat(2, 96px) repeat(3, 240px)96px
+  grid-template-rows: 50px
+  grid-gap: 20px
+  justify-content: center
+  background-color: #eddec8
+  margin: 10px auto 0 
+.button
+  outline: .125rem solid #881919
+  background-color: #fff
+  color: #881919
+  border: none
+  height: 40px
+  width: 100px
+  line-height: normal !important
+  transition: 0.5s
+  box-shadow: 3px 3px 1px -2px rgba(0, 0, 0, 0.2), 4px 4px 2px 2px rgba(0, 0, 0, 0.14), -1px 3px 0px 0px rgba(0, 0, 0, 0.12) !important
+  display: flex
+  align-items: center
+  justify-content: space-evenly
+  & ion-icon
+    font-size: 26px
+  
+.button-active
+  outline: .125rem solid #881919
+  border: none
+  height: 40px
+  width: 100px
+  line-height: normal !important
+  background-color: #881919
+  color: #fff
+  transition: 0.5s
+  box-shadow: 3px 3px 1px -2px rgba(0, 0, 0, 0.2), 4px 4px 2px 2px rgba(0, 0, 0, 0.14), -1px 3px 0px 0px rgba(0, 0, 0, 0.12) !important
+  display: flex
+  align-items: center
+  justify-content: space-evenly
+  & ion-icon
+    font-size: 26px
+  &:hover
+    color: #881919
+    background-color: #fff
+  // &:focus
+  //   outline: .125rem solid #881919
+  //   background-color: #fff
+  //   color: #881919
+  // &:active
+  //   outline: .125rem solid #881919
+  //   background-color: #fff
+  //   color: #881919
+.container-formula
+  width: 90vw
+  margin: 20px auto
+.img-container
+  width: 100%
+  img
+    width: 500px
+.header-title
+  display: flex
+  align-items: flex-end
+  img
+    width: 100px
+.preparation-time
+  border-top: .063rem solid #e4e4e4
+  padding-top: 1.25rem
+.content-container-2columns
+  display: grid
+  grid-template-columns: 40% 60%
+  grid-gap: 20px
+.content-container-1columns
+  display: grid
+  grid-gap: 20px
