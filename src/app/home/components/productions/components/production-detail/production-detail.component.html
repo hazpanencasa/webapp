@@ -1,5 +1,5 @@
 <ng-container *ngIf="production">
-  <div class="buttons-container noPrint">
+  <div class="buttons-container d-print-none">
     <div class="d-flex justify-content-center">
       <button
         (click)="decreaseFont()"
@@ -77,132 +77,21 @@
       </button>
     </div>
     <div class="d-flex justify-content-center">
-      <button (click)="printPDF()" class="button-active">
+      <button (click)="printPdf()" class="button-active">
         <ion-icon name="print-outline"></ion-icon>Print
       </button>
     </div>
   </div>
+
+  <h1>Productions of {{ production.name }}</h1>
   <section class="Info-section1 mt-4">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <h2 class="text-center">
-            {{ production.formulas[0].formula.description }}
-          </h2>
-          <div class="card" style="width: 20rem">
-            <div
-              class="card-img"
-              style="background-image: url(assets/images/backgroundLogo.png)"
-            >
-              <img
-                src="assets/images/panCanilla.png"
-                class="card-img-top"
-                alt="..."
-              />
-            </div>
-            <div class="card-body">
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-8">
-          <h2>
-            <em>Ingredients</em>
-          </h2>
-          <div class="container-table">
-            <table>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>%</th>
-                  <th>Hydration</th>
-                  <th>gr</th>
-                </tr>
-              </thead>
-              <tbody
-                class="table-content"
-                *ngFor="let i of production.formulas[0].formula.ingredients"
-              >
-                <tr>
-                  <td>{{ i.ingredient.name }}</td>
-                  <td>{{ i.percentage }}</td>
-                  <td colspan="1">{{ i.ingredient.hydration }}</td>
-                  <td>gramos</td>
-                </tr>
-                <tr class="table-row__barprogress">
-                  <td colspan="4">
-                    <mat-progress-bar
-                      mode="determinate"
-                      value="{{ i.percentage }}"
-                    ></mat-progress-bar>
-                  </td>
-                </tr>
-              </tbody>
-              <tr class="table-content">
-                <td>Total</td>
-                <td class="text-left">{{ resultPercent }} %</td>
-                <td>resultado hidratacion%</td>
-                <td>{{ production.formulas[0].unit_weight }}gr</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
+    <div *ngFor="let i of production.formulas">
+      <h1>{{ i.formula.name }}</h1>
+      <app-table-ingredients
+        [ingredients]="i.formula.ingredients"
+        [unitWeight]="i.formula.unit_weight"
+        [units]="i.formula.units"
+      ></app-table-ingredients>
     </div>
   </section>
-  <!-- <section class="Info-section2">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 order-md-3 align-self-start">info</div>
-        <div class="col-lg-4 order-md-2 align-self-center">
-          <div class="alt Info-section2__img">
-            <img
-              class="img-fluid"
-              src="assets/images/img-info2.png"
-              alt="description"
-            />
-          </div>
-        </div>
-        <div
-          class="Info-section2__description col-lg-2 order-md-1 align-self-start"
-        >
-          <h2>Ingredients</h2>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="Info-section3">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6">info</div>
-        <div class="col-lg-2 align-self-center">
-          <div
-            class="Info-section2__description col-lg-2 order-md-1 align-self-center"
-          >
-            <h2>Ingredients Compuestos</h2>
-          </div>
-        </div>
-        <div class="col-lg-4 align-self-center">
-          <div class="alt Info-section2__img">
-            <img
-              class="img-fluid"
-              src="assets/images/img-info2.png"
-              alt="description"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  info
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="col">info</div>
-      </div>
-    </div>
-  </section> -->
 </ng-container>
