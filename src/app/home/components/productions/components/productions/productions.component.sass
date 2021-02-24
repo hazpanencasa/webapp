@@ -32,6 +32,7 @@
   transition: all 0.5s
   box-shadow: 1px 1px 20px -5px rgba(0,0,0,0.5)
 
+
 .production_img_back 
   position: absolute
   width: 100%
@@ -52,12 +53,13 @@
 
 .sub_mins 
   display: flex
+  flex-direction: column
   align-items: center
   justify-content: center
   position: relative
   float: left
-  width: 70px
-  height: 70px
+  width: 60px
+  height: 60px
   background-color: $primary-color
   border-radius:50% 
   margin: 16px
@@ -74,8 +76,8 @@
 
 .sub_mins > h3 
   font-size: 1em
-  margin: 0
-  margin-right: 5px
+  margin-top: 7px
+  margin-bottom: -5px
   color: $light-color
 
 
@@ -84,14 +86,16 @@
   font-weight: 700
   color: $light-color
 
+
 .production_servings
   display: flex
+  flex-direction: column
   align-items: center
   justify-content: center
   position: relative
   float: left
-  width: 70px
-  height: 70px
+  width: 60px
+  height: 60px
   background-color: $primary-color
   border-radius:50% 
   margin: 16px
@@ -106,8 +110,8 @@
 
 .production_servings > h3 
   font-size: 1em
-  margin: 0
-  margin-right: 5px
+  margin-top: 5px
+  margin-bottom: -5px
   color: $light-color
 
 .production_servings > span 
@@ -138,6 +142,7 @@
 
 .production_detalles > p 
   color: #fff
+  text-align:left
   font-size: 14px
 
 .production-action
@@ -165,8 +170,3 @@
 
 .production-card_active > .production_photo  > .production_detalles
   bottom: 0px
-
-@media screen and ( max-width: 550px )
-  .grid-container
-    grid-template-columns: 1fr
-    justify-items: center

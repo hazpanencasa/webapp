@@ -5,8 +5,8 @@
 >
   <mat-card class="Register-card animate__animated animate__fadeInRight">
     <div class="container">
-      <div class="row flex-column-reverse flex-md-row">
-        <div class="col-12 col-md-6">
+      <div class="row">
+        <div class="col-6">
           <form [formGroup]="registerForm" (ngSubmit)="register($event)">
             <mat-card>
               <mat-card-header>
@@ -14,7 +14,7 @@
               </mat-card-header>
               <mat-card-content class="Register-form container">
                 <div class="row">
-                  <div class="col-lg-6 col-6">
+                  <div class="col-lg-6">
                     <mat-card-content>
                       <div>
                         <ion-icon name="person-outline"></ion-icon>
@@ -37,7 +37,7 @@
                       </mat-form-field>
                     </mat-card-content>
                   </div>
-                  <div class="col-lg-6 col-6">
+                  <div class="col-lg-6">
                     <mat-card-content>
                       <mat-form-field class="input-fullName">
                         <mat-label>Last Name</mat-label>
@@ -64,7 +64,7 @@
                       <div>
                         <ion-icon name="mail-outline"></ion-icon>
                       </div>
-                      <mat-form-field class="input-col">
+                      <mat-form-field>
                         <mat-label>Email</mat-label>
                         <input
                           placeholder="Ex. pat@example.com"
@@ -95,7 +95,7 @@
                       <div>
                         <ion-icon name="lock-closed-outline"></ion-icon>
                       </div>
-                      <mat-form-field class="input-col">
+                      <mat-form-field>
                         <mat-label>Password</mat-label>
                         <input
                           placeholder="password"
@@ -126,14 +126,14 @@
               </mat-card-content>
               <mat-card-actions class="Register-form__button">
                 <button class="button-primary" type="submit">Sign In</button>
-                <a class="anchor-link mt-2" routerLink="/login"
+                <a class="anchor-link" routerLink="/login"
                   >I have already created an account</a
                 >
               </mat-card-actions>
             </mat-card>
           </form>
         </div>
-        <div class="col-md-6 col-12 Register-form__logo">
+        <div class="col-6 Register-form__logo">
           <img src="assets/images/logoOriginalSolo.png" alt="logo" />
         </div>
       </div>

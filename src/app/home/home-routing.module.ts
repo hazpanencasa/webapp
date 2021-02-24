@@ -2,7 +2,6 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { FormulaDetailComponent } from "./components/formulas/components/formula-detail/formula.component";
 import { LayoutComponent } from "./components/layout/layout.component";
-import { ProductionDetailComponent } from "./components/productions/components/production-detail/production-detail.component";
 
 const routes: Routes = [
   {
@@ -54,10 +53,6 @@ const routes: Routes = [
   {
     path: "formulas/:id",
     component: FormulaDetailComponent,
-  },
-  {
-    path: "productions/:id",
-    component: ProductionDetailComponent,
   },
 ];
 

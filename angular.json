@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "haz-pan-en-casa": {
+    "house-bread": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/haz-pan-en-casa",
+            "outputPath": "dist/house-bread",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -82,18 +82,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "haz-pan-en-casa:build"
+            "browserTarget": "house-bread:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "haz-pan-en-casa:build:production"
+              "browserTarget": "house-bread:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "haz-pan-en-casa:build"
+            "browserTarget": "house-bread:build"
           }
         },
         "test": {
@@ -103,7 +103,10 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.sass"
@@ -119,18 +122,20 @@
               "tsconfig.spec.json",
               "e2e/tsconfig.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "haz-pan-en-casa:serve"
+            "devServerTarget": "house-bread:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "haz-pan-en-casa:serve:production"
+              "devServerTarget": "house-bread:serve:production"
             }
           }
         },
@@ -141,31 +146,31 @@
         "ionic-cordova-serve": {
           "builder": "@ionic/angular-toolkit:cordova-serve",
           "options": {
-            "cordovaBuildTarget": "haz-pan-en-casa:ionic-cordova-build",
-            "devServerTarget": "haz-pan-en-casa:serve"
+            "cordovaBuildTarget": "house-bread:ionic-cordova-build",
+            "devServerTarget": "house-bread:serve"
           },
           "configurations": {
             "production": {
-              "cordovaBuildTarget": "haz-pan-en-casa:ionic-cordova-build:production",
-              "devServerTarget": "haz-pan-en-casa:serve:production"
+              "cordovaBuildTarget": "house-bread:ionic-cordova-build:production",
+              "devServerTarget": "house-bread:serve:production"
             }
           }
         },
         "ionic-cordova-build": {
           "builder": "@ionic/angular-toolkit:cordova-build",
           "options": {
-            "browserTarget": "haz-pan-en-casa:build"
+            "browserTarget": "house-bread:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "haz-pan-en-casa:build:production"
+              "browserTarget": "house-bread:build:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "haz-pan-en-casa",
+  "defaultProject": "house-bread",
   "cli": {
     "analytics": "7d64ff81-adb2-4b93-8e88-bef2b19a53e1"
   }

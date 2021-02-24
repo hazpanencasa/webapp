@@ -1,5 +1,5 @@
 <div *ngIf="user" class="profile container-fluid">
-  <div class="row px-md-2">
+  <div class="row px-2">
     <div class="profile_description col-12 col-md-3">
       <app-description-img
         [numberFormulas]="reducedFormulas"
@@ -7,13 +7,13 @@
         [numberProduction]="reducedProductions"
       ></app-description-img>
     </div>
-    <div class="profile_history mt-2 col-6 col-md-9">
+    <div class="profile_history col-12 col-md-9">
       <app-description-history
         [numberProductions]="reducedProductions"
         [numberIngredients]="reducedIngredients"
         [numberFormulas]="reducedFormulas"
       ></app-description-history>
-      <div class="profile_activity my-5">
+      <div class="profile_activity mt-5">
         <app-profile-info [userName]="user.displayName"></app-profile-info>
       </div>
     </div>

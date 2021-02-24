@@ -11,7 +11,7 @@ export class ProductionsComponent implements OnInit {
   filterProduction = "";
   pageSizeOptions: number[] = [3, 6, 9];
   pageEvent: PageEvent;
-  pageSize = 3;
+  pageSize = 9;
   pageNumber = 1;
   productions: Production[];
   constructor(private productionsService: ProductionsService) {}

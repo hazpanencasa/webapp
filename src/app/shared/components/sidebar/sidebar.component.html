@@ -52,18 +52,11 @@
           <ion-icon matListIcon name="reader-outline"></ion-icon>
           <p *ngIf="showSidebar">Formulas</p>
         </mat-list-option>
-        <mat-list-option
-          class="Sidebar-item d-md-none"
-          routerLinkActive="router-link"
-          routerLink="profile"
-        >
-          <ion-icon matListIcon name="settings-outline"></ion-icon>
-        </mat-list-option>
       </div>
     </mat-selection-list>
   </main>
-  <footer class="d-none d-md-block">
-    <mat-selection-list [multiple]="false">
+  <footer>
+    <mat-selection-list class="d-none d-md-block" [multiple]="false">
       <div *ngIf="showSidebar; then thenBlock; else elseBlock"></div>
       <ng-template #thenBlock>
         <div class="confi-section">

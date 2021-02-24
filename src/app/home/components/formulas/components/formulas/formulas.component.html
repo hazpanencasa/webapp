@@ -6,14 +6,14 @@
   >
     <div class="overlay">
       <div class="overlay__header-title">
-        <h1 class="ml-2">Formulas</h1>
-        <p class="ml-2">Mira toda nuestra variedad de Formulas</p>
+        <h1>Formulas</h1>
+        <p>Mira toda nuestra variedad de Formulas</p>
         <div class="Banner-section__main container mt-3">
           <div class="row">
-            <div class="col-12 col-md-10 p-0">
+            <div class="col-10 p-0">
               <div class="container">
                 <div class="row">
-                  <div class="col-md-6 col-6 card-input">
+                  <div class="col-md-6 card-input">
                     <mat-form-field>
                       <mat-label>Search a Formula</mat-label>
                       <input
@@ -24,7 +24,7 @@
                       />
                     </mat-form-field>
                   </div>
-                  <div class="col-md-6 col-6 px-0">
+                  <div class="col-md-6 px-0 col-12">
                     <mat-paginator
                       class="p-0"
                       [length]="formulas.length"
@@ -37,15 +37,15 @@
                 </div>
                 <div class="row">
                   <div class="col p-0">
-                    <section class="cards">
-                      <div class="cards-container" id="carousel">
+                    <section class="Cards">
+                      <div class="Cards-container" id="carousel">
                         <div
                           *ngFor="
                             let formula of formulas
                               | paginate: pageSize:pageNumber
                               | filter: filterFormula
                           "
-                          class="cards-container__item"
+                          class="Cards-container__item"
                         >
                           <app-card [formula]="formula"></app-card>
                         </div>

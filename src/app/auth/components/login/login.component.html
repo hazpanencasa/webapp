@@ -6,13 +6,13 @@
   <div class="animate__animated animate__fadeInLeft">
     <form
       [formGroup]="loginForm"
-      class="container Login-form pt-2"
+      class="container Login-form"
       (ngSubmit)="login($event)"
     >
       <mat-card class="Login-form__card1 container">
-        <div class="row flex-column-reverse flex-lg-row">
-          <div class="col-lg-6 col-10 align-self-center">
-            <div class="active Login-form__content container">
+        <div class="row">
+          <div class="col-6 align-self-center">
+            <div class="active Login-form__content mt-3 container">
               <div class="row">
                 <div class="col">
                   <mat-card-content>
@@ -48,10 +48,7 @@
                     <div>
                       <ion-icon name="lock-closed-outline"></ion-icon>
                     </div>
-                    <mat-form-field
-                      class="Login-form__password"
-                      appearance="fill"
-                    >
+                    <mat-form-field appearance="fill">
                       <mat-label> Enter your password </mat-label>
                       <input
                         formControlName="password"
@@ -93,7 +90,7 @@
                 <div class="col">
                   <mat-card-actions class="Login-form__button">
                     <button class="button-primary" type="submit">Login</button>
-                    <a class="anchor-link mt-2" routerLink="register"
+                    <a class="anchor-link" routerLink="register"
                       >Don't you have an account yet?</a
                     >
                   </mat-card-actions>
@@ -101,12 +98,8 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-8 align-self-center">
-            <img
-              class="logo-login"
-              src="assets/images/logoOriginal.png"
-              alt="logo"
-            />
+          <div class="col-6 align-self-center">
+            <img src="assets/images/logoOriginal.png" alt="logo" />
           </div>
         </div>
       </mat-card>

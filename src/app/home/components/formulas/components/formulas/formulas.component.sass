@@ -30,16 +30,16 @@
         text-transform: uppercase
 // .Banner
 //   // height: 50vh
-.cards 
+.Cards 
   display: flex
   justify-content: center
-.cards-container
+.Cards-container
   display: grid
   grid-template-columns: repeat(3, 1fr)
   grid-gap: 20px
   margin: 40px 0px
   padding-bottom: 10px
-.cards-container__item
+.Cards-container__item
   position: relative
   display: inline-block
   cursor: pointer
@@ -47,23 +47,20 @@
   transform-origin: center left
 .mat-paginator
   font-size: 16px
+@media screen and ( max-width: 325px)
+  .Cards-container
+    grid-template-columns: 1fr
+    justify-self: center
+    margin: 0
+  .Cards
+    display: flex
+    justify-content: space-between
+    margin-left: 10px
+  .mat-paginator
+    font-size: 10px
+    width: 300px
+    & .mat-paginator-container, .mat-paginator-range-actions, .mat-paginator-range-label
+      margin-left: 0
 .card-input
   background-color: white
   color: black
-@media screen and ( max-width: 500px)
-  #parallax
-    & .overlay
-      &__header-title
-        padding: 0
-  .cards-container
-    margin-top: 10px
-    grid-template-columns: 1fr
-    justify-items: center
-    margin: 0
-  .cards
-    display: flex
-    margin-top: 10px
-  .mat-paginator
-    font-size: 10px
-    & .mat-paginator-container, .mat-paginator-range-actions, .mat-paginator-range-label
-      margin-left: 0

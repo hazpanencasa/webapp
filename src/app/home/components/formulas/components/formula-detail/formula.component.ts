@@ -45,10 +45,10 @@ export class FormulaDetailComponent implements OnInit {
     });
   }
   increaseFont() {
-    this.fontSize += 10;
+    this.fontSize += 5;
   }
   decreaseFont() {
-    this.fontSize -= 10;
+    this.fontSize -= 5;
   }
   changeGridColumnByTwo() {
     if (!this.toggleButtonGridContainer) {

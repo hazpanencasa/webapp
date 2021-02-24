@@ -1,159 +1,125 @@
 <ng-container *ngIf="production">
-  <div class="buttons-container d-print-none">
-    <div class="d-flex justify-content-center">
-      <button
-        (click)="decreaseFont()"
-        style="width: 30px; font-size: 20px"
-        class="button-active mr-3"
-      >
-        A-
-      </button>
-      <button
-        (click)="increaseFont()"
-        style="width: 30px; font-size: 20px"
-        class="button-active"
-      >
-        A+
-      </button>
-    </div>
-    <div class="d-flex justify-content-center">
-      <button
-        (click)="changeGridColumnByTwo()"
-        style="width: 30px; font-size: 20px"
-        [ngClass]="
-          toggleButtonGridContainer ? 'button-active mr-3' : 'button mr-3'
-        "
-      >
-        <ion-icon name="book-outline"></ion-icon>
-      </button>
-      <button
-        [ngClass]="toggleButtonGridContainer ? 'button' : 'button-active'"
-        (click)="changeGridColumnByOne()"
-        style="width: 30px; font-size: 20px"
-      >
-        <ion-icon name="square-outline"></ion-icon>
-      </button>
-    </div>
-    <div class="d-flex justify-content-center">
-      <button
-        (click)="toggleButtonWithIntro()"
-        [ngClass]="toggleButtonIntro ? 'button-active mr-3' : 'button mr-3'"
-      >
-        <ion-icon name="reader-outline"></ion-icon>Intro
-      </button>
-      <button
-        (click)="toggleButtonWithNoIntro()"
-        [ngClass]="toggleButtonIntro ? 'button' : 'button-active'"
-      >
-        <ion-icon name="close-circle-outline"></ion-icon>No Intro
-      </button>
-    </div>
-    <div class="d-flex justify-content-center">
-      <button
-        (click)="toggleButtonWithImg()"
-        [ngClass]="toggleButtonImg ? 'button-active mr-3' : 'button mr-3'"
-      >
-        <ion-icon name="image-outline"></ion-icon>Photo
-      </button>
-      <button
-        (click)="toggleButtonWithNoImg()"
-        [ngClass]="toggleButtonImg ? 'button' : 'button-active'"
-      >
-        <ion-icon name="close-circle-outline"></ion-icon>No Photo
-      </button>
-    </div>
-    <div class="d-flex justify-content-center">
-      <button
-        (click)="toggleButtonWithAddInfo()"
-        [ngClass]="toggleButtonAddInfo ? 'button-active mr-3' : 'button mr-3'"
-      >
-        <ion-icon name="star-outline"></ion-icon>Add Info
-      </button>
-      <button
-        (click)="toggleButtonWithNoAddInfo()"
-        [ngClass]="toggleButtonAddInfo ? 'button ' : 'button-active '"
-      >
-        <ion-icon name="close-circle-outline"></ion-icon> No Add info
-      </button>
-    </div>
-    <div class="d-flex justify-content-center">
-      <button (click)="printPdf()" class="button-active">
-        <ion-icon name="print-outline"></ion-icon>Print
-      </button>
-    </div>
-  </div>
-  <h1>Productions of {{ production.name }}</h1>
-
-  <div class="mt-4" *ngFor="let i of production.formulas">
-    <div class="content-container-2columns">
-      <div class="production-description">
-        <div class="row">
-          <div [ngClass]="toggleButtonImg ? 'col-5' : 'col-12'">
-            <div class="mb-4 header-title">
-              <img src="assets/images/logoOriginal.png" alt="logo" />
-              <h1 class="ml-4">
-                {{ i.formula.name }}
-              </h1>
+  <section class="Info-section1 mt-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h2 class="text-center">
+            {{ production.formulas[0].formula.description }}
+          </h2>
+          <div class="card" style="width: 20rem">
+            <div
+              class="card-img"
+              style="background-image: url(assets/images/backgroundLogo.png)"
+            >
+              <img
+                src="assets/images/panCanilla.png"
+                class="card-img-top"
+                alt="..."
+              />
             </div>
-            <div [ngClass]="toggleButtonIntro ? 'd-block' : 'd-none'">
-              <p [style.fontSize.%]="fontSize" *ngIf="i.formula.description">
-                {{ i.formula.description }}
+            <div class="card-body">
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
               </p>
-              <p [style.fontSize.%]="fontSize" *ngIf="i.formula.user">
-                <strong>Created by:</strong>
-                {{ i.formula.user.creator.name }}
-              </p>
-              <p [style.fontSize.%]="fontSize" *ngIf="i.formula.user">
-                <strong>Created at:</strong>
-                {{
-                  i.formula.user.creator.date.seconds * 1000
-                    | date: "yyyy/MM/dd h:mm:ss a"
-                }}
-              </p>
-              <p [style.fontSize.%]="fontSize" *ngIf="i.formula.user">
-                <strong>Email:</strong>
-                {{ i.formula.user.creator.email }}
-              </p>
-            </div>
-            <div class="preparation-time mt-4">
-              <app-table-intro
-                [fontSize]="fontSize"
-                [formula]="i.formula"
-                [unitWeight]="i.formula.unit_weight"
-                [units]="i.formula.units"
-              ></app-table-intro>
-            </div>
-          </div>
-          <div [ngClass]="toggleButtonImg ? 'col-5 offset-2' : 'd-none'">
-            <div class="img-container">
-              <img src="assets/images/img-3.png" alt="item" />
             </div>
           </div>
         </div>
-      </div>
-      <div class="item-container">
-        <app-table-ingredients
-          [fontSize]="fontSize"
-          [ingredients]="i.formula.ingredients"
-          [unitWeight]="i.formula.unit_weight"
-          [units]="i.formula.units"
-        ></app-table-ingredients>
-        <div *ngIf="i.formula.steps[7].ingredients" class="mt-2">
-          <h1>Compound ingredients</h1>
-          <app-table-ingredients-compound-ingredient
-            [fontSize]="fontSize"
-            [ingredients]="i.formula.steps[7].ingredients"
-            [units]="i.formula.units"
-            [unitWeight]="i.formula.unit_weight"
-          ></app-table-ingredients-compound-ingredient>
+        <div class="col-md-8">
+          <h2>
+            <em>Ingredients</em>
+          </h2>
+          <div class="container-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>%</th>
+                  <th>Hydration</th>
+                  <th>gr</th>
+                </tr>
+              </thead>
+              <tbody
+                class="table-content"
+                *ngFor="let i of production.formulas[0].formula.ingredients"
+              >
+                <tr>
+                  <td>{{ i.ingredient.name }}</td>
+                  <td>{{ i.percentage }}</td>
+                  <td colspan="1">{{ i.ingredient.hydration }}</td>
+                  <td>gramos</td>
+                </tr>
+                <tr class="table-row__barprogress">
+                  <td colspan="4">
+                    <mat-progress-bar
+                      mode="determinate"
+                      value="{{ i.percentage }}"
+                    ></mat-progress-bar>
+                  </td>
+                </tr>
+              </tbody>
+              <tr class="table-content">
+                <td>Total</td>
+                <td class="text-left">{{ resultPercent }} %</td>
+                <td>resultado hidratacion%</td>
+                <td>{{ production.formulas[0].unit_weight }}gr</td>
+              </tr>
+            </table>
+          </div>
         </div>
       </div>
-      <div class="item-container">
-        <app-production-stepper
-          [fontSize]="fontSize"
-          [mixing]="i.formula.mixing"
-        ></app-production-stepper>
+    </div>
+  </section>
+  <!-- <section class="Info-section2">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 order-md-3 align-self-start">info</div>
+        <div class="col-lg-4 order-md-2 align-self-center">
+          <div class="alt Info-section2__img">
+            <img
+              class="img-fluid"
+              src="assets/images/img-info2.png"
+              alt="description"
+            />
+          </div>
+        </div>
+        <div
+          class="Info-section2__description col-lg-2 order-md-1 align-self-start"
+        >
+          <h2>Ingredients</h2>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+  <section class="Info-section3">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">info</div>
+        <div class="col-lg-2 align-self-center">
+          <div
+            class="Info-section2__description col-lg-2 order-md-1 align-self-center"
+          >
+            <h2>Ingredients Compuestos</h2>
+          </div>
+        </div>
+        <div class="col-lg-4 align-self-center">
+          <div class="alt Info-section2__img">
+            <img
+              class="img-fluid"
+              src="assets/images/img-info2.png"
+              alt="description"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  info
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col">info</div>
+      </div>
+    </div>
+  </section> -->
 </ng-container>
