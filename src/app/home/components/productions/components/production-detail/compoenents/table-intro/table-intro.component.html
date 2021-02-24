@@ -22,7 +22,12 @@
     </div>
     <div class="time-item">
       <h2>Weight Total</h2>
-      <p [style.fontSize.%]="fontSize">{{ unitWeight * formula.units }} gr</p>
+      <p [style.fontSize.%]="fontSize">
+        {{
+          transformStringToNumber(unitWeight) * transformStringToNumber(units)
+        }}
+        gr
+      </p>
     </div>
     <div class="last-child">
       <div class="progress">

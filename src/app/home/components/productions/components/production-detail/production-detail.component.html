@@ -82,16 +82,78 @@
       </button>
     </div>
   </div>
-
   <h1>Productions of {{ production.name }}</h1>
-  <section class="Info-section1 mt-4">
-    <div *ngFor="let i of production.formulas">
-      <h1>{{ i.formula.name }}</h1>
-      <app-table-ingredients
-        [ingredients]="i.formula.ingredients"
-        [unitWeight]="i.formula.unit_weight"
-        [units]="i.formula.units"
-      ></app-table-ingredients>
+
+  <div class="mt-4" *ngFor="let i of production.formulas">
+    <div class="content-container-2columns">
+      <div class="production-description">
+        <div class="row">
+          <div [ngClass]="toggleButtonImg ? 'col-5' : 'col-12'">
+            <div class="mb-4 header-title">
+              <img src="assets/images/logoOriginal.png" alt="logo" />
+              <h1 class="ml-4">
+                {{ i.formula.name }}
+              </h1>
+            </div>
+            <div [ngClass]="toggleButtonIntro ? 'd-block' : 'd-none'">
+              <p [style.fontSize.%]="fontSize" *ngIf="i.formula.description">
+                {{ i.formula.description }}
+              </p>
+              <p [style.fontSize.%]="fontSize" *ngIf="i.formula.user">
+                <strong>Created by:</strong>
+                {{ i.formula.user.creator.name }}
+              </p>
+              <p [style.fontSize.%]="fontSize" *ngIf="i.formula.user">
+                <strong>Created at:</strong>
+                {{
+                  i.formula.user.creator.date.seconds * 1000
+                    | date: "yyyy/MM/dd h:mm:ss a"
+                }}
+              </p>
+              <p [style.fontSize.%]="fontSize" *ngIf="i.formula.user">
+                <strong>Email:</strong>
+                {{ i.formula.user.creator.email }}
+              </p>
+            </div>
+            <div class="preparation-time mt-4">
+              <app-table-intro
+                [fontSize]="fontSize"
+                [formula]="i.formula"
+                [unitWeight]="i.formula.unit_weight"
+                [units]="i.formula.units"
+              ></app-table-intro>
+            </div>
+          </div>
+          <div [ngClass]="toggleButtonImg ? 'col-5 offset-2' : 'd-none'">
+            <div class="img-container">
+              <img src="assets/images/img-3.png" alt="item" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="item-container">
+        <app-table-ingredients
+          [fontSize]="fontSize"
+          [ingredients]="i.formula.ingredients"
+          [unitWeight]="i.formula.unit_weight"
+          [units]="i.formula.units"
+        ></app-table-ingredients>
+        <div *ngIf="i.formula.steps[7].ingredients" class="mt-2">
+          <h1>Compound ingredients</h1>
+          <app-table-ingredients-compound-ingredient
+            [fontSize]="fontSize"
+            [ingredients]="i.formula.steps[7].ingredients"
+            [units]="i.formula.units"
+            [unitWeight]="i.formula.unit_weight"
+          ></app-table-ingredients-compound-ingredient>
+        </div>
+      </div>
+      <div class="item-container">
+        <app-production-stepper
+          [fontSize]="fontSize"
+          [mixing]="i.formula.mixing"
+        ></app-production-stepper>
+      </div>
     </div>
-  </section>
+  </div>
 </ng-container>

@@ -9,6 +9,7 @@ export class TableIngredientsComponent implements OnInit {
   @Input() ingredients: Array<any>;
   @Input() unitWeight: string;
   @Input() units: string;
+  @Input() fontSize: number;
   resultPercent: number;
   constructor() {}
 

@@ -24,13 +24,11 @@ export class FormulaStepperComponent implements OnInit {
     const mixingOrderArray = this.formula.mixing[0].mixing_order;
     mixingOrderArray.forEach((element) => {
       let newArray = element.ingredients;
-      // console.log(newArray);
       newArray.forEach((element) => {
         let outArray = element.ingredient.cost;
         outputCostArray.push(outArray);
       });
     });
-    console.log(outputCostArray);
     const result = outputCostArray.reduce((a, b) => a + b, 0);
     if (result > 0) {
       this.costColumn;
