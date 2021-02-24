@@ -1,4 +1,9 @@
-<section class="mb-5" *ngIf="steps">
+<section
+  [ngClass]="{ br: toggleButtonGridContainer }"
+  class="mb-5"
+  *ngIf="steps"
+>
+  <h1>Preparation</h1>
   <div class="container">
     <div *ngFor="let step of steps; let i = index" class="row mb-3">
       <div *ngIf="step.description || step.temperature" class="col-4">

@@ -51,6 +51,8 @@
     background-color: #fff
 .container-productions-details
   padding-top: 7em
+  width: 100%
+  margin: 0 auto
 .production-description
   width: 90vw
   margin: 20px auto
@@ -69,7 +71,7 @@
 .content-container-2columns
   display: grid
   grid-template-columns: 40% 60%
-  grid-template-rows: 370px 1fr
+  grid-template-rows: auto 1fr
   grid-gap: 20px
   margin: 0 40px
   .production-description
@@ -79,9 +81,20 @@
   display: grid
   grid-gap: 20px
   grid-template-columns: 1fr
+  justify-items: center
+  .production-description
+    grid-column: span 1
+.item-container
+  width: 100%
 @media print
+  .br
+    page-break-before: always
+  .verso
+    page-break-before: verso
   .container-productions-details
     padding-top: 2em
+    width: 100%
+    margin: 0
   .production-description
     width: 100vw
     margin: 20px 50px
@@ -90,7 +103,6 @@
     width: 100%
     img
       width: 500px
-  .br
-    page-break-before: always
-  .verso
-    page-break-before: verso
+@page
+    margin: 100px 50px !important
+  

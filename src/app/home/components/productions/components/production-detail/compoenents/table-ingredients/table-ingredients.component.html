@@ -1,59 +1,57 @@
 <ng-container *ngIf="ingredients">
-  <div>
-    <div class="table2-container">
-      <table class="table">
-        <thead>
-          <tr>
-            <th [style.fontSize.%]="fontSize" colspan="2" scope="col">Name</th>
-            <th class="text-right" [style.fontSize.%]="fontSize" scope="col">
-              %
-            </th>
-            <th class="text-right" [style.fontSize.%]="fontSize" scope="col">
-              gr
-            </th>
-          </tr>
-        </thead>
-        <tbody *ngFor="let element of ingredients">
-          <tr class="table-row__info">
-            <td [style.fontSize.%]="fontSize" colspan="2" scope="row">
-              {{ element.ingredient.name }}
-            </td>
-            <td class="text-right" [style.fontSize.%]="fontSize">
-              {{ element.percentage }}
-            </td>
-            <td class="text-right" [style.fontSize.%]="fontSize">
-              {{
-                (
-                  (element.percentage *
-                    (transformStringToNumber(unitWeight) *
-                      transformStringToNumber(units))) /
-                  resultPercent
-                ).toFixed(1)
-              }}
-            </td>
-          </tr>
-          <tr class="table-row__barprogress">
-            <td colspan="4">
-              <mat-progress-bar
-                mode="determinate"
-                value="{{ element.percentage }}"
-              ></mat-progress-bar>
-            </td>
-          </tr>
-        </tbody>
+  <h1>Ingredients</h1>
+  <div class="table2-container">
+    <table class="table">
+      <thead>
         <tr>
-          <td [style.fontSize.%]="fontSize" colspan="2" scope="row">Total</td>
+          <th [style.fontSize.%]="fontSize" colspan="2" scope="col">Name</th>
+          <th class="text-right" [style.fontSize.%]="fontSize" scope="col">
+            %
+          </th>
+          <th class="text-right" [style.fontSize.%]="fontSize" scope="col">
+            gr
+          </th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let element of ingredients">
+        <tr class="table-row__info">
+          <td [style.fontSize.%]="fontSize" colspan="2" scope="row">
+            {{ element.ingredient.name }}
+          </td>
           <td class="text-right" [style.fontSize.%]="fontSize">
-            {{ resultPercent }}
+            {{ element.percentage }}
           </td>
           <td class="text-right" [style.fontSize.%]="fontSize">
             {{
-              transformStringToNumber(unitWeight) *
-                transformStringToNumber(units)
+              (
+                (element.percentage *
+                  (transformStringToNumber(unitWeight) *
+                    transformStringToNumber(units))) /
+                resultPercent
+              ).toFixed(1)
             }}
           </td>
         </tr>
-      </table>
-    </div>
+        <tr class="table-row__barprogress">
+          <td colspan="4">
+            <mat-progress-bar
+              mode="determinate"
+              value="{{ element.percentage }}"
+            ></mat-progress-bar>
+          </td>
+        </tr>
+      </tbody>
+      <tr>
+        <td [style.fontSize.%]="fontSize" colspan="2" scope="row">Total</td>
+        <td class="text-right" [style.fontSize.%]="fontSize">
+          {{ resultPercent }}
+        </td>
+        <td class="text-right" [style.fontSize.%]="fontSize">
+          {{
+            transformStringToNumber(unitWeight) * transformStringToNumber(units)
+          }}
+        </td>
+      </tr>
+    </table>
   </div>
 </ng-container>

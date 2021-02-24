@@ -137,7 +137,9 @@
             </div>
           </div>
         </div>
-        <div class="item-container">
+        <div
+          [ngClass]="toggleButtonGridContainer ? 'item-container' : 'container'"
+        >
           <app-table-ingredients
             [fontSize]="fontSize"
             [ingredients]="i.formula.ingredients"
@@ -174,10 +176,12 @@
         </div>
         <div class="item-container">
           <app-production-stepper
+            [toggleButtonGridContainer]="toggleButtonGridContainer"
             [fontSize]="fontSize"
             [mixing]="i.formula.mixing"
           ></app-production-stepper>
           <app-preparation-steps
+            [toggleButtonGridContainer]="toggleButtonGridContainer"
             [fontSize]="fontSize"
             [steps]="i.formula.steps"
           >

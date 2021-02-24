@@ -1,6 +1,6 @@
 .buttons-container
   height: 11vh
-  width: 82vw
+  width: 100vw
   padding: 18px 0
   display: grid
   grid-template-columns: repeat(2, 96px) repeat(3, 240px)96px
@@ -8,7 +8,9 @@
   grid-gap: 20px
   justify-content: center
   background-color: #eddec8
-  margin: 10px auto 0 
+  position: fixed
+  top: 0
+  z-index: 999
 .button
   outline: .125rem solid #881919
   background-color: #fff
@@ -53,7 +55,7 @@
   //   color: #881919
 .container-formula
   width: 90vw
-  margin: 20px auto
+  margin: 80px auto
 .img-container
   width: 100%
   img
@@ -86,7 +88,7 @@
     page-break-before: verso
   .container-formula
     width: 90vw
-    margin:  50px 
+    margin: 50px 
   .img-container
     margin-left: 120px
   footer 

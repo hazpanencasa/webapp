@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from "@angular/core";
 })
 export class ProductionStepperComponent implements OnInit {
   costColumn = true;
+  @Input() toggleButtonGridContainer: boolean;
   @Input() mixing: Array<any>;
   @Input() fontSize: number;
   constructor() {}

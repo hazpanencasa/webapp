@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from "@angular/core";
 export class PreparationStepsComponent implements OnInit {
   @Input() steps: Array<any>;
   @Input() fontSize: number;
+  @Input() toggleButtonGridContainer: boolean;
   constructor() {}
 
   ngOnInit() {}
