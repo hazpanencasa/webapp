@@ -14,7 +14,7 @@ export class IngredientsComponent implements OnInit {
   ingredients: Ingredient[];
   pageSizeOptions: number[] = [3, 6, 9];
   pageEvent: PageEvent;
-  pageSize = 9;
+  pageSize = 3;
   pageNumber = 1;
   ngOnInit() {
     this.fetchIngredients();

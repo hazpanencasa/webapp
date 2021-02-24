@@ -1,0 +1,26 @@
+@import ../../../../../../../../utils/variables
+.table2-container
+  border: 1px solid $primary-color
+  thead
+    background-color: $primary-color
+    color: $light-color
+  & tbody, th
+    border-top: none
+.table-row
+  border: none !important 
+.table-row__barprogress
+  border: none
+  mat-progress-bar
+    width: 95%
+    margin: 0 10px
+  & td
+    padding: 0
+    border-bottom: none
+table, td
+  border-top: none
+.table-row__info
+  border-bottom: 1px solid grey
+@media print
+  thead
+    background-color: white !important
+    color: black !important

@@ -1,0 +1,41 @@
+<section class="mb-5" *ngIf="steps">
+  <div class="container">
+    <div *ngFor="let step of steps; let i = index" class="row mb-3">
+      <div *ngIf="step.description || step.temperature" class="col-4">
+        <div class="img-container">
+          <img
+            src="assets/images/Pasos/Pasos_PNG/icon-{{ i + 1 }}.png"
+            alt="icon"
+          />
+          <div class="info-step">
+            <h2 class="m-0">{{ step.name }}</h2>
+            <div *ngIf="step.time > 0" class="info-icons mb-2">
+              <ion-icon
+                [style.fontSize.%]="fontSize"
+                class="mr-1"
+                name="timer-outline"
+              ></ion-icon>
+              <p [style.fontSize.%]="fontSize">
+                {{ transformMinutesToHours(step.time) }}
+              </p>
+            </div>
+            <div class="info-icons" *ngIf="step.temperature">
+              <ion-icon
+                [style.fontSize.%]="fontSize"
+                style="color: #881918"
+                name="thermometer-outline"
+              ></ion-icon>
+              <p [style.fontSize.%]="fontSize">
+                {{ step.temperature.min }} ˚C /
+                {{ celsiusToFahrenheit(step.temperature.min) }} ˚F
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="step.description" class="description-step col-5">
+        <p [style.fontSize.%]="fontSize + 20">{{ step.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>

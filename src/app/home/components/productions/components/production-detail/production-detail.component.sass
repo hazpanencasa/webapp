@@ -1,54 +1,96 @@
 @import ../../../../../../utils/variables
-.card-img
-  background-size: contain
-  background-position: center
+.buttons-container
+  height: 10vh
+  width: 100vw
+  padding: 18px 0
+  display: grid
+  grid-template-columns: repeat(2, 96px) repeat(3, 240px)96px
+  grid-template-rows: 50px
+  grid-gap: 20px
+  justify-content: center
+  background-color: #eddec8
+  position: fixed
+  left: 0
+  right: 0
+  top: 0
+  z-index: 999
+  bottom: 0
+.button
+  outline: .125rem solid #881919
+  background-color: #fff
+  color: #881919
+  border: none
+  height: 40px
+  width: 100px
+  line-height: normal !important
+  transition: 0.5s
+  box-shadow: 3px 3px 1px -2px rgba(0, 0, 0, 0.2), 4px 4px 2px 2px rgba(0, 0, 0, 0.14), -1px 3px 0px 0px rgba(0, 0, 0, 0.12) !important
+  display: flex
+  align-items: center
+  justify-content: space-evenly
+  & ion-icon
+    font-size: 26px
+  
+.button-active
+  outline: .125rem solid #881919
+  border: none
+  height: 40px
+  width: 100px
+  line-height: normal !important
+  background-color: #881919
+  color: #fff
+  transition: 0.5s
+  box-shadow: 3px 3px 1px -2px rgba(0, 0, 0, 0.2), 4px 4px 2px 2px rgba(0, 0, 0, 0.14), -1px 3px 0px 0px rgba(0, 0, 0, 0.12) !important
+  display: flex
+  align-items: center
+  justify-content: space-evenly
+  & ion-icon
+    font-size: 26px
+  &:hover
+    color: #881919
+    background-color: #fff
+.container-productions-details
+  padding-top: 7em
+.production-description
+  width: 90vw
+  margin: 20px auto
+.img-container
+  width: 100%
+  img
+    width: 500px
+.header-title
+  display: flex
+  align-items: flex-end
+  img
+    width: 100px
+.preparation-time
+  border-top: .063rem solid #e4e4e4
+  padding-top: 1.25rem
+.content-container-2columns
+  display: grid
+  grid-template-columns: 40% 60%
+  grid-template-rows: 370px 1fr
+  grid-gap: 20px
+  margin: 0 40px
+  .production-description
+    grid-column: span 2
 
-.container-table 
-  padding: 1em 0 
-
-table 
-  -webkit-box-shadow: 16px 9px 20px 4px rgb(0 0 0 / 23%) 
-  box-shadow: 16px 9px 20px 4px rgb(0 0 0 / 23%)
-  width: 700px
-  border-collapse: collapse
-  overflow: hidden
-  box-shadow: 0 0 20px rgba(0,0,0,0.1)
-
-th,
-td 
-  padding: 15px
-  color: $dark-color
-
-th 
-  text-align: left
-  color: $light-color
-
-thead
-  color: $light-color
-  th 
-    background-color: $primary-color
-
-.table-content
-  background: #eddec8
-  padding-bottom: 10px
-
-.table-row__barprogress
-  border: none 
-  & td
-    padding: 0
-    border-bottom: none
-    & mat-progress-bar
-      width: 95%
-      margin: 0 auto
-  td 
-    position: relative
-    // &:hover 
-    //   &:before 
-    //     content: ""
-    //     position: absolute
-    //     left: 0
-    //     right: 0
-    //     top: -9999px
-    //     bottom: -9999px
-    //     background-color: #ed666629
-
+.content-container-1columns
+  display: grid
+  grid-gap: 20px
+  grid-template-columns: 1fr
+@media print
+  .container-productions-details
+    padding-top: 2em
+  .production-description
+    width: 100vw
+    margin: 20px 50px
+  .img-container
+    margin-left: 80px
+    width: 100%
+    img
+      width: 500px
+  .br
+    page-break-before: always
+  .verso
+    page-break-before: verso

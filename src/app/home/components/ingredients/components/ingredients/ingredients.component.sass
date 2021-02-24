@@ -4,8 +4,13 @@ $width: 300px
   font-size: 14px
   width: 100%
 .mat-paginator
-  font-size: 16px
+  font-size: 12px
 .container-grid
   display: grid
   grid-template-columns: repeat(3, $width)
   grid-gap: 40px
+@media screen and ( max-width: 500px )
+  .container-grid
+    grid-template-columns: 1fr
+    justify-items: center
+  
