@@ -6,6 +6,7 @@ import { Component, Input, OnInit } from "@angular/core";
   styleUrls: ["./production-stepper.component.sass"],
 })
 export class ProductionStepperComponent implements OnInit {
+  @Input() compoundValidation: boolean;
   costColumn = true;
   @Input() toggleButtonGridContainer: boolean;
   @Input() mixing: Array<any>;

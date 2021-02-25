@@ -168,10 +168,7 @@
           ></app-table-time>
           <div [ngClass]="toggleButtonAddInfo ? 'mt-2 verso' : 'd-none'">
             <h1>Additional Information</h1>
-            <app-additional-info
-              [fontSize]="fontSize"
-              [formula]="formula"
-            ></app-additional-info>
+            <app-additional-info [fontSize]="fontSize"></app-additional-info>
           </div>
         </div>
         <div class="item-container">
@@ -179,6 +176,7 @@
             [toggleButtonGridContainer]="toggleButtonGridContainer"
             [fontSize]="fontSize"
             [mixing]="i.formula.mixing"
+            [compoundValidation]="i.formula.steps[7].ingredients"
           ></app-production-stepper>
           <app-preparation-steps
             [toggleButtonGridContainer]="toggleButtonGridContainer"

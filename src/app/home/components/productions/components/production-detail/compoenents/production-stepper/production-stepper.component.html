@@ -1,5 +1,8 @@
 <ng-container *ngIf="mixing">
-  <div [ngClass]="{ br: !toggleButtonGridContainer }" class="container">
+  <div
+    [ngClass]="{ br: !toggleButtonGridContainer && compoundValidation }"
+    class="container"
+  >
     <div class="row">
       <div class="col">
         <h1 class="text-center">Mix Order</h1>
