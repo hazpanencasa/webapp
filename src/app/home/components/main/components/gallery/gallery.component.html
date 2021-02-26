@@ -8,16 +8,6 @@
         </p>
       </div>
     </div>
-    <!-- <div class="row Gallery-section__grid">
-      <div *ngFor="let post of imagesBread" class="Gallery-section__grid__item">
-        <a (click)="showModal(post.media_url, post.permalink)">
-          <img src="{{ post.media_url }}" alt="..." />
-          <span class="over-lay">
-            <ion-icon name="search-outline"></ion-icon>
-          </span>
-        </a>
-      </div>
-    </div> -->
     <div class="row">
       <div class="col">
         <ngx-masonry class="grid mt-4" [options]="myOptions">
@@ -26,12 +16,36 @@
             class="masonry-item"
             *ngFor="let post of imagesBread"
           >
-            <img
-              width="350px"
-              (click)="showModal(post.media_url, post.permalink)"
+            <div
+              style="background-image: url('{{ post.media_url }}')"
+              class="container-card"
+            >
+              <div class="overlay">
+                <div class="items head">
+                  <p>{{ post.caption ? post.caption : 'Haz Pan En Casa' }}</p>
+                  <hr />
+                </div>
+                <div class="items info">
+                  <p class="pb-3">This product was created by</p>
+                </div>
+                <div class="items ingredient">
+                  <p class="align-self-start">{{ post.username }}</p>
+                  <p class="align-self-start">{{ post.timestamp | date }}</p>
+                  <button
+                    (click)="showModal(post.media_url, post.permalink)"
+                    class="button-primary mt-3"
+                  >
+                    See Post
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- <img
+              width="340px"
+              
               src="{{ post.media_url }}"
               alt="..."
-            />
+            /> -->
           </div>
         </ngx-masonry>
       </div>
