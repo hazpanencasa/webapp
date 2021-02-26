@@ -3,20 +3,37 @@
     <div class="row">
       <div class="col">
         <h2 class="Gallery__heading text-center">Our Gallery</h2>
-        <p class="Gallery__sub-heading text-center">the most popular breads</p>
+        <p class="Gallery__sub-heading text-center">
+          the most popular Post of Made Bread at Home
+        </p>
       </div>
     </div>
-    <div class="row Gallery-section__grid">
-      <div
-        *ngFor="let image of imagesBread"
-        class="Gallery-section__grid__item"
-      >
-        <a (click)="showModal(image.img)">
-          <img src="{{ image.img }}" alt="..." />
+    <!-- <div class="row Gallery-section__grid">
+      <div *ngFor="let post of imagesBread" class="Gallery-section__grid__item">
+        <a (click)="showModal(post.media_url, post.permalink)">
+          <img src="{{ post.media_url }}" alt="..." />
           <span class="over-lay">
             <ion-icon name="search-outline"></ion-icon>
           </span>
         </a>
+      </div>
+    </div> -->
+    <div class="row">
+      <div class="col">
+        <ngx-masonry class="grid mt-4" [options]="myOptions">
+          <div
+            ngxMasonryItem
+            class="masonry-item"
+            *ngFor="let post of imagesBread"
+          >
+            <img
+              width="350px"
+              (click)="showModal(post.media_url, post.permalink)"
+              src="{{ post.media_url }}"
+              alt="..."
+            />
+          </div>
+        </ngx-masonry>
       </div>
     </div>
   </div>

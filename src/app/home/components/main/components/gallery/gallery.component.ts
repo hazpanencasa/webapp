@@ -1,46 +1,53 @@
-import { Component, OnInit } from "@angular/core";
-import { modalGallery } from "@utils/modal";
-import { Router } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { modalGallery } from '@utils/modal';
+import { Post } from '@core/model/post';
+import { InstagramService } from '@core/service/instagram/instagram.service';
+import { NgxMasonryOptions } from 'ngx-masonry';
+import { animate, style } from '@angular/animations';
 
 @Component({
-  selector: "app-gallery",
-  templateUrl: "./gallery.component.html",
-  styleUrls: ["./gallery.component.sass"],
+  selector: 'app-gallery',
+  templateUrl: './gallery.component.html',
+  styleUrls: ['./gallery.component.sass'],
 })
 export class GalleryComponent implements OnInit {
-  constructor(private router: Router) {}
-  imagesBread: Array<any> = [
-    {
-      img: "assets/images/img-2.png",
+  constructor(private instagramService: InstagramService) {}
+  imagesBread: Post[];
+  myOptions: NgxMasonryOptions = {
+    gutter: 10,
+    // itemSelector: 'masonry-item',
+    // columnWidth: 200,
+    percentPosition: true,
+    // fitWidth: true,
+    originLeft: true,
+    // originTop: true,
+    resize: true,
+    // // initLayout: false,
+    // horizontalOrder: false,
+    animations: {
+      show: [
+        style({ opacity: 0 }),
+        animate('400ms ease-in', style({ opacity: 1 })),
+      ],
+      hide: [
+        style({ opacity: '*' }),
+        animate('400ms ease-in', style({ opacity: 0 })),
+      ],
     },
-    {
-      img: "assets/images/img-1.png",
-    },
-    {
-      img: "assets/images/bollo.png",
-    },
-    {
-      img: "assets/images/img-3.png",
-    },
-    {
-      img: "assets/images/img-4.png",
-    },
-    {
-      img: "assets/images/panCanilla.png",
-    },
-    {
-      img: "assets/images/img-2.png",
-    },
-    {
-      img: "assets/images/img-info2.png",
-    },
-  ];
-  ngOnInit() {}
-  showModal(img: string) {
+  };
+  ngOnInit() {
+    this.fetchAllPost();
+  }
+  showModal(img: string, link: string) {
     modalGallery(img).then((result) => {
       if (result.isConfirmed) {
-        this.router.navigate(["home/productions"]);
+        window.location.href = link;
       }
+    });
+  }
+  fetchAllPost() {
+    this.instagramService.getAllPost().subscribe((post: any) => {
+      this.imagesBread = post.data;
     });
   }
 }
