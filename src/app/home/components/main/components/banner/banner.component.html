@@ -4,21 +4,25 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col">
-            <h2 class="text-center text-white">
-              <span> Made bread from home </span>
-              / Bakery
-            </h2>
-            <h1
+            <h2
+              [innerHTML]="'HOME.BANNER.title' | translate"
+              class="text-center text-white"
+            ></h2>
+            <!-- <h1
               class="text-center primary-title Banner-section__main-title animate__animated animate__bounceInDown"
             >
-              Made bread from home
-            </h1>
-            <p class="text-center Banner-section__main-info">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Aspernatur doloremque tenetur illo, alias, dolorem rerum odit
-              debitis et, eligendi quisquam error. A delectus neque maiores
-              impedit eum molestias tenetur ad?
-            </p>
+              {{ 'HOME.BANNER.title' | translate }}
+            </h1> -->
+            <img
+              width="300px"
+              class="animate__animated animate__bounceInDown"
+              src="assets/images/logoOriginalSolo.png"
+              alt="logo"
+            />
+            <p
+              [innerHTML]="'HOME.BANNER.sub-title' | translate"
+              class="text-center Banner-section__main-info"
+            ></p>
           </div>
         </div>
       </div>

@@ -21,7 +21,7 @@ export class TableIntroComponent implements OnInit {
     this.addAllTime();
     this.bakeryFactor();
   }
-  transformMinutesToHours(minutes: number) {
+  transformMinutesToHours(minutes: any) {
     const hour = 60;
     const minutesToHours: number = Math.floor((minutes * 1) / hour);
     const justMinutes = Math.floor(

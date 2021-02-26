@@ -10,7 +10,9 @@
           <form [formGroup]="registerForm" (ngSubmit)="register($event)">
             <mat-card>
               <mat-card-header>
-                <mat-card-title>Register now</mat-card-title>
+                <mat-card-title>{{
+                  'REGISTER.title' | translate
+                }}</mat-card-title>
               </mat-card-header>
               <mat-card-content class="Register-form container">
                 <div class="row">
@@ -20,19 +22,23 @@
                         <ion-icon name="person-outline"></ion-icon>
                       </div>
                       <mat-form-field class="input-fullName">
-                        <mat-label>First Name</mat-label>
+                        <mat-label>{{
+                          'REGISTER.FULLNAME.firstName' | translate
+                        }}</mat-label>
                         <input
                           formControlName="firstName"
                           matInput
                           type="text"
                         />
                         <mat-error
+                          [innerHTML]="
+                            'REGISTER.FULLNAME.firstNameValidated' | translate
+                          "
                           *ngIf="
                             registerFormFirstName.dirty &&
                             registerFormFirstName.hasError('required')
                           "
                         >
-                          First Name is <strong>required</strong>
                         </mat-error>
                       </mat-form-field>
                     </mat-card-content>
@@ -40,19 +46,23 @@
                   <div class="col-lg-6 col-6">
                     <mat-card-content>
                       <mat-form-field class="input-fullName">
-                        <mat-label>Last Name</mat-label>
+                        <mat-label>{{
+                          'REGISTER.FULLNAME.lastName' | translate
+                        }}</mat-label>
                         <input
                           formControlName="lastName"
                           matInput
                           type="text"
                         />
                         <mat-error
+                          [innerHTML]="
+                            'REGISTER.FULLNAME.lastNameValidated' | translate
+                          "
                           *ngIf="
                             registerFormLastName.dirty &&
                             registerFormLastName.hasError('required')
                           "
                         >
-                          Last Name is <strong>required</strong>
                         </mat-error>
                       </mat-form-field>
                     </mat-card-content>
@@ -65,7 +75,9 @@
                         <ion-icon name="mail-outline"></ion-icon>
                       </div>
                       <mat-form-field class="input-col">
-                        <mat-label>Email</mat-label>
+                        <mat-label>{{
+                          'REGISTER.EMAIL.email' | translate
+                        }}</mat-label>
                         <input
                           placeholder="Ex. pat@example.com"
                           formControlName="email"
@@ -73,17 +85,19 @@
                           type="email"
                         />
                         <mat-error
+                          [innerHTML]="
+                            'REGISTER.EMAIL.emailRequired' | translate
+                          "
                           *ngIf="
                             registerFormEmail.dirty &&
                             registerFormEmail.hasError('required')
                           "
                         >
-                          Email is <strong>required</strong>
                         </mat-error>
                         <mat-error
                           *ngIf="registerFormEmail.hasError('pattern')"
                         >
-                          Please enter a valid email address
+                          {{ 'REGISTER.EMAIL.emailValidated' | translate }}
                         </mat-error>
                       </mat-form-field>
                     </mat-card-content>
@@ -96,7 +110,9 @@
                         <ion-icon name="lock-closed-outline"></ion-icon>
                       </div>
                       <mat-form-field class="input-col">
-                        <mat-label>Password</mat-label>
+                        <mat-label>{{
+                          'REGISTER.PASSWORD.password' | translate
+                        }}</mat-label>
                         <input
                           placeholder="password"
                           formControlName="password"
@@ -104,31 +120,41 @@
                           type="password"
                         />
                         <mat-error
+                          [innerHTML]="
+                            'REGISTER.PASSWORD.passwordRequired' | translate
+                          "
                           *ngIf="
                             registerFormPassword.dirty &&
                             registerFormPassword.hasError('required')
                           "
                         >
-                          This field is <strong>required</strong>
                         </mat-error>
                         <mat-error
-                          *ngIf="
-                            registerFormPassword.hasError('maxlength') ||
-                            registerFormPassword.hasError('minlength')
+                          [innerHTML]="
+                            'REGISTER.PASSWORD.passwordValidated6Characters'
+                              | translate
                           "
-                          >password must contain at least
-                          <strong>8 characters</strong></mat-error
-                        >
+                          *ngIf="registerFormPassword.hasError('minlength')"
+                        ></mat-error>
+                        <mat-error
+                          [innerHTML]="
+                            'REGISTER.PASSWORD.passwordValidated10Characters'
+                              | translate
+                          "
+                          *ngIf="registerFormPassword.hasError('maxlength')"
+                        ></mat-error>
                       </mat-form-field>
                     </mat-card-content>
                   </div>
                 </div>
               </mat-card-content>
               <mat-card-actions class="Register-form__button">
-                <button class="button-primary" type="submit">Sign In</button>
-                <a class="anchor-link mt-2" routerLink="/login"
-                  >I have already created an account</a
-                >
+                <button class="button-primary" type="submit">
+                  {{ 'REGISTER.buttonRegister' | translate }}
+                </button>
+                <a class="anchor-link mt-2" routerLink="/login">{{
+                  'REGISTER.loginlink' | translate
+                }}</a>
               </mat-card-actions>
             </mat-card>
           </form>

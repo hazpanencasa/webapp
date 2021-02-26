@@ -1,4 +1,41 @@
 {
-  "HELLO": "hola mundo",
-  "GREETING": "Hola {{name}}, un gusto conocerte."
+  "LOGIN": {
+    "email": "Correo Electronico",
+    "password": "Ingrese su contraseña",
+    "resisterLink": "¿Todavía no tienes una cuenta?",
+    "emailRequired": "Correo Electronico es <strong>requerido</strong>",
+    "emailValidated": "Por favor ingrese un correo valido",
+    "passwordRequired": "Contraseña es <strong>requerida</strong>",
+    "passwordValidated6Characters": "Contraseña debe tener al menos <strong>6 caracteres</strong>",
+    "passwordValidated10Characters": "Contraseña debe tener al menos <strong>10 caracteres</strong>",
+    "buttonLogin": "Acceso"
+  },
+  "REGISTER": {
+    "title": "Registrate ahora",
+    "FULLNAME": {
+      "firstName": "Nombre",
+      "firstNameValidated": "Nombre es <strong>requerido</strong>",
+      "lastName": "Apellido",
+      "lastNameValidated": "Apellido es <strong>requerido</strong>"
+    },
+    "EMAIL": {
+      "email": "Correo Electronico",
+      "emailRequired": "Correo Electronico es <strong>requerido</strong>",
+      "emailValidated": "Por favor ingrese un correo valido"
+    },
+    "PASSWORD": {
+      "password": "Ingrese una contraseña",
+      "passwordRequired": "Contraseña es <strong>requerida</strong>",
+      "passwordValidated6Characters": "Contraseña debe tener al menos <strong>6 caracteres</strong>",
+      "passwordValidated10Characters": "Contraseña debe tener al menos <strong>10 caracteres</strong>"
+    },
+    "buttonRegister": "Registrate",
+    "loginlink": "Ya tengo una cuenta!"
+  },
+  "HOME": {
+    "BANNER": {
+      "title": "<span>Haz Pan En Casa</span> / Panaderia",
+      "sub-title": "🔥 | El mejor Pan lo puedes hacer en tu casa! 🥐 <br /> | Tips & Tricks para un Pan perfecto!"
+    }
+  }
 }

@@ -1,13 +1,16 @@
 @import ../../../../../../utils/variables
 .Info
-  background-color: $light-color
   box-sizing: border-box
+  background: #fff fixed no-repeat 50% 50%
+  background-size: cover
   padding: 6rem 0
+  position: relative
+  height: 212vh
   &__description
     font-size: 1.25rem
     line-height: 1.5
     position: relative
-    color: $dark-color
+    color: $light-color
     &__img
       padding: 0 20% 0 0
       position: relative
@@ -16,7 +19,7 @@
         font-size: 1.75rem
         line-height: 1.42857
         margin-bottom: .5rem
-        color: $dark-color
+        color: $light-color
         &__description2  p
           font: $font-subtitle
           font-size: 1rem
@@ -24,18 +27,22 @@
           line-height: 1.7
           margin: 0
           text-align: left
-          color: darken($secondary-color, 30%)
+          color: $light-color
+.Info-section1__description
+  font-size: 20px
+  & p > a 
+    color: $third-color
 .Info-section2__description
   font-size: 1.25rem
   line-height: 1.5
   position: relative
-  color: $dark-color
+  color: $light-color
 .Info-section2__description:before
   display: block
   width: 30px
   margin: 1rem 0
   content: ""
-  border-top: 3px solid $primary-color
+  border-top: 3px solid $third-color
 .Info-section2__img
   padding: 0 20% 0 0
   position: relative
@@ -64,10 +71,11 @@
   width: 30px
   margin: 1rem 0
   content: ""
-  border-top: 3px solid $primary-color
+  border-top: 3px solid $third-color
+  margin-left: 50px
 .Info-section1__img:before
   top: 10%
-  left: 20%
+  left: 10%
   border: 1px solid lighten($secondary-color, 20%)
   position: absolute
   z-index: -1
@@ -76,6 +84,14 @@
   content: ""
 .img-fluid
   height: 400px !important
+.overlay
+  z-index: 1
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  background-color: rgba(0, 0, 0, 0.5)
 @media screen and ( max-width: 500px )
   .Info
     padding: 0

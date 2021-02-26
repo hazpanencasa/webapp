@@ -1,16 +1,16 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { AuthService } from "@core/service/auth/auth.service";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '@core/service/auth/auth.service';
 
-import { modalSignedIn, modalAuthErrors } from "@utils/modal";
-import { fadeIn } from "@utils/animation";
+import { modalSignedIn, modalAuthErrors } from '@utils/modal';
+import { fadeIn } from '@utils/animation';
 
 @Component({
-  selector: "app-register",
-  templateUrl: "./register.component.html",
-  styleUrls: ["./register.component.sass"],
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.sass'],
   animations: [fadeIn],
 })
 export class RegisterComponent implements OnInit {
@@ -30,29 +30,29 @@ export class RegisterComponent implements OnInit {
     event.preventDefault();
     if (this.registerForm.valid) {
       const value = this.registerForm.value;
-      const fullName = value.firstName + " " + value.lastName;
+      const fullName = value.firstName + ' ' + value.lastName;
       this.authService
         .createUser(value.email, value.password, fullName)
         .then(() => {
           modalSignedIn(fullName).then(() => {
             this.authService.logOut();
-            this.router.navigate(["/login"]);
+            this.router.navigate(['/login']);
           });
         })
         .catch((error) => {
           const errorMessage = error.message;
           const errorCode = error.code;
           switch (errorCode) {
-            case "auth/email-already-in-use":
+            case 'auth/email-already-in-use':
               modalAuthErrors(errorMessage);
               break;
-            case "auth/invalid-email":
+            case 'auth/invalid-email':
               modalAuthErrors(errorMessage);
               break;
-            case "auth/operation-not-allowed":
+            case 'auth/operation-not-allowed':
               modalAuthErrors(errorMessage);
               break;
-            case "auth/weak-password":
+            case 'auth/weak-password':
               modalAuthErrors(errorMessage);
               break;
             default:
@@ -66,36 +66,36 @@ export class RegisterComponent implements OnInit {
   private buildForm() {
     this.registerForm = this.formBuilder.group({
       email: [
-        "",
+        '',
         [
           Validators.required,
-          Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"),
+          Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'),
         ],
       ],
       password: [
-        "",
+        '',
         [
           Validators.required,
-          Validators.minLength(8),
+          Validators.minLength(6),
           Validators.maxLength(10),
         ],
       ],
-      firstName: ["", [Validators.required]],
-      lastName: ["", [Validators.required]],
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
     });
   }
 
   get registerFormLastName() {
-    return this.registerForm.get("lastName");
+    return this.registerForm.get('lastName');
   }
   get registerFormFirstName() {
-    return this.registerForm.get("firstName");
+    return this.registerForm.get('firstName');
   }
 
   get registerFormEmail() {
-    return this.registerForm.get("email");
+    return this.registerForm.get('email');
   }
   get registerFormPassword() {
-    return this.registerForm.get("password");
+    return this.registerForm.get('password');
   }
 }

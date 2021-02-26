@@ -20,7 +20,7 @@
                       <ion-icon name="mail-outline"></ion-icon>
                     </div>
                     <mat-form-field appearance="fill" class="Login-form__Email">
-                      <mat-label> Email</mat-label>
+                      <mat-label>{{ 'LOGIN.email' | translate }}</mat-label>
                       <input
                         type="email"
                         matInput
@@ -32,11 +32,11 @@
                           loginFormEmail.dirty &&
                           loginFormEmail.hasError('required')
                         "
+                        [innerHTML]="'LOGIN.emailRequired' | translate"
                       >
-                        Email is <strong>required</strong>
                       </mat-error>
                       <mat-error *ngIf="loginFormEmail.hasError('pattern')">
-                        Please enter a valid email address
+                        {{ 'LOGIN.emailValidated' | translate }}
                       </mat-error>
                     </mat-form-field>
                   </mat-card-content>
@@ -52,7 +52,7 @@
                       class="Login-form__password"
                       appearance="fill"
                     >
-                      <mat-label> Enter your password </mat-label>
+                      <mat-label>{{ 'LOGIN.password' | translate }} </mat-label>
                       <input
                         formControlName="password"
                         matInput
@@ -63,17 +63,21 @@
                           loginFormPassword.dirty &&
                           loginFormPassword.hasError('required')
                         "
+                        [innerHTML]="'LOGIN.passwordRequired' | translate"
                       >
-                        Password is <strong>required</strong>
                       </mat-error>
-                      <mat-error *ngIf="loginFormPassword.hasError('minlength')"
-                        >password must contain at least
-                        <strong>6 characters</strong></mat-error
-                      >
-                      <mat-error *ngIf="loginFormPassword.hasError('maxlength')"
-                        >password must contain no more then
-                        <strong>10 characters</strong></mat-error
-                      >
+                      <mat-error
+                        [innerHTML]="
+                          'LOGIN.passwordValidated6Characters' | translate
+                        "
+                        *ngIf="loginFormPassword.hasError('minlength')"
+                      ></mat-error>
+                      <mat-error
+                        [innerHTML]="
+                          'LOGIN.passwordValidated10Characters' | translate
+                        "
+                        *ngIf="loginFormPassword.hasError('maxlength')"
+                      ></mat-error>
                       <button
                         (click)="handleClick($event)"
                         mat-icon-button
@@ -82,7 +86,7 @@
                         [attr.aria-pressed]="hide"
                       >
                         <mat-icon>{{
-                          hide ? "visibility_off" : "visibility"
+                          hide ? 'visibility_off' : 'visibility'
                         }}</mat-icon>
                       </button>
                     </mat-form-field>
@@ -92,10 +96,12 @@
               <div class="row">
                 <div class="col">
                   <mat-card-actions class="Login-form__button">
-                    <button class="button-primary" type="submit">Login</button>
-                    <a class="anchor-link mt-2" routerLink="register"
-                      >Don't you have an account yet?</a
-                    >
+                    <button class="button-primary" type="submit">
+                      {{ 'LOGIN.buttonLogin' | translate }}
+                    </button>
+                    <a class="anchor-link mt-2" routerLink="register">{{
+                      'LOGIN.resisterLink' | translate
+                    }}</a>
                   </mat-card-actions>
                 </div>
               </div>
