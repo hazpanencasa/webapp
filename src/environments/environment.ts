@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  URL_API: 'https://v1.nocodeapi.com/davidduarte/instagram/GlqVheBxbMtMCBXR',
+  URL_API:
+    'https://graph.instagram.com/me/media?fields=caption,id,media_type,media_url,permalink,timestamp,username&access_token=IGQVJVZAnRaNmdyVmlTRnYzWV9ET24tVTVXUXZAEMDZA3eTJITGN1MUhWQ1c2dXpmM3FfRmVRZAi01VkIxZADNBTWcySVVGM2pEZAU4tdnJ2R0RPcjZAudW5yV0hBaWt0TGNJdnFPZAnM5VVFsdzRqYWRjSDNicHBSU2pMX2RnNHlz',
   firebase: {
     apiKey: 'AIzaSyDcFH6SnFvObqZfihWmTiAKGoosSKD6Fwc',
     authDomain: 'formulapanadera.firebaseapp.com',
