@@ -53,13 +53,21 @@
         (click)="toggleButtonWithImg()"
         [ngClass]="toggleButtonImg ? 'button-active mr-3' : 'button mr-3'"
       >
-        <ion-icon name="image-outline"></ion-icon>Photo
+        <ion-icon name="image-outline"></ion-icon
+        >{{
+          'PRODUCTIONS.PRODUCTIONS_DETAILS.BUTTONS.photo.photo_button'
+            | translate
+        }}
       </button>
       <button
         (click)="toggleButtonWithNoImg()"
         [ngClass]="toggleButtonImg ? 'button' : 'button-active'"
       >
-        <ion-icon name="close-circle-outline"></ion-icon>No Photo
+        <ion-icon name="close-circle-outline"></ion-icon
+        >{{
+          'PRODUCTIONS.PRODUCTIONS_DETAILS.BUTTONS.photo.no_photo_button'
+            | translate
+        }}
       </button>
     </div>
     <div class="d-flex justify-content-center">
@@ -78,13 +86,15 @@
     </div>
     <div class="d-flex justify-content-center">
       <button (click)="printPdf()" class="button-active">
-        <ion-icon name="print-outline"></ion-icon>Print
+        <ion-icon name="print-outline"></ion-icon
+        >{{ 'PRODUCTIONS.PRODUCTIONS_DETAILS.BUTTONS.print' | translate }}
       </button>
     </div>
   </div>
   <div class="container-productions-details">
     <h1 class="ml-4 d-print-none">Productions of {{ production.name }}</h1>
-    <div class="mt-4 br" *ngFor="let i of production.formulas">
+
+    <div class="mt-4 br" *ngFor="let i of formulas">
       <div
         [ngClass]="
           toggleButtonGridContainer
@@ -106,18 +116,27 @@
                   {{ i.formula.description }}
                 </p>
                 <p [style.fontSize.%]="fontSize" *ngIf="i.formula.user">
-                  <strong>Created by:</strong>
+                  <strong>{{
+                    'PRODUCTIONS.PRODUCTIONS_DETAILS.INTRO_TABLE.creator'
+                      | translate
+                  }}</strong>
                   {{ i.formula.user.creator.name }}
                 </p>
                 <p [style.fontSize.%]="fontSize" *ngIf="i.formula.user">
-                  <strong>Created at:</strong>
+                  <strong>{{
+                    'PRODUCTIONS.PRODUCTIONS_DETAILS.INTRO_TABLE.creation-date'
+                      | translate
+                  }}</strong>
                   {{
                     i.formula.user.creator.date.seconds * 1000
-                      | date: "yyyy/MM/dd h:mm:ss a"
+                      | date: 'yyyy/MM/dd h:mm:ss a'
                   }}
                 </p>
                 <p [style.fontSize.%]="fontSize" *ngIf="i.formula.user">
-                  <strong>Email:</strong>
+                  <strong>{{
+                    'PRODUCTIONS.PRODUCTIONS_DETAILS.INTRO_TABLE.email'
+                      | translate
+                  }}</strong>
                   {{ i.formula.user.creator.email }}
                 </p>
               </div>
@@ -127,6 +146,7 @@
                   [formula]="i.formula"
                   [unitWeight]="i.formula.unit_weight"
                   [units]="i.formula.units"
+                  [id]="production.id"
                 ></app-table-intro>
               </div>
             </div>
@@ -141,10 +161,11 @@
           [ngClass]="toggleButtonGridContainer ? 'item-container' : 'container'"
         >
           <app-table-ingredients
+            [id]="production.id"
             [fontSize]="fontSize"
-            [ingredients]="i.formula.ingredients"
             [unitWeight]="i.formula.unit_weight"
             [units]="i.formula.units"
+            [formula]="i.formula"
           ></app-table-ingredients>
           <div *ngIf="i.formula.steps[7].ingredients" class="mt-2">
             <h1>Compound ingredients</h1>
@@ -167,7 +188,9 @@
             [fontSize]="fontSize"
           ></app-table-time>
           <div [ngClass]="toggleButtonAddInfo ? 'mt-2 verso' : 'd-none'">
-            <h1>Additional Information</h1>
+            <h1>
+              {{ 'PRODUCTIONS.PRODUCTIONS_DETAILS.ADD_INFO.title' | translate }}
+            </h1>
             <app-additional-info [fontSize]="fontSize"></app-additional-info>
           </div>
         </div>
@@ -187,5 +210,6 @@
         </div>
       </div>
     </div>
+    <h1 *ngFor="let element of formulas">{{ element.formula.name }}</h1>
   </div>
 </ng-container>

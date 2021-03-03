@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-5 col-md-3">
         <mat-form-field>
-          <mat-label>Search a production</mat-label>
+          <mat-label>{{ 'PRODUCTIONS.input' | translate }}</mat-label>
           <input
             matInput
             placeholder="Ex. Pan Campesino"
@@ -41,28 +41,32 @@
         </div>
         <div class="production_mins">
           <div class="sub_mins">
-            <h3>{{ production.formulas[0].formula.unit_weight }}</h3>
+            <!-- <h3>{{ production.formulas[0].formula.unit_weight }}</h3> -->
             <span>gr</span>
           </div>
         </div>
         <div class="production_servings">
-          <h3>{{ production.formulas[0].formula.units }}</h3>
-          <span>Unit</span>
+          <!-- <h3>{{ production.formulas[0].formula.units }}</h3>
+          <span>{{
+            production.formulas[0].formula.units > 1
+              ? ('PRODUCTIONS.unit2' | translate)
+              : ('PRODUCTIONS.unit' | translate)
+          }}</span> -->
         </div>
         <div class="production-action">
           <button routerLink="{{ production.id }}" class="button-primary">
-            See Details
+            {{ 'PRODUCTIONS.button' | translate }}
           </button>
         </div>
         <div class="production_detalles">
           <h3>{{ production.name }}</h3>
-          <p>
+          <!-- <p>
             {{
               production.formulas[0].formula.description
                 ? production.formulas[0].formula.description
-                : "Learn more about this product by pressing click"
+                : 'Learn more about this product by pressing click'
             }}
-          </p>
+          </p> -->
         </div>
       </div>
     </div>

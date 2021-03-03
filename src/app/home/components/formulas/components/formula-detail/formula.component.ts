@@ -1,12 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Params } from "@angular/router";
-import { Formula } from "@core/model/formulas.model";
-import { FormulasService } from "@core/service/formulas/formulas.service";
-import { Html2canvasService } from "@core/service/html2canvas.service";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Formula } from '@core/model/formulas.model';
+import { IngredientsFormula } from '@core/model/ingredients-formula';
+import { FormulasService } from '@core/service/formulas/formulas.service';
+import { Html2canvasService } from '@core/service/html2canvas.service';
 @Component({
-  selector: "app-formula",
-  templateUrl: "./formula.component.html",
-  styleUrls: ["./formula.component.sass"],
+  selector: 'app-formula',
+  templateUrl: './formula.component.html',
+  styleUrls: ['./formula.component.sass'],
   providers: [Html2canvasService],
 })
 export class FormulaDetailComponent implements OnInit {
@@ -16,6 +17,7 @@ export class FormulaDetailComponent implements OnInit {
   toggleButtonAddInfo = true;
   fontSize = 100;
   formula: Formula;
+  ingredients: IngredientsFormula[];
   verificationFormula: boolean;
   img: any;
   timeTotal: number;
@@ -37,11 +39,17 @@ export class FormulaDetailComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       const id = params.id;
       this.fetchFormula(id);
+      this.fetchFormulaIngredients(id);
     });
   }
   fetchFormula(id: string) {
     this.formulasService.getFormula(id).subscribe((formula) => {
       this.formula = formula;
+    });
+  }
+  fetchFormulaIngredients(id: string) {
+    this.formulasService.getFormulaIngredients(id).subscribe((ingredients) => {
+      this.ingredients = ingredients;
     });
   }
   increaseFont() {

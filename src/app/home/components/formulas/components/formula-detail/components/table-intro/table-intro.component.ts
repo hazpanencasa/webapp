@@ -1,25 +1,31 @@
-import { Input } from "@angular/core";
-import { Component, OnInit } from "@angular/core";
-import { Formula } from "@core/model/formulas.model";
+import { Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Formula } from '@core/model/formulas.model';
+import { IngredientsFormula } from '@core/model/ingredients-formula';
 
 @Component({
-  selector: "app-table-intro",
-  templateUrl: "./table-intro.component.html",
-  styleUrls: ["./table-intro.component.sass"],
+  selector: 'app-table-intro',
+  templateUrl: './table-intro.component.html',
+  styleUrls: ['./table-intro.component.sass'],
 })
 export class TableIntroComponent implements OnInit {
   @Input() formula: Formula;
+  @Input() ingredients: any;
   @Input() fontSize: number;
-  timeTotal = 0;
+  timeTotal: number;
   preTime: number;
   bakeTime: any;
   unitWeight: number;
   bakeryMeasure: number;
+  weightTotal: number;
   constructor() {}
 
   ngOnInit() {
     this.addAllTime();
     this.bakeryFactor();
+    // console.table(this.formula);
+    this.weightTotal =
+      parseInt(this.formula.unit_weight, 10) * parseInt(this.formula.units, 10);
   }
   transformMinutesToHours(minutes: any) {
     const hour = 60;
@@ -36,22 +42,18 @@ export class TableIntroComponent implements OnInit {
     }
   }
   addAllTime() {
-    let total = 0;
-    const TimesArray = this.formula.steps;
-    const preparation = this.formula.steps[0].time;
-    const bake = this.formula.steps[10].time;
-    this.preTime = preparation;
-    this.bakeTime = bake;
-    TimesArray.forEach((element) => (total += element.time));
-    this.timeTotal = total;
+    const result = this.formula.steps.reduce((output, currentElement) => {
+      return output + currentElement.time;
+    }, 0);
+    this.timeTotal = result;
   }
   bakeryFactor() {
-    const percentageArray = [];
-    this.formula.ingredients.forEach((element) =>
-      percentageArray.push(element.percentage)
-    );
-    const result = percentageArray.reduce((a, b) => a + b, 0);
-    this.unitWeight = parseInt(this.formula.unit_weight, 10);
-    this.bakeryMeasure = this.unitWeight / result;
+    const result = this.ingredients.reduce((a, b) => {
+      return a + b.percentage;
+    }, 0);
+    console.log(result);
+    // const weightTotal =
+    //   parseInt(this.formula.unit_weight, 10) * parseInt(this.formula.units, 10);
+    this.bakeryMeasure = parseInt(this.formula.unit_weight, 10) / result;
   }
 }

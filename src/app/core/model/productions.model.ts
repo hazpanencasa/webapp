@@ -1,7 +1,5 @@
 export interface Production {
-  id: string;
-  formulas: any;
-  name: string;
-  owner: object;
+  id: any;
+  name: any;
   user: any;
 }

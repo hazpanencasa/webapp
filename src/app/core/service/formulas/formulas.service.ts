@@ -1,14 +1,15 @@
-import {Injectable} from "@angular/core";
+import { Injectable } from '@angular/core';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
   AngularFirestoreDocument,
-} from "@angular/fire/firestore";
-import {Formula} from "../../model/formulas.model";
-import {Observable} from "rxjs";
-import {map} from "rxjs/operators";
+} from '@angular/fire/firestore';
+import { Formula } from '../../model/formulas.model';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { IngredientsFormula } from '@core/model/ingredients-formula';
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class FormulasService {
   formulas: Observable<Formula[]>;
@@ -17,7 +18,7 @@ export class FormulasService {
   formula: Observable<Formula>;
 
   constructor(public afs: AngularFirestore) {
-    this.formulasColletion = afs.collection("formulas");
+    this.formulasColletion = afs.collection('formulas');
     this.formulas = this.formulasColletion.snapshotChanges().pipe(
       map((actions) => {
         return actions.map((formula) => {
@@ -32,7 +33,14 @@ export class FormulasService {
     return this.formulas;
   }
   getFormula(id: string) {
-    this.formulaDoc = this.afs.collection("formulas").doc(`${id}`);
+    this.formulaDoc = this.afs.collection('formulas').doc(`${id}`);
     return (this.formula = this.formulaDoc.valueChanges());
+  }
+  getFormulaIngredients(idFormula: string) {
+    return this.afs
+      .collection('formulas')
+      .doc(`${idFormula}`)
+      .collection<any>('ingredients')
+      .valueChanges();
   }
 }

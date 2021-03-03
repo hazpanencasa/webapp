@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   URL_API:
-    'https://graph.instagram.com/me/media?fields=caption,id,media_type,media_url,permalink,timestamp,username&access_token=IGQVJVZAnRaNmdyVmlTRnYzWV9ET24tVTVXUXZAEMDZA3eTJITGN1MUhWQ1c2dXpmM3FfRmVRZAi01VkIxZADNBTWcySVVGM2pEZAU4tdnJ2R0RPcjZAudW5yV0hBaWt0TGNJdnFPZAnM5VVFsdzRqYWRjSDNicHBSU2pMX2RnNHlz',
+    'https://graph.instagram.com/me/media?fields=caption,id,media_type,media_url,permalink,timestamp,username&access_token=IGQVJXUUR4c0tHMmxTOVgzRFIzTWhfanRBTEJfa3F5WVpKTW5LR2lVV2JTUXJQWll5blQ0b3VSS1F4SUY1cWdJem9EZAzFHLW54czRFdVlNT01yMWwtNExmb3hoWmhkZAE5KUXhvMnNn',
   firebase: {
     apiKey: 'AIzaSyDcFH6SnFvObqZfihWmTiAKGoosSKD6Fwc',
     authDomain: 'formulapanadera.firebaseapp.com',

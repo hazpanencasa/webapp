@@ -5,20 +5,17 @@
         <h5
           class="Footer-section__heading ml-3 text-center text-md-left ml-sm-0"
         >
-          about us
+          {{ 'FOOTER.ABOUT.title' | translate }}
         </h5>
         <p class="text-center text-md-left px-2 px-md-0">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ex
-          quidem perferendis corrupti consequuntur alias quae et numquam
-          asperiores ad doloremque nisi quis, maiores dolorum corporis optio
-          dolor quia sed!
+          {{ 'FOOTER.ABOUT.paragraph' | translate }}
         </p>
       </div>
       <div class="col-md-4 col-12">
         <h5
           class="Footer-section__heading text-center text-md-left ml-3 ml-sm-0"
         >
-          contact info
+          {{ 'FOOTER.CONTACT.title' | translate }}
         </h5>
         <ul class="Footer-section__info text-center text-md-left">
           <li>
@@ -50,8 +47,8 @@
     </div>
     <div class="row">
       <div class="Footer-section__copyright col-12 text-center text-md-left">
-        <span>2020</span>
-        Pan en casa. All rights reserved
+        <span>{{ year }}</span>
+        {{ 'FOOTER.RIGHTS_RESERVED' | translate }}
       </div>
     </div>
   </div>

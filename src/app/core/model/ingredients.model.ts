@@ -5,6 +5,7 @@ export interface Ingredient {
   cost: number;
   creator: string;
   hydration: any;
+  references?: Array<any>;
   is_flour: boolean;
   name: string;
 }

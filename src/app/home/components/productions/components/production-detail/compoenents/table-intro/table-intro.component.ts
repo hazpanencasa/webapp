@@ -1,23 +1,27 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { Formula } from "@core/model/formulas.model";
+import { Component, Input, OnInit } from '@angular/core';
+import { Formula } from '@core/model/formulas.model';
+import { IngredientProduction } from '@core/model/ingredient-production';
+import { ProductionsService } from '@core/service/productions/productions.service';
 
 @Component({
-  selector: "app-table-intro",
-  templateUrl: "./table-intro.component.html",
-  styleUrls: ["./table-intro.component.sass"],
+  selector: 'app-table-intro',
+  templateUrl: './table-intro.component.html',
+  styleUrls: ['./table-intro.component.sass'],
 })
 export class TableIntroComponent implements OnInit {
   @Input() formula: Formula;
+  @Input() id: string;
   @Input() unitWeight: string;
   @Input() units: string;
   @Input() fontSize: number;
-  timeTotal = 0;
+  timeTotal: number;
   bakeryMeasure: number;
-  constructor() {}
+  ingredients: IngredientProduction[];
+  constructor(private productionsService: ProductionsService) {}
 
   ngOnInit() {
     this.addAllTime();
-    this.bakeryFactor();
+    // this.fetchIngredients(this.id, this.formula.id);
   }
   transformStringToNumber(s: string, r?: number) {
     return parseInt(s, r);
@@ -37,17 +41,16 @@ export class TableIntroComponent implements OnInit {
     }
   }
   addAllTime() {
-    let total = 0;
-    const TimesArray = this.formula.steps;
-    TimesArray.forEach((element) => (total += element.time));
-    this.timeTotal = total;
+    const times = this.formula.steps.reduce((output, currentElement) => {
+      return currentElement.time + output;
+    }, 0);
+    this.timeTotal = times;
   }
-  bakeryFactor() {
-    const percentageArray = [];
-    this.formula.ingredients.forEach((element) =>
-      percentageArray.push(element.percentage)
-    );
-    const result = percentageArray.reduce((a, b) => a + b, 0);
-    this.bakeryMeasure = parseInt(this.unitWeight, 10) / result;
-  }
+  // fetchIngredients(id1: string, id2: string) {
+  //   this.productionsService
+  //     .getProductionFormulaIngredients(id1, id2)
+  //     .subscribe((ingredients) => {
+  //       this.ingredients = ingredients;
+  //     });
+  // }
 }

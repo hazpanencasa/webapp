@@ -1,37 +1,57 @@
 <ng-container *ngIf="formula">
   <div class="time-container">
     <div class="time-item">
-      <h2>Hydration</h2>
-      <p [style.fontSize.%]="fontSize">
+      <h2>
+        {{
+          'PRODUCTIONS.PRODUCTIONS_DETAILS.INTRO_TABLE.hydration' | translate
+        }}
+      </h2>
+      <!-- <p [style.fontSize.%]="fontSize">
         {{ formula.ingredients[1].percentage }}%
-      </p>
+      </p> -->
     </div>
     <div class="time-item">
-      <h2>Units</h2>
+      <h2>
+        {{ 'PRODUCTIONS.PRODUCTIONS_DETAILS.INTRO_TABLE.units' | translate }}
+      </h2>
       <p [style.fontSize.%]="fontSize">{{ formula.units }}</p>
     </div>
-    <div class="time-item">
-      <h2>Baker Factor</h2>
-      <p [style.fontSize.%]="fontSize">{{ bakeryMeasure.toFixed(2) }} gr/%</p>
+    <div class="time-item text-center">
+      <h2>
+        {{
+          'PRODUCTIONS.PRODUCTIONS_DETAILS.INTRO_TABLE.backer_factor'
+            | translate
+        }}
+      </h2>
+      <!-- <p [style.fontSize.%]="fontSize">{{ ingredients.reduce() }} gr/%</p> -->
     </div>
-    <div class="time-item">
-      <h2>Total time</h2>
+    <div class="time-item text-center">
+      <h2>
+        {{
+          'PRODUCTIONS.PRODUCTIONS_DETAILS.INTRO_TABLE.total_time' | translate
+        }}
+      </h2>
       <p [style.fontSize.%]="fontSize">
         {{ transformMinutesToHours(timeTotal) }}
       </p>
     </div>
     <div class="time-item">
-      <h2>Weight Total</h2>
+      <h2>
+        {{
+          'PRODUCTIONS.PRODUCTIONS_DETAILS.INTRO_TABLE.weight_total' | translate
+        }}
+      </h2>
       <p [style.fontSize.%]="fontSize">
         {{
-          transformStringToNumber(unitWeight) * transformStringToNumber(units)
+          transformStringToNumber(formula.unit_weight) *
+            transformStringToNumber(formula.units)
         }}
         gr
       </p>
     </div>
     <div class="last-child">
       <div class="progress">
-        <div
+        <!-- <div
           class="progress-bar progress-bar-striped bg-info"
           role="progressbar"
           [style.width.%]="formula.ingredients[1].percentage"
@@ -40,7 +60,7 @@
           aria-valuemax="100"
         >
           {{ formula.ingredients[1].percentage }}%
-        </div>
+        </div> -->
       </div>
       <div class="progress-percent">
         <span>0%</span>

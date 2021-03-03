@@ -1,10 +1,15 @@
 <ng-container *ngIf="timeTotal > 0">
-  <h1>Times</h1>
+  <h1>{{ 'FORMULAS.FORMULAS-DETAILS.TIME_TABLE.title' | translate }}</h1>
   <div class="table2-container mb-3">
     <table class="table">
       <thead>
         <tr>
-          <th [style.fontSize.%]="fontSize" colspan="10" scope="col">Step</th>
+          <th [style.fontSize.%]="fontSize" colspan="10" scope="col">
+            {{
+              'FORMULAS.FORMULAS-DETAILS.TIME_TABLE.table-head-title'
+                | translate
+            }}
+          </th>
           <th
             [style.fontSize.%]="fontSize"
             colspan="2"

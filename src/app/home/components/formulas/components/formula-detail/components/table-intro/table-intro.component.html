@@ -1,32 +1,40 @@
-<ng-container *ngIf="formula">
+<ng-container *ngIf="ingredients">
   <div class="time-container">
     <div class="time-item">
-      <h2>Hydration</h2>
+      <h2>
+        {{ 'FORMULAS.FORMULAS-DETAILS.INTRO_TABLE.hydration' | translate }}
+      </h2>
       <p [style.fontSize.%]="fontSize">
-        {{ formula.ingredients[1].percentage }}%
+        <!-- {{ formula.ingredients[1].percentage }}% -->
       </p>
     </div>
     <div class="time-item">
-      <h2>Units</h2>
+      <h2>{{ 'FORMULAS.FORMULAS-DETAILS.INTRO_TABLE.units' | translate }}</h2>
       <p [style.fontSize.%]="fontSize">{{ formula.units }}</p>
     </div>
-    <div class="time-item">
-      <h2>Baker Factor</h2>
+    <div class="time-item text-center">
+      <h2>
+        {{ 'FORMULAS.FORMULAS-DETAILS.INTRO_TABLE.backer_factor' | translate }}
+      </h2>
       <p [style.fontSize.%]="fontSize">{{ bakeryMeasure.toFixed(2) }} gr/%</p>
     </div>
-    <div class="time-item">
-      <h2>Total time</h2>
+    <div class="time-item text-center">
+      <h2>
+        {{ 'FORMULAS.FORMULAS-DETAILS.INTRO_TABLE.total_time' | translate }}
+      </h2>
       <p [style.fontSize.%]="fontSize">
         {{ transformMinutesToHours(timeTotal) }}
       </p>
     </div>
-    <div class="time-item">
-      <h2>Weight Total</h2>
-      <p [style.fontSize.%]="fontSize">{{ unitWeight * formula.units }} gr</p>
+    <div class="time-item text-center">
+      <h2>
+        {{ 'FORMULAS.FORMULAS-DETAILS.INTRO_TABLE.weight_total' | translate }}
+      </h2>
+      <p [style.fontSize.%]="fontSize">{{ weightTotal }} gr</p>
     </div>
     <div class="last-child">
       <div class="progress">
-        <div
+        <!-- <div
           class="progress-bar progress-bar-striped bg-info"
           role="progressbar"
           [style.width.%]="formula.ingredients[1].percentage"
@@ -35,7 +43,7 @@
           aria-valuemax="100"
         >
           {{ formula.ingredients[1].percentage }}%
-        </div>
+        </div> -->
       </div>
       <div class="progress-percent">
         <span>0%</span>

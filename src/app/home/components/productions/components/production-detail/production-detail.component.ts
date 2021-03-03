@@ -1,12 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Params } from "@angular/router";
-import { Production } from "@core/model/productions.model";
-import { ProductionsService } from "@core/service/productions/productions.service";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { FormulaProduction } from '@core/model/formula-production';
+import { Production } from '@core/model/productions.model';
+import { ProductionsService } from '@core/service/productions/productions.service';
 
 @Component({
-  selector: "app-production-detail",
-  templateUrl: "./production-detail.component.html",
-  styleUrls: ["./production-detail.component.sass"],
+  selector: 'app-production-detail',
+  templateUrl: './production-detail.component.html',
+  styleUrls: ['./production-detail.component.sass'],
 })
 export class ProductionDetailComponent implements OnInit {
   arrayPercent = [];
@@ -20,7 +21,9 @@ export class ProductionDetailComponent implements OnInit {
   verificationFormula: boolean;
   img: any;
   timeTotal: number;
-  production: Production;
+  production: any;
+  formulas: FormulaProduction[];
+  id: any;
   constructor(
     private productionsService: ProductionsService,
     private route: ActivatedRoute
@@ -30,17 +33,28 @@ export class ProductionDetailComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       const id = params.id;
       this.fetchProduction(id);
+      this.fetchFormulaProduction(id);
+      // this.fetchIngredientsProduction(id, this.formulas.id);
     });
+    if (this.formulas) {
+      console.log(this.formulas);
+    }
+  }
+  fetchIngredientsProduction(idProduction: string, idFormula: string) {
+    this.productionsService
+      .getProductionFormulaIngredients(idProduction, idFormula)
+      .subscribe((respond) => {
+        // console.log(respond);
+      });
   }
   fetchProduction(id: string) {
     this.productionsService.getProduction(id).subscribe((production) => {
       this.production = production;
-      const newArray: Array<any> = production.formulas[0].formula.ingredients;
-      newArray.forEach((element) => {
-        this.arrayPercent.push(element.percentage);
-      });
-      const result = this.arrayPercent.reduce((a, b) => a + b, 0);
-      this.resultPercent = result.toFixed(1);
+    });
+  }
+  fetchFormulaProduction(id: string) {
+    this.productionsService.getFormulaProductions(id).subscribe((formulas) => {
+      this.formulas = formulas;
     });
   }
   printPdf() {

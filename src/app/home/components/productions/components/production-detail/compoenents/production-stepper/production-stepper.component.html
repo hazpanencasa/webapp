@@ -5,7 +5,11 @@
   >
     <div class="row">
       <div class="col">
-        <h1 class="text-center">Mix Order</h1>
+        <h1 class="text-center">
+          {{
+            'PRODUCTIONS.PRODUCTIONS_DETAILS.MIX_ORDER_TABLE.title' | translate
+          }}
+        </h1>
       </div>
     </div>
     <div class="row">
@@ -19,7 +23,13 @@
               src="assets/images/Pasos/Pasos_PNG/icon-{{ i + 1 }}.png"
               alt="icon"
             />
-            <h1 class="text-center ml-2">Step {{ i + 1 }}</h1>
+            <h1 class="text-center ml-2">
+              {{
+                'PRODUCTIONS.PRODUCTIONS_DETAILS.MIX_ORDER_TABLE.TABLE.step'
+                  | translate
+              }}
+              {{ i + 1 }}
+            </h1>
           </div>
           <div class="formula-stepper__accordion">
             <em [style.fontSize.%]="fontSize">Ingredients</em>
@@ -53,7 +63,7 @@
                       "
                       [style.fontSize.%]="fontSize"
                     >
-                      {{ i.ingredient.cost ? i.ingredient.cost : "N/A" }}
+                      {{ i.ingredient.cost ? i.ingredient.cost : 'N/A' }}
                     </td>
                     <td class="text-right" [style.fontSize.%]="fontSize">
                       {{

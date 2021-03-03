@@ -37,5 +37,143 @@
       "title": "<span>Haz Pan En Casa</span> / Panaderia",
       "sub-title": "🔥 | El mejor Pan lo puedes hacer en tu casa! 🥐 <br /> | Tips & Tricks para un Pan perfecto!"
     }
+  },
+  "VIDEO": {
+    "TITLE": "Las mejores recetas de Venezuela",
+    "SUB_TITLE": "En la panadería, la imaginación es el límite, porque FUN FACT, esta Trenza de Leche Azucarada está hecha con la misma masa de las Acemitas de Leche que preparamos la semana pasada."
+  },
+  "GALLERY": {
+    "TITLE": "Nuestra Galeria",
+    "SUB_TITLE": "Los mas populares post de Haz Pan en Casa"
+  },
+  "SIDEBAR": {
+    "home": "Casa",
+    "productions": "producciones",
+    "ingredients": "ingredientes",
+    "formulas": "formulas",
+    "menu": "colapsar menu"
+  },
+  "FOOTER": {
+    "ABOUT": {
+      "title": "ACERCA DE NOSOTROS",
+      "paragraph": "Creación de pan, sin tener que ir a la panadería todos los días, todo lo que necesita es una guía interactiva para lograr sus creaciones de panadería y mucho más."
+    },
+    "CONTACT": {
+      "title": "Informacion de Contacto"
+    },
+    "RIGHTS_RESERVED": "Haz Pan en casa. Reservados todos los derechos"
+  },
+  "PRODUCTIONS": {
+    "title": "Producciones",
+    "input": "Busca una produccion",
+    "button": "Ver Detalles",
+    "unit": "Ud",
+    "unit2": "Uds",
+    "PRODUCTIONS_DETAILS": {
+      "BUTTONS": {
+        "photo": {
+          "photo_button": "Foto",
+          "no_photo_button": "No Foto"
+        },
+        "print": "Imprimir"
+      },
+      "INTRO_TABLE": {
+        "created_by": "Created by:",
+        "created_at": "Created at:",
+        "email": "Correo Electronico:",
+        "hydration": "Hidratacion",
+        "units": "unidades",
+        "backer_factor": "Factor Panadero",
+        "total_time": "Tiempo Total",
+        "weight_total": "Peso Total"
+      },
+      "INGREDIENTS_TABLE": {
+        "title": "Ingredientes",
+        "table_header": "Nombre"
+      },
+      "TIME_TABLE": {
+        "title": "tiempos",
+        "step": "Pasos"
+      },
+      "MIX_ORDER_TABLE": {
+        "title": "Orden de la Mezcla",
+        "TABLE": {
+          "step": "Pasos",
+          "ingredients": "Ingredientes",
+          "instructions": "Instruciones",
+          "name": "Nombre",
+          "cost": "Costo",
+          "hydration": "Hidratacion"
+        }
+      },
+      "ADD_INFO": {
+        "title": "Informacion Adicional"
+      }
+    }
+  },
+  "FORMULAS": {
+    "title": "Formulas",
+    "text-info": "Mira toda nuestra variedad de Formulas",
+    "input": "Busca una Formula",
+    "CARD": {
+      "text-title": "tiempo para Hacer Pan",
+      "text-info": "Mas detalles"
+    },
+    "FORMULAS-DETAILS": {
+      "BUTTONS": {
+        "photo": {
+          "photo_button": "Foto",
+          "no_photo_button": "No Foto"
+        },
+        "print": "Imprimir"
+      },
+      "INTRO_TABLE": {
+        "created_by": "Creado por:",
+        "created_at": "Creado en:",
+        "email": "Correo Electronico:",
+        "hydration": "Hidratacion",
+        "units": "unidades",
+        "backer_factor": "Factor Panadero",
+        "total_time": "Tiempo Total",
+        "weight_total": "Peso Total"
+      },
+      "INGREDIENTS_TABLE": {
+        "title": "Ingredientes",
+        "table-head-title": "Nombre"
+      },
+      "INGREDIENTS_TABLE-COMPOUND": {
+        "title": "Ingredientes compuestos",
+        "table-head-title": "Nombre"
+      },
+      "TIME_TABLE": {
+        "title": "Tiempos",
+        "table-head-title": "Pasos"
+      },
+      "ADD-INFO": {
+        "title": "Informacion adicional"
+      },
+      "FORMULA-STEPPER": {
+        "title": "Orden de la mezcla",
+        "steps": "Pasos",
+        "step": "Paso",
+        "ingredients": "Ingredientes",
+        "name": "Nombre",
+        "cost": "Costo",
+        "hydration": "Hidratacion",
+        "instructions": "Instrucciones"
+      },
+      "MIXING-COMPOUND_TABLE": {
+        "title": "Orden de Mezcla de",
+        "step": "Paso",
+        "ingredients": "Ingredientes",
+        "name": "Nombre",
+        "cost": "Costo",
+        "hydration": "Hidratacion",
+        "instructions": "Instrucciones"
+      },
+      "PREPARATION_STEPS": {
+        "title": "Orden de preparación"
+      }
+    }
   }
 }

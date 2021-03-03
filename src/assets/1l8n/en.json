@@ -37,5 +37,143 @@
       "title": "<span>Made Bread At Home</span> / Bakery",
       "sub-title": "🔥 | You can make the best bread at home!🥐 | Tips & Tricks for a perfect Bread!"
     }
+  },
+  "VIDEO": {
+    "TITLE": "The best receipts of Venezuela",
+    "SUB_TITLE": "In the bakery, the imagination is the limit, because FUN FACT, this Braid of Sugary Milk is made with the same mass of the Milk Acemites that we prepared last week."
+  },
+  "GALLERY": {
+    "TITLE": "Our Gallery",
+    "SUB_TITLE": "the most popular Post of Made Bread at Home"
+  },
+  "SIDEBAR": {
+    "home": "home",
+    "productions": "productions",
+    "ingredients": "ingredients",
+    "formulas": "formulas",
+    "menu": "collapse menu"
+  },
+  "FOOTER": {
+    "ABOUT": {
+      "title": "ABOUT US",
+      "paragraph": "Bread creation, without having to go to the bakery every day, all you need is an interactive guide to achieve your bakery creations and much more"
+    },
+    "CONTACT": {
+      "title": "CONTACT INFO"
+    },
+    "RIGHTS_RESERVED": "Made Bread at Home. All rights reserved"
+  },
+  "PRODUCTIONS": {
+    "title": "Productions",
+    "input": "Search a production",
+    "button": "See Details",
+    "unit": "Unit",
+    "unit2": "Units",
+    "PRODUCTIONS_DETAILS": {
+      "BUTTONS": {
+        "photo": {
+          "photo_button": "Photo",
+          "no_photo_button": "No Photo"
+        },
+        "print": "Print"
+      },
+      "INTRO_TABLE": {
+        "creator": "Created by:",
+        "creation-date": "Created at:",
+        "email": "Email:",
+        "hydration": "Hydration",
+        "units": "Units",
+        "backer_factor": "Baker Factor",
+        "total_time": "Total time",
+        "weight_total": "Weight Total"
+      },
+      "INGREDIENTS_TABLE": {
+        "title": "Ingredients",
+        "table_header": "Name"
+      },
+      "TIME_TABLE": {
+        "title": "Times",
+        "step": "Step"
+      },
+      "MIX_ORDER_TABLE": {
+        "title": "Mix Order",
+        "TABLE": {
+          "step": "Step",
+          "ingredients": "Ingredients",
+          "instructions": "Instructions",
+          "name": "Name",
+          "cost": "Cost",
+          "hydration": "hydration"
+        }
+      },
+      "ADD_INFO": {
+        "title": "Additional Information"
+      }
+    }
+  },
+  "FORMULAS": {
+    "title": "Formulas",
+    "text-info": "See all our variety of Formulas",
+    "input": "Search a Formula",
+    "CARD": {
+      "text-title": "time for some bakery",
+      "text-info": "More details"
+    },
+    "FORMULAS-DETAILS": {
+      "BUTTONS": {
+        "photo": {
+          "photo_button": "Photo",
+          "no_photo_button": "No Photo"
+        },
+        "print": "Print"
+      },
+      "INTRO_TABLE": {
+        "created_by": "Created by:",
+        "created_at": "Created at:",
+        "email": "Email:",
+        "hydration": "Hydration",
+        "units": "Units",
+        "backer_factor": "Baker Factor",
+        "total_time": "Total time",
+        "weight_total": "Weight Total"
+      },
+      "INGREDIENTS_TABLE": {
+        "title": "Ingredients",
+        "table-head-title": "Name"
+      },
+      "INGREDIENTS_TABLE-COMPOUND": {
+        "title": "Compound ingredients",
+        "table-head-title": "Name"
+      },
+      "TIME_TABLE": {
+        "title": "Times",
+        "table-head-title": "Step"
+      },
+      "ADD-INFO": {
+        "title": "Additional Information"
+      },
+      "FORMULA-STEPPER": {
+        "title": "Mix Order",
+        "step": "Step",
+        "steps": "Step",
+        "ingredients": "Ingredients",
+        "name": "Name",
+        "cost": "Cost",
+        "hydration": "Hydration",
+        "instructions": "Instructions"
+      },
+      "MIXING-COMPOUND_TABLE": {
+        "title": "Steps Mixing of",
+        "step": "Step",
+        "ingredients": "Ingredients",
+        "name": "Name",
+        "cost": "Cost",
+        "hydration": "Hydration",
+        "instructions": "Instructions"
+      },
+      "PREPARATION_STEPS": {
+        "title": "Preparation Order"
+      }
+    }
   }
 }

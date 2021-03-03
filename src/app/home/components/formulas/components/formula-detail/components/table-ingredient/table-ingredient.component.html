@@ -1,9 +1,14 @@
-<ng-container *ngIf="formula">
+<ng-container *ngIf="ingredients">
   <div class="table2-container">
     <table class="table">
       <thead>
         <tr>
-          <th [style.fontSize.%]="fontSize" colspan="2" scope="col">Name</th>
+          <th [style.fontSize.%]="fontSize" colspan="2" scope="col">
+            {{
+              'FORMULAS.FORMULAS-DETAILS.INGREDIENTS_TABLE.table-head-title'
+                | translate
+            }}
+          </th>
           <th class="text-right" [style.fontSize.%]="fontSize" scope="col">
             %
           </th>
@@ -12,7 +17,7 @@
           </th>
         </tr>
       </thead>
-      <tbody *ngFor="let i of formula.ingredients">
+      <tbody *ngFor="let i of ingredients">
         <tr class="table-row__info">
           <td [style.fontSize.%]="fontSize" colspan="2" scope="row">
             {{ i.ingredient.name }}
@@ -26,7 +31,7 @@
                 (i.percentage *
                   (transformStringToNumber(formula.unit_weight) *
                     formula.units)) /
-                resultPercent
+                percentageTotal
               ).toFixed(1)
             }}
           </td>
@@ -43,10 +48,10 @@
       <tr>
         <td [style.fontSize.%]="fontSize" colspan="2" scope="row">Total</td>
         <td class="text-right" [style.fontSize.%]="fontSize">
-          {{ resultPercent }}
+          {{ percentageTotal }}
         </td>
         <td class="text-right" [style.fontSize.%]="fontSize">
-          {{ formula.units * formula.unit_weight }}
+          {{ totalWeight }}
         </td>
       </tr>
     </table>

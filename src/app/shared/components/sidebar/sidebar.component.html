@@ -26,7 +26,7 @@
           routerLink="/home"
         >
           <ion-icon matListIcon name="home-outline"></ion-icon>
-          <p *ngIf="showSidebar">Home</p>
+          <p *ngIf="showSidebar">{{ 'SIDEBAR.home' | translate }}</p>
         </mat-list-option>
         <mat-list-option
           class="Sidebar-item"
@@ -34,7 +34,7 @@
           routerLink="productions"
         >
           <ion-icon matListIcon name="flame-outline"></ion-icon>
-          <p *ngIf="showSidebar">Productions</p>
+          <p *ngIf="showSidebar">{{ 'SIDEBAR.productions' | translate }}</p>
         </mat-list-option>
         <mat-list-option
           class="Sidebar-item"
@@ -42,7 +42,7 @@
           routerLink="ingredients"
         >
           <ion-icon matListIcon name="book-outline"></ion-icon>
-          <p *ngIf="showSidebar">Ingredients</p>
+          <p *ngIf="showSidebar">{{ 'SIDEBAR.ingredients' | translate }}</p>
         </mat-list-option>
         <mat-list-option
           class="Sidebar-item"
@@ -50,7 +50,7 @@
           routerLink="formulas"
         >
           <ion-icon matListIcon name="reader-outline"></ion-icon>
-          <p *ngIf="showSidebar">Formulas</p>
+          <p *ngIf="showSidebar">{{ 'SIDEBAR.formulas' | translate }}</p>
         </mat-list-option>
         <mat-list-option
           class="Sidebar-item d-md-none"
@@ -70,7 +70,7 @@
           <button (click)="sidebarToggle($event)">
             <ion-icon name="arrow-back-circle-outline"></ion-icon>
           </button>
-          <p>{{ "collapse menu" | uppercase }}</p>
+          <p>{{ 'SIDEBAR.menu' | translate | uppercase }}</p>
         </div>
       </ng-template>
       <ng-template #elseBlock>
