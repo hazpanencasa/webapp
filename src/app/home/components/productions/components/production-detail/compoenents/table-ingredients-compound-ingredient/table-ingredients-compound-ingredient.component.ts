@@ -1,20 +1,21 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: "app-table-ingredients-compound-ingredient",
-  templateUrl: "./table-ingredients-compound-ingredient.component.html",
-  styleUrls: ["./table-ingredients-compound-ingredient.component.sass"],
+  selector: 'app-table-ingredients-compound-ingredient',
+  templateUrl: './table-ingredients-compound-ingredient.component.html',
+  styleUrls: ['./table-ingredients-compound-ingredient.component.sass'],
 })
 export class TableIngredientsCompoundIngredientComponent implements OnInit {
   @Input() ingredients: Array<any>;
-  @Input() units: number;
+  @Input() units: string;
   @Input() unitWeight: string;
   totalPercentage: number;
   totalGrams = 0;
   constructor() {}
 
   ngOnInit() {
-    this.getTotalGrams(this.unitWeight, this.ingredients[0].bakers_percentage);
+    console.log(this.ingredients[0].ingredient.formula.ingredients);
+    this.getTotalGrams(this.unitWeight, this.ingredients[0].percentage);
     this.getTotalPercentage();
   }
   getIngredientsGrams(

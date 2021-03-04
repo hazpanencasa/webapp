@@ -26,7 +26,7 @@ export class TableIngredientsComponent implements OnInit {
       .getProductionFormulaIngredients(idProduction, idFormula)
       .subscribe((respond) => {
         this.ingredients = respond;
-        console.log(respond);
+        // console.log(respond);
       });
   }
 }
