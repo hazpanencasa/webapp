@@ -34,18 +34,7 @@ export class ProductionDetailComponent implements OnInit {
       const id = params.id;
       this.fetchProduction(id);
       this.fetchFormulaProduction(id);
-      // this.fetchIngredientsProduction(id, this.formulas.id);
     });
-    if (this.formulas) {
-      console.log(this.formulas);
-    }
-  }
-  fetchIngredientsProduction(idProduction: string, idFormula: string) {
-    this.productionsService
-      .getProductionFormulaIngredients(idProduction, idFormula)
-      .subscribe((respond) => {
-        // console.log(respond);
-      });
   }
   fetchProduction(id: string) {
     this.productionsService.getProduction(id).subscribe((production) => {

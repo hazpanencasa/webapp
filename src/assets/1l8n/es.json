@@ -36,6 +36,14 @@
     "BANNER": {
       "title": "<span>Haz Pan En Casa</span> / Panaderia",
       "sub-title": "🔥 | El mejor Pan lo puedes hacer en tu casa! 🥐 <br /> | Tips & Tricks para un Pan perfecto!"
+    },
+    "INFO": {
+      "title": "Ultimas publicaciones de Instagram",
+      "created_by": "Creado por:",
+      "description1": "Publicado en",
+      "click": "Click aqui",
+      "description2": "para ver mas publicaciones",
+      "description3": "Aprende mas recetas en instagram"
     }
   },
   "VIDEO": {
@@ -64,7 +72,7 @@
     "RIGHTS_RESERVED": "Haz Pan en casa. Reservados todos los derechos"
   },
   "PRODUCTIONS": {
-    "title": "Producciones",
+    "title": "Produccion de",
     "input": "Busca una produccion",
     "button": "Ver Detalles",
     "unit": "Ud",
@@ -103,7 +111,7 @@
           "instructions": "Instruciones",
           "name": "Nombre",
           "cost": "Costo",
-          "hydration": "Hidratacion"
+          "hydration": "Hidratación"
         }
       },
       "ADD_INFO": {
@@ -174,6 +182,38 @@
       "PREPARATION_STEPS": {
         "title": "Orden de preparación"
       }
+    }
+  },
+  "INGREDIENTS": {
+    "title": "Ingredientes",
+    "input": "Busca tu ingrediente",
+    "button": "Ver Detalles",
+    "ingredient-detail": {
+      "name": "Nombre",
+      "cost": "Costo",
+      "hydration": "Hidratación"
+    }
+  },
+  "PROFILE": {
+    "CARD": {
+      "edit": "Editar perfil",
+      "reset": "Cambiar Contraseña",
+      "highlight": "Logros",
+      "button": "Salir"
+    },
+    "DESCRIPTION_IMG": {
+      "title_production": "Producciones",
+      "title_ingredient": "Ingredientes",
+      "title_formula": "Formulas",
+      "no_description_production": "Este usuario no tiene ninguna produccion creada",
+      "no_description_ingredient": "Este usuario no tiene ninguna ingrediente creada",
+      "no_description_formula": "Este usuario no tiene ninguna formula creada",
+      "congrats": "Felicitaiones usted tiene"
+    },
+    "MOST_POPULAR": {
+      "title": "Los mas populares de",
+      "description": "Esta es una Fórmula especial, echa un vistazo para ver todos los detalles",
+      "button": "Ver Detalles"
     }
   }
 }

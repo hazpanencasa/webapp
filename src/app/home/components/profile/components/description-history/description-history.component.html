@@ -2,16 +2,16 @@
   <div class="wrapper">
     <div class="card">
       <div class="front">
-        <h1>Production</h1>
+        <h1>{{ 'PROFILE.DESCRIPTION_IMG.title_production' | translate }}</h1>
       </div>
       <div class="right d-flex text-center">
         <div class="align-self-center" *ngIf="numberProductions > 0">
-          <p>Congratulation you have made</p>
+          <p>{{ 'PROFILE.DESCRIPTION_IMG.congrats' | translate }}</p>
           <h1 class="my-0">{{ numberProductions }}</h1>
-          <h1>Productions</h1>
+          <h1>{{ 'PROFILE.DESCRIPTION_IMG.title_production' | translate }}</h1>
         </div>
         <div *ngIf="numberIngredients == 0" class="align-self-center">
-          This user has not any Productions created yet
+          {{ 'PROFILE.DESCRIPTION_IMG.no_description_production' | translate }}
         </div>
       </div>
     </div>
@@ -22,16 +22,16 @@
   <div class="wrapper">
     <div class="card">
       <div class="front">
-        <h1>Ingredients</h1>
+        <h1>{{ 'PROFILE.DESCRIPTION_IMG.title_ingredient' | translate }}</h1>
       </div>
       <div class="right text-center d-flex">
         <div class="align-self-center" *ngIf="numberIngredients > 0">
-          <p>Congratulation you have made</p>
+          <p>{{ 'PROFILE.DESCRIPTION_IMG.congrats' | translate }}</p>
           <h1 class="my-0">{{ numberIngredients }}</h1>
-          <h1>Ingredients</h1>
+          <h1>{{ 'PROFILE.DESCRIPTION_IMG.title_ingredient' | translate }}</h1>
         </div>
         <div *ngIf="numberIngredients == 0" class="align-self-center">
-          This user has not any ingredient created yet
+          {{ 'PROFILE.DESCRIPTION_IMG.no_description_ingredient' | translate }}
         </div>
       </div>
     </div>
@@ -42,16 +42,17 @@
   <div class="wrapper">
     <div class="card">
       <div class="front">
-        <h1>Formulas</h1>
+        <h1>{{ 'PROFILE.DESCRIPTION_IMG.title_formula' | translate }}</h1>
       </div>
       <div class="right d-flex text-center">
         <div class="align-self-center" *ngIf="numberFormulas > 0">
-          <p>Congratulation you have made</p>
+          <p>{{ 'PROFILE.DESCRIPTION_IMG.congrats' | translate }}</p>
+
           <h1 class="my-0">{{ numberFormulas }}</h1>
-          <h1>Formulas</h1>
+          <h1>{{ 'PROFILE.DESCRIPTION_IMG.title_formula' | translate }}</h1>
         </div>
         <div *ngIf="numberFormulas == 0" class="align-self-center">
-          This user has not any Formulas created yet
+          {{ 'PROFILE.DESCRIPTION_IMG.no_description_formula' | translate }}
         </div>
       </div>
     </div>

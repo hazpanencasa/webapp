@@ -8,7 +8,9 @@
       <div class="container">
         <div class="row">
           <div class="col-md-2 align-self-start" data-aos="fade-right">
-            <h1 class="text-center text-white">New instagram's posts</h1>
+            <h1 class="text-center text-white">
+              {{ 'HOME.INFO.title' | translate }}
+            </h1>
             <p class="Info-section1__description text-white text-center">
               {{ post[0].caption }}
             </p>
@@ -27,13 +29,16 @@
             data-aos="fade-left"
           >
             <h2 class="text-white">
-              <em>Created by</em>
+              <em>{{ 'HOME.INFO.created_by' | translate }}</em>
               {{ post[0].username }}
             </h2>
             <p class="text-white">
-              this post was created {{ post[0].timestamp | date }} <br />
-              <a [href]="post[0].permalink">click here</a> to see more about
-              this post
+              {{ 'HOME.INFO.description1' | translate }}
+              {{ post[0].timestamp | date }} <br /><a
+                [href]="post[0].permalink"
+                >{{ 'HOME.INFO.click' | translate }}</a
+              >
+              {{ 'HOME.INFO.description2' | translate }}
             </p>
           </div>
         </div>
@@ -50,7 +55,7 @@
               {{
                 post[1].caption
                   ? post[1].caption
-                  : 'Aprende mas recetas en instagram'
+                  : ('HOME.INFO.description3' | translate)
               }}
             </p>
           </div>
@@ -71,13 +76,16 @@
             data-aos="fade-right"
           >
             <h2 class="text-white">
-              <em>Created by</em>
+              <em>{{ 'HOME.INFO.created_by' | translate }}</em>
               {{ post[1].username }}
             </h2>
             <p class="text-white">
-              this post was created {{ post[1].timestamp | date }} <br />
-              <a [href]="post[1].permalink">click here</a> to see more about
-              this post
+              {{ 'HOME.INFO.description1' | translate }}
+              {{ post[1].timestamp | date }} <br /><a
+                [href]="post[1].permalink"
+                >{{ 'HOME.INFO.click' | translate }}</a
+              >
+              {{ 'HOME.INFO.description2' | translate }}
             </p>
           </div>
         </div>
@@ -105,13 +113,16 @@
             data-aos="fade-left"
           >
             <h2 class="text-white">
-              <em>Created by</em>
+              <em>{{ 'HOME.INFO.created_by' | translate }}</em>
               {{ post[2].username }}
             </h2>
             <p class="text-white">
-              this post was created {{ post[2].timestamp | date }} <br />
-              <a [href]="post[2].permalink">click here</a> to see more about
-              this post
+              {{ 'HOME.INFO.description1' | translate }}
+              {{ post[2].timestamp | date }} <br /><a
+                [href]="post[2].permalink"
+                >{{ 'HOME.INFO.click' | translate }}</a
+              >
+              {{ 'HOME.INFO.description2' | translate }}
             </p>
           </div>
         </div>

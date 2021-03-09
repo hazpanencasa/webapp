@@ -1,0 +1,65 @@
+<ng-container *ngIf="ingredientCompound || ingredient">
+  <table *ngIf="ingredientCompound.length > 0" class="table">
+    <thead>
+      <tr>
+        <th [style.fontSize.%]="fontSize" colspan="2" scope="col">
+          {{
+            'PRODUCTIONS.PRODUCTIONS_DETAILS.INGREDIENTS_TABLE.table_header'
+              | translate
+          }}
+        </th>
+        <th class="text-right" [style.fontSize.%]="fontSize" scope="col">%</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let element of ingredientCompound">
+      <tr class="table-row__info">
+        <td [style.fontSize.%]="fontSize" colspan="2" scope="row">
+          {{ element.ingredient.name }}
+        </td>
+        <td class="text-right" [style.fontSize.%]="fontSize">
+          {{ element.percentage }}
+        </td>
+      </tr>
+      <tr class="table-row__barprogress">
+        <td colspan="4">
+          <mat-progress-bar
+            mode="determinate"
+            value="{{ element.percentage }}"
+          ></mat-progress-bar>
+        </td>
+      </tr>
+    </tbody>
+    <tr>
+      <td [style.fontSize.%]="fontSize" colspan="2" scope="row">Total</td>
+      <td class="text-right" [style.fontSize.%]="fontSize">
+        {{ resultPercent }}
+      </td>
+    </tr>
+  </table>
+  <div *ngIf="ingredientCompound.length == 0" class="container-table">
+    <table>
+      <thead>
+        <tr>
+          <th>{{ 'INGREDIENTS.ingredient-detail.name' | translate }}</th>
+          <th>{{ 'INGREDIENTS.ingredient-detail.cost' | translate }}</th>
+          <th>{{ 'INGREDIENTS.ingredient-detail.hydration' | translate }} %</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ ingredient.name }}</td>
+          <td>{{ ingredient.cost ? ingredient.cost : 'N/A' }}</td>
+          <td>{{ ingredient.hydration }}</td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <mat-progress-bar
+              mode="determinate"
+              value="{{ ingredient.hydration }}"
+            ></mat-progress-bar>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-container>

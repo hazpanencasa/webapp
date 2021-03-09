@@ -1,16 +1,20 @@
-import { AfterViewInit, Component, Input, OnInit } from "@angular/core";
-import { AngularFireAuth } from "@angular/fire/auth";
-import { Router } from "@angular/router";
-import { AuthService } from "@core/service/auth/auth.service";
-import { modalLogout } from "@utils/modal";
-import { Observable } from "rxjs";
+import { Component, Input, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
+import { AuthService } from '@core/service/auth/auth.service';
+import { modalLogout } from '@utils/modal';
+import { Observable } from 'rxjs';
+
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: "app-description-img",
-  templateUrl: "./description-img.component.html",
-  styleUrls: ["./description-img.component.sass"],
+  selector: 'app-description-img',
+  templateUrl: './description-img.component.html',
+  styleUrls: ['./description-img.component.sass'],
 })
 export class DescriptionImgComponent implements OnInit {
+  language: string;
+  langs: string[] = [];
   user$: Observable<any> = this.af.user;
   @Input() numberFormulas: number;
   @Input() numberIngredients: number;
@@ -21,23 +25,23 @@ export class DescriptionImgComponent implements OnInit {
   userUdi: string;
   highLights: Array<any> = [
     {
-      title: "Lord Panadero",
-      icon: "assets/images/Pasos/Pasos_PNG/icon-1.png",
+      title: 'Lord Panadero',
+      icon: 'assets/images/Pasos/Pasos_PNG/icon-1.png',
       number_formula: 3,
     },
     {
-      title: "Menor tiempo en cocina",
-      icon: "assets/images/Pasos/Pasos_PNG/icon-5.png",
+      title: 'Menor tiempo en cocina',
+      icon: 'assets/images/Pasos/Pasos_PNG/icon-5.png',
       number_formula: 2,
     },
     {
-      title: "Jedi Baker",
-      icon: "assets/images/Pasos/Pasos_PNG/icon-4.png",
+      title: 'Jedi Baker',
+      icon: 'assets/images/Pasos/Pasos_PNG/icon-4.png',
       number_formula: 4,
     },
     {
-      title: "Keep Learning",
-      icon: "assets/images/Pasos/Pasos_PNG/icon-2.png",
+      title: 'Keep Learning',
+      icon: 'assets/images/Pasos/Pasos_PNG/icon-2.png',
       number_formula: 0,
     },
   ];
@@ -45,8 +49,11 @@ export class DescriptionImgComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private router: Router,
-    private af: AngularFireAuth
-  ) {}
+    private af: AngularFireAuth,
+    public translate: TranslateService
+  ) {
+    this.langs = this.translate.getLangs();
+  }
 
   ngOnInit() {
     this.getCurrentUser();
@@ -76,9 +83,12 @@ export class DescriptionImgComponent implements OnInit {
     modalLogout().then((result) => {
       if (result.isConfirmed) {
         this.auth.logOut().then(() => {
-          this.router.navigate(["login"]);
+          this.router.navigate(['login']);
         });
       }
     });
+  }
+  changeLang(lang: string) {
+    this.translate.use(lang);
   }
 }

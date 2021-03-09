@@ -13,13 +13,13 @@ import { IngredientsFormula } from '@core/model/ingredients-formula';
 })
 export class FormulasService {
   formulas: Observable<Formula[]>;
-  formulasColletion: AngularFirestoreCollection<Formula>;
+  formulasCollection: AngularFirestoreCollection<Formula>;
   formulaDoc: AngularFirestoreDocument<Formula>;
   formula: Observable<Formula>;
 
   constructor(public afs: AngularFirestore) {
-    this.formulasColletion = afs.collection('formulas');
-    this.formulas = this.formulasColletion.snapshotChanges().pipe(
+    this.formulasCollection = afs.collection('formulas');
+    this.formulas = this.formulasCollection.snapshotChanges().pipe(
       map((actions) => {
         return actions.map((formula) => {
           const data = formula.payload.doc.data() as Formula;

@@ -21,7 +21,6 @@ export class TableIntroComponent implements OnInit {
 
   ngOnInit() {
     this.addAllTime();
-    // this.fetchIngredients(this.id, this.formula.id);
   }
   transformStringToNumber(s: string, r?: number) {
     return parseInt(s, r);
@@ -46,11 +45,4 @@ export class TableIntroComponent implements OnInit {
     }, 0);
     this.timeTotal = times;
   }
-  // fetchIngredients(id1: string, id2: string) {
-  //   this.productionsService
-  //     .getProductionFormulaIngredients(id1, id2)
-  //     .subscribe((ingredients) => {
-  //       this.ingredients = ingredients;
-  //     });
-  // }
 }

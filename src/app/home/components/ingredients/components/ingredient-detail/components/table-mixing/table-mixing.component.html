@@ -1,8 +1,5 @@
-<ng-container *ngIf="mixing">
-  <div
-    [ngClass]="{ br: !toggleButtonGridContainer && compoundValidation }"
-    class="container"
-  >
+<ng-container *ngIf="ingredientFormula">
+  <div class="container pt-3">
     <div class="row">
       <div class="col">
         <h1 class="text-center">
@@ -16,7 +13,7 @@
       <div class="col-lg">
         <div
           class="mb-4"
-          *ngFor="let s of mixing[0].mixing_order; let i = index"
+          *ngFor="let s of ingredientFormula.mixing; let i = index"
         >
           <div class="title-stepper mb-2">
             <img

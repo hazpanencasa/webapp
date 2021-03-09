@@ -1,12 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { PageEvent } from "@angular/material/paginator";
-import { Formula } from "@core/model/formulas.model";
-import { FormulasService } from "@core/service/formulas/formulas.service";
+import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
+import { Formula } from '@core/model/formulas.model';
+import { FormulasService } from '@core/service/formulas/formulas.service';
 
 @Component({
-  selector: "app-formulas",
-  templateUrl: "./formulas.component.html",
-  styleUrls: ["./formulas.component.sass"],
+  selector: 'app-formulas',
+  templateUrl: './formulas.component.html',
+  styleUrls: ['./formulas.component.sass'],
   providers: [FormulasService],
 })
 export class FormulasComponent implements OnInit {
@@ -14,7 +14,7 @@ export class FormulasComponent implements OnInit {
   formulas: Formula[];
   pageSizeOptions: number[] = [3, 6, 9];
   pageEvent: PageEvent;
-  filterFormula = "";
+  filterFormula = '';
   counter = 0;
   pageSize = 6;
   pageNumber = 1;
@@ -26,6 +26,7 @@ export class FormulasComponent implements OnInit {
     this.pageNumber = event.pageIndex + 1;
   }
   fetchFormulas() {
+    // tslint:disable-next-line: deprecation
     const result = this.formulasService.getFormulas().subscribe((formulas) => {
       this.formulas = formulas;
     });

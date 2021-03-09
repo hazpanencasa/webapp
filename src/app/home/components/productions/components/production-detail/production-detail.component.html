@@ -92,7 +92,9 @@
     </div>
   </div>
   <div class="container-productions-details">
-    <h1 class="ml-4 d-print-none">Productions of {{ production.name }}</h1>
+    <h1 class="ml-4 d-print-none">
+      {{ 'PRODUCTIONS.title' | translate }} {{ production.name }}
+    </h1>
 
     <div class="mt-4 br" *ngFor="let i of formulas">
       <div
@@ -210,6 +212,5 @@
         </div>
       </div>
     </div>
-    <h1 *ngFor="let element of formulas">{{ element.formula.name }}</h1>
   </div>
 </ng-container>

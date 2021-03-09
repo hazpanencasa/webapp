@@ -1,56 +1,28 @@
-<ng-container *ngIf="ingredient">
+<ng-container *ngIf="ingredient && ingredientCompound">
   <div
-    class="parallax"
+    [ngClass]="!ingredient.formula ? 'parallax1' : 'parallax2'"
     id="parallax"
     style="background-image: url('assets/images/img-3.png')"
   >
     <div class="overlay">
+      <h1 class="ml-3">{{ ingredient.name }}</h1>
       <div class="container">
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-5">
             <div class="img-container">
-              <ul class="d-flex">
-                <li>
-                  <img src="assets/images/ingredient.png" alt="ingredient" />
-                </li>
-                <li>
-                  <img src="assets/images/ingredient.png" alt="ingredient" />
-                </li>
-                <li>
-                  <img src="assets/images/ingredient.png" alt="ingredient" />
-                </li>
-              </ul>
+              <img src="assets/images/ingredient.png" alt="ingredient" />
             </div>
           </div>
-          <div class="col-sm-6">
-            <div class="container-table">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Cost</th>
-                    <th>Hydration %</th>
-                    <th>gr</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>{{ ingredient.name }}</td>
-                    <td>{{ ingredient.cost ? ingredient.cost : "0" }}</td>
-                    <td>{{ ingredient.hydration }}</td>
-                    <td>20gr</td>
-                  </tr>
-                  <tr>
-                    <td colspan="4">
-                      <mat-progress-bar
-                        mode="determinate"
-                        value="{{ ingredient.hydration }}"
-                      ></mat-progress-bar>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+          <div class="col-sm-7">
+            <app-table-ingredients
+              *ngIf="ingredientCompound"
+              [ingredientCompound]="ingredientCompound"
+              [ingredient]="ingredient"
+            ></app-table-ingredients>
+            <app-table-mixing
+              *ngIf="ingredient.formula"
+              [ingredientFormula]="ingredient.formula"
+            ></app-table-mixing>
           </div>
         </div>
       </div>

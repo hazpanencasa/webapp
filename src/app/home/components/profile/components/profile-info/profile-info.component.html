@@ -1,5 +1,7 @@
 <div class="profile-info">
-  <h1 class="text-center">The Most Popular of {{ userName }}</h1>
+  <h1 class="text-center">
+    {{ 'PROFILE.MOST_POPULAR.title' | translate }} {{ userName }}
+  </h1>
   <div class="profile-info_container">
     <div *ngFor="let element of outputArrayFormulas" class="flip">
       <div
@@ -14,13 +16,13 @@
           {{ element.description }}
         </p>
         <p *ngIf="element.description === null">
-          This is an special Formula, take a look to see all the details
+          {{ 'PROFILE.MOST_POPULAR.description' | translate }}
         </p>
         <button
           class="button-primary mt-4"
           routerLink="/home/formulas/{{ element.id }}"
         >
-          See Details here
+          {{ 'PROFILE.MOST_POPULAR.button' | translate }}
         </button>
       </div>
     </div>
@@ -38,12 +40,12 @@
         <p *ngIf="element.description !== null">
           {{ element.description }}
         </p>
-        <p>This is an special Formula, take a look to see all the details</p>
+        <p>{{ 'PROFILE.MOST_POPULAR.description' | translate }}</p>
         <button
           class="button-primary mt-4"
           routerLink="/home/productions/{{ element.id }}"
         >
-          See Details here
+          {{ 'PROFILE.MOST_POPULAR.button' | translate }}
         </button>
       </div>
     </div>
@@ -65,18 +67,18 @@
           class="button-primary mt-4"
           routerLink="/home/ingredients/{{ element.id }}"
         >
-          See Details here
+          {{ 'PROFILE.MOST_POPULAR.button' | translate }}
         </button>
       </div>
     </div>
   </div>
   <div class="text-center" *ngIf="outputArrayFormulas.length == 0">
-    This User has no any Formula created yet
+    {{ 'PROFILE.DESCRIPTION_IMG.no_description_formula' | translate }}
   </div>
   <div class="text-center mt-4" *ngIf="outputArrayProductions.length == 0">
-    This User has no any Productions created yet
+    {{ 'PROFILE.DESCRIPTION_IMG.no_description_production' | translate }}
   </div>
   <div class="text-center mt-4" *ngIf="outputArrayIngredients.length == 0">
-    This User has no any ingredients created yet
+    {{ 'PROFILE.DESCRIPTION_IMG.no_description_ingredient' | translate }}
   </div>
 </div>

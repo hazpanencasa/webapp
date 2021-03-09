@@ -3,18 +3,49 @@
     style="background-image: url('assets/images/ingredient.png')"
     class="container-card"
   >
+    <h1 class="title text-white position-absolute">
+      {{ ingredient.name ? ingredient.name : ingredient.ingredient.name }}
+    </h1>
     <div class="overlay">
       <div class="items head">
-        <p>{{ ingredient.name }}</p>
+        <p>
+          {{ ingredient.name ? ingredient.name : ingredient.ingredient.name }}
+        </p>
         <hr />
       </div>
       <div class="items info">
         <p class="pb-3">This product was created by</p>
       </div>
-      <div class="items ingredient">
-        <p>{{ ingredient.creator }}</p>
+      <div *ngIf="ingredient.user" class="items ingredient">
+        <p>{{ ingredient.user.creator.name }}</p>
+        <p>{{ ingredient.user.creator.email }}</p>
+        <p>
+          {{ ingredient.user.creator.date | date }}
+        </p>
+        <p *ngIf="ingredient.user.creator.date.seconds">
+          {{ ingredient.user.creator.date.seconds * 1000 | date: 'yyyy/MM/dd' }}
+        </p>
         <button routerLink="{{ ingredient.id }}" class="button-primary mt-3">
-          See details
+          {{ 'INGREDIENTS.button' | translate }}
+        </button>
+      </div>
+      <div *ngIf="ingredient.ingredient" class="items ingredient">
+        <p>{{ ingredient.ingredient.user.creator.name }}</p>
+        <p>{{ ingredient.ingredient.user.creator.email }}</p>
+        <p>
+          {{ ingredient.ingredient.user.creator.date | date }}
+        </p>
+        <p *ngIf="ingredient.ingredient.user.creator.date.seconds">
+          {{
+            ingredient.ingredient.user.creator.date.seconds * 1000
+              | date: 'yyyy/MM/dd'
+          }}
+        </p>
+        <button
+          routerLink="{{ ingredient.ingredient.id }}"
+          class="button-primary mt-3"
+        >
+          {{ 'INGREDIENTS.button' | translate }}
         </button>
       </div>
     </div>

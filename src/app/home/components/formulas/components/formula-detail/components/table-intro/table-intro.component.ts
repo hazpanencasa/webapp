@@ -23,7 +23,6 @@ export class TableIntroComponent implements OnInit {
   ngOnInit() {
     this.addAllTime();
     this.bakeryFactor();
-    // console.table(this.formula);
     this.weightTotal =
       parseInt(this.formula.unit_weight, 10) * parseInt(this.formula.units, 10);
   }
@@ -48,12 +47,9 @@ export class TableIntroComponent implements OnInit {
     this.timeTotal = result;
   }
   bakeryFactor() {
-    const result = this.ingredients.reduce((a, b) => {
+    const result = this.ingredients.reduce((a: any, b: { percentage: any }) => {
       return a + b.percentage;
     }, 0);
-    console.log(result);
-    // const weightTotal =
-    //   parseInt(this.formula.unit_weight, 10) * parseInt(this.formula.units, 10);
     this.bakeryMeasure = parseInt(this.formula.unit_weight, 10) / result;
   }
 }

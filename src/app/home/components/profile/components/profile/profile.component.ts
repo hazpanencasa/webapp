@@ -1,14 +1,14 @@
-import { Component, OnInit } from "@angular/core";
-import { FormulasService } from "@core/service/formulas/formulas.service";
-import { IngredientsService } from "@core/service/ingredients/ingredients.service";
-import { ProductionsService } from "@core/service/productions/productions.service";
-import { AuthService } from "@core/service/auth/auth.service";
-import { User } from "@core/model/users.model";
+import { Component, OnInit } from '@angular/core';
+import { FormulasService } from '@core/service/formulas/formulas.service';
+import { IngredientsService } from '@core/service/ingredients/ingredients.service';
+import { ProductionsService } from '@core/service/productions/productions.service';
+import { AuthService } from '@core/service/auth/auth.service';
+import { User } from '@core/model/users.model';
 
 @Component({
-  selector: "app-profile",
-  templateUrl: "./profile.component.html",
-  styleUrls: ["./profile.component.sass"],
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.sass'],
 })
 export class ProfileComponent implements OnInit {
   user: User;
@@ -24,7 +24,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.fetchFormulas();
-    this.fetchIngredients();
+    // this.fetchIngredients();
     this.fetchProductions();
     this.getCurrentUser();
   }
@@ -57,19 +57,22 @@ export class ProfileComponent implements OnInit {
     const ingredientArray = [];
     this.ingredients.getIngredients().subscribe((ingredient) => {
       ingredient.forEach((ingres) => {
-        const userEmail = ingres.creator;
-        ingredientArray.push(userEmail);
+        if (ingres.user) {
+          const userEmail = ingres.user.creator.email;
+          ingredientArray.push(userEmail);
+        } else if (ingres.ingredient.user) {
+          const userEmail = ingres.ingredient.user.creator.email;
+          ingredientArray.push(userEmail);
+        }
       });
-      return (this.reducedIngredients = this.reduceArray(ingredientArray));
     });
   }
   reduceArray(array: Array<any>) {
-    const otherArry = array.filter((email) => {
+    const otherArray = array.filter((email) => {
       if (email === this.user.email) {
-        // if (email === "timoto@gmail.com") {
         return true;
       }
     });
-    return otherArry.length;
+    return otherArray.length;
   }
 }

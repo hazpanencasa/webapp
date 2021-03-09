@@ -1,13 +1,13 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { AuthService } from "@core/service/auth/auth.service";
-import { FormulasService } from "@core/service/formulas/formulas.service";
-import { IngredientsService } from "@core/service/ingredients/ingredients.service";
-import { ProductionsService } from "@core/service/productions/productions.service";
+import { Component, Input, OnInit } from '@angular/core';
+import { AuthService } from '@core/service/auth/auth.service';
+import { FormulasService } from '@core/service/formulas/formulas.service';
+import { IngredientsService } from '@core/service/ingredients/ingredients.service';
+import { ProductionsService } from '@core/service/productions/productions.service';
 
 @Component({
-  selector: "app-profile-info",
-  templateUrl: "./profile-info.component.html",
-  styleUrls: ["./profile-info.component.sass"],
+  selector: 'app-profile-info',
+  templateUrl: './profile-info.component.html',
+  styleUrls: ['./profile-info.component.sass'],
 })
 export class ProfileInfoComponent implements OnInit {
   @Input() userName: string;
@@ -15,7 +15,7 @@ export class ProfileInfoComponent implements OnInit {
   outputArrayFormulas = [];
   outputArrayIngredients = [];
   outputArrayProductions = [];
-  currentUserEmail = "";
+  currentUserEmail = '';
   constructor(
     private authService: AuthService,
     private formulasService: FormulasService,
@@ -28,7 +28,7 @@ export class ProfileInfoComponent implements OnInit {
       this.currentUserEmail = user.email;
     });
     this.formulasFilterEmail();
-    this.ingredientsFilterEmail();
+    // this.ingredientsFilterEmail();
     this.productionFilterEmail();
   }
   formulasFilterEmail() {
@@ -44,19 +44,20 @@ export class ProfileInfoComponent implements OnInit {
       );
     });
   }
-  ingredientsFilterEmail() {
-    this.ingredientsService.getIngredients().subscribe((ingredients) => {
-      const newArray = ingredients.filter((ingredient) => {
-        if (ingredient.creator === this.currentUserEmail) {
-          return ingredient;
-        }
-      });
-      const firstThreeArray = newArray.slice(0, 3);
-      return firstThreeArray.forEach((element) =>
-        this.outputArrayIngredients.push(element)
-      );
-    });
-  }
+  // ingredientsFilterEmail() {
+  //   this.ingredientsService.getIngredients().subscribe((ingredients) => {
+  //     console.log(ingredients);
+  //     const newArray = ingredients.filter((ingredient) => {
+  //       if (ingredient.user.creator.email === this.currentUserEmail) {
+  //         return ingredient;
+  //       }
+  //     });
+  //     const firstThreeArray = newArray.slice(0, 3);
+  //     return firstThreeArray.forEach((element) =>
+  //       this.outputArrayIngredients.push(element)
+  //     );
+  //   });
+  // }
   productionFilterEmail() {
     this.productionsService.getProductions().subscribe((productions) => {
       const newArray = productions.filter((production) => {

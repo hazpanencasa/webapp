@@ -39,20 +39,7 @@
         <div class="production_img_back">
           <img src="assets/images/img-info1.png" alt="" />
         </div>
-        <div class="production_mins">
-          <div class="sub_mins">
-            <!-- <h3>{{ production.formulas[0].formula.unit_weight }}</h3> -->
-            <span>gr</span>
-          </div>
-        </div>
-        <div class="production_servings">
-          <!-- <h3>{{ production.formulas[0].formula.units }}</h3>
-          <span>{{
-            production.formulas[0].formula.units > 1
-              ? ('PRODUCTIONS.unit2' | translate)
-              : ('PRODUCTIONS.unit' | translate)
-          }}</span> -->
-        </div>
+
         <div class="production-action">
           <button routerLink="{{ production.id }}" class="button-primary">
             {{ 'PRODUCTIONS.button' | translate }}
@@ -60,13 +47,14 @@
         </div>
         <div class="production_detalles">
           <h3>{{ production.name }}</h3>
-          <!-- <p>
+          <p>Creado por: {{ production.user.creator.name }}</p>
+          <p>{{ production.user.creator.email }}</p>
+          <p>
+            Creada en :
             {{
-              production.formulas[0].formula.description
-                ? production.formulas[0].formula.description
-                : 'Learn more about this product by pressing click'
+              production.user.creator.date.seconds * 1000 | date: 'yyyy/MM/dd'
             }}
-          </p> -->
+          </p>
         </div>
       </div>
     </div>

@@ -36,6 +36,14 @@
     "BANNER": {
       "title": "<span>Made Bread At Home</span> / Bakery",
       "sub-title": "🔥 | You can make the best bread at home!🥐 | Tips & Tricks for a perfect Bread!"
+    },
+    "INFO": {
+      "title": "New instagram's posts",
+      "created_by": "Created by:",
+      "description1": "this post was created in",
+      "click": "Click here",
+      "description2": "to see more about this post",
+      "description3": "Learn more recipes on instagram"
     }
   },
   "VIDEO": {
@@ -64,7 +72,7 @@
     "RIGHTS_RESERVED": "Made Bread at Home. All rights reserved"
   },
   "PRODUCTIONS": {
-    "title": "Productions",
+    "title": "Productions of",
     "input": "Search a production",
     "button": "See Details",
     "unit": "Unit",
@@ -174,6 +182,38 @@
       "PREPARATION_STEPS": {
         "title": "Preparation Order"
       }
+    }
+  },
+  "INGREDIENTS": {
+    "title": "Ingredients",
+    "input": "Search your ingredient",
+    "button": "See Details",
+    "ingredient-detail": {
+      "name": "Name",
+      "cost": "Cost",
+      "hydration": "Hydration"
+    }
+  },
+  "PROFILE": {
+    "CARD": {
+      "edit": "Edit profile",
+      "reset": "Reset password",
+      "highlight": "Highlights",
+      "button": "Log Out"
+    },
+    "DESCRIPTION_IMG": {
+      "title_production": "Production",
+      "title_ingredient": "Ingredients",
+      "title_formula": "Formula",
+      "no_description_production": "This user has not any Productions created yet",
+      "no_description_ingredient": "This user has not any ingredient created yet",
+      "no_description_formula": "This user has not any Formula created yet",
+      "congrats": "Congratulation you have made"
+    },
+    "MOST_POPULAR": {
+      "title": "The most popular of",
+      "description": "This is an special Formula, take a look to see all the details",
+      "button": "See Details"
     }
   }
 }

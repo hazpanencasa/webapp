@@ -13,6 +13,7 @@ export class InfoComponent implements OnInit {
     this.fetchAllPost();
   }
   fetchAllPost() {
+    // tslint:disable-next-line: deprecation
     this.instagramService.getAllPost().subscribe((post: any) => {
       this.post = post.data.slice(0, 3);
     });
