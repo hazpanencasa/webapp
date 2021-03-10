@@ -163,32 +163,13 @@
                 [ingredients]="ingredients"
               ></app-table-ingredient>
             </div>
-            <div *ngIf="formula.steps[7].ingredients">
+            <div>
               <div class="mt-2">
-                <h1>
-                  {{
-                    'FORMULAS.FORMULAS-DETAILS.INGREDIENTS_TABLE-COMPOUND.title'
-                      | translate
-                  }}
-                </h1>
                 <app-table-compound-ingredient
                   [fontSize]="fontSize"
                   [formula]="formula"
                 ></app-table-compound-ingredient>
               </div>
-              <!-- <div
-                class="mt-4"
-                *ngIf="
-                  formula.ingredients[7] &&
-                  formula.ingredients[7].ingredient &&
-                  formula.ingredients[7].ingredient.formula
-                "
-              >
-                <app-table-compound-ingredient2
-                  [fontSize]="fontSize"
-                  [formula]="formula"
-                ></app-table-compound-ingredient2>
-              </div> -->
             </div>
             <div
               class="mt-3"

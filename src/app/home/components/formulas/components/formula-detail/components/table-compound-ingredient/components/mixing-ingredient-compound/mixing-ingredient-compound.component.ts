@@ -13,6 +13,6 @@ export class MixingIngredientCompoundComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    console.log(this.formula.steps[7].ingredients[0].ingredient.name);
+    // console.log(this.formula.steps[7].ingredients[0].ingredient.name);
   }
 }

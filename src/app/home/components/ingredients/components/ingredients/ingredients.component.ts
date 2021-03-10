@@ -28,6 +28,7 @@ export class IngredientsComponent implements OnInit {
     // tslint:disable-next-line: deprecation
     this.ingredientsService.getIngredients().subscribe((ingredient) => {
       this.ingredients = ingredient;
+      console.log(ingredient);
     });
   }
 }

@@ -18,10 +18,11 @@ import { PreparationStepsComponent } from './components/formula-detail/component
 import { CardComponent } from './components/formulas/components/card/card.component';
 import { AdditionalInfoComponent } from './components/formula-detail/components/additional-info/additional-info.component';
 import { NgxPrintModule } from 'ngx-print';
-import { TableCompoundIngredient2Component } from './components/formula-detail/components/table-compound-ingredient2/table-compound-ingredient2.component';
+
 import { MixingIngredientCompoundComponent } from './components/formula-detail/components/table-compound-ingredient/components/mixing-ingredient-compound/mixing-ingredient-compound.component';
 
 import { TranslateModule } from '@ngx-translate/core';
+import { TableIngredientCompoundDetailComponent } from './components/formula-detail/components/table-compound-ingredient/components/table-ingredient-compound-detail/table-ingredient-compound-detail.component';
 
 @NgModule({
   declarations: [
@@ -36,8 +37,8 @@ import { TranslateModule } from '@ngx-translate/core';
     PreparationStepsComponent,
     CardComponent,
     AdditionalInfoComponent,
-    TableCompoundIngredient2Component,
     MixingIngredientCompoundComponent,
+    TableIngredientCompoundDetailComponent,
   ],
   imports: [
     CommonModule,

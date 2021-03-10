@@ -1,46 +1,72 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { Formula } from "@core/model/formulas.model";
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { Formula } from '@core/model/formulas.model';
 
 @Component({
-  selector: "app-table-compound-ingredient",
-  templateUrl: "./table-compound-ingredient.component.html",
-  styleUrls: ["./table-compound-ingredient.component.sass"],
+  selector: 'app-table-compound-ingredient',
+  templateUrl: './table-compound-ingredient.component.html',
+  styleUrls: ['./table-compound-ingredient.component.sass'],
 })
 export class TableCompoundIngredientComponent implements OnInit {
   @Input() formula: Formula;
   @Input() fontSize: number;
-  totalPercentage = 0;
+  ingredients: Array<any>;
+  formulaCompound: Array<any>;
+  resultPercentage = 0;
   totalGrams = 0;
+  grams = 0;
   constructor() {}
 
   ngOnInit() {
-    this.getTotalPercentage();
-    this.getTotalGrams(
-      this.formula.unit_weight,
-      this.formula.steps[7].ingredients[0].percentage
+    const result = [];
+    const ingredientsCompound = this.formula.steps.filter(
+      (step) => step.ingredients
     );
+    this.ingredients = ingredientsCompound;
+    ingredientsCompound.forEach((ingredient) => {
+      ingredient.ingredients.filter((element) => {
+        if (element.ingredient.formula) {
+          result.push(element.ingredient.formula);
+        }
+        return result;
+      });
+    });
+    this.formulaCompound = result;
   }
-
-  getTotalPercentage() {
-    if (this.formula.steps[7].ingredients[0].ingredient.formula) {
-      const arrayIterator = this.formula.steps[7].ingredients[0].ingredient
-        .formula.ingredients;
-      // tslint:disable-next-line: prefer-for-of
-      for (let i = 0; i < arrayIterator.length; i++) {
-        this.totalPercentage += arrayIterator[i].percentage;
+  getTotalPercentage(ingredient: any) {
+    ingredient.reduce((a: any, b: { percentage: any }) => {
+      this.resultPercentage = a + b.percentage;
+    }, 0);
+    return this.resultPercentage.toFixed(1);
+  }
+  getTotalGrams(ingredient: any) {
+    const weight = parseInt(this.formula.unit_weight, 10);
+    const unit = parseInt(this.formula.units, 10);
+    const weightTotal = weight * unit;
+    const percentageResult = ingredient.reduce(
+      (a: any, b: { percentage: any }) => {
+        return a + b.percentage;
+      },
+      0
+    );
+    this.totalGrams = (weightTotal * percentageResult) / 100;
+    return this.totalGrams.toFixed(1);
+  }
+  getIngredientsGrams(percentage: number) {
+    const weight = parseInt(this.formula.unit_weight, 10);
+    const unit = parseInt(this.formula.units, 10);
+    const weightTotal = weight * unit;
+    this.grams = (weightTotal * percentage) / 100;
+    return this.grams.toFixed(1);
+  }
+  validation(ingredient: any) {
+    let result = true;
+    ingredient.forEach((element) => {
+      if (element.ingredient.formula) {
+        result = true;
+      } else {
+        result = false;
       }
-      return this.totalPercentage;
-    }
-  }
-  getTotalGrams(totalGrams: string, totalPercentage: number) {
-    return (this.totalGrams =
-      (parseInt(totalGrams, 0) * totalPercentage) / 100);
-  }
-  getIngredientsGrams(
-    totalGrams: number,
-    totalPercentage: number,
-    percentageIngredients: number
-  ) {
-    return (totalGrams * percentageIngredients) / totalPercentage;
+    });
+    return result;
   }
 }
