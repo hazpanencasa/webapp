@@ -1,4 +1,4 @@
-<ng-container *ngIf="ingredients">
+<ng-container *ngIf="ingredientsInput">
   <div class="table2-container">
     <table class="table">
       <thead>
@@ -17,7 +17,7 @@
           </th>
         </tr>
       </thead>
-      <tbody *ngFor="let i of ingredients">
+      <tbody *ngFor="let i of arrayOutput">
         <tr class="table-row__info">
           <td [style.fontSize.%]="fontSize" colspan="2" scope="row">
             {{ i.ingredient.name }}
@@ -48,7 +48,7 @@
       <tr>
         <td [style.fontSize.%]="fontSize" colspan="2" scope="row">Total</td>
         <td class="text-right" [style.fontSize.%]="fontSize">
-          {{ percentageTotal }}
+          {{ percentageTotal.toFixed(1) }}
         </td>
         <td class="text-right" [style.fontSize.%]="fontSize">
           {{ totalWeight }}

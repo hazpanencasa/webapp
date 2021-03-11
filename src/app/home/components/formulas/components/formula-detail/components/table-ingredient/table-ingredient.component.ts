@@ -8,16 +8,21 @@ import { Formula } from '@core/model/formulas.model';
 })
 export class TableIngredientComponent implements OnInit {
   @Input() fontSize: number;
-  @Input() ingredients: any;
+  @Input() ingredientsInput: any;
   @Input() formula: Formula;
   percentageTotal: number;
   resultPercent = 0;
   resultGrams = 0;
   totalWeight: number;
+  arrayOutput: Array<any>;
+  resultPercentage: any;
   constructor() {}
 
   ngOnInit() {
-    const result = this.ingredients.reduce(
+    this.arrayOutput = this.ingredientsInput.sort((a, b) => {
+      return b.percentage - a.percentage;
+    });
+    const result = this.arrayOutput.reduce(
       (output: any, currentElement: { percentage: any }) => {
         return output + currentElement.percentage;
       },
@@ -29,5 +34,11 @@ export class TableIngredientComponent implements OnInit {
   }
   transformStringToNumber(s: string, r?: number) {
     return parseInt(s, r);
+  }
+  getTotalPercentage(ingredient: any) {
+    ingredient.reduce((a: any, b: { percentage: any }) => {
+      this.resultPercentage = a + b.percentage;
+    }, 0);
+    return this.resultPercentage.toFixed(1);
   }
 }
