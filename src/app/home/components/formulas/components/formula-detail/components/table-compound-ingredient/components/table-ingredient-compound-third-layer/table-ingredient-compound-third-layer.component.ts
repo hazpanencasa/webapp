@@ -18,7 +18,6 @@ export class TableIngredientCompoundThirdLayerComponent implements OnInit {
   constructor(private formulasService: FormulasService) {}
 
   ngOnInit() {
-    console.log(this.ingredientsCompound);
     this.ingredientsCompound.forEach((element) => {
       this.formulasService
         .getIngredientCompoundSubCollection(

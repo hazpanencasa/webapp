@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-
+import { FormulasService } from '@core/service/formulas/formulas.service';
+import { element } from 'protractor';
 @Component({
   selector: 'app-formula-compound-stepper',
   templateUrl: './formula-compound-stepper.component.html',
@@ -8,9 +9,26 @@ import { Component, Input, OnInit } from '@angular/core';
 export class FormulaCompoundStepperComponent implements OnInit {
   @Input() ingredientsCompound: Array<any>;
   @Input() fontSize: number;
-  constructor() {}
+  @Input() formulaId: string;
+  ingredientsCompoundOutput: Array<any>;
+  ingredientsCompoundCollection: any;
+  constructor(private formulasService: FormulasService) {}
 
   ngOnInit() {
-    // console.log(this.ingredientsCompound);
+    this.getIngredientsCompoundCollection();
+  }
+  getIngredientsCompoundCollection() {
+    this.ingredientsCompound.map((ingredient) =>
+      this.formulasService
+        .getFormulaIngredientsCompound(this.formulaId, ingredient.ingredient.id)
+        .subscribe((collection) => {
+          this.ingredientsCompoundOutput = collection;
+          this.ingredientsCompoundCollection = collection.filter((element) => {
+            return element.ingredient.formula
+              ? element.ingredient.formula
+              : null;
+          });
+        })
+    );
   }
 }

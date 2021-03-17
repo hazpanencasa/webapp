@@ -26,6 +26,7 @@ import { TableIngredientCompoundDetailComponent } from './components/formula-det
 import { TableIngredientsCompoundSecondLayerComponent } from './components/formula-detail/components/table-compound-ingredient/components/table-ingredients-compound-second-layer/table-ingredients-compound-second-layer.component';
 import { FormulaCompoundStepperComponent } from './components/formula-detail/components/formula-compound-stepper/formula-compound-stepper.component';
 import { TableIngredientCompoundThirdLayerComponent } from './components/formula-detail/components/table-compound-ingredient/components/table-ingredient-compound-third-layer/table-ingredient-compound-third-layer.component';
+import { FormulaCompoundStepperSecondLayerComponent } from './components/formula-detail/components/formula-compound-stepper/components/formula-compound-stepper-second-layer/formula-compound-stepper-second-layer.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { TableIngredientCompoundThirdLayerComponent } from './components/formula
     TableIngredientsCompoundSecondLayerComponent,
     FormulaCompoundStepperComponent,
     TableIngredientCompoundThirdLayerComponent,
+    FormulaCompoundStepperSecondLayerComponent,
   ],
   imports: [
     CommonModule,

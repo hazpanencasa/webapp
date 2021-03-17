@@ -22,7 +22,6 @@ export class ProductionsComponent implements OnInit {
   fetchProductions() {
     this.productionsService.getProductions().subscribe((productions) => {
       this.productions = productions;
-      console.log(productions);
     });
   }
   onPageChange(event: PageEvent) {

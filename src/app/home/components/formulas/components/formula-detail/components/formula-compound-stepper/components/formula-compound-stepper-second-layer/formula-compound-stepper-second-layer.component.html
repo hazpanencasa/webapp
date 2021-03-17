@@ -1,5 +1,5 @@
-<ng-container *ngIf="ingredientsCompound && ingredientsCompoundOutput">
-  <ng-container *ngFor="let formula of ingredientsCompound">
+<ng-container *ngIf="ingredientsCompoundOutput">
+  <ng-container *ngFor="let formula of ingredientsCompoundOutput">
     <h1>{{ formula.ingredient.name }}</h1>
     <div class="container">
       <div class="row">
@@ -105,11 +105,5 @@
         </div>
       </div>
     </div>
-    <app-formula-compound-stepper-second-layer
-      *ngIf="ingredientsCompoundCollection"
-      [idFormula]="formulaId"
-      [idIngredientsCompound]="formula.ingredient.id"
-      [ingredientsCompoundOutput]="ingredientsCompoundCollection"
-    ></app-formula-compound-stepper-second-layer>
   </ng-container>
 </ng-container>
