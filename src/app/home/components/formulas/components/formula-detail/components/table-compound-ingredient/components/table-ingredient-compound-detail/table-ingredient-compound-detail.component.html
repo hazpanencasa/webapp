@@ -1,7 +1,5 @@
 <ng-container *ngIf="ingredients">
-  <h4 class="m-0 p-2">
-    <strong [style.fontSize.%]="fontSize"> Ingredient compound </strong>
-  </h4>
+  <h1 class="m-0 p-2">Ingredient compound</h1>
   <div *ngFor="let ingredient of ingredients">
     <div *ngFor="let i of ingredient.ingredients">
       <ng-container *ngIf="i.ingredient.formula">
@@ -47,11 +45,11 @@
                 </td>
                 <td [style.fontSize.%]="fontSize" class="text-right">
                   {{
-                    getIngredientsGrams(
-                      element.percentage,
-                      ingredient.ingredients,
-                      i.ingredient.formula.ingredients
-                    )
+                    (
+                      (getTotalGrams(ingredient.ingredients) *
+                        element.percentage) /
+                      getTotalPercentage(i.ingredient.formula.ingredients)
+                    ).toFixed(1)
                   }}
                 </td>
               </tr>

@@ -1,55 +1,71 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Formula } from '@core/model/formulas.model';
-import { IngredientsFormula } from '@core/model/ingredients-formula';
 import { FormulasService } from '@core/service/formulas/formulas.service';
-import { Html2canvasService } from '@core/service/html2canvas.service';
 @Component({
   selector: 'app-formula',
   templateUrl: './formula.component.html',
   styleUrls: ['./formula.component.sass'],
-  providers: [Html2canvasService],
 })
-export class FormulaDetailComponent implements OnInit {
+export class FormulaDetailComponent implements OnInit, AfterViewChecked {
   toggleButtonGridContainer = true;
   toggleButtonIntro = true;
   toggleButtonImg = true;
   toggleButtonAddInfo = true;
   fontSize = 100;
   formula: Formula;
-  ingredients: IngredientsFormula[];
+  ingredients: any;
   verificationFormula: boolean;
   img: any;
   timeTotal: number;
+  ingredientsCompound: Array<any>;
+  formulaId: string;
+  percentageTotal: number;
   constructor(
     private route: ActivatedRoute,
     private formulasService: FormulasService
   ) {}
 
   ngOnInit() {
-    this.idParams();
+    // tslint:disable-next-line: deprecation
+    this.route.params.subscribe((params: Params) => {
+      this.formulaId = params.id;
+      this.fetchFormula(this.formulaId);
+      this.fetchFormulaIngredients(this.formulaId);
+    });
+  }
+  ngAfterViewChecked() {
+    if (this.ingredients) {
+      setTimeout(() => {
+        this.ingredientsCompound = this.ingredients.filter(
+          (element: { ingredient: { formula: any } }) =>
+            element.ingredient.formula ? element.ingredient.formula : null
+        );
+      });
+    }
   }
   addAllTime() {
     let total = 0;
     const timesArray = this.formula.steps;
     timesArray.forEach((element) => (total += element.time));
-    console.log(timesArray);
-  }
-  idParams() {
-    this.route.params.subscribe((params: Params) => {
-      const id = params.id;
-      this.fetchFormula(id);
-      this.fetchFormulaIngredients(id);
-    });
   }
   fetchFormula(id: string) {
+    // tslint:disable-next-line: deprecation
     this.formulasService.getFormula(id).subscribe((formula) => {
       this.formula = formula;
     });
   }
   fetchFormulaIngredients(id: string) {
+    // tslint:disable-next-line: deprecation
     this.formulasService.getFormulaIngredients(id).subscribe((ingredients) => {
       this.ingredients = ingredients;
+      const result = this.ingredients.reduce(
+        (output: any, currentElement: { percentage: any }) => {
+          return output + currentElement.percentage;
+        },
+        0
+      );
+      return (this.percentageTotal = result);
     });
   }
   increaseFont() {

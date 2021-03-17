@@ -158,16 +158,22 @@
                 }}
               </h1>
               <app-table-ingredient
+                *ngIf="percentageTotal"
                 [fontSize]="fontSize"
                 [formula]="formula"
                 [ingredientsInput]="ingredients"
+                [totalPercentage]="percentageTotal"
               ></app-table-ingredient>
             </div>
             <div>
               <div class="mt-2">
                 <app-table-compound-ingredient
+                  *ngIf="ingredientsCompound"
                   [fontSize]="fontSize"
                   [formula]="formula"
+                  [formulaId]="formulaId"
+                  [ingredientsCompound]="ingredientsCompound"
+                  [totalPercentage]="percentageTotal"
                 ></app-table-compound-ingredient>
               </div>
             </div>
@@ -200,25 +206,24 @@
               [fontSize]="fontSize"
               [formula]="formula"
             ></app-formula-stepper>
-            <div *ngIf="formula.steps[7] && formula.steps[7].ingredients">
+            <div>
               <app-mixing-ingredient-compound
                 [ngClass]="toggleButtonAddInfo ? 'mt-2 verso' : 'mt-2 br'"
                 [formula]="formula"
               >
               </app-mixing-ingredient-compound>
             </div>
+
+            <app-formula-compound-stepper
+              *ngIf="ingredientsCompound"
+              [ingredientsCompound]="ingredientsCompound"
+            ></app-formula-compound-stepper>
             <div
               [ngClass]="toggleButtonGridContainer ? 'mt-2 ' : 'mt-2 verso'"
               [ngClass]="{
                 br: formula.steps[7] && formula.steps[7].ingredients
               }"
             >
-              <h1>
-                {{
-                  'FORMULAS.FORMULAS-DETAILS.PREPARATION_STEPS.title'
-                    | translate
-                }}
-              </h1>
               <app-preparation-steps
                 [fontSize]="fontSize"
                 [formula]="formula"

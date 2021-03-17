@@ -23,6 +23,9 @@ import { MixingIngredientCompoundComponent } from './components/formula-detail/c
 
 import { TranslateModule } from '@ngx-translate/core';
 import { TableIngredientCompoundDetailComponent } from './components/formula-detail/components/table-compound-ingredient/components/table-ingredient-compound-detail/table-ingredient-compound-detail.component';
+import { TableIngredientsCompoundSecondLayerComponent } from './components/formula-detail/components/table-compound-ingredient/components/table-ingredients-compound-second-layer/table-ingredients-compound-second-layer.component';
+import { FormulaCompoundStepperComponent } from './components/formula-detail/components/formula-compound-stepper/formula-compound-stepper.component';
+import { TableIngredientCompoundThirdLayerComponent } from './components/formula-detail/components/table-compound-ingredient/components/table-ingredient-compound-third-layer/table-ingredient-compound-third-layer.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,9 @@ import { TableIngredientCompoundDetailComponent } from './components/formula-det
     AdditionalInfoComponent,
     MixingIngredientCompoundComponent,
     TableIngredientCompoundDetailComponent,
+    TableIngredientsCompoundSecondLayerComponent,
+    FormulaCompoundStepperComponent,
+    TableIngredientCompoundThirdLayerComponent,
   ],
   imports: [
     CommonModule,

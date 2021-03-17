@@ -1,0 +1,71 @@
+<ng-container *ngIf="ingredientsCompound && ingredients">
+  <div *ngFor="let ingredient of ingredientsCompound">
+    <div class="table3-container mt-4">
+      <h4 [style.fontSize.%]="fontSize" class="m-0 p-2">
+        <strong>
+          {{ ingredient.ingredient.name }}
+        </strong>
+      </h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th [style.fontSize.%]="fontSize" colspan="4" scope="col">
+              {{
+                'FORMULAS.FORMULAS-DETAILS.INGREDIENTS_TABLE-COMPOUND.table-head-title'
+                  | translate
+              }}
+            </th>
+            <th [style.fontSize.%]="fontSize" class="text-right" scope="col">
+              %
+            </th>
+            <th [style.fontSize.%]="fontSize" class="text-right" scope="col">
+              gr
+            </th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let i of ingredients">
+          <tr class="table-row__info">
+            <td [style.fontSize.%]="fontSize" colspan="4" scope="row">
+              {{ i.ingredient.name }}
+            </td>
+            <td [style.fontSize.%]="fontSize" class="text-right">
+              {{ i.percentage }}
+            </td>
+            <td [style.fontSize.%]="fontSize" class="text-right">
+              {{
+                (
+                  (getTotalGrams(ingredientsCompound) * i.percentage) /
+                  getTotalPercentage(ingredients)
+                ).toFixed(1)
+              }}
+            </td>
+          </tr>
+          <tr class="table-row__barprogress">
+            <td colspan="6">
+              <mat-progress-bar
+                mode="determinate"
+                value="{{ i.percentage }}"
+              ></mat-progress-bar>
+            </td>
+          </tr>
+        </tbody>
+        <tr>
+          <td [style.fontSize.%]="fontSize" colspan="4" scope="row">Total</td>
+          <td [style.fontSize.%]="fontSize" class="text-right">
+            {{ getTotalPercentage(ingredients) }}
+          </td>
+          <td [style.fontSize.%]="fontSize" class="text-right">
+            {{ getTotalGrams(ingredientsCompound) }}
+          </td>
+        </tr>
+      </table>
+    </div>
+    <app-table-ingredient-compound-third-layer
+      *ngIf="ingredientsCompoundCollection"
+      [ingredientsCompound]="ingredientsCompoundCollection"
+      [idIngredientCompound]="ingredient.ingredient.id"
+      [formulaId]="formulaId"
+    >
+    </app-table-ingredient-compound-third-layer>
+  </div>
+</ng-container>

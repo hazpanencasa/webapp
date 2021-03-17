@@ -9,10 +9,29 @@ import { Formula } from '@core/model/formulas.model';
 })
 export class MixingIngredientCompoundComponent implements OnInit {
   @Input() formula: Formula;
+  formulaMixing = [];
+  isValid: number;
 
   constructor() {}
 
   ngOnInit() {
-    // console.log(this.formula.steps[7].ingredients[0].ingredient.name);
+    const newArray = this.formula.steps.filter((step) => {
+      return step.ingredients;
+    });
+    const ingredientsArrayOuter = newArray.filter((element) => {
+      return element.ingredients;
+    });
+    const ingredientsArrayInner = ingredientsArrayOuter.filter((element) => {
+      return element.ingredients;
+    });
+    ingredientsArrayInner.forEach((element) => {
+      element.ingredients.forEach((element) => {
+        if (element.ingredient.formula) {
+          this.formulaMixing.push(element.ingredient);
+        }
+      });
+    });
+    const isValid = this.formulaMixing.filter((i) => i.formula.mixing);
+    this.isValid = isValid.length;
   }
 }

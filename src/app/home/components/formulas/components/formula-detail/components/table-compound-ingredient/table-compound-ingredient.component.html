@@ -1,10 +1,8 @@
 <ng-container *ngIf="ingredients && formula">
   <div *ngFor="let ingredient of ingredients" class="table3-container mt-4">
-    <h4 class="m-0 p-2">
-      <strong [style.fontSize.%]="fontSize">
-        {{ ingredient.name }}
-      </strong>
-    </h4>
+    <h1 [style.fontSize.%]="fontSize" class="m-0 p-2">
+      {{ ingredient.name }}
+    </h1>
     <table class="table">
       <thead>
         <tr>
@@ -68,8 +66,18 @@
     </table>
   </div>
   <app-table-ingredient-compound-detail
+    *ngIf="ingredients.length > 0"
     [weight]="formula.unit_weight"
     [unit]="formula.units"
     [ingredients]="ingredients"
   ></app-table-ingredient-compound-detail>
+  <app-table-ingredients-compound-second-layer
+    *ngIf="ingredientsCompoundOutput"
+    [ingredientsCompoundTable]="ingredientsCompoundOutput"
+    [ingredientsCompound]="ingredientsCompound"
+    [weightTotal]="weightTotal"
+    [totalPercentage]="totalPercentage"
+    [formulaId]="formulaId"
+    [ingredientsCompoundCollection]="ingredientsCompoundCollection"
+  ></app-table-ingredients-compound-second-layer>
 </ng-container>

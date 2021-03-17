@@ -43,4 +43,28 @@ export class FormulasService {
       .collection<any>('ingredients')
       .valueChanges();
   }
+  getFormulaIngredientsCompound(idFormula: string, idIngredient: string) {
+    return this.afs
+      .collection('formulas')
+      .doc(`${idFormula}`)
+      .collection<any>('ingredients')
+      .doc(`${idIngredient}`)
+      .collection('ingredients')
+      .valueChanges();
+  }
+  getIngredientCompoundSubCollection(
+    idFormula: string,
+    idIngredient: string,
+    idIngredientCompound: string
+  ) {
+    return this.afs
+      .collection('formulas')
+      .doc(`${idFormula}`)
+      .collection('ingredients')
+      .doc(`${idIngredient}`)
+      .collection('ingredients')
+      .doc(`${idIngredientCompound}`)
+      .collection('ingredients')
+      .valueChanges();
+  }
 }
