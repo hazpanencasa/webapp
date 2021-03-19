@@ -3,13 +3,13 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-video',
   templateUrl: './video.component.html',
-  styleUrls: ['./video.component.sass']
+  styleUrls: ['./video.component.sass'],
 })
 export class VideoComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnInit() {
+    const video = document.querySelector('video');
+    video.play();
   }
-
 }
