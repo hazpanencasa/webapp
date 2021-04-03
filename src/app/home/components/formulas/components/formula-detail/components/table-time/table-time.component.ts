@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Formula } from '@core/model/formulas.model';
+import { Formula, Step } from '@core/model/formulas.model';
 @Component({
   selector: 'app-table-time',
   templateUrl: './table-time.component.html',
@@ -32,7 +32,7 @@ export class TableTimeComponent implements OnInit {
     if (this.formula.steps) {
       let total = 0;
       const TimesArray = this.formula.steps;
-      TimesArray.forEach((element) => (total += element.time));
+      TimesArray.forEach((element: Step) => (total += element.time));
       return (this.timeTotal = total);
     }
   }

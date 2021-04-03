@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Formula } from '@core/model/formulas.model';
+import { Formula, IngredientsSecondRequest } from '@core/model/formulas.model';
 
 @Component({
   selector: 'app-table-ingredient',
@@ -8,7 +8,7 @@ import { Formula } from '@core/model/formulas.model';
 })
 export class TableIngredientComponent implements OnInit {
   @Input() fontSize: number;
-  @Input() ingredientsInput: any;
+  @Input() ingredientsInput: IngredientsSecondRequest[];
   @Input() formula: Formula;
   @Input() totalPercentage: number;
   resultPercent = 0;

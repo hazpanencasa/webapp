@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import {
   Formula,
+  Ingredient,
   IngredientsSecondRequest,
   Step,
 } from '@core/model/formulas.model';
@@ -22,7 +23,7 @@ export class FormulaDetailComponent implements OnInit, AfterViewChecked {
   verificationFormula: boolean;
   img: any;
   timeTotal: number;
-  ingredientsCompound: Array<any>;
+  ingredientsCompound: IngredientsSecondRequest[];
   formulaId: string;
   percentageTotal: number;
   constructor(

@@ -59,7 +59,7 @@ export interface IngredientObjectStep {
 
 export interface FormulaStep {
   compensation_percentage: number;
-  mixing: Array<MixingOrder> | null | boolean;
+  mixing: Array<MixingOrder> | null;
   ingredients: Array<IngredientsFormula>;
   proportion_factor: ProportionFactor;
   suggested_values: SuggestedValues;

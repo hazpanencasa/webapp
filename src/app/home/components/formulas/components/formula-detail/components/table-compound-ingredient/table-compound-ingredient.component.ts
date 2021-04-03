@@ -1,5 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Formula } from '@core/model/formulas.model';
+import {
+  Formula,
+  FormulaStep,
+  IngredientsFormula,
+  IngredientsSecondRequest,
+  IngredientStep,
+  Step,
+} from '@core/model/formulas.model';
 import { FormulasService } from '@core/service/formulas/formulas.service';
 
 @Component({
@@ -9,14 +16,14 @@ import { FormulasService } from '@core/service/formulas/formulas.service';
 })
 export class TableCompoundIngredientComponent implements OnInit {
   @Input() formula: Formula;
-  @Input() ingredientsCompound: Array<any>;
+  @Input() ingredientsCompound: IngredientsSecondRequest[];
   @Input() fontSize: number;
   @Input() formulaId: string;
   @Input() totalPercentage: number;
-  ingredientsCompoundOutput: Array<any>;
-  ingredientsCompoundCollection: Array<any>;
-  ingredients: Array<any>;
-  formulaCompound: Array<any>;
+  ingredientsCompoundOutput: IngredientsFormula[];
+  ingredientsCompoundCollection: IngredientsFormula[];
+  steps: Step[];
+  formulaCompound: FormulaStep[];
   resultPercentage = 0;
   totalGrams = 0;
   grams = 0;
@@ -34,18 +41,16 @@ export class TableCompoundIngredientComponent implements OnInit {
     if (this.formula.steps) {
       const result = [];
       const ingredientsCompound = this.formula.steps.filter(
-        (step) => step.ingredients
+        (step: Step) => step.ingredients
       );
-      this.ingredients = ingredientsCompound;
-      ingredientsCompound.forEach((ingredient) => {
-        ingredient.ingredients.filter(
-          (element: { ingredient: { formula: any } }) => {
-            if (element.ingredient.formula) {
-              result.push(element.ingredient.formula);
-            }
-            return result;
+      this.steps = ingredientsCompound;
+      ingredientsCompound.forEach((step: Step) => {
+        step.ingredients.filter((element: IngredientStep) => {
+          if (element.ingredient.formula) {
+            result.push(element.ingredient.formula);
           }
-        );
+          return result;
+        });
       });
       this.formulaCompound = result;
     }
@@ -82,10 +87,11 @@ export class TableCompoundIngredientComponent implements OnInit {
     return result;
   }
   getIngredientsCompoundCollection() {
-    this.ingredientsCompound.map((ingredient) => {
+    this.ingredientsCompound.map((ingredient: IngredientsSecondRequest) => {
       this.formulasService
         .getFormulaIngredientsCompound(this.formulaId, ingredient.ingredient.id)
-        .subscribe((collection) => {
+        // tslint:disable-next-line: deprecation
+        .subscribe((collection: IngredientsFormula[]) => {
           this.ingredientsCompoundOutput = collection;
           this.ingredientsCompoundCollection = collection.filter((element) => {
             return element.ingredient.formula
