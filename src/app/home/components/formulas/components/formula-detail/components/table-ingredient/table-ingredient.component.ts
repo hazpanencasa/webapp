@@ -20,18 +20,7 @@ export class TableIngredientComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.arrayOutput = this.ingredientsInput.sort((a, b) => {
-      return b.percentage - a.percentage;
-    });
-    // const result = this.arrayOutput.reduce(
-    //   (output: any, currentElement: { percentage: any }) => {
-    //     return output + currentElement.percentage;
-    //   },
-    //   0
-    // );
-    // this.percentageTotal = result;
-    this.totalWeight =
-      parseInt(this.formula.unit_weight, 0) * parseInt(this.formula.units, 0);
+    this.sortIngredients();
   }
   transformStringToNumber(s: string, r?: number) {
     return parseInt(s, r);
@@ -39,5 +28,12 @@ export class TableIngredientComponent implements OnInit {
   getGramsIngredients(percentage: number) {
     const result = (percentage * this.totalWeight) / this.totalPercentage;
     return result.toFixed(1);
+  }
+  sortIngredients() {
+    this.arrayOutput = this.ingredientsInput.sort((a, b) => {
+      return b.percentage - a.percentage;
+    });
+    this.totalWeight =
+      parseInt(this.formula.unit_weight, 0) * parseInt(this.formula.units, 0);
   }
 }

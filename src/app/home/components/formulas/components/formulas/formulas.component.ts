@@ -27,9 +27,8 @@ export class FormulasComponent implements OnInit {
   }
   fetchFormulas() {
     // tslint:disable-next-line: deprecation
-    const result = this.formulasService.getFormulas().subscribe((formulas) => {
+    this.formulasService.getFormulas().subscribe((formulas) => {
       this.formulas = formulas;
     });
-    return result;
   }
 }

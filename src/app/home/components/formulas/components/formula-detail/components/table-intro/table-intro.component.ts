@@ -18,6 +18,7 @@ export class TableIntroComponent implements OnInit {
   unitWeight: number;
   bakeryMeasure: number;
   weightTotal: number;
+  hydration: any;
   constructor() {}
 
   ngOnInit() {
@@ -25,6 +26,20 @@ export class TableIntroComponent implements OnInit {
     this.bakeryFactor();
     this.weightTotal =
       parseInt(this.formula.unit_weight, 10) * parseInt(this.formula.units, 10);
+    const result = this.ingredients.filter((element) => {
+      if (typeof element.ingredient.hydration === 'string') {
+        return parseInt(element.ingredient.hydration, 10);
+      } else {
+        return element.ingredient.hydration;
+      }
+    });
+    console.log(result);
+    const total = result.map((element) => {
+      return (element.ingredient.hydration / 100) * element.percentage;
+    });
+    console.log(total);
+    const hydration = total.reduce((a, b) => a + b, 0);
+    this.hydration = hydration.toFixed(1);
   }
   transformMinutesToHours(minutes: any) {
     const hour = 60;
@@ -41,10 +56,14 @@ export class TableIntroComponent implements OnInit {
     }
   }
   addAllTime() {
-    const result = this.formula.steps.reduce((output, currentElement) => {
-      return output + currentElement.time;
-    }, 0);
-    this.timeTotal = result;
+    if (this.formula.steps) {
+      const result = this.formula.steps.reduce((output, currentElement) => {
+        return output + currentElement.time;
+      }, 0);
+      this.timeTotal = result;
+    } else {
+      this.timeTotal = 0;
+    }
   }
   bakeryFactor() {
     const result = this.ingredients.reduce((a: any, b: { percentage: any }) => {

@@ -21,6 +21,7 @@ export class FormulaCompoundStepperComponent implements OnInit {
     this.ingredientsCompound.map((ingredient) =>
       this.formulasService
         .getFormulaIngredientsCompound(this.formulaId, ingredient.ingredient.id)
+        // tslint:disable-next-line: deprecation
         .subscribe((collection) => {
           this.ingredientsCompoundOutput = collection;
           this.ingredientsCompoundCollection = collection.filter((element) => {

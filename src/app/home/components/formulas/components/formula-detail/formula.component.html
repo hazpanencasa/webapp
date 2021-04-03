@@ -181,7 +181,7 @@
               class="mt-3"
               [ngClass]="toggleButtonGridContainer ? 'mt-2 ' : 'mt-2 verso'"
               [ngClass]="{
-                br: formula.steps[7] && formula.steps[7].ingredients
+                br: formula.steps
               }"
             >
               <app-table-time
@@ -191,9 +191,6 @@
             </div>
 
             <div [ngClass]="toggleButtonAddInfo ? 'mt-2 verso' : 'd-none'">
-              <h1>
-                {{ 'FORMULAS.FORMULAS-DETAILS.ADD-INFO.title' | translate }}
-              </h1>
               <app-additional-info
                 [fontSize]="fontSize"
                 [formula]="formula"
@@ -222,7 +219,7 @@
             <div
               [ngClass]="toggleButtonGridContainer ? 'mt-2 ' : 'mt-2 verso'"
               [ngClass]="{
-                br: formula.steps[7] && formula.steps[7].ingredients
+                br: formula.steps
               }"
             >
               <app-preparation-steps

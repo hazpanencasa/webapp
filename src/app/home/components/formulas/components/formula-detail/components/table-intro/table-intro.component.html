@@ -4,9 +4,7 @@
       <h2>
         {{ 'FORMULAS.FORMULAS-DETAILS.INTRO_TABLE.hydration' | translate }}
       </h2>
-      <p [style.fontSize.%]="fontSize">
-        <!-- {{ formula.ingredients[1].percentage }}% -->
-      </p>
+      <p [style.fontSize.%]="fontSize">{{ hydration }}%</p>
     </div>
     <div class="time-item">
       <h2>{{ 'FORMULAS.FORMULAS-DETAILS.INTRO_TABLE.units' | translate }}</h2>
@@ -34,16 +32,16 @@
     </div>
     <div class="last-child">
       <div class="progress">
-        <!-- <div
+        <div
           class="progress-bar progress-bar-striped bg-info"
           role="progressbar"
-          [style.width.%]="formula.ingredients[1].percentage"
+          [style.width.%]="hydration"
           aria-valuenow="50"
           aria-valuemin="0"
           aria-valuemax="100"
         >
-          {{ formula.ingredients[1].percentage }}%
-        </div> -->
+          {{ hydration }}%
+        </div>
       </div>
       <div class="progress-percent">
         <span>0%</span>

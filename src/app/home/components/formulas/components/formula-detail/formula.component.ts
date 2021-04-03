@@ -1,6 +1,10 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Formula } from '@core/model/formulas.model';
+import {
+  Formula,
+  IngredientsSecondRequest,
+  Step,
+} from '@core/model/formulas.model';
 import { FormulasService } from '@core/service/formulas/formulas.service';
 @Component({
   selector: 'app-formula',
@@ -14,7 +18,7 @@ export class FormulaDetailComponent implements OnInit, AfterViewChecked {
   toggleButtonAddInfo = true;
   fontSize = 100;
   formula: Formula;
-  ingredients: any;
+  ingredients: IngredientsSecondRequest[];
   verificationFormula: boolean;
   img: any;
   timeTotal: number;
@@ -38,7 +42,7 @@ export class FormulaDetailComponent implements OnInit, AfterViewChecked {
     if (this.ingredients) {
       setTimeout(() => {
         this.ingredientsCompound = this.ingredients.filter(
-          (element: { ingredient: { formula: any } }) =>
+          (element: IngredientsSecondRequest) =>
             element.ingredient.formula ? element.ingredient.formula : null
         );
       });
@@ -47,26 +51,28 @@ export class FormulaDetailComponent implements OnInit, AfterViewChecked {
   addAllTime() {
     let total = 0;
     const timesArray = this.formula.steps;
-    timesArray.forEach((element) => (total += element.time));
+    timesArray.forEach((element: Step) => (total += element.time));
   }
   fetchFormula(id: string) {
     // tslint:disable-next-line: deprecation
-    this.formulasService.getFormula(id).subscribe((formula) => {
+    this.formulasService.getFormula(id).subscribe((formula: Formula) => {
       this.formula = formula;
     });
   }
   fetchFormulaIngredients(id: string) {
-    // tslint:disable-next-line: deprecation
-    this.formulasService.getFormulaIngredients(id).subscribe((ingredients) => {
-      this.ingredients = ingredients;
-      const result = this.ingredients.reduce(
-        (output: any, currentElement: { percentage: any }) => {
-          return output + currentElement.percentage;
-        },
-        0
-      );
-      return (this.percentageTotal = result);
-    });
+    this.formulasService
+      .getFormulaIngredients(id)
+      // tslint:disable-next-line: deprecation
+      .subscribe((ingredients: IngredientsSecondRequest[]) => {
+        this.ingredients = ingredients;
+        const result = this.ingredients.reduce(
+          (output: any, currentElement: IngredientsSecondRequest) => {
+            return output + currentElement.percentage;
+          },
+          0
+        );
+        return (this.percentageTotal = result);
+      });
   }
   increaseFont() {
     this.fontSize += 10;

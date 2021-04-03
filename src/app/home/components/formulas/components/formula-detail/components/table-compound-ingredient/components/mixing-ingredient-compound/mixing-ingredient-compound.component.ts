@@ -15,23 +15,25 @@ export class MixingIngredientCompoundComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    const newArray = this.formula.steps.filter((step) => {
-      return step.ingredients;
-    });
-    const ingredientsArrayOuter = newArray.filter((element) => {
-      return element.ingredients;
-    });
-    const ingredientsArrayInner = ingredientsArrayOuter.filter((element) => {
-      return element.ingredients;
-    });
-    ingredientsArrayInner.forEach((element) => {
-      element.ingredients.forEach((element) => {
-        if (element.ingredient.formula) {
-          this.formulaMixing.push(element.ingredient);
-        }
+    if (this.formula.steps) {
+      const newArray = this.formula.steps.filter((step) => {
+        return step.ingredients;
       });
-    });
-    const isValid = this.formulaMixing.filter((i) => i.formula.mixing);
-    this.isValid = isValid.length;
+      const ingredientsArrayOuter = newArray.filter((element) => {
+        return element.ingredients;
+      });
+      const ingredientsArrayInner = ingredientsArrayOuter.filter((element) => {
+        return element.ingredients;
+      });
+      ingredientsArrayInner.forEach((element) => {
+        element.ingredients.forEach((element) => {
+          if (element.ingredient.formula) {
+            this.formulaMixing.push(element.ingredient);
+          }
+        });
+      });
+      const isValid = this.formulaMixing.filter((i) => i.formula.mixing);
+      this.isValid = isValid.length;
+    }
   }
 }

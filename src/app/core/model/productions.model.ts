@@ -1,5 +1,5 @@
 export interface Production {
-  id: any;
+  readonly id: any;
   name: any;
   user: any;
 }

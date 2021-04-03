@@ -4,10 +4,10 @@ import {
   AngularFirestoreCollection,
   AngularFirestoreDocument,
 } from '@angular/fire/firestore';
-import { Formula } from '../../model/formulas.model';
+import { Formula, IngredientsSecondRequest } from '../../model/formulas.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { IngredientsFormula } from '@core/model/ingredients-formula';
+
 @Injectable({
   providedIn: 'root',
 })

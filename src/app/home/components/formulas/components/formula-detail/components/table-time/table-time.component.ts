@@ -1,9 +1,9 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { Formula } from "@core/model/formulas.model";
+import { Component, OnInit, Input } from '@angular/core';
+import { Formula } from '@core/model/formulas.model';
 @Component({
-  selector: "app-table-time",
-  templateUrl: "./table-time.component.html",
-  styleUrls: ["./table-time.component.sass"],
+  selector: 'app-table-time',
+  templateUrl: './table-time.component.html',
+  styleUrls: ['./table-time.component.sass'],
 })
 export class TableTimeComponent implements OnInit {
   @Input() fontSize: number;
@@ -29,9 +29,11 @@ export class TableTimeComponent implements OnInit {
     }
   }
   addAllTime() {
-    let total = 0;
-    const TimesArray = this.formula.steps;
-    TimesArray.forEach((element) => (total += element.time));
-    return (this.timeTotal = total);
+    if (this.formula.steps) {
+      let total = 0;
+      const TimesArray = this.formula.steps;
+      TimesArray.forEach((element) => (total += element.time));
+      return (this.timeTotal = total);
+    }
   }
 }

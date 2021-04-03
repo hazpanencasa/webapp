@@ -31,22 +31,24 @@ export class TableCompoundIngredientComponent implements OnInit {
     this.weightTotal = weight * unit;
   }
   getFormulaCompound() {
-    const result = [];
-    const ingredientsCompound = this.formula.steps.filter(
-      (step) => step.ingredients
-    );
-    this.ingredients = ingredientsCompound;
-    ingredientsCompound.forEach((ingredient) => {
-      ingredient.ingredients.filter(
-        (element: { ingredient: { formula: any } }) => {
-          if (element.ingredient.formula) {
-            result.push(element.ingredient.formula);
-          }
-          return result;
-        }
+    if (this.formula.steps) {
+      const result = [];
+      const ingredientsCompound = this.formula.steps.filter(
+        (step) => step.ingredients
       );
-    });
-    this.formulaCompound = result;
+      this.ingredients = ingredientsCompound;
+      ingredientsCompound.forEach((ingredient) => {
+        ingredient.ingredients.filter(
+          (element: { ingredient: { formula: any } }) => {
+            if (element.ingredient.formula) {
+              result.push(element.ingredient.formula);
+            }
+            return result;
+          }
+        );
+      });
+      this.formulaCompound = result;
+    }
   }
   getTotalPercentage(ingredient: any) {
     ingredient.reduce((a: any, b: { percentage: any }) => {

@@ -1,5 +1,5 @@
 export interface Post {
-  id: string;
+  readonly id: string;
   media_type: string;
   permalink: string;
   media_url: string;

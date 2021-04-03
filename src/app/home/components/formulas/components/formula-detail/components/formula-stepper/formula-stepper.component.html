@@ -2,97 +2,100 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <h1 class="text-center">
+        <h1 *ngIf="formula.mixing" class="text-center">
           {{ 'FORMULAS.FORMULAS-DETAILS.FORMULA-STEPPER.title' | translate }}
         </h1>
       </div>
     </div>
     <div class="row">
       <div class="col-lg">
-        <div
-          class="mb-4"
-          *ngFor="let s of formula.mixing[0].mixing_order; let i = index"
-        >
-          <div class="title-stepper mb-2">
-            <img
-              src="assets/images/Pasos/Pasos_PNG/icon-{{ i + 1 }}.png"
-              alt="icon"
-            />
-            <h1 class="text-center ml-2">
-              {{ 'FORMULAS.FORMULAS-DETAILS.FORMULA-STEPPER.step' | translate }}
-              {{ i + 1 }}
-            </h1>
-          </div>
-          <div class="formula-stepper__accordion">
-            <em [style.fontSize.%]="fontSize">{{
-              'FORMULAS.FORMULAS-DETAILS.FORMULA-STEPPER.ingredients'
-                | translate
-            }}</em>
-            <div class="mt-3">
-              <table class="table table-bordered table-striped">
-                <thead>
-                  <tr>
-                    <th [style.fontSize.%]="fontSize">
-                      {{
-                        'FORMULAS.FORMULAS-DETAILS.FORMULA-STEPPER.name'
-                          | translate
-                      }}
-                    </th>
-                    <th
-                      [ngClass]="
-                        costColumn ? 'text-right' : 'text-right d-none'
-                      "
-                      [style.fontSize.%]="fontSize"
-                    >
-                      {{
-                        'FORMULAS.FORMULAS-DETAILS.FORMULA-STEPPER.cost'
-                          | translate
-                      }}
-                    </th>
-                    <th class="text-center" [style.fontSize.%]="fontSize">
-                      {{
-                        'FORMULAS.FORMULAS-DETAILS.FORMULA-STEPPER.hydration'
-                          | translate
-                      }}
-                    </th>
-                    <th class="text-right" [style.fontSize.%]="fontSize">%</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let i of s.ingredients">
-                    <td class="text-left" [style.fontSize.%]="fontSize">
-                      {{ i.ingredient.name }}
-                    </td>
-                    <td
-                      [ngClass]="
-                        costColumn ? 'text-right' : 'text-right d-none'
-                      "
-                      [style.fontSize.%]="fontSize"
-                    >
-                      {{ i.ingredient.cost ? i.ingredient.cost : 'N/A' }}
-                    </td>
-                    <td class="text-right" [style.fontSize.%]="fontSize">
-                      {{
-                        i.ingredient.hydration > 0
-                          ? i.ingredient.hydration
-                          : "This's a dry ingredient "
-                      }}
-                    </td>
-                    <td class="text-right" [style.fontSize.%]="fontSize">
-                      {{ i.percentage }}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+        <div class="mb-4" *ngFor="let s of formula.mixing; let i = index">
+          <div *ngFor="let o of s.mixing_order">
+            <div class="title-stepper mb-2">
+              <img
+                src="assets/images/Pasos/Pasos_PNG/icon-{{ i + 1 }}.png"
+                alt="icon"
+              />
+              <h1 class="text-center ml-2">
+                {{
+                  'FORMULAS.FORMULAS-DETAILS.FORMULA-STEPPER.step' | translate
+                }}
+                {{ i + 1 }}
+              </h1>
             </div>
-            <div *ngIf="s.description">
-              <em [style.fontSize.%]="fontSize" class="mb-3">{{
-                'FORMULAS.FORMULAS-DETAILS.FORMULA-STEPPER.instructions'
+            <div class="formula-stepper__accordion">
+              <em [style.fontSize.%]="fontSize">{{
+                'FORMULAS.FORMULAS-DETAILS.FORMULA-STEPPER.ingredients'
                   | translate
               }}</em>
-              <p [style.fontSize.%]="fontSize">
-                &nbsp;&nbsp;&nbsp;&nbsp;{{ s.description }}
-              </p>
+              <div class="mt-3">
+                <table class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th [style.fontSize.%]="fontSize">
+                        {{
+                          'FORMULAS.FORMULAS-DETAILS.FORMULA-STEPPER.name'
+                            | translate
+                        }}
+                      </th>
+                      <th
+                        [ngClass]="
+                          costColumn ? 'text-right' : 'text-right d-none'
+                        "
+                        [style.fontSize.%]="fontSize"
+                      >
+                        {{
+                          'FORMULAS.FORMULAS-DETAILS.FORMULA-STEPPER.cost'
+                            | translate
+                        }}
+                      </th>
+                      <th class="text-center" [style.fontSize.%]="fontSize">
+                        {{
+                          'FORMULAS.FORMULAS-DETAILS.FORMULA-STEPPER.hydration'
+                            | translate
+                        }}
+                      </th>
+                      <th class="text-right" [style.fontSize.%]="fontSize">
+                        %
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let i of o.ingredients">
+                      <td class="text-left" [style.fontSize.%]="fontSize">
+                        {{ i.ingredient.name }}
+                      </td>
+                      <td
+                        [ngClass]="
+                          costColumn ? 'text-right' : 'text-right d-none'
+                        "
+                        [style.fontSize.%]="fontSize"
+                      >
+                        {{ i.ingredient.cost ? i.ingredient.cost : 'N/A' }}
+                      </td>
+                      <td class="text-right" [style.fontSize.%]="fontSize">
+                        {{
+                          i.ingredient.hydration > 0
+                            ? i.ingredient.hydration
+                            : "This's a dry ingredient "
+                        }}
+                      </td>
+                      <td class="text-right" [style.fontSize.%]="fontSize">
+                        {{ i.percentage }}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div *ngIf="o.description">
+                <em [style.fontSize.%]="fontSize" class="mb-3">{{
+                  'FORMULAS.FORMULAS-DETAILS.FORMULA-STEPPER.instructions'
+                    | translate
+                }}</em>
+                <p [style.fontSize.%]="fontSize">
+                  &nbsp;&nbsp;&nbsp;&nbsp;{{ s.description }}
+                </p>
+              </div>
             </div>
           </div>
         </div>

@@ -5,7 +5,7 @@ export interface Ingredient {
   formula?: object;
   cost: number;
   user: any;
-  hydration: any;
+  hydration: string | number;
   references?: Array<any>;
   is_flour: boolean;
   name: string;
