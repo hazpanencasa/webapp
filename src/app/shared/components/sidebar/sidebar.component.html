@@ -53,11 +53,12 @@
           <p *ngIf="showSidebar">{{ 'SIDEBAR.formulas' | translate }}</p>
         </mat-list-option>
         <mat-list-option
-          class="Sidebar-item d-md-none"
+          class="Sidebar-item"
           routerLinkActive="router-link"
           routerLink="profile"
         >
           <ion-icon matListIcon name="settings-outline"></ion-icon>
+          <p *ngIf="showSidebar">{{ 'SIDEBAR.settings' | translate }}</p>
         </mat-list-option>
       </div>
     </mat-selection-list>
