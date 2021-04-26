@@ -16,6 +16,7 @@ export class FormulasService {
   formulasCollection: AngularFirestoreCollection<Formula>;
   formulaDoc: AngularFirestoreDocument<Formula>;
   formula: Observable<Formula>;
+  ingredientsSecondRequest: AngularFirestoreCollection<IngredientsSecondRequest>;
 
   constructor(public afs: AngularFirestore) {
     this.formulasCollection = afs.collection('formulas');
@@ -38,18 +39,17 @@ export class FormulasService {
   }
   getFormulaIngredients(idFormula: string) {
     return this.afs
-      .collection('formulas')
-      .doc(`${idFormula}`)
-      .collection<any>('ingredients')
+      .collection(`formulas/${idFormula}/ingredients`)
       .valueChanges();
   }
-  getFormulaIngredientsCompound(idFormula: string, idIngredient: string) {
+  getFormulaIngredientsCompound(
+    idFormula: string,
+    idIngredient: string
+  ): Observable<any[]> {
     return this.afs
-      .collection('formulas')
-      .doc(`${idFormula}`)
-      .collection<any>('ingredients')
-      .doc(`${idIngredient}`)
-      .collection('ingredients')
+      .collection(
+        `formulas/${idFormula}/ingredients/${idIngredient}/ingredients`
+      )
       .valueChanges();
   }
   getIngredientCompoundSubCollection(

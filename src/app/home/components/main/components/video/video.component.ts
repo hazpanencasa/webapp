@@ -10,6 +10,6 @@ export class VideoComponent implements OnInit {
 
   ngOnInit() {
     const video = document.querySelector('video');
-    video.play();
+    // video.play();
   }
 }

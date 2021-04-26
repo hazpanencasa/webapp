@@ -1,4 +1,4 @@
-<ng-container *ngIf="ingredientsCompound && ingredientsCompoundOutput">
+<ng-container *ngIf="ingredientsCompound">
   <ng-container *ngFor="let formula of ingredientsCompound">
     <h1 *ngIf="formula.ingredient.formula.mixing">
       {{ formula.ingredient.name }}

@@ -6,6 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./table-mixing.component.sass'],
 })
 export class TableMixingComponent implements OnInit {
+  costColumn = true;
   @Input() ingredientFormula: any;
   constructor() {}
 

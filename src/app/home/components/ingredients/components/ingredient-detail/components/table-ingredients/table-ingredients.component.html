@@ -2,21 +2,21 @@
   <table *ngIf="ingredientCompound.length > 0" class="table">
     <thead>
       <tr>
-        <th [style.fontSize.%]="fontSize" colspan="2" scope="col">
+        <th colspan="2" scope="col">
           {{
             'PRODUCTIONS.PRODUCTIONS_DETAILS.INGREDIENTS_TABLE.table_header'
               | translate
           }}
         </th>
-        <th class="text-right" [style.fontSize.%]="fontSize" scope="col">%</th>
+        <th class="text-right" scope="col">%</th>
       </tr>
     </thead>
     <tbody *ngFor="let element of ingredientCompound">
       <tr class="table-row__info">
-        <td [style.fontSize.%]="fontSize" colspan="2" scope="row">
+        <td colspan="2" scope="row">
           {{ element.ingredient.name }}
         </td>
-        <td class="text-right" [style.fontSize.%]="fontSize">
+        <td class="text-right">
           {{ element.percentage }}
         </td>
       </tr>
@@ -30,8 +30,8 @@
       </tr>
     </tbody>
     <tr>
-      <td [style.fontSize.%]="fontSize" colspan="2" scope="row">Total</td>
-      <td class="text-right" [style.fontSize.%]="fontSize">
+      <td colspan="2" scope="row">Total</td>
+      <td class="text-right">
         {{ resultPercent }}
       </td>
     </tr>

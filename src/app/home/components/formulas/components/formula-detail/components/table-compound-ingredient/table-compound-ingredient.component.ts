@@ -44,7 +44,7 @@ export class TableCompoundIngredientComponent implements OnInit {
         (step: Step) => step.ingredients
       );
       this.steps = ingredientsCompound;
-      console.log(ingredientsCompound);
+      // console.log(ingredientsCompound);
       ingredientsCompound.forEach((step: Step) => {
         step.ingredients.filter((element: IngredientStep) => {
           if (element.ingredient.formula) {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { IngredientProduction } from '@core/model/ingredient-production';
 import { Ingredient } from '@core/model/ingredients.model';

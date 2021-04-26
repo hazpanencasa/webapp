@@ -29,7 +29,7 @@
             </h1>
           </div>
           <div class="formula-stepper__accordion">
-            <em [style.fontSize.%]="fontSize">{{
+            <em>{{
               'PRODUCTIONS.PRODUCTIONS_DETAILS.MIX_ORDER_TABLE.TABLE.ingredients'
                 | translate
             }}</em>
@@ -37,7 +37,7 @@
               <table class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th [style.fontSize.%]="fontSize">
+                    <th>
                       {{
                         'PRODUCTIONS.PRODUCTIONS_DETAILS.MIX_ORDER_TABLE.TABLE.name'
                           | translate
@@ -47,43 +47,41 @@
                       [ngClass]="
                         costColumn ? 'text-right' : 'text-right d-none'
                       "
-                      [style.fontSize.%]="fontSize"
                     >
                       {{
                         'PRODUCTIONS.PRODUCTIONS_DETAILS.MIX_ORDER_TABLE.TABLE.cost'
                           | translate
                       }}
                     </th>
-                    <th class="text-center" [style.fontSize.%]="fontSize">
+                    <th class="text-center">
                       {{
                         'PRODUCTIONS.PRODUCTIONS_DETAILS.MIX_ORDER_TABLE.TABLE.hydration'
                           | translate
                       }}
                     </th>
-                    <th class="text-right" [style.fontSize.%]="fontSize">%</th>
+                    <th class="text-right">%</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let i of s.ingredients">
-                    <td class="text-left" [style.fontSize.%]="fontSize">
+                    <td class="text-left">
                       {{ i.ingredient.name }}
                     </td>
                     <td
                       [ngClass]="
                         costColumn ? 'text-right' : 'text-right d-none'
                       "
-                      [style.fontSize.%]="fontSize"
                     >
                       {{ i.ingredient.cost ? i.ingredient.cost : 'N/A' }}
                     </td>
-                    <td class="text-right" [style.fontSize.%]="fontSize">
+                    <td class="text-right">
                       {{
                         i.ingredient.hydration > 0
                           ? i.ingredient.hydration
                           : "This's a dry ingredient "
                       }}
                     </td>
-                    <td class="text-right" [style.fontSize.%]="fontSize">
+                    <td class="text-right">
                       {{ i.percentage }}
                     </td>
                   </tr>
@@ -91,13 +89,11 @@
               </table>
             </div>
             <div class="instructions-description" *ngIf="s.description">
-              <em [style.fontSize.%]="fontSize" class="mb-3">{{
+              <em class="mb-3">{{
                 'PRODUCTIONS.PRODUCTIONS_DETAILS.MIX_ORDER_TABLE.TABLE.instructions'
                   | translate
               }}</em>
-              <p [style.fontSize.%]="fontSize">
-                &nbsp;&nbsp;&nbsp;&nbsp;{{ s.description }}
-              </p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;{{ s.description }}</p>
             </div>
           </div>
         </div>

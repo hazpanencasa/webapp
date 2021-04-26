@@ -34,11 +34,11 @@ export class MixingIngredientCompoundComponent implements OnInit {
           return element.ingredients;
         }
       );
-      console.log('ingredientsArrayInner =>', ingredientsArrayInner);
+      // console.log('ingredientsArrayInner =>', ingredientsArrayInner);
       ingredientsArrayInner.forEach((element: Step) => {
         element.ingredients.forEach((ingredientStep: IngredientStep) => {
           if (ingredientStep.ingredient.formula) {
-            console.log('ingredientStep =>', ingredientStep);
+            // console.log('ingredientStep =>', ingredientStep);
             this.formulaMixing.push(ingredientStep.ingredient);
           }
         });

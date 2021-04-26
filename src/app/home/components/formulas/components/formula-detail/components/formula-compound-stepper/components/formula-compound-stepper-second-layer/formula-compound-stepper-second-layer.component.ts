@@ -11,6 +11,7 @@ import {
   styleUrls: ['./formula-compound-stepper-second-layer.component.sass'],
 })
 export class FormulaCompoundStepperSecondLayerComponent implements OnInit {
+  costColumn = true;
   @Input() idIngredientsCompound: string;
   @Input() idFormula: string;
   @Input() ingredientsCompoundOutput: IngredientsFormula[];
@@ -22,6 +23,9 @@ export class FormulaCompoundStepperSecondLayerComponent implements OnInit {
       .map(
         (ingredient: IngredientsFormula) => ingredient.ingredient.formula.mixing
       )
-      .map((mixing) => console.log('mixing =>', mixing));
+      .map(
+        (mixing) => {}
+        // console.log('mixing =>', mixing)
+      );
   }
 }
