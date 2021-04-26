@@ -1,4 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import {
+  IngredientsFormula,
+  IngredientStep,
+  MixingOrder,
+} from '@core/model/formulas.model';
 
 @Component({
   selector: 'app-formula-compound-stepper-second-layer',
@@ -8,10 +13,15 @@ import { Component, Input, OnInit } from '@angular/core';
 export class FormulaCompoundStepperSecondLayerComponent implements OnInit {
   @Input() idIngredientsCompound: string;
   @Input() idFormula: string;
-  @Input() ingredientsCompoundOutput: any;
+  @Input() ingredientsCompoundOutput: IngredientsFormula[];
+  @Input() fontSize: number;
   constructor() {}
 
-  ngOnInit() {
-    // console.log(this.ingredientsCompoundOutput);
+  ngOnInit(): void {
+    this.ingredientsCompoundOutput
+      .map(
+        (ingredient: IngredientsFormula) => ingredient.ingredient.formula.mixing
+      )
+      .map((mixing) => console.log('mixing =>', mixing));
   }
 }

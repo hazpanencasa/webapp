@@ -1,7 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Formula } from '@core/model/formulas.model';
+import {
+  Formula,
+  IngredientsFormula,
+  Mixing,
+  MixingOrder,
+} from '@core/model/formulas.model';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
-import { element } from 'protractor';
 
 @Component({
   selector: 'app-formula-stepper',
@@ -23,13 +27,15 @@ export class FormulaStepperComponent implements OnInit {
   ngOnInit() {
     if (this.formula.mixing) {
       const outputCostArray = [];
-      this.formula.mixing.map((element) => {
-        element.mixing_order.forEach((element) => {
-          element.ingredients.forEach((element) => {
-            if (typeof element.ingredient.cost === 'number') {
-              outputCostArray.push(element.ingredient.cost);
+      this.formula.mixing.map((element: Mixing) => {
+        element.mixing_order.forEach((mixingOrder: MixingOrder) => {
+          mixingOrder.ingredients.forEach(
+            (ingredientFormula: IngredientsFormula) => {
+              if (typeof ingredientFormula.ingredient.cost === 'number') {
+                outputCostArray.push(ingredientFormula.ingredient.cost);
+              }
             }
-          });
+          );
         });
       });
       const result = outputCostArray.reduce((a, b) => a + b, 0);

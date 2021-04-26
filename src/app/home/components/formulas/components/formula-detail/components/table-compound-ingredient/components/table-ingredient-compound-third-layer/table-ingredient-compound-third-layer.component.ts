@@ -12,6 +12,7 @@ export class TableIngredientCompoundThirdLayerComponent implements OnInit {
   @Input() idIngredientCompound: string;
   @Input() totalGrams: number;
   @Input() totalPercentage: number;
+  @Input() fontSize: number;
   resultPercentage: number;
   ingredients: Array<any>;
 
@@ -30,13 +31,13 @@ export class TableIngredientCompoundThirdLayerComponent implements OnInit {
         });
     });
   }
-  getTotalPercentage(ingredient: any) {
+  getTotalPercentage(ingredient: any): number {
     ingredient.reduce((a: any, b: { percentage: any }) => {
       return (this.resultPercentage = a + b.percentage);
     }, 0);
-    return this.resultPercentage.toFixed(1);
+    return this.resultPercentage;
   }
-  getTotalGrams(ingredient: any) {
+  getTotalGrams(ingredient: any): number {
     const percentageResult = ingredient.reduce(
       (a: any, b: { percentage: any }) => {
         return a + b.percentage;
@@ -44,6 +45,6 @@ export class TableIngredientCompoundThirdLayerComponent implements OnInit {
       0
     );
     const total = (this.totalGrams * percentageResult) / this.totalPercentage;
-    return total.toFixed(1);
+    return total;
   }
 }

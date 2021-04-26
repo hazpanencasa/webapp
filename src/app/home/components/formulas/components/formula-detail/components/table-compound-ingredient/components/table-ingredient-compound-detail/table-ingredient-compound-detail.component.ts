@@ -10,6 +10,7 @@ export class TableIngredientCompoundDetailComponent implements OnInit {
   @Input() ingredients: Array<any>;
   @Input() weight: string;
   @Input() unit: string;
+  @Input() fontSize: number;
   ingredientsCompound: Array<any>;
   resultPercentage: any;
   grams: number;
@@ -30,7 +31,7 @@ export class TableIngredientCompoundDetailComponent implements OnInit {
     }, 0);
     return result.toFixed(1);
   }
-  getTotalGrams(ingredient: any) {
+  getTotalGrams(ingredient: any): number {
     const weight = parseInt(this.weight, 10);
     const unit = parseInt(this.unit, 10);
     const weightTotal = weight * unit;
@@ -41,7 +42,7 @@ export class TableIngredientCompoundDetailComponent implements OnInit {
       0
     );
     this.totalGrams = (weightTotal * percentageResult) / 100;
-    return this.totalGrams.toFixed(1);
+    return this.totalGrams;
   }
   // getIngredientsGrams(
   //   percentage: number,

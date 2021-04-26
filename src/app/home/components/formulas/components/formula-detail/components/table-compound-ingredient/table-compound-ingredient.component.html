@@ -1,5 +1,5 @@
 <ng-container *ngIf="steps && formula">
-  <div *ngFor="let ingredient of ingredients" class="table3-container mt-4">
+  <div *ngFor="let ingredient of steps" class="table3-container mt-4">
     <h1 [style.fontSize.%]="fontSize" class="m-0 p-2">
       {{ ingredient.name }}
     </h1>
@@ -70,6 +70,7 @@
     [weight]="formula.unit_weight"
     [unit]="formula.units"
     [ingredients]="steps"
+    [fontSize]="fontSize"
   ></app-table-ingredient-compound-detail>
   <app-table-ingredients-compound-second-layer
     *ngIf="ingredientsCompoundOutput"
@@ -79,5 +80,6 @@
     [totalPercentage]="totalPercentage"
     [formulaId]="formulaId"
     [ingredientsCompoundCollection]="ingredientsCompoundCollection"
+    [fontSize]="fontSize"
   ></app-table-ingredients-compound-second-layer>
 </ng-container>

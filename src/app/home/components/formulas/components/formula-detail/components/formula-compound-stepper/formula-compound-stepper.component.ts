@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormulasService } from '@core/service/formulas/formulas.service';
-import { element } from 'protractor';
 @Component({
   selector: 'app-formula-compound-stepper',
   templateUrl: './formula-compound-stepper.component.html',
