@@ -1,9 +1,9 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: "app-production-stepper",
-  templateUrl: "./production-stepper.component.html",
-  styleUrls: ["./production-stepper.component.sass"],
+  selector: 'app-production-stepper',
+  templateUrl: './production-stepper.component.html',
+  styleUrls: ['./production-stepper.component.sass'],
 })
 export class ProductionStepperComponent implements OnInit {
   @Input() compoundValidation: boolean;
@@ -14,17 +14,19 @@ export class ProductionStepperComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    let outputCostArray = [];
+    const outputCostArray = [];
     const mixingOrderArray = this.mixing[0].mixing_order;
     mixingOrderArray.forEach((element) => {
-      let newArray = element.ingredients;
-      newArray.forEach((element) => {
-        let outArray = element.ingredient.cost;
+      const newArray = element.ingredients;
+      // tslint:disable-next-line: no-shadowed-variable
+      newArray.forEach((element: any) => {
+        const outArray = element.ingredient.cost;
         outputCostArray.push(outArray);
       });
     });
     const result = outputCostArray.reduce((a, b) => a + b, 0);
     if (result > 0) {
+      // tslint:disable-next-line: no-unused-expression
       this.costColumn;
     } else {
       this.costColumn = false;
