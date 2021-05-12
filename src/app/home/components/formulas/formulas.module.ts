@@ -17,7 +17,6 @@ import { TableIntroComponent } from './components/formula-detail/components/tabl
 import { PreparationStepsComponent } from './components/formula-detail/components/preparation-steps/preparation-steps.component';
 import { CardComponent } from './components/formulas/components/card/card.component';
 import { AdditionalInfoComponent } from './components/formula-detail/components/additional-info/additional-info.component';
-import { NgxPrintModule } from 'ngx-print';
 
 import { MixingIngredientCompoundComponent } from './components/formula-detail/components/table-compound-ingredient/components/mixing-ingredient-compound/mixing-ingredient-compound.component';
 
@@ -53,7 +52,6 @@ import { FormulaCompoundStepperSecondLayerComponent } from './components/formula
     FormulasRoutingModule,
     FormsModule,
     SharedModule,
-    NgxPrintModule,
     TranslateModule,
   ],
   providers: [FormulasService],

@@ -18,8 +18,6 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { FormulasService } from '@core/service/formulas/formulas.service';
 
-import { NgxPrintModule } from 'ngx-print';
-
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/1l8n/', '.json');
 }
@@ -44,7 +42,6 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient],
       },
     }),
-    NgxPrintModule,
   ],
   providers: [FormulasService],
   bootstrap: [AppComponent],
