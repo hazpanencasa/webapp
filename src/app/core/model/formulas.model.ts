@@ -1,9 +1,10 @@
 export interface Formula {
+  ingredients: IngredientsFormula[];
   description: boolean | string;
   id: string;
-  mixing: Array<Mixing>;
+  mixing: Mixing[];
   name: string;
-  steps: Array<Step>;
+  steps: Step[];
   unit_weight: string;
   units: string;
   user: User;
@@ -14,11 +15,11 @@ export interface User {
   can_clone: boolean;
   cloned: boolean;
   creator: Creator;
-  modifiers: Array<any>;
+  modifiers: any[];
   owner: string;
   public: boolean;
   reference: string;
-  shared_users: Array<any>;
+  shared_users: any[];
 }
 
 export interface Creator {
@@ -36,7 +37,7 @@ export interface Step {
   description: string;
   name: string;
   number: number;
-  ingredients: Array<IngredientStep>;
+  ingredients: IngredientStep[];
   temperature: Temperature;
   time: number;
   times: number;
@@ -59,8 +60,8 @@ export interface IngredientObjectStep {
 
 export interface FormulaStep {
   compensation_percentage: number;
-  mixing: Array<MixingOrder> | null;
-  ingredients: Array<IngredientsFormula>;
+  mixing: MixingOrder[] | null;
+  ingredients: IngredientsFormula[];
   proportion_factor: ProportionFactor;
   suggested_values: SuggestedValues;
 }
@@ -71,12 +72,12 @@ export interface Temperature {
 }
 
 export interface Mixing {
-  mixing_order: Array<MixingOrder>;
+  mixing_order: MixingOrder[];
   name: string;
 }
 export interface MixingOrder {
   description: string;
-  ingredients: Array<IngredientsFormula>;
+  ingredients: IngredientsFormula[];
 }
 export interface IngredientsFormula {
   ingredient: Ingredient;
@@ -90,7 +91,7 @@ export interface Ingredient {
   is_flour: boolean;
   name: string;
   formula?: IngredientFormulaSecondRequest;
-  references?: Array<any>;
+  references?: any[];
   user?: User;
 }
 
@@ -101,7 +102,7 @@ export interface IngredientsSecondRequest {
 
 export interface IngredientFormulaSecondRequest {
   compensation_percentage: number;
-  mixing: Array<MixingOrder>;
+  mixing: MixingOrder[];
   proportion_factor: ProportionFactor;
   suggested_values: SuggestedValues;
 }

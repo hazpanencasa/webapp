@@ -10,12 +10,12 @@ export class InfoComponent implements OnInit {
   constructor(private instagramService: InstagramService) {}
   post: Post[];
   ngOnInit() {
-    this.fetchAllPost();
+    // this.fetchAllPost();
   }
-  fetchAllPost() {
-    // tslint:disable-next-line: deprecation
-    this.instagramService.getAllPost().subscribe((post: any) => {
-      this.post = post.data.slice(0, 3);
-    });
-  }
+  // fetchAllPost() {
+  //   // tslint:disable-next-line: deprecation
+  //   this.instagramService.getAllPost().subscribe((post: any) => {
+  //     this.post = post.data.slice(0, 3);
+  //   });
+  // }
 }

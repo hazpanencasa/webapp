@@ -36,7 +36,7 @@ export class GalleryComponent implements OnInit {
     },
   };
   ngOnInit() {
-    this.fetchAllPost();
+    // this.fetchAllPost();
   }
   showModal(img: string, link: string) {
     modalGallery(img).then((result) => {
@@ -45,9 +45,9 @@ export class GalleryComponent implements OnInit {
       }
     });
   }
-  fetchAllPost() {
-    this.instagramService.getAllPost().subscribe((post: any) => {
-      this.imagesBread = post.data;
-    });
-  }
+  // fetchAllPost() {
+  //   this.instagramService.getAllPost().subscribe((post: any) => {
+  //     this.imagesBread = post.data;
+  //   });
+  // }
 }

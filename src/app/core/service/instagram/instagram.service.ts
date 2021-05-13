@@ -9,6 +9,6 @@ import { Post } from '../../model/post';
 export class InstagramService {
   constructor(private http: HttpClient) {}
   getAllPost() {
-    return this.http.get<Post[]>(environment.URL_API);
+    // return this.http.get<Post[]>(environment.URL_API);
   }
 }
