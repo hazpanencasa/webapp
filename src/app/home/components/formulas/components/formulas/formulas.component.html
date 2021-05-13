@@ -1,4 +1,4 @@
-<ng-container *ngIf="formulas">
+<ng-container>
   <div
     style="background-image: url('assets/images/hazPanEnCasa2.jpg')"
     class="parallax"
@@ -9,10 +9,10 @@
         <h1 class="ml-2">{{ 'FORMULAS.title' | translate }}</h1>
         <p class="ml-2">{{ 'FORMULAS.text-info' | translate }}</p>
         <div class="Banner-section__main container mt-3">
-          <div class="row">
+          <div class="row justify-content-center">
             <div class="col-12 col-md-9 p-0">
               <div class="container">
-                <div class="row">
+                <!-- <div class="row">
                   <div class="col-md-6 col-6 card-input">
                     <mat-form-field>
                       <mat-label>{{ 'FORMULAS.input' | translate }}</mat-label>
@@ -27,28 +27,27 @@
                   <div class="col-md-6 col-6 px-0">
                     <mat-paginator
                       class="p-0"
-                      [length]="formulas.length"
+                      [length]="formulas ? formulas.length : ''"
                       [pageSize]="pageSize"
                       [pageSizeOptions]="pageSizeOptions"
                       (page)="onPageChange($event)"
                     >
                     </mat-paginator>
                   </div>
-                </div>
+                </div> -->
                 <div class="row">
                   <div class="col p-0">
                     <section class="cards">
-                      <div class="cards-container" id="carousel">
-                        <div
-                          *ngFor="
-                            let formula of formulas
-                              | paginate: pageSize:pageNumber
-                              | filter: filterFormula
-                          "
-                          class="cards-container__item"
-                        >
-                          <app-card [formula]="formula"></app-card>
+                      <div class="cards-container">
+                        <div class="cards-container__item">
+                          <app-card
+                            *ngFor="let formula of formulas | async"
+                            [formula]="formula.payload.doc"
+                          ></app-card>
                         </div>
+                        <!-- <div *ngIf="isLoaded" class="spinner-container">
+                          <mat-spinner></mat-spinner>
+                        </div> -->
                       </div>
                     </section>
                   </div>

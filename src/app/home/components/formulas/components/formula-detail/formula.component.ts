@@ -55,7 +55,6 @@ export class FormulaDetailComponent implements OnInit, AfterViewChecked {
     timesArray.forEach((element: Step) => (total += element.time));
   }
   fetchFormula(id: string) {
-    // tslint:disable-next-line: deprecation
     this.formulasService.getFormula(id).subscribe((formula: Formula) => {
       this.formula = formula;
     });
@@ -63,7 +62,6 @@ export class FormulaDetailComponent implements OnInit, AfterViewChecked {
   fetchFormulaIngredients(id: string) {
     this.formulasService
       .getFormulaIngredients(id)
-      // tslint:disable-next-line: deprecation
       .subscribe((ingredients: IngredientsSecondRequest[]) => {
         this.ingredients = ingredients;
         const result = this.ingredients.reduce(

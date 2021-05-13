@@ -5,6 +5,7 @@ import {
   IngredientsSecondRequest,
   Step,
 } from '@core/model/formulas.model';
+import { FormulasService } from '@core/service/formulas/formulas.service';
 
 @Component({
   selector: 'app-table-intro',
@@ -22,30 +23,28 @@ export class TableIntroComponent implements OnInit {
   bakeryMeasure: number;
   weightTotal: number;
   hydration: string;
-  constructor() {}
+  constructor(private formulaService: FormulasService) {}
 
   ngOnInit() {
     this.addAllTime();
     this.bakeryFactor();
-    this.weightTotal =
-      parseInt(this.formula.unit_weight, 10) * parseInt(this.formula.units, 10);
+    this.weightTotal = +this.formula.unit_weight * +this.formula.units;
     const result = this.ingredients.filter(
       (element: IngredientsSecondRequest) => {
         if (typeof element.ingredient.hydration === 'string') {
-          return parseInt(element.ingredient.hydration, 10);
+          return +element.ingredient.hydration;
         } else {
           return element.ingredient.hydration;
         }
       }
     );
     const total = result.map((element: IngredientsSecondRequest) => {
-      return (
-        ((element.ingredient.hydration as number) / 100) * element.percentage
-      );
+      return (+element.ingredient.hydration / 100) * element.percentage;
     });
 
     const hydration = total.reduce((a, b) => a + b, 0);
     this.hydration = hydration.toFixed(1);
+    this.formulaService.hydrationStatus.emit(this.hydration);
   }
   transformMinutesToHours(minutes: any) {
     const hour = 60;

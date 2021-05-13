@@ -1,24 +1,22 @@
 @import ../../../../../../utils/variables
+.spinner-container
+  height: 100vh
+  position: relative
+  left: 45%
+  bottom: 0
+  right: 0
+  top: 32%
+  margin: auto
+  ::ng-deep .mat-progress-spinner circle, .mat-spinner circle
+    stroke: $primary-color
 .parallax
   background: #fff fixed no-repeat 50% 50%
 #parallax
-  // position: relative
   background-size: cover
   background-position: bottom
   & .overlay
-    // z-index: 1
-    // position: absolute
-    // top: 0
-    // bottom: 0
-    // left: 0
-    // right: 0
-    // background-color: rgba(0, 0, 0, 0.3)
     color: white
     padding-top: 50px
-    // display: inline-flex
-    // flex-direction: column
-    // justify-content: flex-end
-    // align-items: flex-start
     margin: 0 auto
     &__header-title
       padding-bottom: 70px
@@ -28,8 +26,6 @@
         font-weight: 700
         letter-spacing: .05em
         text-transform: uppercase
-// .Banner
-//   // height: 50vh
 .cards 
   display: flex
   justify-content: center

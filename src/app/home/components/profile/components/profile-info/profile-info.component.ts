@@ -24,25 +24,25 @@ export class ProfileInfoComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.authService.getCurrentUser().then((user) => {
-      this.currentUserEmail = user.email;
-    });
-    this.formulasFilterEmail();
-    // this.ingredientsFilterEmail();
-    this.productionFilterEmail();
-  }
-  formulasFilterEmail() {
-    this.formulasService.getFormulas().subscribe((formulas) => {
-      const newArray = formulas.filter((formula) => {
-        if (formula.user.creator.email === this.currentUserEmail) {
-          return formula;
-        }
-      });
-      const firstThreeArray = newArray.slice(0, 3);
-      return firstThreeArray.forEach((element) =>
-        this.outputArrayFormulas.push(element)
-      );
-    });
+    //   this.authService.getCurrentUser().then((user) => {
+    //     this.currentUserEmail = user.email;
+    //   });
+    //   this.formulasFilterEmail();
+    //   // this.ingredientsFilterEmail();
+    //   this.productionFilterEmail();
+    // }
+    // formulasFilterEmail() {
+    //   this.formulasService.getFormulas().subscribe((formulas) => {
+    //     const newArray = formulas.filter((formula) => {
+    //       if (formula.user.creator.email === this.currentUserEmail) {
+    //         return formula;
+    //       }
+    //     });
+    //     const firstThreeArray = newArray.slice(0, 3);
+    //     return firstThreeArray.forEach((element) =>
+    //       this.outputArrayFormulas.push(element)
+    //     );
+    //   });
   }
   // ingredientsFilterEmail() {
   //   this.ingredientsService.getIngredients().subscribe((ingredients) => {

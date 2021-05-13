@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { PageEvent } from '@angular/material/paginator';
-import { Formula } from '@core/model/formulas.model';
+import {
+  Formula,
+  IngredientFormulaSecondRequest,
+} from '@core/model/formulas.model';
 import { FormulasService } from '@core/service/formulas/formulas.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-formulas',
@@ -10,25 +15,38 @@ import { FormulasService } from '@core/service/formulas/formulas.service';
   providers: [FormulasService],
 })
 export class FormulasComponent implements OnInit {
-  constructor(private formulasService: FormulasService) {}
-  formulas: Formula[];
+  hydration: string;
+  constructor(
+    private formulasService: FormulasService,
+    private db: AngularFirestore
+  ) {}
+  formulas: any;
   pageSizeOptions: number[] = [3, 6, 9];
   pageEvent: PageEvent;
   filterFormula = '';
   counter = 0;
   pageSize = 6;
   pageNumber = 1;
-  ngOnInit() {
-    this.fetchFormulas();
+  isLoaded = true;
+  ngOnInit(): void {
+    this.formulasService.getFormulas().subscribe((data: any) => {
+      console.log(data);
+    });
+    // this.fetchFormulas();
+    // this.formulas = this.formulasService.getFormulas();
+    // console.log(this.formulas);
   }
   onPageChange(event: PageEvent) {
     this.pageSize = event.pageSize;
     this.pageNumber = event.pageIndex + 1;
   }
   fetchFormulas() {
-    // tslint:disable-next-line: deprecation
-    this.formulasService.getFormulas().subscribe((formulas) => {
-      this.formulas = formulas;
-    });
+    // this.formulasService.getFormulas().subscribe((formulas) => {
+    //   console.log(formulas);
+    //   this.formulas = formulas;
+    //   this.isLoaded = false;
+    // });
+    this.formulas = this.formulasService.getFormulas();
+    // console.log(this.formulas);
   }
 }

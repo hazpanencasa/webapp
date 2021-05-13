@@ -29,6 +29,7 @@ export function createTranslateLoader(http: HttpClient) {
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,

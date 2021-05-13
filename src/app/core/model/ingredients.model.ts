@@ -1,6 +1,7 @@
 export interface Ingredient {
-  ingredient: any;
+  ingredient?: any;
   id: string;
+  fat: string;
   can_be_modified: boolean;
   formula?: object;
   cost: number;

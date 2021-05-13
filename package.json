@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng build --prod --base-href /haz-pan-en-casa/ && npx ngh --dir=./dist/haz-pan-en-casa/"
+    "deploy": "ng build --prod --base-href /webapp/ && npx ngh --dir=./dist/haz-pan-en-casa/"
   },
   "private": true,
   "dependencies": {
@@ -34,6 +34,7 @@
     "dom-to-image": "^2.6.0",
     "firebase": "^8.2.1",
     "ionicons": "^4.6.3",
+    "jquery": "^3.6.0",
     "ngx-gravatar": "^10.0.0",
     "ngx-masonry": "^11.0.0",
     "rxjs": "~6.6.0",
@@ -43,7 +44,7 @@
   },
   "devDependencies": {
     "@angular-devkit/architect": "^0.1100.5",
-    "@angular-devkit/build-angular": "~0.1100.5",
+    "@angular-devkit/build-angular": "^0.1102.13",
     "@angular/cli": "^11.0.5",
     "@angular/compiler-cli": "~11.0.5",
     "@types/aos": "^3.0.3",
@@ -57,7 +58,7 @@
     "inquirer-autocomplete-prompt": "^1.0.1",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
-    "karma": "~5.1.1",
+    "karma": "^6.3.2",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~4.0.0",

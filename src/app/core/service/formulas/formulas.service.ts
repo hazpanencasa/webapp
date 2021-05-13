@@ -1,10 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import {
   AngularFirestore,
-  AngularFirestoreCollection,
-  AngularFirestoreDocument,
+  DocumentChangeAction,
 } from '@angular/fire/firestore';
-import { Formula, IngredientsSecondRequest } from '../../model/formulas.model';
+import { Formula } from '../../model/formulas.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -12,41 +11,49 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class FormulasService {
-  formulas: Observable<Formula[]>;
-  formulasCollection: AngularFirestoreCollection<Formula>;
-  formulaDoc: AngularFirestoreDocument<Formula>;
-  formula: Observable<Formula>;
-  ingredientsSecondRequest: AngularFirestoreCollection<IngredientsSecondRequest>;
+  constructor(public db: AngularFirestore) {}
+  hydrationStatus = new EventEmitter<string>();
 
-  constructor(public afs: AngularFirestore) {
-    this.formulasCollection = afs.collection('formulas');
-    this.formulas = this.formulasCollection.snapshotChanges().pipe(
-      map((actions) => {
-        return actions.map((formula) => {
-          const data = formula.payload.doc.data() as Formula;
-          data.id = formula.payload.doc.id;
-          return data;
-        });
-      })
-    );
+  getFormulas(): Observable<Formula[]> {
+    // return this.dbFirestore.collection<Formula>('formulas').valueChanges();
+    return this.db
+      .collection<Formula>('formulas')
+      .snapshotChanges()
+      .pipe(
+        map((actions: DocumentChangeAction<Formula>[]) =>
+          actions.map((formulas: DocumentChangeAction<Formula>) => {
+            const data = formulas.payload.doc.data() as Formula;
+            return { ...data };
+          })
+        )
+      );
+    // this.db
+    //   .collection('formulas')
+    //   .snapshotChanges()
+    //   .pipe(
+    //     map((actions) =>
+    //       actions.map((a) => {
+    //         const data = a.payload.doc.data() as Formula;
+    //         const path = a.payload.doc.ref.path;
+    //         const ingredients = this.db
+    //           .collection(path + '/ingredients')
+    //           .valueChanges();
+    //         return { ingredients, ...data };
+    //       })
+    //     )
+    //   );
   }
-  getFormulas() {
-    return this.formulas;
+  getFormula(id: string): Observable<Formula> {
+    return this.db.doc<Formula>(`formulas/${id}`).valueChanges();
   }
-  getFormula(id: string) {
-    this.formulaDoc = this.afs.collection('formulas').doc(`${id}`);
-    return (this.formula = this.formulaDoc.valueChanges());
-  }
-  getFormulaIngredients(idFormula: string) {
-    return this.afs
-      .collection(`formulas/${idFormula}/ingredients`)
-      .valueChanges();
+  getFormulaIngredients(path: string) {
+    return this.db.collection(path + '/ingredients').valueChanges();
   }
   getFormulaIngredientsCompound(
     idFormula: string,
     idIngredient: string
   ): Observable<any[]> {
-    return this.afs
+    return this.db
       .collection(
         `formulas/${idFormula}/ingredients/${idIngredient}/ingredients`
       )
@@ -57,7 +64,7 @@ export class FormulasService {
     idIngredient: string,
     idIngredientCompound: string
   ) {
-    return this.afs
+    return this.db
       .collection('formulas')
       .doc(`${idFormula}`)
       .collection('ingredients')

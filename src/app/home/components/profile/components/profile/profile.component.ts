@@ -23,10 +23,10 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.fetchFormulas();
+    // this.fetchFormulas();
     // this.fetchIngredients();
-    this.fetchProductions();
-    this.getCurrentUser();
+    // this.fetchProductions();
+    // this.getCurrentUser();
   }
   getCurrentUser() {
     this.authService.getCurrentUser().then((user) => {
@@ -43,16 +43,16 @@ export class ProfileComponent implements OnInit {
       return (this.reducedProductions = this.reduceArray(productionArray));
     });
   }
-  fetchFormulas() {
-    const formulaArray = [];
-    this.formulas.getFormulas().subscribe((formula) => {
-      formula.forEach((form) => {
-        const userEmail = form.user.creator.email;
-        formulaArray.push(userEmail);
-      });
-      return (this.reducedFormulas = this.reduceArray(formulaArray));
-    });
-  }
+  // fetchFormulas() {
+  //   const formulaArray = [];
+  //   this.formulas.getFormulas().subscribe((formula) => {
+  //     formula.forEach((form) => {
+  //       const userEmail = form.user.creator.email;
+  //       formulaArray.push(userEmail);
+  //     });
+  //     return (this.reducedFormulas = this.reduceArray(formulaArray));
+  //   });
+  // }
   fetchIngredients() {
     const ingredientArray = [];
     this.ingredients.getIngredients().subscribe((ingredient) => {
