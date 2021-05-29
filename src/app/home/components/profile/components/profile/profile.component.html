@@ -2,7 +2,6 @@
   <div class="row px-md-2">
     <div class="profile_description col-12 col-md-3">
       <app-description-img
-        [numberFormulas]="reducedFormulas"
         [numberIngredients]="reducedIngredients"
         [numberProduction]="reducedProductions"
       ></app-description-img>
@@ -11,7 +10,6 @@
       <app-description-history
         [numberProductions]="reducedProductions"
         [numberIngredients]="reducedIngredients"
-        [numberFormulas]="reducedFormulas"
       ></app-description-history>
       <div class="profile_activity my-5">
         <app-profile-info [userName]="user.displayName"></app-profile-info>

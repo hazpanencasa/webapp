@@ -19,17 +19,17 @@ export class TableIngredientCompoundThirdLayerComponent implements OnInit {
   constructor(private formulasService: FormulasService) {}
 
   ngOnInit() {
-    this.ingredientsCompound.forEach((element) => {
-      this.formulasService
-        .getIngredientCompoundSubCollection(
-          this.formulaId,
-          this.idIngredientCompound,
-          element.ingredient.id
-        )
-        .subscribe((ingredients) => {
-          this.ingredients = ingredients;
-        });
-    });
+    // this.ingredientsCompound.forEach((element) => {
+    //   this.formulasService
+    //     .getIngredientCompoundSubCollection(
+    //       this.formulaId,
+    //       this.idIngredientCompound,
+    //       element.ingredient.id
+    //     )
+    //     .subscribe((ingredients) => {
+    //       this.ingredients = ingredients;
+    //     });
+    // });
   }
   getTotalPercentage(ingredient: any): number {
     ingredient.reduce((a: any, b: { percentage: any }) => {

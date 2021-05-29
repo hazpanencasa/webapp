@@ -21,6 +21,7 @@ export class ProductionsComponent implements OnInit {
   }
   fetchProductions() {
     this.productionsService.getProductions().subscribe((productions) => {
+      console.log(productions);
       this.productions = productions;
     });
   }

@@ -16,7 +16,6 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
-import { FormulasService } from '@core/service/formulas/formulas.service';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/1l8n/', '.json');
@@ -44,7 +43,7 @@ export function createTranslateLoader(http: HttpClient) {
       },
     }),
   ],
-  providers: [FormulasService],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -16,23 +16,23 @@ export class FormulaCompoundStepperComponent implements OnInit {
   constructor(private formulasService: FormulasService) {}
 
   ngOnInit() {
-    this.getIngredientsCompoundCollection();
+    // this.getIngredientsCompoundCollection();
   }
-  getIngredientsCompoundCollection() {
-    this.ingredientsCompound.map((ingredient: IngredientsSecondRequest) =>
-      this.formulasService
-        .getFormulaIngredientsCompound(this.formulaId, ingredient.ingredient.id)
-        // tslint:disable-next-line: deprecation
-        .subscribe((collection: IngredientsSecondRequest[]) => {
-          // this.ingredientsCompoundOutput = collection;
-          this.ingredientsCompoundCollection = collection.filter(
-            (element: IngredientsSecondRequest) => {
-              return element.ingredient.formula
-                ? element.ingredient.formula
-                : null;
-            }
-          );
-        })
-    );
-  }
+  // getIngredientsCompoundCollection() {
+  //   this.ingredientsCompound.map((ingredient: IngredientsSecondRequest) =>
+  //     this.formulasService
+  //       .getFormulaIngredientsCompound(this.formulaId, ingredient.ingredient.id)
+  //       // tslint:disable-next-line: deprecation
+  //       .subscribe((collection: IngredientsSecondRequest[]) => {
+  //         // this.ingredientsCompoundOutput = collection;
+  //         this.ingredientsCompoundCollection = collection.filter(
+  //           (element: IngredientsSecondRequest) => {
+  //             return element.ingredient.formula
+  //               ? element.ingredient.formula
+  //               : null;
+  //           }
+  //         );
+  //       })
+  //   );
+  // }
 }

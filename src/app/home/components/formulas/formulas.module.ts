@@ -54,7 +54,7 @@ import { FormulaCompoundStepperSecondLayerComponent } from './components/formula
     SharedModule,
     TranslateModule,
   ],
-  providers: [FormulasService],
+  // providers: [FormulasService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class FormulasModule {}

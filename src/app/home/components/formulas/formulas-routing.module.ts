@@ -1,12 +1,10 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import { FormulaDetailComponent } from "./components/formula-detail/formula.component";
-
-import { FormulasComponent } from "./components/formulas/formulas.component";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { FormulasComponent } from './components/formulas/formulas.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: FormulasComponent,
   },
 ];

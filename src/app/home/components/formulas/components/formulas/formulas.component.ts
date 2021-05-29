@@ -1,12 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import {
-  Formula,
-  IngredientFormulaSecondRequest,
-} from '@core/model/formulas.model';
+import { Formula } from '@core/model/formulas.model';
 import { FormulasService } from '@core/service/formulas/formulas.service';
-import { map } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-formulas',
@@ -14,39 +10,46 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./formulas.component.sass'],
   providers: [FormulasService],
 })
-export class FormulasComponent implements OnInit {
-  hydration: string;
-  constructor(
-    private formulasService: FormulasService,
-    private db: AngularFirestore
-  ) {}
-  formulas: any;
-  pageSizeOptions: number[] = [3, 6, 9];
+export class FormulasComponent implements OnInit, OnDestroy {
+  formulas: Formula[] = [];
+  pageSizeOptions: number[] = [1, 3, 6, 9];
   pageEvent: PageEvent;
-  filterFormula = '';
-  counter = 0;
+  searchFormula = '';
   pageSize = 6;
   pageNumber = 1;
   isLoaded = true;
-  ngOnInit(): void {
-    this.formulasService.getFormulas().subscribe((data: any) => {
-      console.log(data);
-    });
-    // this.fetchFormulas();
-    // this.formulas = this.formulasService.getFormulas();
-    // console.log(this.formulas);
+  formulasSubscripted: Subscription;
+  observer = {
+    next: (dataSource$: Formula[]) => {
+      if (this.formulas.length === 0) {
+        this.formulas = dataSource$;
+        this.isLoaded = false;
+      }
+    },
+    error: (error: any) => {
+      console.log(error);
+    },
+    complete: () => {
+      console.log("it's completed");
+    },
+  };
+  constructor(private formulasService: FormulasService) {}
+  ngOnInit() {
+    this.onGetFormulas();
+  }
+  onGetFormulas() {
+    this.formulasSubscripted = this.formulasService
+      .getFormulas()
+      .subscribe(this.observer);
   }
   onPageChange(event: PageEvent) {
     this.pageSize = event.pageSize;
-    this.pageNumber = event.pageIndex + 1;
+    this.pageNumber = event.pageIndex;
   }
-  fetchFormulas() {
-    // this.formulasService.getFormulas().subscribe((formulas) => {
-    //   console.log(formulas);
-    //   this.formulas = formulas;
-    //   this.isLoaded = false;
-    // });
-    this.formulas = this.formulasService.getFormulas();
-    // console.log(this.formulas);
+  onSearchFormula(search: string) {
+    this.searchFormula = search;
+  }
+  ngOnDestroy() {
+    this.formulasSubscripted.unsubscribe();
   }
 }

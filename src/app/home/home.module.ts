@@ -21,5 +21,6 @@ import { CdkTableModule } from '@angular/cdk/table';
     MaterialModule,
     CdkTableModule,
   ],
+  providers: [],
 })
 export class HomeModule {}

@@ -1,42 +1,37 @@
-<ng-container *ngIf="formulaData">
-  <div class="card">
-    <div class="card__content">
-      <div
-        style="background-image: url(assets/images/panCanilla.jpg)"
-        class="card__front"
-      >
-        <h3 class="card__title">{{ formulaData.name }}</h3>
-        <p class="card__subtitle">
-          {{ 'FORMULAS.CARD.text-title' | translate }}
-        </p>
-        <!-- <p>{{ hydration }}</p> -->
-      </div>
+<div class="card">
+  <div class="card__content">
+    <div
+      style="background-image: url(assets/images/panCanilla.jpg)"
+      class="card__front"
+    >
+      <h3 class="card__title">{{ formula.name }}</h3>
+      <p class="card__subtitle">
+        {{ 'FORMULAS.CARD.text-title' | translate }}
+      </p>
+      <p>author</p>
+    </div>
 
-      <div class="card__back">
-        <div class="card__back-img">
-          <img src="assets/images/bollo_de_fibra.jpg" alt="" />
+    <div class="card__back">
+      <div class="card__back-img">
+        <img src="assets/images/bollo_de_fibra.jpg" alt="" />
+      </div>
+      <div class="card__body">
+        <div class="icons">
+          <button class="mr-5" [routerLink]="['/home', 'formulas', formula.id]">
+            <ion-icon name="navigate-outline"></ion-icon>
+          </button>
+          <button (click)="onShowModal('assets/images/bollo_de_fibra.jpg')">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
         </div>
-        <div class="card__body">
-          <div class="icons">
-            <button
-              class="mr-5"
-              [routerLink]="['/home', 'formulas', formula.id]"
-            >
-              <ion-icon name="navigate-outline"></ion-icon>
-            </button>
-            <button (click)="showModal('assets/images/bollo_de_fibra.jpg')">
-              <ion-icon name="search-outline"></ion-icon>
-            </button>
-          </div>
-          <div class="info">
-            {{
-              formulaData.description
-                ? formulaData.description
-                : ('FORMULAS.CARD.text-info' | translate)
-            }}
-          </div>
+        <div class="info">
+          {{
+            formula.description
+              ? formula.description
+              : ('FORMULAS.CARD.text-info' | translate)
+          }}
         </div>
       </div>
     </div>
   </div>
-</ng-container>
+</div>

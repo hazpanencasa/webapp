@@ -32,7 +32,7 @@ export class TableCompoundIngredientComponent implements OnInit {
 
   ngOnInit() {
     this.getFormulaCompound();
-    this.getIngredientsCompoundCollection();
+    // this.getIngredientsCompoundCollection();
     const weight = parseInt(this.formula.unit_weight, 10);
     const unit = parseInt(this.formula.units, 10);
     this.weightTotal = weight * unit;
@@ -87,19 +87,19 @@ export class TableCompoundIngredientComponent implements OnInit {
     });
     return result;
   }
-  getIngredientsCompoundCollection() {
-    this.ingredientsCompound.map((ingredient: IngredientsSecondRequest) => {
-      this.formulasService
-        .getFormulaIngredientsCompound(this.formulaId, ingredient.ingredient.id)
-        // tslint:disable-next-line: deprecation
-        .subscribe((collection: IngredientsFormula[]) => {
-          this.ingredientsCompoundOutput = collection;
-          this.ingredientsCompoundCollection = collection.filter((element) => {
-            return element.ingredient.formula
-              ? element.ingredient.formula
-              : null;
-          });
-        });
-    });
-  }
+  // getIngredientsCompoundCollection() {
+  //   this.ingredientsCompound.map((ingredient: IngredientsSecondRequest) => {
+  //     this.formulasService
+  //       .getFormulaIngredientsCompound(this.formulaId, ingredient.ingredient.id)
+  //       // tslint:disable-next-line: deprecation
+  //       .subscribe((collection: IngredientsFormula[]) => {
+  //         this.ingredientsCompoundOutput = collection;
+  //         this.ingredientsCompoundCollection = collection.filter((element) => {
+  //           return element.ingredient.formula
+  //             ? element.ingredient.formula
+  //             : null;
+  //         });
+  //       });
+  //   });
+  // }
 }

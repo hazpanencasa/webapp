@@ -35,8 +35,8 @@ export class FormulaDetailComponent implements OnInit, AfterViewChecked {
     // tslint:disable-next-line: deprecation
     this.route.params.subscribe((params: Params) => {
       this.formulaId = params.id;
-      this.fetchFormula(this.formulaId);
-      this.fetchFormulaIngredients(this.formulaId);
+      // this.fetchFormula(this.formulaId);
+      // this.fetchFormulaIngredients(this.formulaId);
     });
   }
   ngAfterViewChecked() {
@@ -54,25 +54,25 @@ export class FormulaDetailComponent implements OnInit, AfterViewChecked {
     const timesArray = this.formula.steps;
     timesArray.forEach((element: Step) => (total += element.time));
   }
-  fetchFormula(id: string) {
-    this.formulasService.getFormula(id).subscribe((formula: Formula) => {
-      this.formula = formula;
-    });
-  }
-  fetchFormulaIngredients(id: string) {
-    this.formulasService
-      .getFormulaIngredients(id)
-      .subscribe((ingredients: IngredientsSecondRequest[]) => {
-        this.ingredients = ingredients;
-        const result = this.ingredients.reduce(
-          (output: any, currentElement: IngredientsSecondRequest) => {
-            return output + currentElement.percentage;
-          },
-          0
-        );
-        return (this.percentageTotal = result);
-      });
-  }
+  // fetchFormula(id: string) {
+  //   this.formulasService.getFormula(id).subscribe((formula: Formula) => {
+  //     this.formula = formula;
+  //   });
+  // }
+  // fetchFormulaIngredients(id: string) {
+  //   this.formulasService
+  //     .getFormulaIngredients(id)
+  //     .subscribe((ingredients: IngredientsSecondRequest[]) => {
+  //       this.ingredients = ingredients;
+  //       const result = this.ingredients.reduce(
+  //         (output: any, currentElement: IngredientsSecondRequest) => {
+  //           return output + currentElement.percentage;
+  //         },
+  //         0
+  //       );
+  //       return (this.percentageTotal = result);
+  //     });
+  // }
   increaseFont() {
     this.fontSize += 10;
   }

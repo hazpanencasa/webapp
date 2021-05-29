@@ -1,62 +1,64 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import { FormulaDetailComponent } from "./components/formulas/components/formula-detail/formula.component";
-import { LayoutComponent } from "./components/layout/layout.component";
-import { ProductionDetailComponent } from "./components/productions/components/production-detail/production-detail.component";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+import { FormulaDetailComponent } from './components/formulas/components/formula-detail/formula.component';
+import { LayoutComponent } from './components/layout/layout.component';
+import { ProductionDetailComponent } from './components/productions/components/production-detail/production-detail.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: LayoutComponent,
     children: [
       {
-        path: "",
-        redirectTo: "home",
-        pathMatch: "full",
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full',
       },
       {
-        path: "",
+        path: '',
         loadChildren: () =>
-          import("./components/main/main.module")
+          import('./components/main/main.module')
             .then((m) => m.MainModule)
             .catch((err) => console.log(err)),
       },
       {
-        path: "formulas",
+        path: 'formulas',
+        // resolve: { formulas: FormulasResolver },
         loadChildren: () =>
-          import("./components/formulas/formulas.module")
+          import('./components/formulas/formulas.module')
             .then((m) => m.FormulasModule)
             .catch((err) => console.log(err)),
       },
       {
-        path: "ingredients",
+        path: 'ingredients',
         loadChildren: () =>
-          import("./components/ingredients/ingredients.module").then(
+          import('./components/ingredients/ingredients.module').then(
             (m) => m.IngredientsModule
           ),
       },
       {
-        path: "productions",
+        path: 'productions',
         loadChildren: () =>
-          import("./components/productions/productions.module").then(
+          import('./components/productions/productions.module').then(
             (m) => m.ProductionsModule
           ),
       },
       {
-        path: "profile",
+        path: 'profile',
         loadChildren: () =>
-          import("./components/profile/profile.module").then(
+          import('./components/profile/profile.module').then(
             (m) => m.ProfileModule
           ),
       },
     ],
   },
   {
-    path: "formulas/:id",
+    path: 'formulas/:id',
     component: FormulaDetailComponent,
   },
   {
-    path: "productions/:id",
+    path: 'productions/:id',
     component: ProductionDetailComponent,
   },
 ];

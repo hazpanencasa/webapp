@@ -1,16 +1,6 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
-import {
-  AngularFirestoreCollection,
-  QueryDocumentSnapshot,
-} from '@angular/fire/firestore';
-import {
-  Formula,
-  IngredientsFormula,
-  IngredientsSecondRequest,
-} from '@core/model/formulas.model';
-import { FormulasService } from '@core/service/formulas/formulas.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { Formula, IngredientsFormula } from '@core/model/formulas.model';
 import { modalFormula } from '@utils/modal';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-card',
@@ -18,30 +8,15 @@ import { Observable } from 'rxjs';
   styleUrls: ['./card.component.sass'],
 })
 export class CardComponent implements OnInit {
-  @Input() formula: QueryDocumentSnapshot<Formula>;
-  formulaData: Formula;
-  path: string;
-  // ingredientsRef: AngularFirestoreCollection;
-  ingredients: IngredientsSecondRequest[];
-
-  constructor(private formulaService: FormulasService) {}
+  @Input() formula: Formula;
+  ingredients: IngredientsFormula[];
+  constructor() {}
 
   ngOnInit(): void {
-    this.formulaData = this.formula.data();
-    // console.log(this.formulaData);
-    this.path = this.formula.ref.path;
-    this.formulaService
-      .getFormulaIngredients(this.path)
-      .subscribe((ingredients: IngredientsSecondRequest[]) => {
-        console.log(ingredients);
-
-        this.ingredients = ingredients;
-      });
-    // this.ingredientsRef = this.db.collection(this.path + '/ingredients');
-    // this.ingredient = this.ingredientsRef.snapshotChanges();
+    // console.log(this.formula);
   }
 
-  showModal(img: string) {
+  onShowModal(img: string) {
     modalFormula(img);
   }
 }

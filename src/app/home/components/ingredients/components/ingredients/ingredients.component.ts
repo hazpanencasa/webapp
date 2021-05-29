@@ -25,8 +25,8 @@ export class IngredientsComponent implements OnInit {
     this.pageNumber = event.pageIndex + 1;
   }
   fetchIngredients() {
-    // tslint:disable-next-line: deprecation
     this.ingredientsService.getIngredients().subscribe((ingredient) => {
+      console.log(ingredient);
       this.ingredients = ingredient;
     });
   }

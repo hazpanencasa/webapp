@@ -1,19 +1,18 @@
-import { Pipe, PipeTransform } from "@angular/core";
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: "filter",
+  name: 'filter',
 })
 export class FilterPipe implements PipeTransform {
-  transform(value: any, args: any): any {
-    if (args === "" || args.length < 3) {
-      return value;
+  transform(array: any, search: any): any {
+    if (search === '' || search.length < 3) {
+      return array;
     }
-    const resultArray = [];
-    for (const i of value) {
-      if (i.name.toLowerCase().indexOf(args.toLowerCase()) > -1) {
-        resultArray.push(i);
-      }
-    }
-    return resultArray;
+    const filteredArray = array.filter((element: any) =>
+      (element.name as string)
+        .toLocaleLowerCase()
+        .includes(search.toLocaleLowerCase())
+    );
+    return filteredArray;
   }
 }
