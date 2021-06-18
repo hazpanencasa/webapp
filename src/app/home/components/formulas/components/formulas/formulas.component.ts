@@ -15,7 +15,7 @@ export class FormulasComponent implements OnInit, OnDestroy {
   pageSizeOptions: number[] = [1, 3, 6, 9];
   pageEvent: PageEvent;
   searchFormula = '';
-  pageSize = 6;
+  pageSize = 1;
   pageNumber = 1;
   isLoaded = true;
   formulasSubscripted: Subscription;
@@ -29,15 +29,16 @@ export class FormulasComponent implements OnInit, OnDestroy {
     error: (error: any) => {
       console.log(error);
     },
-    complete: () => {
+    complete: (): void => {
       console.log("it's completed");
     },
   };
   constructor(private formulasService: FormulasService) {}
-  ngOnInit() {
+
+  ngOnInit(): void {
     this.onGetFormulas();
   }
-  onGetFormulas() {
+  onGetFormulas(): void {
     this.formulasSubscripted = this.formulasService
       .getFormulas()
       .subscribe(this.observer);

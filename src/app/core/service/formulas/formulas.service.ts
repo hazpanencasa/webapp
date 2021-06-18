@@ -5,8 +5,7 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/firestore';
 import { Formula } from '../../model/formulas.model';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { Observable, Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -16,33 +15,29 @@ export class FormulasService {
   formulaDoc: AngularFirestoreDocument<Formula>;
   formulas: Observable<Formula[]>;
   formula: Observable<Formula>;
-  constructor(public db: AngularFirestore) {}
+  ingredients: Subscription;
+  constructor(private db: AngularFirestore) {}
 
   getFormulas(): Observable<Formula[]> {
-    this.formulasCollection = this.db.collection<Formula>('formulas');
-    this.formulas = this.formulasCollection.valueChanges().pipe(
-      map((dataSource$) => dataSource$),
-      catchError((error) => throwError('Oh oh Something went Wrong 😵', error))
-    );
-    return this.formulas;
+    return this.db.collection<Formula>('formulas').valueChanges();
   }
 
-  // getFormula(id: string): Observable<Formula> {
-  //   return this.db.doc<Formula>(`formulas/${id}`).valueChanges();
-  // }
-  // getFormulaIngredients(id: string) {
-  //   return this.db.collection(`formulas/${id}/ingredients`).valueChanges();
-  // }
-  // getFormulaIngredientsCompound(
-  //   idFormula: string,
-  //   idIngredient: string
-  // ): Observable<any[]> {
-  //   return this.db
-  //     .collection(
-  //       `formulas/${idFormula}/ingredients/${idIngredient}/ingredients`
-  //     )
-  //     .valueChanges();
-  // }
+  getFormula(id: string): Observable<Formula> {
+    return this.db.doc<Formula>(`formulas/${id}`).valueChanges();
+  }
+  getFormulaIngredients(id: string) {
+    return this.db.collection(`formulas/${id}/ingredients`).valueChanges();
+  }
+  getFormulaIngredientsCompound(
+    idFormula: string,
+    idIngredient: string
+  ): Observable<any[]> {
+    return this.db
+      .collection(
+        `formulas/${idFormula}/ingredients/${idIngredient}/ingredients`
+      )
+      .valueChanges();
+  }
   // getIngredientCompoundSubCollection(
   //   idFormula: string,
   //   idIngredient: string,

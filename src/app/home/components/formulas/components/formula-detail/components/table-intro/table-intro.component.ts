@@ -44,7 +44,6 @@ export class TableIntroComponent implements OnInit {
 
     const hydration = total.reduce((a, b) => a + b, 0);
     this.hydration = hydration.toFixed(1);
-    // this.formulaService.hydrationStatus.emit(this.hydration);
   }
   transformMinutesToHours(minutes: any) {
     const hour = 60;

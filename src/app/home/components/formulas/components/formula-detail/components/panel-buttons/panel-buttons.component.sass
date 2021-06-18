@@ -1,0 +1,53 @@
+.buttons-container
+  height: 11vh
+  width: 100vw
+  padding: 18px 0
+  display: grid
+  grid-template-columns: repeat(2, 130px) repeat(3, 240px)96px
+  grid-template-rows: 50px
+  grid-gap: 20px
+  justify-content: center
+  background-color: #eddec8
+  position: fixed
+  top: 0
+  z-index: 999
+  align-content: center
+.button
+  ::ng-deep
+    outline: .125rem solid #881919
+    background-color: #fff
+    color: #881919
+    border: none
+    height: 40px
+    width: 100px
+    line-height: normal !important
+    transition: 0.5s
+    box-shadow: 3px 3px 1px -2px rgba(0, 0, 0, 0.2), 4px 4px 2px 2px rgba(0, 0, 0, 0.14), -1px 3px 0px 0px rgba(0, 0, 0, 0.12) !important
+    display: flex
+    align-items: center
+    justify-content: space-evenly
+    & ion-icon
+      font-size: 26px
+  
+.button-active
+    outline: .125rem solid #881919
+    border: none
+    height: 40px
+    width: 100px
+    line-height: normal !important
+    background-color: #881919
+    color: #fff
+    transition: 0.5s
+    box-shadow: 3px 3px 1px -2px rgba(0, 0, 0, 0.2), 4px 4px 2px 2px rgba(0, 0, 0, 0.14), -1px 3px 0px 0px rgba(0, 0, 0, 0.12) !important
+    display: flex
+    align-items: center
+    justify-content: space-evenly
+    & ion-icon
+      font-size: 26px
+    &:hover
+      color: #881919
+      background-color: #fff
+mat-button-toggle
+  ::ng-deep
+    button:focus
+        outline: none

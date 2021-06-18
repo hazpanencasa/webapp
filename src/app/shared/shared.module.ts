@@ -13,6 +13,7 @@ import { PaginatePipe } from './pipes/paginate.pipe';
 import { GravatarModule, GravatarConfig, FALLBACK, RATING } from 'ngx-gravatar';
 
 import { TranslateModule } from '@ngx-translate/core';
+import { HydrationPipe } from './pipes/hydration.pipe';
 
 const gravatarConfig: GravatarConfig = {
   fallback: FALLBACK.robohash,
@@ -27,6 +28,7 @@ const gravatarConfig: GravatarConfig = {
     SidebarComponent,
     FilterPipe,
     PaginatePipe,
+    HydrationPipe,
   ],
   imports: [
     CommonModule,
@@ -45,6 +47,7 @@ const gravatarConfig: GravatarConfig = {
     MaterialModule,
     PaginatePipe,
     GravatarModule,
+    HydrationPipe,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

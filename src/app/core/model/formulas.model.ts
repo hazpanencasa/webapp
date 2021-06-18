@@ -1,4 +1,5 @@
 export interface Formula {
+  Ingredients: any;
   description: boolean | string;
   id: string;
   mixing: Mixing[];

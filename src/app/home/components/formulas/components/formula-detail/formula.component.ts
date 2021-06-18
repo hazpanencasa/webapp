@@ -2,7 +2,6 @@ import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import {
   Formula,
-  Ingredient,
   IngredientsSecondRequest,
   Step,
 } from '@core/model/formulas.model';
@@ -13,11 +12,11 @@ import { FormulasService } from '@core/service/formulas/formulas.service';
   styleUrls: ['./formula.component.sass'],
 })
 export class FormulaDetailComponent implements OnInit, AfterViewChecked {
+  fontSize = 100;
   toggleButtonGridContainer = true;
   toggleButtonIntro = true;
   toggleButtonImg = true;
   toggleButtonAddInfo = true;
-  fontSize = 100;
   formula: Formula;
   ingredients: IngredientsSecondRequest[];
   verificationFormula: boolean;
@@ -32,11 +31,10 @@ export class FormulaDetailComponent implements OnInit, AfterViewChecked {
   ) {}
 
   ngOnInit() {
-    // tslint:disable-next-line: deprecation
     this.route.params.subscribe((params: Params) => {
       this.formulaId = params.id;
-      // this.fetchFormula(this.formulaId);
-      // this.fetchFormulaIngredients(this.formulaId);
+      this.fetchFormula(this.formulaId);
+      this.fetchFormulaIngredients(this.formulaId);
     });
   }
   ngAfterViewChecked() {
@@ -54,72 +52,41 @@ export class FormulaDetailComponent implements OnInit, AfterViewChecked {
     const timesArray = this.formula.steps;
     timesArray.forEach((element: Step) => (total += element.time));
   }
-  // fetchFormula(id: string) {
-  //   this.formulasService.getFormula(id).subscribe((formula: Formula) => {
-  //     this.formula = formula;
-  //   });
-  // }
-  // fetchFormulaIngredients(id: string) {
-  //   this.formulasService
-  //     .getFormulaIngredients(id)
-  //     .subscribe((ingredients: IngredientsSecondRequest[]) => {
-  //       this.ingredients = ingredients;
-  //       const result = this.ingredients.reduce(
-  //         (output: any, currentElement: IngredientsSecondRequest) => {
-  //           return output + currentElement.percentage;
-  //         },
-  //         0
-  //       );
-  //       return (this.percentageTotal = result);
-  //     });
-  // }
-  increaseFont() {
-    this.fontSize += 10;
+  fetchFormula(id: string) {
+    this.formulasService.getFormula(id).subscribe((formula: Formula) => {
+      this.formula = formula;
+    });
   }
-  decreaseFont() {
-    this.fontSize -= 10;
+  fetchFormulaIngredients(id: string) {
+    this.formulasService
+      .getFormulaIngredients(id)
+      .subscribe((ingredients: IngredientsSecondRequest[]) => {
+        this.ingredients = ingredients;
+        const result = this.ingredients.reduce(
+          (output: any, currentElement: IngredientsSecondRequest) => {
+            return output + currentElement.percentage;
+          },
+          0
+        );
+        return (this.percentageTotal = result);
+      });
   }
-  changeGridColumnByTwo() {
-    if (!this.toggleButtonGridContainer) {
-      this.toggleButtonGridContainer = true;
-    }
+  fontSizeChanged(fontSize: number) {
+    this.fontSize = fontSize;
   }
-  changeGridColumnByOne() {
-    if (this.toggleButtonGridContainer) {
-      this.toggleButtonGridContainer = false;
-    }
+  gridContainerChanged(data: boolean) {
+    this.toggleButtonGridContainer = data;
   }
-  toggleButtonWithIntro() {
-    if (!this.toggleButtonIntro) {
-      this.toggleButtonIntro = true;
-    }
+  introToggled(toggle: boolean) {
+    this.toggleButtonIntro = toggle;
   }
-  toggleButtonWithNoIntro() {
-    if (this.toggleButtonIntro) {
-      this.toggleButtonIntro = false;
-    }
+  imgToggled(toggle: boolean) {
+    this.toggleButtonImg = toggle;
   }
-  toggleButtonWithImg() {
-    if (!this.toggleButtonImg) {
-      this.toggleButtonImg = true;
-    }
+  addInfoToggled(toggle: boolean) {
+    this.toggleButtonAddInfo = toggle;
   }
-  toggleButtonWithNoImg() {
-    if (this.toggleButtonImg) {
-      this.toggleButtonImg = false;
-    }
-  }
-  toggleButtonWithAddInfo() {
-    if (!this.toggleButtonAddInfo) {
-      this.toggleButtonAddInfo = true;
-    }
-  }
-  toggleButtonWithNoAddInfo() {
-    if (this.toggleButtonAddInfo) {
-      this.toggleButtonAddInfo = false;
-    }
-  }
-  printPDF() {
-    window.print();
+  noAddInfoToggled(toggle: boolean) {
+    this.toggleButtonAddInfo = toggle;
   }
 }
