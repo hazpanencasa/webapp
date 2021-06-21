@@ -11,7 +11,6 @@ export class HydrationPipe implements PipeTransform {
         (+element.ingredient.hydration / 100) * element.percentage
     );
     const hydration = total.reduce((a, b) => a + b, 0).toFixed(0);
-    console.log(hydration);
     return hydration;
   }
 }

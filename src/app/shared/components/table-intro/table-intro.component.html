@@ -4,7 +4,7 @@
       <h2>
         {{ 'FORMULAS.FORMULAS-DETAILS.INTRO_TABLE.hydration' | translate }}
       </h2>
-      <p [style.fontSize.%]="fontSize">{{ hydration }}%</p>
+      <p [style.fontSize.%]="fontSize">{{ ingredients | hydration }}%</p>
     </div>
     <div class="time-item">
       <h2>{{ 'FORMULAS.FORMULAS-DETAILS.INTRO_TABLE.units' | translate }}</h2>
@@ -14,33 +14,35 @@
       <h2>
         {{ 'FORMULAS.FORMULAS-DETAILS.INTRO_TABLE.backer_factor' | translate }}
       </h2>
-      <p [style.fontSize.%]="fontSize">{{ bakeryMeasure.toFixed(2) }} gr/%</p>
+      <p [style.fontSize.%]="fontSize">
+        {{ ingredients | bakeryFactor: formula.unit_weight }} gr/%
+      </p>
     </div>
     <div class="time-item text-center">
       <h2>
         {{ 'FORMULAS.FORMULAS-DETAILS.INTRO_TABLE.total_time' | translate }}
       </h2>
       <p [style.fontSize.%]="fontSize">
-        {{ transformMinutesToHours(timeTotal) }}
+        {{ formula.steps | sumAllTime | transformMinutesToHours }}
       </p>
     </div>
     <div class="time-item text-center">
       <h2>
         {{ 'FORMULAS.FORMULAS-DETAILS.INTRO_TABLE.weight_total' | translate }}
       </h2>
-      <p [style.fontSize.%]="fontSize">{{ weightTotal }} gr</p>
+      <p [style.fontSize.%]="fontSize">{{ formula | totalWeight }} gr</p>
     </div>
     <div class="last-child">
       <div class="progress">
         <div
           class="progress-bar progress-bar-striped bg-info"
           role="progressbar"
-          [style.width.%]="hydration"
+          [style.width.%]="ingredients | hydration"
           aria-valuenow="50"
           aria-valuemin="0"
           aria-valuemax="100"
         >
-          {{ hydration }}%
+          {{ ingredients | hydration }}%
         </div>
       </div>
       <div class="progress-percent">

@@ -2,8 +2,6 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { FormulasRoutingModule } from './formulas-routing.module';
-
-import { FormulasService } from '@core/service/formulas/formulas.service';
 import { FormsModule } from '@angular/forms';
 import { BannerComponent } from './components/banner/banner.component';
 import { FormulasComponent } from './components/formulas/formulas.component';
@@ -13,7 +11,6 @@ import { TableIngredientComponent } from './components/formula-detail/components
 import { SharedModule } from '@shared/shared.module';
 import { TableCompoundIngredientComponent } from './components/formula-detail/components/table-compound-ingredient/table-compound-ingredient.component';
 import { FormulaStepperComponent } from './components/formula-detail/components/formula-stepper/formula-stepper.component';
-import { TableIntroComponent } from './components/formula-detail/components/table-intro/table-intro.component';
 import { PreparationStepsComponent } from './components/formula-detail/components/preparation-steps/preparation-steps.component';
 import { CardComponent } from './components/formulas/components/card/card.component';
 import { AdditionalInfoComponent } from './components/formula-detail/components/additional-info/additional-info.component';
@@ -26,7 +23,6 @@ import { TableIngredientsCompoundSecondLayerComponent } from './components/formu
 import { FormulaCompoundStepperComponent } from './components/formula-detail/components/formula-compound-stepper/formula-compound-stepper.component';
 import { TableIngredientCompoundThirdLayerComponent } from './components/formula-detail/components/table-compound-ingredient/components/table-ingredient-compound-third-layer/table-ingredient-compound-third-layer.component';
 import { FormulaCompoundStepperSecondLayerComponent } from './components/formula-detail/components/formula-compound-stepper/components/formula-compound-stepper-second-layer/formula-compound-stepper-second-layer.component';
-import { PanelButtonsComponent } from './components/formula-detail/components/panel-buttons/panel-buttons.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +33,6 @@ import { PanelButtonsComponent } from './components/formula-detail/components/pa
     TableIngredientComponent,
     TableCompoundIngredientComponent,
     FormulaStepperComponent,
-    TableIntroComponent,
     PreparationStepsComponent,
     CardComponent,
     AdditionalInfoComponent,
@@ -47,7 +42,6 @@ import { PanelButtonsComponent } from './components/formula-detail/components/pa
     FormulaCompoundStepperComponent,
     TableIngredientCompoundThirdLayerComponent,
     FormulaCompoundStepperSecondLayerComponent,
-    PanelButtonsComponent,
   ],
   imports: [
     CommonModule,

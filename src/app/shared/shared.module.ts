@@ -1,5 +1,5 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-// import {AuthService} from "@core/service/auth/auth.service";
+import { NgModule } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -11,9 +11,17 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { PaginatePipe } from './pipes/paginate.pipe';
 import { GravatarModule, GravatarConfig, FALLBACK, RATING } from 'ngx-gravatar';
-
+import { PanelButtonsComponent } from './components/layout/panel-buttons/panel-buttons.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { HydrationPipe } from './pipes/hydration.pipe';
+import { GetGramsPipe } from './pipes/get-grams.pipe';
+import { SortIngredientsPipe } from './pipes/sort-ingredients.pipe';
+import { TotalWeightPipe } from './pipes/total-weight.pipe';
+import { HeroComponent } from './components/layout/hero/hero.component';
+import { TableIntroComponent } from './components/table-intro/table-intro.component';
+import { TransformMinutesToHoursPipe } from './pipes/transform-minutes-to-hours.pipe';
+import { SumAllTimePipe } from './pipes/sum-all-time.pipe';
+import { BakeryFactorPipe } from './pipes/bakery-factor.pipe';
 
 const gravatarConfig: GravatarConfig = {
   fallback: FALLBACK.robohash,
@@ -29,6 +37,15 @@ const gravatarConfig: GravatarConfig = {
     FilterPipe,
     PaginatePipe,
     HydrationPipe,
+    GetGramsPipe,
+    SortIngredientsPipe,
+    TotalWeightPipe,
+    PanelButtonsComponent,
+    HeroComponent,
+    TableIntroComponent,
+    TransformMinutesToHoursPipe,
+    SumAllTimePipe,
+    BakeryFactorPipe,
   ],
   imports: [
     CommonModule,
@@ -48,7 +65,14 @@ const gravatarConfig: GravatarConfig = {
     PaginatePipe,
     GravatarModule,
     HydrationPipe,
+    GetGramsPipe,
+    SortIngredientsPipe,
+    TotalWeightPipe,
+    PanelButtonsComponent,
+    HeroComponent,
+    TableIntroComponent,
+    SumAllTimePipe,
+    BakeryFactorPipe,
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class SharedModule {}

@@ -11,29 +11,7 @@ export class TableIngredientComponent implements OnInit {
   @Input() ingredientsInput: IngredientsSecondRequest[];
   @Input() formula: Formula;
   @Input() totalPercentage: number;
-  resultPercent = 0;
-  resultGrams = 0;
-  totalWeight: number;
-  arrayOutput: Array<any>;
-  resultPercentage: any;
-  totalGrams: number;
   constructor() {}
 
-  ngOnInit() {
-    this.sortIngredients();
-  }
-  transformStringToNumber(s: string, r?: number) {
-    return parseInt(s, r);
-  }
-  getGramsIngredients(percentage: number) {
-    const result = (percentage * this.totalWeight) / this.totalPercentage;
-    return result.toFixed(1);
-  }
-  sortIngredients() {
-    this.arrayOutput = this.ingredientsInput.sort((a, b) => {
-      return b.percentage - a.percentage;
-    });
-    this.totalWeight =
-      parseInt(this.formula.unit_weight, 0) * parseInt(this.formula.units, 0);
-  }
+  ngOnInit() {}
 }

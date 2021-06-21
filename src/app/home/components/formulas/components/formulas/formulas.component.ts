@@ -15,7 +15,7 @@ export class FormulasComponent implements OnInit, OnDestroy {
   pageSizeOptions: number[] = [1, 3, 6, 9];
   pageEvent: PageEvent;
   searchFormula = '';
-  pageSize = 1;
+  pageSize = 6;
   pageNumber = 1;
   isLoaded = true;
   formulasSubscripted: Subscription;

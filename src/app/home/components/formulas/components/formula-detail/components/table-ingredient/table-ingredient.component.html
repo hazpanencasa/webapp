@@ -17,7 +17,7 @@
           </th>
         </tr>
       </thead>
-      <tbody *ngFor="let i of arrayOutput">
+      <tbody *ngFor="let i of ingredientsInput | sortIngredients">
         <tr class="table-row__info">
           <td [style.fontSize.%]="fontSize" colspan="2" scope="row">
             {{ i.ingredient.name }}
@@ -26,14 +26,14 @@
             {{ i.percentage }}
           </td>
           <td class="text-right" [style.fontSize.%]="fontSize">
-            {{ getGramsIngredients(i.percentage) }}
+            {{ i.percentage | getGrams: totalPercentage:formula }}
           </td>
         </tr>
         <tr class="table-row__barprogress">
           <td colspan="4">
             <mat-progress-bar
               mode="determinate"
-              value="{{ i.percentage }}"
+              [value]="i.percentage"
             ></mat-progress-bar>
           </td>
         </tr>
@@ -48,7 +48,7 @@
           {{ totalPercentage.toFixed(1) }}
         </td>
         <td class="text-right" [style.fontSize.%]="fontSize">
-          {{ totalWeight }}
+          {{ formula | totalWeight }}
         </td>
       </tr>
     </table>

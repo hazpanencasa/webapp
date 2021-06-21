@@ -14,38 +14,11 @@
   <div class="container-formula" id="print-section">
     <div class="row">
       <div [ngClass]="toggleButtonImg ? 'col-7' : 'col-12'">
-        <div class="mb-4 header-title">
-          <img src="assets/images/logoOriginal.png" alt="logo" />
-          <h1 class="ml-4">
-            {{ formula.name }}
-          </h1>
-        </div>
-        <div [ngClass]="toggleButtonIntro ? 'd-block' : 'd-none'">
-          <p [style.fontSize.%]="fontSize" *ngIf="formula.description">
-            {{ formula.description }}
-          </p>
-          <p [style.fontSize.%]="fontSize" *ngIf="formula.user">
-            <strong>{{
-              'FORMULAS.FORMULAS-DETAILS.INTRO_TABLE.created_by' | translate
-            }}</strong>
-            {{ formula.user.creator.name }}
-          </p>
-          <p [style.fontSize.%]="fontSize" *ngIf="formula.user">
-            <strong>{{
-              'FORMULAS.FORMULAS-DETAILS.INTRO_TABLE.created_at' | translate
-            }}</strong>
-            {{
-              formula.user.creator.date.seconds * 1000
-                | date: 'yyyy/MM/dd h:mm:ss a'
-            }}
-          </p>
-          <p [style.fontSize.%]="fontSize" *ngIf="formula.user">
-            <strong>{{
-              'FORMULAS.FORMULAS-DETAILS.INTRO_TABLE.email' | translate
-            }}</strong>
-            {{ formula.user.creator.email }}
-          </p>
-        </div>
+        <app-hero
+          [toggleButtonIntro]="toggleButtonIntro"
+          [formula]="formula"
+          [fontSize]="fontSize"
+        ></app-hero>
         <div class="preparation-time mt-4">
           <app-table-intro
             [fontSize]="fontSize"
