@@ -5,25 +5,20 @@
     [toggleButtonIntro]="toggleButtonIntro"
     [toggleButtonImg]="toggleButtonImg"
     [toggleButtonAddInfo]="toggleButtonAddInfo"
-    (fontSizeChange)="fontSizeChanged($event)"
-    (changeGridContainer)="gridContainerChanged($event)"
-    (introToggle)="introToggled($event)"
-    (imgToggle)="imgToggled($event)"
-    (addInfoToggle)="addInfoToggled($event)"
   ></app-panel-buttons>
   <div class="container-formula" id="print-section">
     <div class="row">
       <div [ngClass]="toggleButtonImg ? 'col-7' : 'col-12'">
         <app-hero
           [toggleButtonIntro]="toggleButtonIntro"
-          [formula]="formula"
+          [formula]="formula | async"
           [fontSize]="fontSize"
         ></app-hero>
         <div class="preparation-time mt-4">
           <app-table-intro
             [fontSize]="fontSize"
-            [formula]="formula"
-            [ingredients]="ingredients"
+            [formula]="formula | async"
+            [ingredients]="ingredients | async"
           ></app-table-intro>
         </div>
       </div>
@@ -52,11 +47,10 @@
                 }}
               </h1>
               <app-table-ingredient
-                *ngIf="percentageTotal"
                 [fontSize]="fontSize"
-                [formula]="formula"
-                [ingredientsInput]="ingredients"
-                [totalPercentage]="percentageTotal"
+                [formula]="formula | async"
+                [ingredientsInput]="ingredients | async"
+                [totalPercentage]="100"
               ></app-table-ingredient>
             </div>
             <div>
@@ -64,10 +58,10 @@
                 <app-table-compound-ingredient
                   *ngIf="ingredientsCompound"
                   [fontSize]="fontSize"
-                  [formula]="formula"
+                  [formula]="formula | async"
                   [formulaId]="formulaId"
                   [ingredientsCompound]="ingredientsCompound"
-                  [totalPercentage]="percentageTotal"
+                  [totalPercentage]="100"
                 ></app-table-compound-ingredient>
               </div>
             </div>
@@ -78,16 +72,16 @@
                 br: formula.steps
               }"
             >
-              <app-table-time
+              <!-- <app-table-time
                 [fontSize]="fontSize"
-                [formula]="formula"
-              ></app-table-time>
+                [formula]="formula | async"
+              ></app-table-time> -->
             </div>
 
             <div [ngClass]="toggleButtonAddInfo ? 'mt-2 verso' : 'd-none'">
               <app-additional-info
                 [fontSize]="fontSize"
-                [formula]="formula"
+                [formula]="formula | async"
               ></app-additional-info>
             </div>
           </div>
@@ -95,12 +89,12 @@
           <div class="content-item">
             <app-formula-stepper
               [fontSize]="fontSize"
-              [formula]="formula"
+              [formula]="formula | async"
             ></app-formula-stepper>
             <div>
               <app-mixing-ingredient-compound
                 [ngClass]="toggleButtonAddInfo ? 'mt-2 verso' : 'mt-2 br'"
-                [formula]="formula"
+                [formula]="formula | async"
                 [fontSize]="fontSize"
               >
               </app-mixing-ingredient-compound>
@@ -119,7 +113,7 @@
             >
               <app-preparation-steps
                 [fontSize]="fontSize"
-                [formula]="formula"
+                [formula]="formula | async"
               ></app-preparation-steps>
             </div>
           </div>

@@ -35,7 +35,7 @@
             *ngIf="i.time > 0"
             class="text-right"
           >
-            {{ transformMinutesToHours(i.time) }}
+            <!-- {{ transformMinutesToHours(i.time) }} -->
           </td>
           <td
             [style.fontSize.%]="fontSize"
@@ -49,10 +49,10 @@
       <tr>
         <td [style.fontSize.%]="fontSize" colspan="10" scope="row">Total</td>
         <td [style.fontSize.%]="fontSize" class="text-right">
-          {{ transformMinutesToHours(timeTotal) }}
+          <!-- {{ transformMinutesToHours(timeTotal) }} -->
         </td>
         <td [style.fontSize.%]="fontSize" class="text-right">
-          ({{ timeTotal }})
+          <!-- ({{ timeTotal }}) -->
         </td>
       </tr>
     </table>

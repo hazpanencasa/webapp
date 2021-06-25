@@ -8,10 +8,14 @@ import { Formula, IngredientsSecondRequest } from '@core/model/formulas.model';
 })
 export class TableIngredientComponent implements OnInit {
   @Input() fontSize: number;
-  @Input() ingredientsInput: IngredientsSecondRequest[];
+  @Input() ingredientsInput: any[];
   @Input() formula: Formula;
   @Input() totalPercentage: number;
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.ingredientsInput) {
+      console.log(this.ingredientsInput);
+    }
+  }
 }

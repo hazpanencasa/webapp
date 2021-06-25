@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -22,6 +22,7 @@ import { TableIntroComponent } from './components/table-intro/table-intro.compon
 import { TransformMinutesToHoursPipe } from './pipes/transform-minutes-to-hours.pipe';
 import { SumAllTimePipe } from './pipes/sum-all-time.pipe';
 import { BakeryFactorPipe } from './pipes/bakery-factor.pipe';
+import { TotalPercentagePipe } from './pipes/total-percentage.pipe';
 
 const gravatarConfig: GravatarConfig = {
   fallback: FALLBACK.robohash,
@@ -46,6 +47,7 @@ const gravatarConfig: GravatarConfig = {
     TransformMinutesToHoursPipe,
     SumAllTimePipe,
     BakeryFactorPipe,
+    TotalPercentagePipe,
   ],
   imports: [
     CommonModule,
@@ -73,6 +75,8 @@ const gravatarConfig: GravatarConfig = {
     TableIntroComponent,
     SumAllTimePipe,
     BakeryFactorPipe,
+    TotalPercentagePipe,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class SharedModule {}

@@ -1,92 +1,96 @@
-import { Component, OnInit, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import {
-  Formula,
-  IngredientsSecondRequest,
-  Step,
-} from '@core/model/formulas.model';
+import { Formula, IngredientsSecondRequest } from '@core/model/formulas.model';
 import { FormulasService } from '@core/service/formulas/formulas.service';
+import { PanelButtonsService } from '@shared/components/layout/panel-buttons/panel-buttons.service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-formula',
   templateUrl: './formula.component.html',
   styleUrls: ['./formula.component.sass'],
+  providers: [PanelButtonsService],
 })
-export class FormulaDetailComponent implements OnInit, AfterViewChecked {
+export class FormulaDetailComponent
+  implements OnInit, AfterViewChecked, OnDestroy
+{
   fontSize = 100;
   toggleButtonGridContainer = true;
   toggleButtonIntro = true;
   toggleButtonImg = true;
   toggleButtonAddInfo = true;
-  formula: Formula;
-  ingredients: IngredientsSecondRequest[];
-  verificationFormula: boolean;
-  img: any;
-  timeTotal: number;
+  formula: any;
+  ingredients: any;
   ingredientsCompound: IngredientsSecondRequest[];
   formulaId: string;
-  percentageTotal: number;
+  private panelButtonSub: Subscription;
   constructor(
     private route: ActivatedRoute,
-    private formulasService: FormulasService
+    private formulasService: FormulasService,
+    private panelButtonsService: PanelButtonsService
   ) {}
 
   ngOnInit() {
+    this.onFetchRouteParams();
+    this.fontSizeChanged();
+    this.gridContainerChanged();
+    this.introToggled();
+    this.imgToggled();
+    this.addInfoToggled();
+  }
+  ngAfterViewChecked() {
+    // if (this.ingredients) {
+    //   setTimeout(() => {
+    //     this.ingredientsCompound = this.ingredients.filter(
+    //       (element: IngredientsSecondRequest) =>
+    //         element.ingredient.formula ? element.ingredient.formula : null
+    //     );
+    //   });
+    // }
+  }
+  onFetchRouteParams() {
     this.route.params.subscribe((params: Params) => {
       this.formulaId = params.id;
       this.fetchFormula(this.formulaId);
       this.fetchFormulaIngredients(this.formulaId);
     });
   }
-  ngAfterViewChecked() {
-    if (this.ingredients) {
-      setTimeout(() => {
-        this.ingredientsCompound = this.ingredients.filter(
-          (element: IngredientsSecondRequest) =>
-            element.ingredient.formula ? element.ingredient.formula : null
-        );
-      });
-    }
-  }
-  addAllTime() {
-    let total = 0;
-    const timesArray = this.formula.steps;
-    timesArray.forEach((element: Step) => (total += element.time));
-  }
   fetchFormula(id: string) {
-    this.formulasService.getFormula(id).subscribe((formula: Formula) => {
-      this.formula = formula;
-    });
+    this.formula = this.formulasService.getFormula(id);
   }
   fetchFormulaIngredients(id: string) {
-    this.formulasService
-      .getFormulaIngredients(id)
-      .subscribe((ingredients: IngredientsSecondRequest[]) => {
-        this.ingredients = ingredients;
-        const result = this.ingredients.reduce(
-          (output: any, currentElement: IngredientsSecondRequest) => {
-            return output + currentElement.percentage;
-          },
-          0
-        );
-        return (this.percentageTotal = result);
-      });
+    this.ingredients = this.formulasService.getFormulaIngredients(id);
   }
-  fontSizeChanged(fontSize: number) {
-    this.fontSize = fontSize;
+  fontSizeChanged() {
+    this.panelButtonSub =
+      this.panelButtonsService.fontSizeChangeEmitter.subscribe(
+        (fontSize: number) => {
+          this.fontSize = fontSize;
+        }
+      );
   }
-  gridContainerChanged(data: boolean) {
-    this.toggleButtonGridContainer = data;
+  gridContainerChanged() {
+    this.panelButtonSub =
+      this.panelButtonsService.changeGridContainerEmitter.subscribe(
+        (toggle) => (this.toggleButtonGridContainer = toggle)
+      );
   }
-  introToggled(toggle: boolean) {
-    this.toggleButtonIntro = toggle;
+  introToggled() {
+    this.panelButtonSub = this.panelButtonsService.introToggleEmitter.subscribe(
+      (toggle) => (this.toggleButtonIntro = toggle)
+    );
   }
-  imgToggled(toggle: boolean) {
-    this.toggleButtonImg = toggle;
+  imgToggled() {
+    this.panelButtonSub = this.panelButtonsService.imgToggleEmitter.subscribe(
+      (toggle) => (this.toggleButtonImg = toggle)
+    );
   }
-  addInfoToggled(toggle: boolean) {
-    this.toggleButtonAddInfo = toggle;
+  addInfoToggled() {
+    this.panelButtonSub =
+      this.panelButtonsService.addInfoToggleEmitter.subscribe(
+        (toggle) => (this.toggleButtonAddInfo = toggle)
+      );
   }
-  noAddInfoToggled(toggle: boolean) {
-    this.toggleButtonAddInfo = toggle;
+  ngOnDestroy() {
+    this.panelButtonSub.unsubscribe();
   }
 }

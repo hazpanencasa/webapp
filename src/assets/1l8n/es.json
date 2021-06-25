@@ -24,10 +24,12 @@
       "emailValidated": "Por favor ingrese un correo valido"
     },
     "PASSWORD": {
+      "confirm": "Confirma tu contraseña",
       "password": "Ingrese una contraseña",
       "passwordRequired": "Contraseña es <strong>requerida</strong>",
       "passwordValidated6Characters": "Contraseña debe tener al menos <strong>6 caracteres</strong>",
-      "passwordValidated10Characters": "Contraseña debe tener al menos <strong>10 caracteres</strong>"
+      "passwordValidated10Characters": "Contraseña debe tener al menos <strong>10 caracteres</strong>",
+      "noMatch": "La contraseña no coincide"
     },
     "buttonRegister": "Registrate",
     "loginlink": "Ya tengo una cuenta!"

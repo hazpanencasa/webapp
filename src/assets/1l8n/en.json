@@ -24,10 +24,12 @@
       "emailValidated": "Please enter a valid email address"
     },
     "PASSWORD": {
+      "confirm": "Confirm password",
       "password": "Password",
       "passwordRequired": "Password is <strong>required</strong>",
       "passwordValidated6Characters": "password must contain at least <strong>6 characters</strong>",
-      "passwordValidated10Characters": "password must contain at least <strong>10 characters</strong>"
+      "passwordValidated10Characters": "password must contain at least <strong>10 characters</strong>",
+      "noMatch": "Password must match"
     },
     "buttonRegister": "Sign in",
     "loginlink": "I have already created an account!"

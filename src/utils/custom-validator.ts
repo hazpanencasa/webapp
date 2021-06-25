@@ -1,29 +1,18 @@
-import { Injectable } from "@angular/core";
-import { FormGroup } from "@angular/forms";
+import { AbstractControl, ValidationErrors } from '@angular/forms';
 
-@Injectable({
-  providedIn: "root",
-})
-export class CustomValidationService {
-  constructor() {}
-  PasswordMatchValidator(password: string, confirmPassword: string) {
-    return (formGroup: FormGroup) => {
-      const passwordControl = formGroup.controls[password];
-      const confirmPasswordControl = formGroup.controls[confirmPassword];
-      if (!passwordControl || !confirmPasswordControl) {
-        return null;
-      }
-      if (
-        confirmPasswordControl.errors &&
-        !confirmPasswordControl.errors.passwordMismatch
-      ) {
-        return null;
-      }
-      if (passwordControl.value !== confirmPasswordControl.value) {
-        confirmPasswordControl.setErrors({ passwordMismatch: true });
-      } else {
-        confirmPasswordControl.setErrors(null);
-      }
-    };
+export class MyValidators {
+  static cannotContainSpace(control: AbstractControl): ValidationErrors | null {
+    if ((control.value as string).indexOf(' ') >= 0) {
+      return { cannotContainSpace: true };
+    }
+    return null;
+  }
+  static isConfirmed(control: AbstractControl): ValidationErrors | null {
+    const email = control.get('password');
+    const confirm = control.get('confirm');
+    if (!email || !confirm) {
+      return null;
+    }
+    return email.value === confirm.value ? null : { noMatch: true };
   }
 }
