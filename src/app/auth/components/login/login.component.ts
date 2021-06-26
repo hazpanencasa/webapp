@@ -26,11 +26,11 @@ export class LoginComponent implements OnInit {
     this.buildForm();
   }
 
-  ngOnInit() {}
+  ngOnInit(): void {}
 
   navigateRegister(event: Event) {
     event.preventDefault();
-    this.router.navigate(['login/register']);
+    this.router.navigate(['/', 'login', 'register']);
   }
 
   handleClick(event: Event) {
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         .logIn(value.email, value.password)
         .then((result) => {
           modalWelcome(result.user.displayName);
-          this.router.navigate(['/home']);
+          this.router.navigate(['/', 'home']);
         })
         .catch((error) => {
           const errorMessage = error.message;

@@ -9,6 +9,8 @@ export class PaginatePipe implements PipeTransform {
     pageSize: number | string,
     pageNumber: number
   ): any[] {
-    return array.slice(pageNumber * +pageSize, (pageNumber + 1) * +pageSize);
+    if (array) {
+      return array.slice(pageNumber * +pageSize, (pageNumber + 1) * +pageSize);
+    }
   }
 }

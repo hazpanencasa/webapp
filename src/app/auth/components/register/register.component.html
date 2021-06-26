@@ -97,7 +97,7 @@
                   </div>
                 </div>
                 <div formGroupName="password">
-                  <div style="height: 60px" class="row">
+                  <div style="height: 70px" class="row">
                     <div class="col">
                       <mat-card-content>
                         <div>
@@ -130,28 +130,20 @@
                               'REGISTER.PASSWORD.passwordValidated6Characters'
                                 | translate
                             "
-                            *ngIf="
-                              registerForm
-                                .get('password.password')
-                                .hasError('minlength')
-                            "
+                            *ngIf="passwordConfirm.hasError('minlength')"
                           ></mat-error>
                           <mat-error
                             [innerHTML]="
                               'REGISTER.PASSWORD.passwordValidated10Characters'
                                 | translate
                             "
-                            *ngIf="
-                              registerForm
-                                .get('password.password')
-                                .hasError('maxlength')
-                            "
+                            *ngIf="passwordConfirm.hasError('maxlength')"
                           ></mat-error>
                         </mat-form-field>
                       </mat-card-content>
                     </div>
                   </div>
-                  <div style="height: 60px" class="row">
+                  <div style="height: 70px" class="row">
                     <div class="col">
                       <mat-card-content>
                         <div>
@@ -172,10 +164,7 @@
                               'REGISTER.PASSWORD.passwordRequired' | translate
                             "
                             *ngIf="
-                              registerForm.get('password.confirm').touched &&
-                              registerForm
-                                .get('password.confirm')
-                                .hasError('required')
+                              confirm.touched && confirm.hasError('required')
                             "
                           >
                           </mat-error>
@@ -184,22 +173,14 @@
                               'REGISTER.PASSWORD.passwordValidated6Characters'
                                 | translate
                             "
-                            *ngIf="
-                              registerForm
-                                .get('password.confirm')
-                                .hasError('minlength')
-                            "
+                            *ngIf="confirm.hasError('minlength')"
                           ></mat-error>
                           <mat-error
                             [innerHTML]="
                               'REGISTER.PASSWORD.passwordValidated10Characters'
                                 | translate
                             "
-                            *ngIf="
-                              registerForm
-                                .get('password.confirm')
-                                .hasError('maxlength')
-                            "
+                            *ngIf="confirm.hasError('maxlength')"
                           ></mat-error>
                         </mat-form-field>
                       </mat-card-content>
@@ -208,7 +189,7 @@
                 </div>
                 <mat-error
                   [innerHTML]="'REGISTER.PASSWORD.noMatch' | translate"
-                  *ngIf="registerForm.get('password').hasError('noMatch')"
+                  *ngIf="password.hasError('noMatch')"
                 >
                 </mat-error>
               </mat-card-content>

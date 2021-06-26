@@ -6,11 +6,14 @@ import { IngredientsFormula } from '@core/model/formulas.model';
 })
 export class HydrationPipe implements PipeTransform {
   transform(arr: IngredientsFormula[]) {
-    const total = arr.map(
+    const hydrations = arr.filter((element: IngredientsFormula) => {
+      return +element.ingredient.hydration > 0 && !element.ingredient.formula;
+    });
+    const total = hydrations.map(
       (element: IngredientsFormula) =>
-        (+element.ingredient.hydration / 100) * element.percentage
+        (+element.ingredient.hydration / 100) * (element.percentage / 100) * 100
     );
-    const hydration = total.reduce((a, b) => a + b, 0).toFixed(0);
+    const hydration = total.reduce((a, b) => a + b, 0).toFixed(1);
     return hydration;
   }
 }

@@ -1,4 +1,4 @@
-<ng-container *ngIf="formula && ingredients">
+<ng-container *ngIf="formula$ | async as formula">
   <app-panel-buttons
     [fontSize]="fontSize"
     [toggleButtonGridContainer]="toggleButtonGridContainer"
@@ -11,14 +11,15 @@
       <div [ngClass]="toggleButtonImg ? 'col-7' : 'col-12'">
         <app-hero
           [toggleButtonIntro]="toggleButtonIntro"
-          [formula]="formula | async"
+          [formula]="formula"
           [fontSize]="fontSize"
         ></app-hero>
         <div class="preparation-time mt-4">
           <app-table-intro
+            *ngIf="ingredients$ | async as ingredients"
             [fontSize]="fontSize"
-            [formula]="formula | async"
-            [ingredients]="ingredients | async"
+            [formula]="formula"
+            [ingredients]="ingredients"
           ></app-table-intro>
         </div>
       </div>
@@ -47,14 +48,15 @@
                 }}
               </h1>
               <app-table-ingredient
+                *ngIf="ingredients$ | async as ingredients"
                 [fontSize]="fontSize"
-                [formula]="formula | async"
-                [ingredientsInput]="ingredients | async"
+                [formula]="formula"
+                [ingredientsInput]="ingredients"
                 [totalPercentage]="100"
               ></app-table-ingredient>
             </div>
             <div>
-              <div class="mt-2">
+              <!-- <div class="mt-2">
                 <app-table-compound-ingredient
                   *ngIf="ingredientsCompound"
                   [fontSize]="fontSize"
@@ -63,30 +65,30 @@
                   [ingredientsCompound]="ingredientsCompound"
                   [totalPercentage]="100"
                 ></app-table-compound-ingredient>
-              </div>
+              </div> -->
             </div>
-            <div
+            <!-- <div
               class="mt-3"
               [ngClass]="toggleButtonGridContainer ? 'mt-2 ' : 'mt-2 verso'"
               [ngClass]="{
                 br: formula.steps
               }"
             >
-              <!-- <app-table-time
+              <app-table-time
                 [fontSize]="fontSize"
                 [formula]="formula | async"
-              ></app-table-time> -->
-            </div>
+              ></app-table-time>
+            </div> -->
 
-            <div [ngClass]="toggleButtonAddInfo ? 'mt-2 verso' : 'd-none'">
+            <!-- <div [ngClass]="toggleButtonAddInfo ? 'mt-2 verso' : 'd-none'">
               <app-additional-info
                 [fontSize]="fontSize"
                 [formula]="formula | async"
               ></app-additional-info>
-            </div>
+            </div> -->
           </div>
 
-          <div class="content-item">
+          <!-- <div class="content-item">
             <app-formula-stepper
               [fontSize]="fontSize"
               [formula]="formula | async"
@@ -116,7 +118,7 @@
                 [formula]="formula | async"
               ></app-preparation-steps>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

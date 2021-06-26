@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import {
+  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -106,10 +107,18 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.get('firstName');
   }
 
-  get email() {
+  get email(): AbstractControl {
     return this.registerForm.get('email');
   }
   get password() {
     return this.registerForm.get('password');
+  }
+
+  public get confirm(): AbstractControl {
+    return this.registerForm.get('password.confirm');
+  }
+
+  public get passwordConfirm(): AbstractControl {
+    return this.registerForm.get('password.password');
   }
 }

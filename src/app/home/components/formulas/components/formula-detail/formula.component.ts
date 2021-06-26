@@ -3,7 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Formula, IngredientsSecondRequest } from '@core/model/formulas.model';
 import { FormulasService } from '@core/service/formulas/formulas.service';
 import { PanelButtonsService } from '@shared/components/layout/panel-buttons/panel-buttons.service';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 @Component({
   selector: 'app-formula',
   templateUrl: './formula.component.html',
@@ -18,8 +18,8 @@ export class FormulaDetailComponent
   toggleButtonIntro = true;
   toggleButtonImg = true;
   toggleButtonAddInfo = true;
-  formula: any;
-  ingredients: any;
+  formula$: Observable<Formula>;
+  ingredients$: Observable<any>;
   ingredientsCompound: IngredientsSecondRequest[];
   formulaId: string;
   private panelButtonSub: Subscription;
@@ -55,10 +55,10 @@ export class FormulaDetailComponent
     });
   }
   fetchFormula(id: string) {
-    this.formula = this.formulasService.getFormula(id);
+    this.formula$ = this.formulasService.getFormula(id);
   }
   fetchFormulaIngredients(id: string) {
-    this.ingredients = this.formulasService.getFormulaIngredients(id);
+    this.ingredients$ = this.formulasService.getFormulaIngredients(id);
   }
   fontSizeChanged() {
     this.panelButtonSub =

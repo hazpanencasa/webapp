@@ -13,7 +13,7 @@
             <div *ngIf="isLoaded" class="spinner-container">
               <mat-spinner></mat-spinner>
             </div>
-            <div *ngIf="formulas" class="container">
+            <div class="container" *ngIf="formulas$ | async as formulas">
               <div class="row">
                 <div class="col-md-5 col-6 card-input">
                   <mat-form-field>
@@ -31,7 +31,7 @@
                     class="p-0"
                     [length]="
                       searchFormula.length > 0
-                        ? (formulas | filter: searchFormula).length
+                        ? (formulas$ | async | filter: searchFormula).length
                         : formulas.length
                     "
                     [pageSize]="pageSize"
@@ -48,12 +48,18 @@
                     <div class="cards-container">
                       <app-card
                         *ngFor="
-                          let formula of formulas
+                          let formula of formulas$
+                            | async
                             | filter: searchFormula
                             | paginate: pageSize:pageNumber
                         "
-                        [formula]="formula"
+                        [formula]="formula.payload.doc.data()"
+                        [path]="formula.payload.doc.ref.path"
                       ></app-card>
+                      <!-- <app-card
+                        *ngFor="let formula of formulas$ | async"
+                        [formula]="formula.payload.doc"
+                      ></app-card> -->
                     </div>
                   </section>
                 </div>

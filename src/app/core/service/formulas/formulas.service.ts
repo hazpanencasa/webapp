@@ -4,8 +4,9 @@ import {
   AngularFirestoreCollection,
   AngularFirestoreDocument,
 } from '@angular/fire/firestore';
-import { Formula } from '../../model/formulas.model';
+import { Formula, IngredientsFormula } from '../../model/formulas.model';
 import { Observable, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -18,15 +19,21 @@ export class FormulasService {
   ingredients: Subscription;
   constructor(private db: AngularFirestore) {}
 
-  getFormulas(): Observable<Formula[]> {
-    return this.db.collection<Formula>('formulas').valueChanges();
+  getFormulas(): any {
+    console.log('formulas => subscribe');
+    return this.db
+      .collection<Formula>('formulas')
+      .snapshotChanges()
+      .pipe(map((data) => data));
   }
 
   getFormula(id: string): Observable<Formula> {
     return this.db.doc<Formula>(`formulas/${id}`).valueChanges();
   }
-  getFormulaIngredients(id: string) {
-    return this.db.collection(`formulas/${id}/ingredients`).valueChanges();
+  getFormulaIngredients(path: string): Observable<IngredientsFormula[]> {
+    return this.db
+      .collection<IngredientsFormula>(`${path}/ingredients`)
+      .valueChanges();
   }
   getFormulaIngredientsCompound(
     idFormula: string,

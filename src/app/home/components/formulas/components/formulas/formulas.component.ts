@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Formula } from '@core/model/formulas.model';
 import { FormulasService } from '@core/service/formulas/formulas.service';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-formulas',
@@ -10,38 +10,22 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./formulas.component.sass'],
   providers: [FormulasService],
 })
-export class FormulasComponent implements OnInit, OnDestroy {
-  formulas: Formula[] = [];
-  pageSizeOptions: number[] = [1, 3, 6, 9];
+export class FormulasComponent implements OnInit {
+  formulas$: Observable<Formula[]>;
+  pageSizeOptions: number[] = [3, 6, 9];
   pageEvent: PageEvent;
   searchFormula = '';
   pageSize = 6;
-  pageNumber = 1;
+  pageNumber = 0;
   isLoaded = true;
-  formulasSubscripted: Subscription;
-  observer = {
-    next: (dataSource$: Formula[]) => {
-      if (this.formulas.length === 0) {
-        this.formulas = dataSource$;
-        this.isLoaded = false;
-      }
-    },
-    error: (error: any) => {
-      console.log(error);
-    },
-    complete: (): void => {
-      console.log("it's completed");
-    },
-  };
   constructor(private formulasService: FormulasService) {}
 
   ngOnInit(): void {
-    this.onGetFormulas();
-  }
-  onGetFormulas(): void {
-    this.formulasSubscripted = this.formulasService
-      .getFormulas()
-      .subscribe(this.observer);
+    this.formulas$ = this.formulasService.getFormulas();
+    this.formulas$.subscribe((data) => {
+      console.log('formulas => subscribe');
+      this.isLoaded = false;
+    });
   }
   onPageChange(event: PageEvent) {
     this.pageSize = event.pageSize;
@@ -49,8 +33,5 @@ export class FormulasComponent implements OnInit, OnDestroy {
   }
   onSearchFormula(search: string) {
     this.searchFormula = search;
-  }
-  ngOnDestroy() {
-    this.formulasSubscripted.unsubscribe();
   }
 }

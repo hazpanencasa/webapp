@@ -23,6 +23,7 @@ import { TableIngredientsCompoundSecondLayerComponent } from './components/formu
 import { FormulaCompoundStepperComponent } from './components/formula-detail/components/formula-compound-stepper/formula-compound-stepper.component';
 import { TableIngredientCompoundThirdLayerComponent } from './components/formula-detail/components/table-compound-ingredient/components/table-ingredient-compound-third-layer/table-ingredient-compound-third-layer.component';
 import { FormulaCompoundStepperSecondLayerComponent } from './components/formula-detail/components/formula-compound-stepper/components/formula-compound-stepper-second-layer/formula-compound-stepper-second-layer.component';
+import { FormulasService } from '@core/service/formulas/formulas.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { FormulaCompoundStepperSecondLayerComponent } from './components/formula
     SharedModule,
     TranslateModule,
   ],
-  // providers: [FormulasService],
+  providers: [FormulasService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class FormulasModule {}

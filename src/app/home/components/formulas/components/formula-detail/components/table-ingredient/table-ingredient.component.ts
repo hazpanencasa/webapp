@@ -13,9 +13,5 @@ export class TableIngredientComponent implements OnInit {
   @Input() totalPercentage: number;
   constructor() {}
 
-  ngOnInit() {
-    if (this.ingredientsInput) {
-      console.log(this.ingredientsInput);
-    }
-  }
+  ngOnInit() {}
 }

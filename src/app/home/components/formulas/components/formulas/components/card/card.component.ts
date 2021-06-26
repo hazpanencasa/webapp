@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { QueryDocumentSnapshot } from '@angular/fire/firestore';
 import { Formula, IngredientsFormula } from '@core/model/formulas.model';
 import { FormulasService } from '@core/service/formulas/formulas.service';
 import { modalFormula } from '@utils/modal';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-card',
@@ -10,17 +12,12 @@ import { modalFormula } from '@utils/modal';
 })
 export class CardComponent implements OnInit {
   @Input() formula: Formula;
-  ingredients: IngredientsFormula[] = [];
+  @Input() path: string;
+  ingredients$: Observable<IngredientsFormula[]>;
   constructor(private formulaService: FormulasService) {}
 
   ngOnInit(): void {
-    this.formulaService
-      .getFormulaIngredients(this.formula.id)
-      .subscribe((data: IngredientsFormula[]) => {
-        if (this.ingredients.length === 0) {
-          this.ingredients = data;
-        }
-      });
+    this.ingredients$ = this.formulaService.getFormulaIngredients(this.path);
   }
 
   onShowModal(img: string) {
