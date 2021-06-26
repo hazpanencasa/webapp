@@ -85,6 +85,7 @@ export interface IngredientsFormula {
 }
 
 export interface Ingredient {
+  fat?: string;
   cost: number | null | boolean;
   hydration: string | number;
   id: string;

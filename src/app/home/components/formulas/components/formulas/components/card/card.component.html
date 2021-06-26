@@ -9,7 +9,7 @@
         {{ 'FORMULAS.CARD.text-title' | translate }}
       </p>
       <p class="card__normal">
-        <span>Hydration</span>
+        <span>Hydration: {{ ingredients | hydration }}%</span>
       </p>
       <div class="progress">
         <div
@@ -22,7 +22,22 @@
           {{ ingredients | hydration }}%
         </div>
       </div>
-      <p class="card__normal">grasa</p>
+      <div *ngIf="(ingredients | fat) > 0">
+        <p class="card__normal">
+          <span>Grasa: {{ ingredients | fat }}%</span>
+        </p>
+        <div class="progress">
+          <div
+            class="progress-bar bg-warning"
+            role="progressbar"
+            [style.width.%]="ingredients | fat"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          >
+            <!-- {{ ingredients | fat }}% -->
+          </div>
+        </div>
+      </div>
       <div>
         <p class="card__normal text-left">
           Creador : {{ formula.user.creator.name }}

@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { QueryDocumentSnapshot } from '@angular/fire/firestore';
 import { Formula, IngredientsFormula } from '@core/model/formulas.model';
 import { FormulasService } from '@core/service/formulas/formulas.service';
 import { modalFormula } from '@utils/modal';

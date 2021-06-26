@@ -23,6 +23,7 @@ import { TransformMinutesToHoursPipe } from './pipes/transform-minutes-to-hours.
 import { SumAllTimePipe } from './pipes/sum-all-time.pipe';
 import { BakeryFactorPipe } from './pipes/bakery-factor.pipe';
 import { TotalPercentagePipe } from './pipes/total-percentage.pipe';
+import { FatPipe } from './pipes/fat.pipe';
 
 const gravatarConfig: GravatarConfig = {
   fallback: FALLBACK.robohash,
@@ -48,6 +49,7 @@ const gravatarConfig: GravatarConfig = {
     SumAllTimePipe,
     BakeryFactorPipe,
     TotalPercentagePipe,
+    FatPipe,
   ],
   imports: [
     CommonModule,
@@ -76,6 +78,7 @@ const gravatarConfig: GravatarConfig = {
     SumAllTimePipe,
     BakeryFactorPipe,
     TotalPercentagePipe,
+    FatPipe,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
