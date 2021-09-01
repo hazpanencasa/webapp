@@ -12,5 +12,7 @@ export class HeroComponent implements OnInit {
   @Input() fontSize: number;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.formula);
+  }
 }

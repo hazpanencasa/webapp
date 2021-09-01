@@ -1,4 +1,4 @@
-<ng-container *ngIf="formula$ | async as formula">
+<ng-container *ngIf="formula">
   <app-panel-buttons
     [fontSize]="fontSize"
     [toggleButtonGridContainer]="toggleButtonGridContainer"
@@ -14,14 +14,14 @@
           [formula]="formula"
           [fontSize]="fontSize"
         ></app-hero>
-        <div class="preparation-time mt-4">
+        <!-- <div class="preparation-time mt-4">
           <app-table-intro
             *ngIf="ingredients$ | async as ingredients"
             [fontSize]="fontSize"
             [formula]="formula"
             [ingredients]="ingredients"
           ></app-table-intro>
-        </div>
+        </div> -->
       </div>
       <div [ngClass]="toggleButtonImg ? 'col-5' : 'd-none'">
         <div class="img-container">
@@ -47,27 +47,27 @@
                     | translate
                 }}
               </h1>
-              <app-table-ingredient
+              <!-- <app-table-ingredient
                 *ngIf="ingredients$ | async as ingredients"
                 [fontSize]="fontSize"
                 [formula]="formula"
                 [ingredientsInput]="ingredients"
                 [totalPercentage]="100"
-              ></app-table-ingredient>
+              ></app-table-ingredient> -->
             </div>
             <div>
-              <!-- <div class="mt-2">
-                <app-table-compound-ingredient
+              <div class="mt-2">
+                <!-- <app-table-compound-ingredient
                   *ngIf="ingredientsCompound"
                   [fontSize]="fontSize"
                   [formula]="formula | async"
                   [formulaId]="formulaId"
                   [ingredientsCompound]="ingredientsCompound"
                   [totalPercentage]="100"
-                ></app-table-compound-ingredient>
-              </div> -->
+                ></app-table-compound-ingredient> -->
+              </div>
             </div>
-            <!-- <div
+            <div
               class="mt-3"
               [ngClass]="toggleButtonGridContainer ? 'mt-2 ' : 'mt-2 verso'"
               [ngClass]="{
@@ -76,30 +76,30 @@
             >
               <app-table-time
                 [fontSize]="fontSize"
-                [formula]="formula | async"
+                [formula]="formula"
               ></app-table-time>
-            </div> -->
+            </div>
 
-            <!-- <div [ngClass]="toggleButtonAddInfo ? 'mt-2 verso' : 'd-none'">
+            <div [ngClass]="toggleButtonAddInfo ? 'mt-2 verso' : 'd-none'">
               <app-additional-info
                 [fontSize]="fontSize"
-                [formula]="formula | async"
+                [formula]="formula"
               ></app-additional-info>
-            </div> -->
+            </div>
           </div>
 
-          <!-- <div class="content-item">
+          <div class="content-item">
             <app-formula-stepper
               [fontSize]="fontSize"
-              [formula]="formula | async"
+              [formula]="formula"
             ></app-formula-stepper>
             <div>
-              <app-mixing-ingredient-compound
+              <!-- <app-mixing-ingredient-compound
                 [ngClass]="toggleButtonAddInfo ? 'mt-2 verso' : 'mt-2 br'"
                 [formula]="formula | async"
                 [fontSize]="fontSize"
               >
-              </app-mixing-ingredient-compound>
+              </app-mixing-ingredient-compound> -->
             </div>
 
             <app-formula-compound-stepper
@@ -113,12 +113,12 @@
                 br: formula.steps
               }"
             >
-              <app-preparation-steps
+              <!-- <app-preparation-steps
                 [fontSize]="fontSize"
                 [formula]="formula | async"
-              ></app-preparation-steps>
+              ></app-preparation-steps> -->
             </div>
-          </div> -->
+          </div>
         </div>
       </div>
     </div>

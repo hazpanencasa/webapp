@@ -5,8 +5,8 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/firestore';
 import { Formula, IngredientsFormula } from '../../model/formulas.model';
-import { Observable, Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of, Subscription, throwError } from 'rxjs';
+import { catchError, map, retry, share } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -24,11 +24,30 @@ export class FormulasService {
     return this.db
       .collection<Formula>('formulas')
       .snapshotChanges()
-      .pipe(map((data) => data));
+      .pipe(
+        catchError((err) => {
+          console.log('Handling error locally and rethrowing it...', err);
+          return throwError(err);
+        }),
+        retry(1),
+        share()
+      );
   }
 
   getFormula(id: string): Observable<Formula> {
     return this.db.doc<Formula>(`formulas/${id}`).valueChanges();
+    //  this.userDoc.collection<Task>('tasks').valueChanges();
+    // return this.db
+    //   .doc<Formula>()
+    //   .valueChanges()
+    //   .pipe(
+    //     catchError((err) => {
+    //       console.log('Handling error locally and rethrowing it...', err);
+    //       return throwError(err);
+    //     }),
+    //     retry(1),
+    //     share()
+    //   );
   }
   getFormulaIngredients(path: string): Observable<IngredientsFormula[]> {
     return this.db

@@ -10,15 +10,13 @@ import { Observable, Subscription } from 'rxjs';
   styleUrls: ['./formula.component.sass'],
   providers: [PanelButtonsService],
 })
-export class FormulaDetailComponent
-  implements OnInit, AfterViewChecked, OnDestroy
-{
+export class FormulaDetailComponent implements OnInit, AfterViewChecked {
   fontSize = 100;
   toggleButtonGridContainer = true;
   toggleButtonIntro = true;
   toggleButtonImg = true;
   toggleButtonAddInfo = true;
-  formula$: Observable<Formula>;
+  formula: Formula;
   ingredients$: Observable<any>;
   ingredientsCompound: IngredientsSecondRequest[];
   formulaId: string;
@@ -51,11 +49,14 @@ export class FormulaDetailComponent
     this.route.params.subscribe((params: Params) => {
       this.formulaId = params.id;
       this.fetchFormula(this.formulaId);
-      this.fetchFormulaIngredients(this.formulaId);
+      // this.fetchFormulaIngredients(this.formulaId);
     });
   }
   fetchFormula(id: string) {
-    this.formula$ = this.formulasService.getFormula(id);
+    this.formulasService.getFormula(id).subscribe((data) => {
+      console.log(data);
+      this.formula = data;
+    });
   }
   fetchFormulaIngredients(id: string) {
     this.ingredients$ = this.formulasService.getFormulaIngredients(id);
@@ -90,7 +91,7 @@ export class FormulaDetailComponent
         (toggle) => (this.toggleButtonAddInfo = toggle)
       );
   }
-  ngOnDestroy() {
-    this.panelButtonSub.unsubscribe();
-  }
+  // ngOnDestroy() {
+  //   this.panelButtonSub.unsubscribe();
+  // }
 }

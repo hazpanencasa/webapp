@@ -1,12 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { AuthService } from "@core/service/auth/auth.service";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '@core/service/auth/auth.service';
 
 @Component({
-  selector: "app-edit-profile",
-  templateUrl: "./edit-profile.component.html",
-  styleUrls: ["./edit-profile.component.sass"],
+  selector: 'app-edit-profile',
+  templateUrl: './edit-profile.component.html',
+  styleUrls: ['./edit-profile.component.sass'],
 })
 export class EditProfileComponent implements OnInit {
   updateUser: FormGroup;
@@ -20,10 +20,8 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit() {
     this.authService.getCurrentUser().then((user) => {
-      const firstName = user.displayName.split(" ")[0];
-      const lastName = user.displayName.split(" ")[1];
-      console.log(firstName);
-      console.log(lastName);
+      const firstName = user.displayName.split(' ')[0];
+      const lastName = user.displayName.split(' ')[1];
       this.updateUser.patchValue({
         firstName,
         lastName,
@@ -35,14 +33,14 @@ export class EditProfileComponent implements OnInit {
   private buildForm() {
     this.updateUser = this.formBuilder.group({
       email: [
-        "",
+        '',
         [
           Validators.required,
-          Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"),
+          Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'),
         ],
       ],
-      firstName: ["", [Validators.required]],
-      lastName: ["", [Validators.required]],
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
     });
   }
   onSaveUser(event: Event) {
@@ -54,20 +52,20 @@ export class EditProfileComponent implements OnInit {
         email: this.updateUser.value.email,
       };
       this.authService.saveUserProfile(newUser);
-      this.route.navigate(["/home/profile"]);
+      this.route.navigate(['/home/profile']);
     }
   }
 
   get updateFormEmail() {
-    return this.updateUser.get("email");
+    return this.updateUser.get('email');
   }
   get updateFormPassword() {
-    return this.updateUser.get("password");
+    return this.updateUser.get('password');
   }
   get updateFormLastName() {
-    return this.updateUser.get("lastName");
+    return this.updateUser.get('lastName');
   }
   get updateFormFirstName() {
-    return this.updateUser.get("firstName");
+    return this.updateUser.get('firstName');
   }
 }
